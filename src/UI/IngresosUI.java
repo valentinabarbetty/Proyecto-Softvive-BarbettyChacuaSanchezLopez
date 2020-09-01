@@ -5,11 +5,13 @@ import Control.ControlIngresos;
 import Control.ControlPedidos;
 import Modelo.Detalle_Pedido;
 import Modelo.Distribuidor;
+import Modelo.EstadoEntrega;
 import Modelo.Ingreso;
 import Modelo.Pedido;
 import Modelo.Planta;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.Month;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.NoResultException;
@@ -272,12 +274,12 @@ public class IngresosUI extends javax.swing.JInternalFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            String codigo = pedidojT.getText();
+            long codigo = Long.parseLong(pedidojT.getText());
             try {
                 pedido = cp.buscarPedido(codigo);
                 nitjT.setText(Long.toString(pedido.getDistribuidor().getNit()));
                 nomCliejT.setText(pedido.getDistribuidor().getNombre());
-                entregajT.setText(pedido.getEstadoEntregado());
+                entregajT.setText(pedido.getEstadoEntrega().toString());
                 pagojT.setText(pedido.getEstadoPago());
 
                 ingresoTable.setModel(new IngresosTableModel());
@@ -302,10 +304,10 @@ public class IngresosUI extends javax.swing.JInternalFrame {
         public void actionPerformed(ActionEvent e) {
 
             try {
-                String codigo = pedidojT.getText();
+                long codigo = Long.parseLong(pedidojT.getText());
                 int total = Integer.parseInt(vlrVendidojT.getText());
 
-                Pedido pedido = new Pedido(codigo, "Cancelado", "En camino", distribuidor, 2);
+            //   Pedido pedido = new Pedido();
 
                 ingreso = new Ingreso(total, pedido);
                 ingresoTable.updateUI();

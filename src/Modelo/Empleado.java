@@ -14,6 +14,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
+import javax.swing.JOptionPane;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
@@ -39,7 +40,7 @@ public class Empleado implements Serializable {
     @Column(nullable = false)
     private String direccion;
     @Column(nullable = false)
-    private String telefono;
+    private int telefono;
     @Enumerated(EnumType.STRING)
     private Rol rol;
     @Column(nullable = false)
@@ -48,7 +49,7 @@ public class Empleado implements Serializable {
     public Empleado() {
     }
 
-    public Empleado(String cedula, String name, String contraseña, String direccion, String telefono, Rol rol, String ciudad) throws Exception {
+    public Empleado(String cedula, String name, String contraseña, String direccion, int telefono, Rol rol, String ciudad) throws Exception {
 
         if (cedula == null) {
             throw new Exception("Debe ingresar el número de la cédula");
@@ -56,7 +57,6 @@ public class Empleado implements Serializable {
         if (contraseña == null) {
             throw new Exception("Debe ingresar contraseña");
         }
-
         this.cedula = cedula;
         this.name = name;
         this.direccion = direccion;
@@ -90,13 +90,14 @@ public class Empleado implements Serializable {
         this.direccion = direccion;
     }
 
-    public String getTelefono() {
+    public int getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(String telefono) {
+    public void setTelefono(int telefono) {
         this.telefono = telefono;
     }
+
 
     public Rol getRol() {
         return rol;

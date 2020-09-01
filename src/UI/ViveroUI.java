@@ -452,7 +452,7 @@ public class agregarEmpleadoListener implements ActionListener {
     }
     
      public class VerPedidosListener implements ActionListener {
-
+  
         private VerPedidosUI VerPedidosUI;
 
         @Override
@@ -465,6 +465,7 @@ public class agregarEmpleadoListener implements ActionListener {
             VerPedidosUI.setVisible(true);
 
         }
+        
 
     }
 /////// LOGIN

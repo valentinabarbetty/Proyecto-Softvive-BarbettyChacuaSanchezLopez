@@ -53,7 +53,7 @@ public class PedidoDAO implements Serializable {
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                String id = pedido.getCodigo();
+                long id = pedido.getCodigo();
                 if (findPedido(id) == null) {
                     throw new NonexistentEntityException("The pedido with id " + id + " no longer exists.");
                 }
@@ -66,7 +66,7 @@ public class PedidoDAO implements Serializable {
         }
     }
 
-    public void destroy(String id) throws NonexistentEntityException {
+    public void destroy(long id) throws NonexistentEntityException {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -111,7 +111,7 @@ public class PedidoDAO implements Serializable {
         }
     }
 
-    public Pedido findPedido(String id) {
+    public Pedido findPedido(long id) {
         EntityManager em = getEntityManager();
         try {
             return em.find(Pedido.class, id);
@@ -120,7 +120,7 @@ public class PedidoDAO implements Serializable {
         }
     }
 
-    public Pedido buscarPedidoPorCodigo(String codigo) throws Exception {
+    public Pedido buscarPedidoPorCodigo(long codigo) throws Exception {
         EntityManager em = getEntityManager();
         try {
             Pedido pedido = (Pedido) em.createNamedQuery("BuscarUnPedidoEspecifico")

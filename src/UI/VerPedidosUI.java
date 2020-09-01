@@ -3,18 +3,22 @@ package UI;
 import Control.ControlPedidos;
 import Modelo.Pedido;
 import java.awt.Color;
+import java.time.Month;
+import java.time.Year;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 
 public class VerPedidosUI extends javax.swing.JInternalFrame {
 
    ControlPedidos controlPedidos;
+   
 
     public VerPedidosUI() {
         initComponents();
         controlPedidos = new ControlPedidos();
-        this.pediTable.setModel(new PedidosTableModel());
+        System.out.println(controlPedidos.getListaPedidos());
         
+        this.pediTable.setModel(new PedidosTableModel());
 //        this.getContentPane().setBackground(Color.white);
     }
 
@@ -112,7 +116,7 @@ public class VerPedidosUI extends javax.swing.JInternalFrame {
         public int getColumnCount() {
             return 6;
         }
-        private String[] nombreColumnas = {"Codigo", "Fecha", "EstadoPago", "EstadoEntregado", "Distribuidor", "Cant-vendida"};
+        private String[] nombreColumnas = {"Codigo","Fecha", "EstadoPago", "EstadoEntregado", "Distribuidor", "Cant-vendida"};
 
         @Override
         public String getColumnName(int columnIndex) {
@@ -120,7 +124,7 @@ public class VerPedidosUI extends javax.swing.JInternalFrame {
         }
 
         @Override
-        public Class<?> getColumnClass(int columnIndex) {
+        public Class<?> getColumnClass(int columnIndex) { 
             return String.class;
         }
 
@@ -141,7 +145,7 @@ public class VerPedidosUI extends javax.swing.JInternalFrame {
                 case 2:
                     return pedido.getEstadoPago();
                 case 3:
-                    return pedido.getEstadoEntregado();
+                    return pedido.getEstadoEntrega();
                 case 4:
                     return pedido.getDistribuidor().getNombre();
                 case 5:

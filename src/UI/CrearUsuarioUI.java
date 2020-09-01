@@ -12,11 +12,13 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author Kathe
  */
 public class CrearUsuarioUI extends javax.swing.JFrame {
+
     private ControlEmpleados controlEmpleados;
 
     /**
@@ -24,21 +26,19 @@ public class CrearUsuarioUI extends javax.swing.JFrame {
      */
     public CrearUsuarioUI() {
         initComponents();
-            this.controlEmpleados = new ControlEmpleados();
+        this.controlEmpleados = new ControlEmpleados();
         this.agregarbtn.addActionListener(new agregarUsuarioListener());
         this.cancelarbtn.addActionListener(new borrarListener());
-        
-        
+
         TextPrompt nombre = new TextPrompt("Nombre", nomjT);
         TextPrompt cedula = new TextPrompt("Cedula", ccjT);
         TextPrompt telefono = new TextPrompt("Telefono", teljT);
         TextPrompt ciudad = new TextPrompt("Ciudad", ciudadJjT);
         TextPrompt direccion = new TextPrompt("Direccion", direccionjT);
         TextPrompt contraseña = new TextPrompt("Contraseña", contraseñajT);
-        
+
         this.getContentPane().setBackground(Color.white);
     }
-   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -148,7 +148,7 @@ public class CrearUsuarioUI extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addComponent(ccjT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                 .addComponent(teljT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(ciudadJjT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -162,7 +162,7 @@ public class CrearUsuarioUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(agregarbtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cancelarbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(135, 135, 135))
+                .addGap(85, 85, 85))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(156, 156, 156)
@@ -176,7 +176,6 @@ public class CrearUsuarioUI extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton agregarbtn;
@@ -191,32 +190,48 @@ public class CrearUsuarioUI extends javax.swing.JFrame {
     private javax.swing.JTextField teljT;
     // End of variables declaration//GEN-END:variables
   public class agregarUsuarioListener implements ActionListener {
-      
+
         @Override
         public void actionPerformed(ActionEvent e) {
-            try {
-                String cedula = ccjT.getText();
-                String nom = nomjT.getText();
-                String contraseña = contraseñajT.getText();
-                String tel = teljT.getText();
-                String ciudad = ciudadJjT.getText();
-                String direccion = direccionjT.getText();
-                Rol selectRol = (Rol) rol.getSelectedItem();
+            if (ccjT.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "Debe ingresar el número de la cédula");
+            } else if (nomjT.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "Debe ingresar el nombre completo");
+            } else if (contraseñajT.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "Debe ingresar la contraseña");
+            } else if (teljT.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "Debe ingresar el telefono");       
+            } else if (ciudadJjT.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "Debe ingresar la ciudad");
+            } else if (direccionjT.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "Debe ingresar la dirección");
+            } else if (rol.getSelectedItem().equals(" ")) {
+                JOptionPane.showMessageDialog(rootPane, "Debe seleccionar el rol");
+            } else {
+                try {
+                    String cedula = ccjT.getText();
+                    String nom = nomjT.getText();
+                    String contraseña = contraseñajT.getText();
+                    int tel = Integer.parseInt(teljT.getText());
+                    String ciudad = ciudadJjT.getText();
+                    String direccion = direccionjT.getText();
+                    Rol selectRol = (Rol) rol.getSelectedItem();
 
-                Empleado d = new Empleado(cedula, nom, contraseña, direccion, tel, selectRol, ciudad);
-                controlEmpleados.agregarEmpleado(d);
-                
-                JOptionPane.showMessageDialog(rootPane, "Empleado agregado con éxito");
-                cancelarbtn.doClick();
-            } catch (Exception ex) {
+                    Empleado d = new Empleado(cedula, nom, contraseña, direccion, tel, selectRol, ciudad);
+                    controlEmpleados.agregarEmpleado(d);
+
+                    JOptionPane.showMessageDialog(rootPane, "Empleado agregado con éxito");
+                    cancelarbtn.doClick();
+                } catch (Exception ex) {
 //                JOptionPane.showMessageDialog(rootPane, ex.getMessage());
+                }
             }
         }
-        
+
     }
-    
+
     public class borrarListener implements ActionListener {
-        
+
         @Override
         public void actionPerformed(ActionEvent e) {
             ccjT.setText("");
@@ -227,6 +242,6 @@ public class CrearUsuarioUI extends javax.swing.JFrame {
             ciudadJjT.setText("");
             contraseñajT.setText("");
         }
-        
+
     }
 }

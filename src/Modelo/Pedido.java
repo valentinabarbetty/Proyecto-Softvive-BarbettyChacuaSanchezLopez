@@ -2,12 +2,17 @@ package Modelo;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.Month;
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
@@ -25,46 +30,60 @@ import javax.persistence.TemporalType;
 public class Pedido implements Serializable {
 
     @Id
-    private String codigo;
-    @Column(nullable = false)
-    @Temporal(TemporalType.DATE)
+    private long codigo;
+     @Temporal(TemporalType.DATE)
     private Date fecha;
     @Column(nullable = false)
     private String estadoPago;
-    @Column(nullable = false)
-    private String estadoEntregado;
+    @Enumerated(EnumType.STRING)
+    private EstadoEntrega estadoEntrega;
     @OneToOne
     private Distribuidor distribuidor;
-
+    @Column(nullable = false)
+    private int total = 0;
     @Column(nullable = false)
     private int cant_vendida;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Detalle_Pedido> listaDetallePedido;
 
-    
 //    public int total_prod = 0;
 //    public int subtotal = 0;
 //    public int total = 0;
-
     public Pedido() {
     }
 
-    public Pedido(String codigo, String estadoPago, String estadoEntregado, Distribuidor distribuidor, int cant_vendida) {
+    
+    public Pedido(long codigo, String estadoPago, EstadoEntrega estadoEntrega, Distribuidor distribuidor, int cant_vendida) {
         this.codigo = codigo;
         this.fecha = new Date();
         this.estadoPago = estadoPago;
-        this.estadoEntregado = estadoEntregado;
+        this.estadoEntrega = estadoEntrega;
         this.distribuidor = distribuidor;
         this.cant_vendida = cant_vendida;
         this.listaDetallePedido = new ArrayList<>();
     }
 
-    public String getCodigo() {
+    
+    public void agregarDetallePedido(Detalle_Pedido dp) {
+        this.listaDetallePedido.add(dp);
+        total = total + dp.getPrecio();
+    }
+    
+
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
+
+    public long getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(String codigo) {
+    public void setCodigo(long codigo) {
         this.codigo = codigo;
     }
 
@@ -76,12 +95,12 @@ public class Pedido implements Serializable {
         this.estadoPago = estadoPago;
     }
 
-    public String getEstadoEntregado() {
-        return estadoEntregado;
+    public EstadoEntrega getEstadoEntrega() {
+        return estadoEntrega;
     }
 
-    public void setEstadoEntregado(String estadoEntregado) {
-        this.estadoEntregado = estadoEntregado;
+    public void setEstadoEntrega(EstadoEntrega estadoEntrega) {
+        this.estadoEntrega = estadoEntrega;
     }
 
     public Distribuidor getDistribuidor() {
@@ -120,28 +139,18 @@ public class Pedido implements Serializable {
         this.listaDetallePedido.add(listaDetallePedido);
     }
 
-//    public void setTotal_prod(int total_prod) {
-//        this.total_prod = total_prod;
-//    }
-//
-//    public int getTotal_prod() {
-//        total_prod = total_prod + cant_vendida;
-//        return total_prod;
-//    }
+    public void eliminarDetallePedido(int rowSel) {
 
-//    public int getSubtotal() {
-//        return subtotal;
-//    }
-//
-//    public void setSubtotal(int subtotal) {
-//        this.subtotal = subtotal;
-//    }
-//
-//    public int getTotal() {
-//        return total;
-//    }
-//
-//    public void setTotal(int total) {
-//        this.total = total;
-//    }
+        Detalle_Pedido dp = listaDetallePedido.remove(rowSel);
+        total = (int) (total - dp.getPrecio());
+
+    }
+
+    @Override
+    public String toString() {
+        return "Pedido{" + "fecha=" + fecha + '}';
+    }
+
+
+
 }

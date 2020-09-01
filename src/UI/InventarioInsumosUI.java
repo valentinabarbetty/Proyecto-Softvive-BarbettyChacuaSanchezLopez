@@ -38,7 +38,7 @@ public class InventarioInsumosUI extends javax.swing.JInternalFrame {
         TextPrompt nombre = new TextPrompt("Nombre", cmpNombre);
         TextPrompt descripcion = new TextPrompt("Descripcion", cmpDescripcion);
         TextPrompt cantidad = new TextPrompt("Cantidad", cmpCantidadIngresada);
-      
+
         this.getContentPane().setBackground(Color.white);
     }
 
@@ -195,11 +195,9 @@ public class InventarioInsumosUI extends javax.swing.JInternalFrame {
 
             try {
                 String nombre = cmpNombre.getText();
-                System.out.println("Obtengo el nombre");
 
                 Insumo insumo = (Insumo) controlInsumo.buscarInsumo(nombre);
                 detalleBuscado = insumo.getDetalleGasto();
-                System.out.println("Busco por el nombre");
 
                 cmpDescripcion.setText(insumo.getDescripcion());
                 cmpCantidadExistente.setText(Integer.toString(insumo.getDetalleGasto().getCantidad()));
@@ -246,7 +244,6 @@ public class InventarioInsumosUI extends javax.swing.JInternalFrame {
                 int suma = cantExiste - cantIngre;
                 cmpCantidadExistente.setText(Integer.toString(suma));
 
-
                 JOptionPane.showMessageDialog(rootPane, "Cantidad disminuida");
             } catch (Exception ex) {
                 Logger.getLogger(InventarioInsumosUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -260,40 +257,32 @@ public class InventarioInsumosUI extends javax.swing.JInternalFrame {
 
         @Override
         public void actionPerformed(ActionEvent ae) {
+            if (cmpNombre.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "Debe ingresar el nombre");
+            } else if (cmpCantidadIngresada.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "Debe ingresar la cantidad");
+            } else {
 
-            try {
-//                String nombre = cmpNombre.getText();
-//                String descripcion = cmpDescripcion.getText();
-//
-//                int cantidadExistente = Integer.parseInt(cmpCantidadExistente.getText());
-//
-//                Detalle_Gasto detalleGasto = new Detalle_Gasto(cantidadExistente);
-//
-//                Insumo insumo = new Insumo(nombre, descripcion, detalleGasto);
-//
-//                controlInsumo.AgregarInsumo(insumo);
-//
-//                controlDetalle.ActualizarDetalleGasto(detalleGasto);
-//                controlDetalle.agregarDetalleGasto(detalleGasto);
+                try {
 
-                int cantExiste = Integer.parseInt(cmpCantidadExistente.getText());
+                    int cantExiste = Integer.parseInt(cmpCantidadExistente.getText());
 
-//                Detalle_Gasto detalle = new Detalle_Gasto(cantExiste);
-                detalleBuscado.setCantidad(cantExiste);
+                    detalleBuscado.setCantidad(cantExiste);
 
-                controlDetalle.ActualizarDetalleGasto(detalleBuscado);
+                    controlDetalle.ActualizarDetalleGasto(detalleBuscado);
 
-                JOptionPane.showMessageDialog(rootPane, "Cantidad actualizada");
+                    JOptionPane.showMessageDialog(rootPane, "Cantidad actualizada");
 
-                cmpNombre.setText("");
-                cmpDescripcion.setText("");
-                cmpCantidadIngresada.setText("");
-                cmpCantidadExistente.setText("");
+                    cmpNombre.setText("");
+                    cmpDescripcion.setText("");
+                    cmpCantidadIngresada.setText("");
+                    cmpCantidadExistente.setText("");
 
-            } catch (Exception ex) {
-                Logger.getLogger(InventarioInsumosUI.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (Exception ex) {
+                    Logger.getLogger(InventarioInsumosUI.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
             }
-
         }
 
     }

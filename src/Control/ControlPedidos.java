@@ -25,7 +25,7 @@ public class ControlPedidos implements Serializable{
         pedidoDAO.create(p);
     }
 
-    public Pedido buscarPedido(String codigo) throws Exception{
+    public Pedido buscarPedido(long codigo) throws Exception{
         return pedidoDAO.buscarPedidoPorCodigo(codigo);
     }
 
