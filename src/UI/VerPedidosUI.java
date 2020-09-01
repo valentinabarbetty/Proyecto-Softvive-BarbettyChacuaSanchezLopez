@@ -3,6 +3,7 @@ package UI;
 import Control.ControlPedidos;
 import Modelo.Pedido;
 import java.awt.Color;
+import java.text.SimpleDateFormat;
 import java.time.Month;
 import java.time.Year;
 import javax.swing.event.TableModelListener;
@@ -141,7 +142,9 @@ public class VerPedidosUI extends javax.swing.JInternalFrame {
                 case 0:
                     return pedido.getCodigo();
                 case 1:
-                    return pedido.getFecha();
+                    SimpleDateFormat formateador = new SimpleDateFormat("dd/MM/yy");
+                    String fecha = formateador.format(pedido.getFecha());
+                    return fecha;
                 case 2:
                     return pedido.getEstadoPago();
                 case 3:
