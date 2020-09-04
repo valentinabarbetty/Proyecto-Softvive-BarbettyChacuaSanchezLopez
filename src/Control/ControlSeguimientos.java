@@ -12,7 +12,7 @@ public class ControlSeguimientos {
 
     //llama metodo del DAO consultas -create
     public ControlSeguimientos() {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ViveroPruebaPU");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("BruzonViveroPU");
         this.seguimientoDAO = new SeguimientoDAO(emf);
         this.siembraDAO = new SiembraDAO(emf);
     }

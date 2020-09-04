@@ -14,7 +14,7 @@ public class ControlIngresos {
 
     //llama metodo del DAO consultas -create
     public ControlIngresos() {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ViveroPruebaPU");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("BruzonViveroPU");
         this.ingresoDAO = new IngresoDAO(emf);
         this.listaIngresos = new ArrayList<>();
     }

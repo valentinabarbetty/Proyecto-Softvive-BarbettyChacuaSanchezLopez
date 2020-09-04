@@ -16,7 +16,7 @@ public class ControlDistribuidores {
     //llama metodo del DAO consultas -create
 
     public ControlDistribuidores() {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ViveroPruebaPU");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("BruzonViveroPU");
         this.distribuidorDAO = new DistribuidorDAO(emf);
     }
 //
@@ -42,6 +42,10 @@ public class ControlDistribuidores {
         distribuidorDAO.create(d);
     }
 
+    public void actualizarDistribuidores(Distribuidor distribuidor)throws Exception {
+         distribuidorDAO.edit(distribuidor);
+       
+    }
     public Distribuidor buscarDistribuidor(String nombre) throws Exception {
         return distribuidorDAO.buscarDistribuidorConsulta(nombre);
     }

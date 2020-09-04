@@ -5,12 +5,9 @@ import Control.ControlInsumos;
 import Modelo.Detalle_Gasto;
 import Modelo.Empleado;
 import Modelo.Insumo;
-import java.awt.Color;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -19,7 +16,6 @@ public class InventarioInsumosUI extends javax.swing.JInternalFrame {
 
     private ControlInsumos controlInsumo;
     private ControlDetalleGasto controlDetalle;
-    private Detalle_Gasto detalleBuscado;
 
     //    private ControlInsumos      ci = new ControlInsumos();
 //    private ControlDetalleGasto dg = new ControlDetalleGasto();
@@ -35,11 +31,6 @@ public class InventarioInsumosUI extends javax.swing.JInternalFrame {
         btnCancelar.addActionListener(new Cancelar());
         btnActualizar.addActionListener(new actualizarInventario());
 
-        TextPrompt nombre = new TextPrompt("Nombre", cmpNombre);
-        TextPrompt descripcion = new TextPrompt("Descripcion", cmpDescripcion);
-        TextPrompt cantidad = new TextPrompt("Cantidad", cmpCantidadIngresada);
-
-        this.getContentPane().setBackground(Color.white);
     }
 
     @SuppressWarnings("unchecked")
@@ -47,6 +38,10 @@ public class InventarioInsumosUI extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         btnAgregarCantidad = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         cmpNombre = new javax.swing.JTextField();
@@ -57,118 +52,105 @@ public class InventarioInsumosUI extends javax.swing.JInternalFrame {
         btnActualizar = new javax.swing.JButton();
         cmpCantidadExistente = new javax.swing.JLabel();
 
-        setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
-        setIconifiable(true);
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel1.setText("Editar herramienta/insumo");
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel1.setText("Editar inventario insumos");
 
-        btnAgregarCantidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/agregarboton.png"))); // NOI18N
-        btnAgregarCantidad.setBorder(null);
-        btnAgregarCantidad.setBorderPainted(false);
-        btnAgregarCantidad.setContentAreaFilled(false);
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel3.setText("Nombre:");
 
-        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/buttonCancel.png"))); // NOI18N
-        btnCancelar.setBorder(null);
-        btnCancelar.setContentAreaFilled(false);
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel4.setText("Descripción:");
 
-        cmpNombre.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        cmpNombre.setForeground(new java.awt.Color(204, 204, 204));
-        cmpNombre.setToolTipText("");
-        cmpNombre.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel5.setText("Cantidad existente:");
 
-        cmpDescripcion.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        cmpDescripcion.setForeground(new java.awt.Color(204, 204, 204));
-        cmpDescripcion.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel7.setText("Cantidad:");
 
-        cmpCantidadIngresada.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        cmpCantidadIngresada.setForeground(new java.awt.Color(204, 204, 204));
-        cmpCantidadIngresada.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        btnAgregarCantidad.setText("Agregar cantidad");
 
-        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/buscarboton.png"))); // NOI18N
-        btnBuscar.setBorder(null);
-        btnBuscar.setBorderPainted(false);
-        btnBuscar.setContentAreaFilled(false);
+        btnCancelar.setText("Cancelar");
 
-        btnDisminuirCantidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/disminuirboton.png"))); // NOI18N
-        btnDisminuirCantidad.setBorder(null);
-        btnDisminuirCantidad.setBorderPainted(false);
-        btnDisminuirCantidad.setContentAreaFilled(false);
+        btnBuscar.setText(". . . ");
 
-        btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/actualizarboton.png"))); // NOI18N
-        btnActualizar.setAutoscrolls(true);
-        btnActualizar.setBorder(null);
-        btnActualizar.setBorderPainted(false);
-        btnActualizar.setContentAreaFilled(false);
+        btnDisminuirCantidad.setText("Disminuir Cantidad");
 
-        cmpCantidadExistente.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        cmpCantidadExistente.setForeground(new java.awt.Color(204, 204, 204));
-        cmpCantidadExistente.setText("Cantidad existente");
-        cmpCantidadExistente.setToolTipText("");
+        btnActualizar.setText("Actualizar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(152, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(cmpCantidadIngresada, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(70, 70, 70)
-                                    .addComponent(btnAgregarCantidad))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(70, 70, 70)
-                                    .addComponent(btnDisminuirCantidad))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(44, 44, 44)
-                                    .addComponent(btnActualizar)))
-                            .addGap(78, 78, 78)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmpCantidadExistente, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cmpNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cmpDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addComponent(btnBuscar)))
-                        .addGap(106, 106, 106))))
             .addGroup(layout.createSequentialGroup()
-                .addGap(164, 164, 164)
-                .addComponent(jLabel1)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(191, 191, 191)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(91, 91, 91)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(cmpNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnBuscar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(cmpCantidadExistente, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(129, 129, 129)
+                                .addComponent(btnAgregarCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cmpCantidadIngresada, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmpDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(222, 222, 222)
+                                .addComponent(btnDisminuirCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(247, 247, 247)
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(56, 56, 56)
+                        .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(167, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(49, 49, 49)
+                .addGap(27, 27, 27)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(69, 69, 69)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
                     .addComponent(cmpNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscar))
-                .addGap(21, 21, 21)
-                .addComponent(cmpDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addComponent(cmpCantidadExistente, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(btnAgregarCantidad)
-                .addGap(9, 9, 9)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(cmpDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cmpCantidadIngresada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnDisminuirCantidad))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(btnAgregarCantidad)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnDisminuirCantidad))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cmpCantidadExistente, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
+                        .addGap(33, 33, 33)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(cmpCantidadIngresada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
                     .addComponent(btnActualizar))
-                .addGap(52, 52, 52))
+                .addContainerGap())
         );
 
         pack();
@@ -186,6 +168,10 @@ public class InventarioInsumosUI extends javax.swing.JInternalFrame {
     private javax.swing.JTextField cmpDescripcion;
     private javax.swing.JTextField cmpNombre;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
     // End of variables declaration//GEN-END:variables
 
     public class buscarInsumos implements ActionListener {
@@ -195,9 +181,10 @@ public class InventarioInsumosUI extends javax.swing.JInternalFrame {
 
             try {
                 String nombre = cmpNombre.getText();
+                System.out.println("Obtengo el nombre");
 
                 Insumo insumo = (Insumo) controlInsumo.buscarInsumo(nombre);
-                detalleBuscado = insumo.getDetalleGasto();
+                System.out.println("Busco por el nombre");
 
                 cmpDescripcion.setText(insumo.getDescripcion());
                 cmpCantidadExistente.setText(Integer.toString(insumo.getDetalleGasto().getCantidad()));
@@ -223,6 +210,10 @@ public class InventarioInsumosUI extends javax.swing.JInternalFrame {
                 int suma = cantExiste + cantIngre;
                 cmpCantidadExistente.setText(Integer.toString(suma));
 
+                Detalle_Gasto detalle = new Detalle_Gasto(suma);
+
+                controlDetalle.ActualizarDetalleGasto(detalle);
+
                 JOptionPane.showMessageDialog(rootPane, "Cantidad agregada");
             } catch (Exception ex) {
                 Logger.getLogger(InventarioInsumosUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -244,7 +235,11 @@ public class InventarioInsumosUI extends javax.swing.JInternalFrame {
                 int suma = cantExiste - cantIngre;
                 cmpCantidadExistente.setText(Integer.toString(suma));
 
-                JOptionPane.showMessageDialog(rootPane, "Cantidad disminuida");
+                Detalle_Gasto detalle = new Detalle_Gasto(suma);
+
+                controlDetalle.ActualizarDetalleGasto(detalle);
+
+                JOptionPane.showMessageDialog(rootPane, "Cantidad modificada");
             } catch (Exception ex) {
                 Logger.getLogger(InventarioInsumosUI.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -257,32 +252,20 @@ public class InventarioInsumosUI extends javax.swing.JInternalFrame {
 
         @Override
         public void actionPerformed(ActionEvent ae) {
-            if (cmpNombre.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(rootPane, "Debe ingresar el nombre");
-            } else if (cmpCantidadIngresada.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(rootPane, "Debe ingresar la cantidad");
-            } else {
 
-                try {
+            try {
 
-                    int cantExiste = Integer.parseInt(cmpCantidadExistente.getText());
+                JOptionPane.showMessageDialog(rootPane, "Cantidad actualizada");
 
-                    detalleBuscado.setCantidad(cantExiste);
+                cmpNombre.setText("");
+                cmpDescripcion.setText("");
+                cmpCantidadIngresada.setText("");
+                cmpCantidadExistente.setText("");
 
-                    controlDetalle.ActualizarDetalleGasto(detalleBuscado);
-
-                    JOptionPane.showMessageDialog(rootPane, "Cantidad actualizada");
-
-                    cmpNombre.setText("");
-                    cmpDescripcion.setText("");
-                    cmpCantidadIngresada.setText("");
-                    cmpCantidadExistente.setText("");
-
-                } catch (Exception ex) {
-                    Logger.getLogger(InventarioInsumosUI.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
+            } catch (Exception ex) {
+                Logger.getLogger(InventarioInsumosUI.class.getName()).log(Level.SEVERE, null, ex);
             }
+
         }
 
     }

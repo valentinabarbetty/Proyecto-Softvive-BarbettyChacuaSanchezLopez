@@ -5,13 +5,11 @@ import Control.ControlIngresos;
 import Control.ControlPedidos;
 import Modelo.Detalle_Pedido;
 import Modelo.Distribuidor;
-import Modelo.EstadoEntrega;
 import Modelo.Ingreso;
 import Modelo.Pedido;
 import Modelo.Planta;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.time.Month;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.NoResultException;
@@ -274,12 +272,12 @@ public class IngresosUI extends javax.swing.JInternalFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            long codigo = Long.parseLong(pedidojT.getText());
+            String codigo = pedidojT.getText();
             try {
                 pedido = cp.buscarPedido(codigo);
                 nitjT.setText(Long.toString(pedido.getDistribuidor().getNit()));
                 nomCliejT.setText(pedido.getDistribuidor().getNombre());
-                entregajT.setText(pedido.getEstadoEntrega().toString());
+            //    entregajT.setText(pedido.getEstadoEntregado());
                 pagojT.setText(pedido.getEstadoPago());
 
                 ingresoTable.setModel(new IngresosTableModel());
@@ -304,10 +302,10 @@ public class IngresosUI extends javax.swing.JInternalFrame {
         public void actionPerformed(ActionEvent e) {
 
             try {
-                long codigo = Long.parseLong(pedidojT.getText());
+                String codigo = pedidojT.getText();
                 int total = Integer.parseInt(vlrVendidojT.getText());
 
-            //   Pedido pedido = new Pedido();
+                Pedido pedido = new Pedido(codigo,distribuidor);
 
                 ingreso = new Ingreso(total, pedido);
                 ingresoTable.updateUI();

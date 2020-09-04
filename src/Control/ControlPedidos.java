@@ -8,13 +8,13 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.swing.JOptionPane;
 
-public class ControlPedidos implements Serializable{
+public class ControlPedidos implements Serializable {
 
     private PedidoDAO pedidoDAO;
     //llama metodo del DAO consultas -create
 
     public ControlPedidos() {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ViveroPruebaPU");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("BruzonViveroPU");
         this.pedidoDAO = new PedidoDAO(emf);
     }
 
@@ -25,7 +25,12 @@ public class ControlPedidos implements Serializable{
         pedidoDAO.create(p);
     }
 
-    public Pedido buscarPedido(long codigo) throws Exception{
+    public void actualizarPedidos(Pedido pedido) throws Exception {
+        pedidoDAO.edit(pedido);
+
+    }
+
+    public Pedido buscarPedido(String codigo) throws Exception {
         return pedidoDAO.buscarPedidoPorCodigo(codigo);
     }
 

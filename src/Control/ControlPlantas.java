@@ -2,6 +2,7 @@ package Control;
 
 import DAO.PlantaDAO;
 import Modelo.Planta;
+import Modelo.Detalle_Gasto;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManagerFactory;
@@ -10,10 +11,11 @@ import javax.persistence.Persistence;
 public class ControlPlantas {
 
     private PlantaDAO plantaDAO;
+    private ControlDetalleGasto detalleGasto;
     //llama metodo del DAO consultas -create
 
     public ControlPlantas() {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ViveroPruebaPU");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("BruzonViveroPU");
         this.plantaDAO = new PlantaDAO(emf);
     }
 
@@ -24,6 +26,10 @@ public class ControlPlantas {
 //        return plantasDAO.getListaPlantas();
 //    }
 //            
+    public void agregarDetelleGasto(Detalle_Gasto dg) {
+        detalleGasto.agregarDetalleGasto(dg);
+    }
+
     public void agregarPlanta(Planta p) throws Exception {
         if (plantaDAO.findPlantaEntities().contains(p)) {
             throw new Exception("Planta ya ingresada");

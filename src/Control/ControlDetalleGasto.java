@@ -16,7 +16,7 @@ public class ControlDetalleGasto {
     private List<Detalle_Gasto> listaDetalleGasto;
 
     public ControlDetalleGasto() {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ViveroPruebaPU");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("BruzonViveroPU");
         this.detalleGastoDAO = new Detalle_GastoDAO(emf);
         this.listaDetalleGasto = new ArrayList<>();
     }
@@ -30,9 +30,7 @@ public class ControlDetalleGasto {
     }
 
     public void ActualizarDetalleGasto(Detalle_Gasto dt) throws Exception {
-
         detalleGastoDAO.edit(dt);
-
     }
 
 }

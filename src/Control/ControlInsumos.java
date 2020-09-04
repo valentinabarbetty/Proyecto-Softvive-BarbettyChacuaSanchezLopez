@@ -15,7 +15,7 @@ public class ControlInsumos {
 
     public ControlInsumos() {
 
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ViveroPruebaPU");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("BruzonViveroPU");
         this.insumoDAO = new InsumoDAO(emf);
         this.listaInsumos = new ArrayList<>();
     }
@@ -31,11 +31,8 @@ public class ControlInsumos {
     }
 
     public Insumo buscarInsumo(String nombre) throws Exception {
-        System.out.println("LLEGUE AQUI ");
-        Insumo ins = insumoDAO.BuscarInsumoConsulta1(nombre);
-        if (ins != null) {
-            System.out.println("Insumo " + ins);
-            return ins;
+        if (insumoDAO.BuscarInsumoConsulta1(nombre) != null) {
+            return insumoDAO.BuscarInsumoConsulta1(nombre);
         }
 
         throw new Exception(" Insumo no encontrado");

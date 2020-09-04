@@ -1,5 +1,5 @@
 package Modelo;
 
 public enum TipoReproduccion {
-    SEXUAL, ASEXUAL
+    TIPO ,SEXUAL, ASEXUAL
 }

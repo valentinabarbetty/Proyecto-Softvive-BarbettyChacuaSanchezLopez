@@ -2,11 +2,10 @@ package Modelo;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,8 +18,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
 
 @Entity
 public class Detalle_Gasto implements Serializable {
@@ -33,8 +30,8 @@ public class Detalle_Gasto implements Serializable {
     private int cantidad;
 
     @Column(nullable = false)
-    @Temporal(TemporalType.DATE)
-    private Date fecha;
+//    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    private LocalDateTime fecha;
 
 //    @OneToOne
 //    private Insumo insumo;
@@ -46,20 +43,20 @@ public class Detalle_Gasto implements Serializable {
     public Detalle_Gasto() {
     }
 
-    public Detalle_Gasto(int cantidad, Siembra siembra) throws Exception {
+    public Detalle_Gasto(int cantidad) throws Exception {
 
         if (cantidad < 0) {
-            throw new Exception("No puede ingresar numeros negativos");
+            throw new Exception("Debe ingresar cantidad");
         }
 
         this.pk = pk;
         this.cantidad = cantidad;
-        this.fecha = new Date();
+        this.fecha = LocalDateTime.now();
         this.siembra = siembra;
 
 //        this.listaInsumos = new ArrayList<>();
-//        DateTimeFormatter fechaFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyyy");
-//        fecha.format(fechaFormatter);
+        DateTimeFormatter fechaFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyyy");
+        fecha.format(fechaFormatter);
 
     }
 
@@ -79,11 +76,11 @@ public class Detalle_Gasto implements Serializable {
         this.cantidad = cantidad;
     }
 
-    public Date getFecha() {
+    public LocalDateTime getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(LocalDateTime fecha) {
         this.fecha = fecha;
     }
 
@@ -94,7 +91,7 @@ public class Detalle_Gasto implements Serializable {
 //    public void setInsumo(Insumo insumo) {
 //        this.insumo = insumo;
 //    }
-    
+
 //    public List<Insumo> getListaInsumos() {
 //        return listaInsumos;
 //    }
@@ -112,8 +109,7 @@ public class Detalle_Gasto implements Serializable {
 
     @Override
     public String toString() {
-        return ", cantidad=" + cantidad + ", fecha=" + fecha + ", siembra=" + siembra + '}';
+        return cantidad + ", fecha=" + fecha + ", siembra=" + siembra + '}';
     }
 
-    
 }

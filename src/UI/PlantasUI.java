@@ -1,6 +1,8 @@
 package UI;
 
 import Control.ControlPlantas;
+import Control.ControlDetalleGasto;
+import Modelo.Detalle_Gasto;
 import Modelo.Planta;
 import Modelo.TipoReproduccion;
 import java.awt.event.ActionEvent;
@@ -14,9 +16,13 @@ import javax.swing.event.ListDataListener;
 public class PlantasUI extends javax.swing.JInternalFrame {
 
     private ControlPlantas controlPlantas;
+    private Planta plantas;
+            
 
     public PlantasUI() {
         initComponents();
+        
+        this.plantas = plantas;
         controlPlantas = new ControlPlantas();
 
         agregarbtn.addActionListener(new agregarPlantaListener());
@@ -45,6 +51,8 @@ public class PlantasUI extends javax.swing.JInternalFrame {
         gerjT = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         preciojT = new javax.swing.JTextField();
+        cmpCantidad = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
@@ -86,24 +94,24 @@ public class PlantasUI extends javax.swing.JInternalFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setText("Precio:");
 
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel10.setText("Cantidad:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(108, 108, 108)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel5)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(250, 250, 250)
-                        .addComponent(cancelarbtn)))
+                .addGap(86, 86, 86)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel10))
+                .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
@@ -120,17 +128,22 @@ public class PlantasUI extends javax.swing.JInternalFrame {
                                     .addComponent(crejT, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(preciojT, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(reprodjC, javax.swing.GroupLayout.Alignment.LEADING, 0, 300, Short.MAX_VALUE)))
+                                .addComponent(reprodjC, javax.swing.GroupLayout.Alignment.LEADING, 0, 300, Short.MAX_VALUE)
+                                .addComponent(cmpCantidad, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(codjT, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(agregarbtn)
-                                .addComponent(jLabel1)))
+                            .addComponent(jLabel1))
                         .addGap(207, 207, 207)))
                 .addGap(64, 64, 64))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(245, 245, 245)
+                .addComponent(cancelarbtn)
+                .addGap(249, 249, 249)
+                .addComponent(agregarbtn)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,7 +158,7 @@ public class PlantasUI extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(nomjT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jLabel8)
@@ -163,15 +176,19 @@ public class PlantasUI extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(reprodjC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmpCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(preciojT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
+                .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(agregarbtn)
-                    .addComponent(cancelarbtn))
-                .addGap(111, 111, 111))
+                    .addComponent(cancelarbtn)
+                    .addComponent(agregarbtn))
+                .addGap(26, 26, 26))
         );
 
         pack();
@@ -181,10 +198,12 @@ public class PlantasUI extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton agregarbtn;
     private javax.swing.JButton cancelarbtn;
+    private javax.swing.JTextField cmpCantidad;
     private javax.swing.JTextField codjT;
     private javax.swing.JTextField crejT;
     private javax.swing.JTextField gerjT;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -209,12 +228,15 @@ public class PlantasUI extends javax.swing.JInternalFrame {
                 int crecimiento = Integer.parseInt(crejT.getText());
                 TipoReproduccion tr = (TipoReproduccion) reprodjC.getSelectedItem();
                 int precio = Integer.parseInt(preciojT.getText());
+                int cantidad = Integer.parseInt(cmpCantidad.getText());
+                Detalle_Gasto dg = new Detalle_Gasto(cantidad);
                 Planta p = new Planta(cod, nom, germinacion, crecimiento, tr, precio);
                 controlPlantas.agregarPlanta(p);
+                p.agregarDetalleGasto(dg);
                 JOptionPane.showMessageDialog(rootPane, "Planta agregada con éxito");
                 cancelarbtn.doClick();
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(rootPane, ex.getMessage());
+                JOptionPane.showMessageDialog(rootPane,"Error: no esta pasando informacion... "+ ex.getMessage());
             }
         }
 
@@ -229,6 +251,8 @@ public class PlantasUI extends javax.swing.JInternalFrame {
             gerjT.setText("");
             crejT.setText("");
             preciojT.setText("");
+            cmpCantidad.setText("");
+            reprodjC.setSelectedItem(TipoReproduccion.TIPO);
         }
 
     }

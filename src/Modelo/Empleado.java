@@ -14,7 +14,6 @@ import javax.persistence.InheritanceType;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
-import javax.swing.JOptionPane;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
@@ -22,6 +21,8 @@ import javax.swing.JOptionPane;
     @NamedQuery(name = "Empleado.buscarContraseñaConsulta", query = "SELECT e from Empleado e WHERE e.contraseña = :contraseña")
     ,
     @NamedQuery(name = "Empleado.buscarEmpleadoConsulta", query = "SELECT e from Empleado e WHERE e.cedula = :cedula")
+    ,
+    @NamedQuery(name = "Empleado.buscarRolConsulta", query = "SELECT e from Empleado e WHERE e.rol = :rol")
     ,
     @NamedQuery(name = "Empleado.registroEmpleadoConsulta", query = "SELECT e from Empleado e WHERE e.cedula = :cedula AND e.contraseña = :contraseña")
 
@@ -40,7 +41,7 @@ public class Empleado implements Serializable {
     @Column(nullable = false)
     private String direccion;
     @Column(nullable = false)
-    private int telefono;
+    private String telefono;
     @Enumerated(EnumType.STRING)
     private Rol rol;
     @Column(nullable = false)
@@ -49,14 +50,16 @@ public class Empleado implements Serializable {
     public Empleado() {
     }
 
-    public Empleado(String cedula, String name, String contraseña, String direccion, int telefono, Rol rol, String ciudad) throws Exception {
+    public Empleado(String cedula, String name, String contraseña, String direccion, String telefono, Rol rol, String ciudad) throws Exception {
 
-        if (cedula == null) {
+        if (cedula == null ||  cedula.length() < 8 || "".equals(cedula.trim()) ) {
             throw new Exception("Debe ingresar el número de la cédula");
         }
+
         if (contraseña == null) {
             throw new Exception("Debe ingresar contraseña");
         }
+
         this.cedula = cedula;
         this.name = name;
         this.direccion = direccion;
@@ -90,14 +93,13 @@ public class Empleado implements Serializable {
         this.direccion = direccion;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-
 
     public Rol getRol() {
         return rol;

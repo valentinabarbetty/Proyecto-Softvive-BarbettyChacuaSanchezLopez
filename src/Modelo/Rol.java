@@ -1,5 +1,7 @@
 package Modelo;
 
+import java.io.Serializable;
+
 public enum Rol {
 
     GERENTE_PROPIETARIO, TRANSPORTISTA, TRABAJADOR;

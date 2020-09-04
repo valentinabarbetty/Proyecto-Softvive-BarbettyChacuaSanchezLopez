@@ -2,6 +2,7 @@ package Control;
 
 import DAO.EmpleadoDAO;
 import Modelo.Empleado;
+import UI.Login;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -13,10 +14,11 @@ public class ControlEmpleados {
 
     private EmpleadoDAO empleadoDAO;
     private List<Empleado> listaEmpleados;
+    private Login loginUI;
 
     public ControlEmpleados() {
 
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ViveroPruebaPU");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("BruzonViveroPU");
 
         this.empleadoDAO = new EmpleadoDAO(emf);
         this.listaEmpleados = new ArrayList<>();
@@ -42,7 +44,12 @@ public class ControlEmpleados {
     }
 
     public Empleado buscarContraseña(String contraseña) throws Exception {
-        return empleadoDAO.buscarContraseñaConsulta(contraseña);
+
+        if (empleadoDAO.buscarContraseñaConsulta(contraseña) != null) {
+            return empleadoDAO.buscarContraseñaConsulta(contraseña);
+        }
+
+        throw new Exception("Contraseña incorrecta");
     }
 
     public Empleado buscarEmpleado(String cedula) throws Exception {

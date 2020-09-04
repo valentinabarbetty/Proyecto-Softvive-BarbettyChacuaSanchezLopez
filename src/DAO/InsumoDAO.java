@@ -146,12 +146,12 @@ public class InsumoDAO implements Serializable {
     public Insumo BuscarInsumoConsulta1(String nombre) throws Exception {
         EntityManager em = getEntityManager();
 
-        Insumo insumos = (Insumo)em.createNamedQuery("Insumo.buscarInsumosConsulta1").setParameter("nombre", nombre).getSingleResult();
+        List<Insumo> insumos = em.createNamedQuery("Insumo.buscarInsumosConsulta1").setParameter("nombre", nombre).getResultList();
 
-        if (insumos == null) {
+        if (insumos.isEmpty()) {
             return null;
         } else {
-            return insumos;
+            return insumos.get(0);
         }
 
     }
