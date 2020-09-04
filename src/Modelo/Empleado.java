@@ -40,7 +40,7 @@ public class Empleado implements Serializable {
     @Column(nullable = false)
     private String direccion;
     @Column(nullable = false)
-    private int telefono;
+    private long telefono;
     @Enumerated(EnumType.STRING)
     private Rol rol;
     @Column(nullable = false)
@@ -49,7 +49,7 @@ public class Empleado implements Serializable {
     public Empleado() {
     }
 
-    public Empleado(String cedula, String name, String contraseña, String direccion, int telefono, Rol rol, String ciudad) throws Exception {
+    public Empleado(String cedula, String name, String contraseña, String direccion, long telefono, Rol rol, String ciudad) throws Exception {
 
         if (cedula == null) {
             throw new Exception("Debe ingresar el número de la cédula");
@@ -90,11 +90,11 @@ public class Empleado implements Serializable {
         this.direccion = direccion;
     }
 
-    public int getTelefono() {
+    public long getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(long telefono) {
         this.telefono = telefono;
     }
 

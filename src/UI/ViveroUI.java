@@ -61,7 +61,7 @@ public class ViveroUI extends javax.swing.JFrame {
         this.verDistrim.addActionListener(new VerDistribuidoresListener());
         ///////////////////////////////////////////////////////////////
         this.verInsumos.addActionListener(new VerInventarioInsumosListener());
-        this.verPedidos.addActionListener(new VerPedidosListener());
+     //   this.verPedidos.addActionListener(new VerPedidosListener());
         this.editarInsumos.addActionListener(new InventarioInsumosListener());
 
         this.AccesoEmpleado.addActionListener(new loginEmpleados());
@@ -451,23 +451,23 @@ public class agregarEmpleadoListener implements ActionListener {
 
     }
     
-     public class VerPedidosListener implements ActionListener {
-  
-        private VerPedidosUI VerPedidosUI;
-
-        @Override
-        public void actionPerformed(ActionEvent ae) {
-
-            if (VerPedidosUI == null) {
-                VerPedidosUI = new VerPedidosUI();
-                desktop.add(VerPedidosUI);
-            }
-            VerPedidosUI.setVisible(true);
-
-        }
-        
-
-    }
+//     public class VerPedidosListener implements ActionListener {
+//  
+//        private VerPedidosUI VerPedidosUI;
+//
+//        @Override
+//        public void actionPerformed(ActionEvent ae) {
+//
+//            if (VerPedidosUI == null) {
+//                VerPedidosUI = new VerPedidosUI();
+//                desktop.add(VerPedidosUI);
+//            }
+//            VerPedidosUI.setVisible(true);
+//
+//        }
+//        
+//
+//    }
 /////// LOGIN
 
     public class loginEmpleados implements ActionListener {

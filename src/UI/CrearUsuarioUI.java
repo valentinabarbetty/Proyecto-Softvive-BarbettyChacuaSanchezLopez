@@ -212,7 +212,7 @@ public class CrearUsuarioUI extends javax.swing.JFrame {
                     String cedula = ccjT.getText();
                     String nom = nomjT.getText();
                     String contraseña = contraseñajT.getText();
-                    int tel = Integer.parseInt(teljT.getText());
+                    long tel = Long.parseLong(teljT.getText());
                     String ciudad = ciudadJjT.getText();
                     String direccion = direccionjT.getText();
                     Rol selectRol = (Rol) rol.getSelectedItem();
