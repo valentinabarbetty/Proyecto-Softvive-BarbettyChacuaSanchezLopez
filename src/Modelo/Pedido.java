@@ -1,16 +1,13 @@
 package Modelo;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-import java.time.Year;
-import java.time.Month;
-import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
@@ -30,90 +27,37 @@ public class Pedido implements Serializable {
     @Id
     private String codigo;
     @Column(nullable = false)
-    private Month mes;
-    @Column(nullable = false)
-    private int dia;
-    @Column(nullable = false)
-    private Year año;
+    @Temporal(TemporalType.DATE)
+    private Date fecha;
     @Column(nullable = false)
     private String estadoPago;
-    @Enumerated(EnumType.STRING)
-    private EstadoEntrega estadoEntrega;
-    @Enumerated(EnumType.STRING)
-    private EstadoListo estadoListo;
+    @Column(nullable = false)
+    private String estadoEntregado;
     @OneToOne
     private Distribuidor distribuidor;
-    @Column(nullable = false)
-    private int cant_vendida = 0;
-    @Column(nullable = false)
-    private int total = 0;
 
-    private int contador = 0;
+    @Column(nullable = false)
+    private int cant_vendida;
 
-//    @Column(nullable = false)
-//    private int cant_vendida;
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Detalle_Pedido> listaDetallePedido;
+
+    
+//    public int total_prod = 0;
+//    public int subtotal = 0;
+//    public int total = 0;
 
     public Pedido() {
     }
 
-    public Pedido(String codigo, Distribuidor distribuidor) throws Exception {
-
-        if (codigo == null || "".equals(codigo.trim())) {
-            throw new Exception("la casilla del codigo no puede estar vacia");
-        }
-        if (estadoPago == null) {
-            throw new Exception("la casilla del estadoPago no puede estar vacia");
-        }
-        if (estadoEntrega == null) {
-            throw new Exception("la casilla del estadoEntrega no puede estar vacia");
-        }
-        if (distribuidor == null) {
-            throw new Exception("la casilla del distribuidor no puede estar vacia");
-        }
-        if (cant_vendida <= 0) {
-            throw new Exception("la casilla de la cantidad vendida no puede estar vacia y deber ser menor a cero");
-        }
-
+    public Pedido(String codigo, String estadoPago, String estadoEntregado, Distribuidor distribuidor, int cant_vendida) {
         this.codigo = codigo;
-        this.mes = mes;
-        this.dia = dia;
-        this.año = año;
-        this.cant_vendida = cant_vendida;
-        this.total = total;
+        this.fecha = new Date();
         this.estadoPago = estadoPago;
-        this.estadoEntrega = estadoEntrega;
-        this.estadoListo = estadoListo;
+        this.estadoEntregado = estadoEntregado;
         this.distribuidor = distribuidor;
+        this.cant_vendida = cant_vendida;
         this.listaDetallePedido = new ArrayList<>();
-    }
-
-    public void devolverDetallePedido(int seleccionar) {
-
-        Detalle_Pedido detalle = this.listaDetallePedido.remove(seleccionar);
-        contador += 1;
-        
-        total -= detalle.getPrecio();
-        cant_vendida = listaDetallePedido.size() - 1;
-
-        ///////////////////
-    }
-
-    public void agregarDetallePedido(Detalle_Pedido detalle) {
-
-        this.listaDetallePedido.add(detalle);
-         contador += 1;
-         
-         
-        int costoCompra = detalle.getCantidad() * detalle.getPlanta().getValor_unitario();
-         
-        total += costoCompra;
-        
-//        total += detalle.getPrecio();
-        cant_vendida = listaDetallePedido.size();
-
-        //sub = cant_vendida + contador;
     }
 
     public String getCodigo() {
@@ -131,17 +75,13 @@ public class Pedido implements Serializable {
     public void setEstadoPago(String estadoPago) {
         this.estadoPago = estadoPago;
     }
-//////////////////////7
-    public void eliminarDetallePedido() {
-        this.listaDetallePedido.removeAll(listaDetallePedido);
+
+    public String getEstadoEntregado() {
+        return estadoEntregado;
     }
 
-    public EstadoEntrega getEstadoEntrega() {
-        return estadoEntrega;
-    }
-
-    public void setEstadoEntrega(EstadoEntrega estadoEntrega) {
-        this.estadoEntrega = estadoEntrega;
+    public void setEstadoEntregado(String estadoEntregado) {
+        this.estadoEntregado = estadoEntregado;
     }
 
     public Distribuidor getDistribuidor() {
@@ -152,36 +92,20 @@ public class Pedido implements Serializable {
         this.distribuidor = distribuidor;
     }
 
-    public Month getMes() {
-        return mes;
+    public int getCant_vendida() {
+        return cant_vendida;
     }
 
-    public void setMes(Month mes) {
-        this.mes = mes;
+    public void setCant_vendida(int cant_vendida) {
+        this.cant_vendida = cant_vendida;
     }
 
-    public int getDia() {
-        return dia;
+    public Date getFecha() {
+        return fecha;
     }
 
-    public int getTotal() {
-        return total;
-    }
-
-    public void setTotal(int total) {
-        this.total = total;
-    }
-
-    public void setDia(int dia) {
-        this.dia = dia;
-    }
-
-    public Year getAño() {
-        return año;
-    }
-
-    public void setAño(Year año) {
-        this.año = año;
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
 
     public List<Detalle_Pedido> getListaDetallePedido() {
@@ -196,52 +120,28 @@ public class Pedido implements Serializable {
         this.listaDetallePedido.add(listaDetallePedido);
     }
 
-    public int getCant_vendida() {
-        return cant_vendida;
-    }
+//    public void setTotal_prod(int total_prod) {
+//        this.total_prod = total_prod;
+//    }
+//
+//    public int getTotal_prod() {
+//        total_prod = total_prod + cant_vendida;
+//        return total_prod;
+//    }
 
-    public void setCant_vendida(int cant_vendida) {
-        this.cant_vendida = cant_vendida;
-    }
-
-    public EstadoListo getEstadoListo() {
-        return estadoListo;
-    }
-
-    public void setEstadoListo(EstadoListo estadoListo) {
-        this.estadoListo = estadoListo;
-    }
-
-    public int getContador() {
-        return contador;
-    }
-
-    public void setContador(int contador) {
-        this.contador = contador;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 41 * hash + Objects.hashCode(this.distribuidor);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Pedido other = (Pedido) obj;
-        if (!Objects.equals(this.distribuidor, other.distribuidor)) {
-            return false;
-        }
-        return true;
-    }
+//    public int getSubtotal() {
+//        return subtotal;
+//    }
+//
+//    public void setSubtotal(int subtotal) {
+//        this.subtotal = subtotal;
+//    }
+//
+//    public int getTotal() {
+//        return total;
+//    }
+//
+//    public void setTotal(int total) {
+//        this.total = total;
+//    }
 }

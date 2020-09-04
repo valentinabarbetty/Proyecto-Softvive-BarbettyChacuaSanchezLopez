@@ -45,8 +45,7 @@ public class Planta implements Serializable {
     public Planta() {
     }
 
-    public Planta(String codigo, String nombre, int tiempoGerminacion, int tiempoCrecimiento, TipoReproduccion tipoReproduccion, int valor_unitario) throws Exception{
-       
+    public Planta(String codigo, String nombre, int tiempoGerminacion, int tiempoCrecimiento, TipoReproduccion tipoReproduccion, int valor_unitario) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.tipoReproduccion = tipoReproduccion;

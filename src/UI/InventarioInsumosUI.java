@@ -254,6 +254,19 @@ public class InventarioInsumosUI extends javax.swing.JInternalFrame {
         public void actionPerformed(ActionEvent ae) {
 
             try {
+//                String nombre = cmpNombre.getText();
+//                String descripcion = cmpDescripcion.getText();
+//
+//                int cantidadExistente = Integer.parseInt(cmpCantidadExistente.getText());
+//
+//                Detalle_Gasto detalleGasto = new Detalle_Gasto(cantidadExistente);
+//
+//                Insumo insumo = new Insumo(nombre, descripcion, detalleGasto);
+//
+//                controlInsumo.AgregarInsumo(insumo);
+//
+//                controlDetalle.ActualizarDetalleGasto(detalleGasto);
+//                controlDetalle.agregarDetalleGasto(detalleGasto);
 
                 JOptionPane.showMessageDialog(rootPane, "Cantidad actualizada");
 

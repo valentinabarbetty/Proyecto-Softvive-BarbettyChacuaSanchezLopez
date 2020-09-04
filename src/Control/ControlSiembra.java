@@ -16,7 +16,7 @@ public class ControlSiembra {
     //llama metodo del DAO consultas -create
 
     public ControlSiembra() {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("BruzonViveroPU");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ViveroPruebaPU");
         this.siembraDAO = new SiembraDAO(emf);
         //this.listaSiembras = siembraDAO.findSiembraEntities();
     }

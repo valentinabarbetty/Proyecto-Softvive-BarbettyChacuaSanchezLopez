@@ -100,4 +100,8 @@ public class Distribuidor implements Serializable {
         this.pk = pk;
     }
 
+    @Override
+    public String toString() {
+        return nombre;
+    }
 }

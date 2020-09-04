@@ -2,7 +2,6 @@ package Modelo;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +30,7 @@ public class Detalle_Gasto implements Serializable {
 
     @Column(nullable = false)
 //    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
-    private LocalDateTime fecha;
+    private LocalDate fecha;
 
 //    @OneToOne
 //    private Insumo insumo;
@@ -46,12 +45,12 @@ public class Detalle_Gasto implements Serializable {
     public Detalle_Gasto(int cantidad) throws Exception {
 
         if (cantidad < 0) {
-            throw new Exception("Debe ingresar cantidad");
+            throw new Exception("No puede ingresar numeros negativos");
         }
 
         this.pk = pk;
         this.cantidad = cantidad;
-        this.fecha = LocalDateTime.now();
+        this.fecha = LocalDate.now();
         this.siembra = siembra;
 
 //        this.listaInsumos = new ArrayList<>();
@@ -76,11 +75,11 @@ public class Detalle_Gasto implements Serializable {
         this.cantidad = cantidad;
     }
 
-    public LocalDateTime getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 
-    public void setFecha(LocalDateTime fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 
@@ -109,7 +108,7 @@ public class Detalle_Gasto implements Serializable {
 
     @Override
     public String toString() {
-        return cantidad + ", fecha=" + fecha + ", siembra=" + siembra + '}';
+        return ", cantidad=" + cantidad + ", fecha=" + fecha + ", siembra=" + siembra + '}';
     }
 
 }

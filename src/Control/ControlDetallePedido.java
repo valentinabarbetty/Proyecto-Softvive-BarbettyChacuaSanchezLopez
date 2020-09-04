@@ -2,23 +2,19 @@ package Control;
 
 import DAO.Detalle_PedidoDAO;
 import Modelo.Detalle_Pedido;
-import Modelo.Pedido;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 public class ControlDetallePedido {
 
     private Detalle_PedidoDAO dpDAO;
-    private Pedido pedido;
     private ArrayList<Detalle_Pedido> listaDetallePedido;
     //llama metodo del DAO consultas -create
 
     public ControlDetallePedido() {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("BruzonViveroPU");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ViveroPruebaPU");
         this.dpDAO = new Detalle_PedidoDAO(emf);
         this.listaDetallePedido = new ArrayList<>();
     }
@@ -40,21 +36,6 @@ public class ControlDetallePedido {
 
     public void eliminarDetallePedido() {
         this.listaDetallePedido.removeAll(listaDetallePedido);
-    }
-
-    public void devolverDetallePedido(int seleccionar) {
-        this.listaDetallePedido.remove(seleccionar);
-
-    }
-    
-    public void actualizarPedido(Detalle_Pedido dp) {
-
-        try {
-            dpDAO.edit(dp);
-        } catch (Exception ex) {
-            Logger.getLogger(ControlDetallePedido.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
     }
 
 }

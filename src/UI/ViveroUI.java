@@ -4,552 +4,692 @@ import Control.ControlEmpleados;
 import Modelo.Empleado;
 import Modelo.Rol;
 import Modelo.Vivero;
+import java.awt.Color;
 import Resources.fondoDesktop;
+import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JDesktopPane;
-import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
+//import sun.tools.tree.ThisExpression;
 
 public class ViveroUI extends javax.swing.JFrame {
-
+    
     private Vivero vivero;
-    private ControlEmpleados controlEmpleados;
-    private Empleado empleado;
-
+    
     public ViveroUI(Vivero vivero) {
         initComponents();
-
-        this.vivero = vivero;
-        this.empleado = empleado;
-////////////////////////////////////////////////////////////////
         desktop.setBorder(new fondoDesktop());
-
+        this.vivero = vivero;
         this.setExtendedState(ViveroUI.MAXIMIZED_BOTH);
-        this.setResizable(false);
+        
         this.setLocationRelativeTo(null);
-/////////////////////////////////////////////////////////////////
 
-        this.Pedidos.addActionListener(new EditarPedidosUI());
-
-        this.agregarSiemmn.addActionListener(new AgregarSiembraListener());
+//        this.GPlantas.setVisible(false);
+//        this.gPJlabel.setVisible(false);
+//       
+        this.GPlantas.addMouseListener(new clickPlantasListener());
+        this.gPJlabel.addMouseListener(new clickPlantasListener());
+        this.distrib.addMouseListener(new clickDistribuidoresListener());
+        this.distrib.addMouseListener(new clickDistribuidoresListener());
+        this.GUsuarios1.addMouseListener(new clickUsuariosListener());
+        this.gPJlabel1.addMouseListener(new clickUsuariosListener());
+        this.GUInsumos.addMouseListener(new clickInsumosListener());
+        this.gIJlabel2.addMouseListener(new clickInsumosListener());
+//        this.agregarDistrim.setVisible(false);
+//        this.agregarIngresomn.setVisible(false);
+//        this.agregarPlantasm.setVisible(false);
+//        this.agregarSiemmn.setVisible(false);
+//
+//        this.verDistrim.setVisible(false);
+//        this.verIngresosmn.setVisible(false);
+//        this.verInsumos.setVisible(false);
+//        this.verPlantasm.setVisible(false);
+//        this.verSeguimim.setVisible(false);
+//        this.editPreciomn.setVisible(false);
+//
+//        this.rmpmn.setVisible(false);
+//        this.editarInsumos.setVisible(false);
+//        /////////////////////////////7
+//        this.agregarSiemmn.addActionListener(new AgregarSiembraListener());
 //        this.salirm.addActionListener(new SalirListener());
-        this.verSeguimim.addActionListener(new VerSiembrasListener());
-        this.rmpmn.addActionListener(new RegistrarMuertesListener());
-        /////////////////////////////7
-        this.jmConfirmarPedido.addActionListener(new ConfirmarPedidoListoListener());
-        //
-        this.agregarIngresomn.addActionListener(new AgregarIngresosListener());
-        this.verIngresosmn.addActionListener(new VerIngresosListener());
-
-        ///////////////////////////////////////////////////////////
-//        this.verPerfil.addActionListener(new VerMenu());
-        this.jmCerrarSesion.addActionListener(new CerrarSesion());
-
-        ///////////////////////////////////////////////////////////
-        //
-        this.agregarPlantasm.addActionListener(new PlantasListener());
-        this.verPlantasm.addActionListener(new VerPlantasListener());
-        this.editPreciomn.addActionListener(new EditPrecioListener());
-        this.agregarDistrim.addActionListener(new AgregarDistribuidoresListener());
-
-        this.verDistrim.addActionListener(new VerDistribuidoresListener());
-        ///////////////////////////////////////////////////////////////
-        this.verInsumos.addActionListener(new VerInventarioInsumosListener());
-        this.editarInsumos.addActionListener(new InventarioInsumosListener());
-
-//        this.AccesoEmpleado.addActionListener(new loginEmpleados());
+//        this.verSeguimim.addActionListener(new VerSiembrasListener());
+//        this.rmpmn.addActionListener(new RegistrarMuertesListener());
+//        /////////////////////////////7
+//
+//        //
+//        this.agregarIngresomn.addActionListener(new AgregarIngresosListener());
+//        this.verIngresosmn.addActionListener(new VerIngresosListener());
+//
+//        //
+//       // this.agregarPlantasm.addActionListener(new PlantasListener());
+//        this.verPlantasm.addActionListener(new VerPlantasListener());
+//        this.editPreciomn.addActionListener(new EditPrecioListener());
+//        this.agregarDistrim.addActionListener(new AgregarDistribuidoresListener());
+//
+//        this.verDistrim.addActionListener(new VerDistribuidoresListener());
+//        ///////////////////////////////////////////////////////////////
+//        this.verInsumos.addActionListener(new VerInventarioInsumosListener());
+//        this.editarInsumos.addActionListener(new InventarioInsumosListener());
+        this.AccesoEmpleado.addActionListener(new loginEmpleados());
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         desktop = new javax.swing.JDesktopPane();
-        jLabel1 = new javax.swing.JLabel();
+        GPlantas = new javax.swing.JLabel();
+        gPJlabel = new javax.swing.JLabel();
+        distrib = new javax.swing.JLabel();
+        distribuidores = new javax.swing.JLabel();
+        GUsuarios1 = new javax.swing.JLabel();
+        gPJlabel1 = new javax.swing.JLabel();
+        GUInsumos = new javax.swing.JLabel();
+        gIJlabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jmPlantas = new javax.swing.JMenu();
-        agregarPlantasm = new javax.swing.JMenuItem();
-        verPlantasm = new javax.swing.JMenuItem();
-        editPreciomn = new javax.swing.JMenuItem();
-        jmDistribuidores = new javax.swing.JMenu();
-        agregarDistrim = new javax.swing.JMenuItem();
-        verDistrim = new javax.swing.JMenuItem();
-        jmInventario = new javax.swing.JMenu();
-        editarInsumos = new javax.swing.JMenuItem();
-        verInsumos = new javax.swing.JMenuItem();
-        jmSiembraSeguimiento = new javax.swing.JMenu();
-        agregarSiemmn = new javax.swing.JMenuItem();
-        verSeguimim = new javax.swing.JMenuItem();
-        rmpmn = new javax.swing.JMenuItem();
-        jmIngresos = new javax.swing.JMenu();
-        agregarIngresomn = new javax.swing.JMenuItem();
-        verIngresosmn = new javax.swing.JMenuItem();
-        jmRegistrarEmpleados = new javax.swing.JMenu();
-        agregarEmpleado = new javax.swing.JMenuItem();
-        jmpedidos = new javax.swing.JMenu();
-        Pedidos = new javax.swing.JMenuItem();
-        jmConfirmarPedido = new javax.swing.JMenuItem();
-        jmMenu = new javax.swing.JMenu();
-        jmVerNombre = new javax.swing.JMenuItem();
-        verPerfil = new javax.swing.JMenuItem();
-        jmCerrarSesion = new javax.swing.JMenuItem();
+        InicioSesion = new javax.swing.JMenu();
+        AccesoEmpleado = new javax.swing.JMenuItem();
+        jmSalir = new javax.swing.JMenu();
+        salirm = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle(" Vivero Bruzón");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        desktop.setBackground(new java.awt.Color(255, 255, 255));
+        desktop.setPreferredSize(new java.awt.Dimension(3000, 540));
+
+        GPlantas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/plantas.png"))); // NOI18N
+        GPlantas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                GPlantasMouseClicked(evt);
+            }
+        });
+
+        gPJlabel.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        gPJlabel.setForeground(new java.awt.Color(153, 153, 153));
+        gPJlabel.setText("Gestionar Plantas");
+
+        distrib.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/distri.png"))); // NOI18N
+
+        distribuidores.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        distribuidores.setForeground(new java.awt.Color(153, 153, 153));
+        distribuidores.setText("Gestionar Distribuidores");
+
+        GUsuarios1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/usuario.png"))); // NOI18N
+        GUsuarios1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                GUsuarios1MouseClicked(evt);
+            }
+        });
+
+        gPJlabel1.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        gPJlabel1.setForeground(new java.awt.Color(153, 153, 153));
+        gPJlabel1.setText("Gestionar Usuarios");
+
+        GUInsumos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/suministroI.png"))); // NOI18N
+        GUInsumos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                GUInsumosMouseClicked(evt);
+            }
+        });
+
+        gIJlabel2.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        gIJlabel2.setForeground(new java.awt.Color(153, 153, 153));
+        gIJlabel2.setText("Gestionar Usuarios");
+
+        desktop.setLayer(GPlantas, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        desktop.setLayer(gPJlabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        desktop.setLayer(distrib, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        desktop.setLayer(distribuidores, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        desktop.setLayer(GUsuarios1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        desktop.setLayer(gPJlabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        desktop.setLayer(GUInsumos, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        desktop.setLayer(gIJlabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout desktopLayout = new javax.swing.GroupLayout(desktop);
         desktop.setLayout(desktopLayout);
         desktopLayout.setHorizontalGroup(
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1247, Short.MAX_VALUE)
+            .addGroup(desktopLayout.createSequentialGroup()
+                .addGroup(desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(gPJlabel1)
+                        .addGroup(desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(desktopLayout.createSequentialGroup()
+                                .addGap(62, 62, 62)
+                                .addComponent(GPlantas))
+                            .addGroup(desktopLayout.createSequentialGroup()
+                                .addGap(31, 31, 31)
+                                .addComponent(gPJlabel))))
+                    .addGroup(desktopLayout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addComponent(GUsuarios1)))
+                .addGroup(desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(desktopLayout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(distribuidores))
+                    .addGroup(desktopLayout.createSequentialGroup()
+                        .addGap(94, 94, 94)
+                        .addComponent(distrib, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(desktopLayout.createSequentialGroup()
+                        .addGap(92, 92, 92)
+                        .addComponent(GUInsumos))
+                    .addGroup(desktopLayout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addComponent(gIJlabel2)))
+                .addContainerGap(1592, Short.MAX_VALUE))
         );
         desktopLayout.setVerticalGroup(
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 671, Short.MAX_VALUE)
+            .addGroup(desktopLayout.createSequentialGroup()
+                .addGap(79, 79, 79)
+                .addGroup(desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(GPlantas, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(distrib, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(gPJlabel)
+                    .addComponent(distribuidores, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(desktopLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(GUsuarios1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(gPJlabel1))
+                    .addGroup(desktopLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(GUInsumos, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(gIJlabel2)))
+                .addContainerGap(204, Short.MAX_VALUE))
         );
 
-        jLabel1.setText("jLabel1");
+        getContentPane().add(desktop, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 2000, 540));
 
-        jmPlantas.setText("Administrar Plantas");
+        InicioSesion.setText("Inicio sesión");
 
-        agregarPlantasm.setText("Agregar Planta");
-        jmPlantas.add(agregarPlantasm);
+        AccesoEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/inicio.jpg"))); // NOI18N
+        AccesoEmpleado.setText("Acceso Empleados");
+        InicioSesion.add(AccesoEmpleado);
 
-        verPlantasm.setText("Ver Plantas");
-        jmPlantas.add(verPlantasm);
+        jMenuBar1.add(InicioSesion);
 
-        editPreciomn.setText("Editar Precio de planta");
-        jmPlantas.add(editPreciomn);
+        jmSalir.setText("Ayuda");
 
-        jMenuBar1.add(jmPlantas);
+        salirm.setText("Salir");
+        jmSalir.add(salirm);
 
-        jmDistribuidores.setText("Administrar Distribuidores");
-
-        agregarDistrim.setText("Agregar Distribuidor");
-        jmDistribuidores.add(agregarDistrim);
-
-        verDistrim.setText("Ver Distribuidores");
-        jmDistribuidores.add(verDistrim);
-
-        jMenuBar1.add(jmDistribuidores);
-
-        jmInventario.setText("Administrar Inventario Insumos");
-
-        editarInsumos.setText("Editar inventario Insumos");
-        jmInventario.add(editarInsumos);
-
-        verInsumos.setText("Ver inventario insumos");
-        jmInventario.add(verInsumos);
-
-        jMenuBar1.add(jmInventario);
-
-        jmSiembraSeguimiento.setText("Administrar Siembra y Seguimiento");
-
-        agregarSiemmn.setText("Agregar Siembra");
-        jmSiembraSeguimiento.add(agregarSiemmn);
-
-        verSeguimim.setText("Visualizar Seguimiento de Plantas");
-        jmSiembraSeguimiento.add(verSeguimim);
-
-        rmpmn.setText("Registrar muerte de planta");
-        jmSiembraSeguimiento.add(rmpmn);
-
-        jMenuBar1.add(jmSiembraSeguimiento);
-
-        jmIngresos.setText("Administrar ingresos");
-
-        agregarIngresomn.setText("Agregar ingreso");
-        jmIngresos.add(agregarIngresomn);
-
-        verIngresosmn.setText("Ver ingresos");
-        jmIngresos.add(verIngresosmn);
-
-        jMenuBar1.add(jmIngresos);
-
-        jmRegistrarEmpleados.setText("Administrar Empleados");
-
-        agregarEmpleado.setText("Registrar Empleado");
-        jmRegistrarEmpleados.add(agregarEmpleado);
-
-        jMenuBar1.add(jmRegistrarEmpleados);
-
-        jmpedidos.setText("Administrar Pedido");
-
-        Pedidos.setText("Editar Pedido");
-        jmpedidos.add(Pedidos);
-
-        jmConfirmarPedido.setText("ConfimarPedido");
-        jmpedidos.add(jmConfirmarPedido);
-
-        jMenuBar1.add(jmpedidos);
-
-        jmMenu.setText("Menú");
-
-        jmVerNombre.setText(".");
-        jmMenu.add(jmVerNombre);
-
-        verPerfil.setText("Perfil");
-        jmMenu.add(verPerfil);
-
-        jmCerrarSesion.setText("Cerrar Sesion");
-        jmCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmCerrarSesionActionPerformed(evt);
-            }
-        });
-        jmMenu.add(jmCerrarSesion);
-
-        jMenuBar1.add(jmMenu);
+        jMenuBar1.add(jmSalir);
 
         setJMenuBar(jMenuBar1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktop)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktop)
-        );
-
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jmCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCerrarSesionActionPerformed
+    private void GPlantasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GPlantasMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jmCerrarSesionActionPerformed
+    }//GEN-LAST:event_GPlantasMouseClicked
+
+    private void GUsuarios1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GUsuarios1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_GUsuarios1MouseClicked
+
+    private void GUInsumosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GUInsumosMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_GUInsumosMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem Pedidos;
-    private javax.swing.JMenuItem agregarDistrim;
-    private javax.swing.JMenuItem agregarEmpleado;
-    private javax.swing.JMenuItem agregarIngresomn;
-    private javax.swing.JMenuItem agregarPlantasm;
-    private javax.swing.JMenuItem agregarSiemmn;
+    private javax.swing.JMenuItem AccesoEmpleado;
+    private javax.swing.JLabel GPlantas;
+    private javax.swing.JLabel GUInsumos;
+    private javax.swing.JLabel GUsuarios1;
+    private javax.swing.JMenu InicioSesion;
     private javax.swing.JDesktopPane desktop;
-    private javax.swing.JMenuItem editPreciomn;
-    private javax.swing.JMenuItem editarInsumos;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel distrib;
+    private javax.swing.JLabel distribuidores;
+    private javax.swing.JLabel gIJlabel2;
+    private javax.swing.JLabel gPJlabel;
+    private javax.swing.JLabel gPJlabel1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jmCerrarSesion;
-    private javax.swing.JMenuItem jmConfirmarPedido;
-    private javax.swing.JMenu jmDistribuidores;
-    private javax.swing.JMenu jmIngresos;
-    private javax.swing.JMenu jmInventario;
-    private javax.swing.JMenu jmMenu;
-    private javax.swing.JMenu jmPlantas;
-    private javax.swing.JMenu jmRegistrarEmpleados;
-    private javax.swing.JMenu jmSiembraSeguimiento;
-    private javax.swing.JMenuItem jmVerNombre;
-    private javax.swing.JMenu jmpedidos;
-    private javax.swing.JMenuItem rmpmn;
-    private javax.swing.JMenuItem verDistrim;
-    private javax.swing.JMenuItem verIngresosmn;
-    private javax.swing.JMenuItem verInsumos;
-    private javax.swing.JMenuItem verPerfil;
-    private javax.swing.JMenuItem verPlantasm;
-    private javax.swing.JMenuItem verSeguimim;
+    private javax.swing.JMenu jmSalir;
+    private javax.swing.JMenuItem salirm;
     // End of variables declaration//GEN-END:variables
 
-    public JDesktopPane desktop() {
-        return this.desktop;
-    }
-
-    public void privilegioTrabajador() {
-
-        jmDistribuidores.setVisible(true);
-        verDistrim.setVisible(true);
-        agregarDistrim.setVisible(false);
-        jmPlantas.setVisible(true);
-        agregarPlantasm.setVisible(false);
-        jmInventario.setVisible(true);
-        jmSiembraSeguimiento.setVisible(true);
-        jmIngresos.setVisible(true);
-        jmRegistrarEmpleados.setVisible(false);
-        jmpedidos.setVisible(true);
-        Pedidos.setVisible(false);
-        jmConfirmarPedido.setVisible(true);
-
-    }
-    /////////////////////////////7
-
-    public void privilegioTransportador() {
-
-        jmDistribuidores.setVisible(true);
-        verDistrim.setVisible(true);
-        agregarDistrim.setVisible(false);
-        jmPlantas.setVisible(false);
-        jmInventario.setVisible(false);
-        jmSiembraSeguimiento.setVisible(false);
-        jmIngresos.setVisible(false);
-        jmRegistrarEmpleados.setVisible(false);
-        jmpedidos.setVisible(false);
-        Pedidos.setVisible(false);
-        jmConfirmarPedido.setVisible(false);
-
-    }
-/////////////////////////////////77
-
-    public class PlantasListener implements ActionListener {
-
-        private PlantasUI plantasUI;
-
+    public class clickUsuariosListener implements MouseListener {
+        
+        private UsuariosUI usuariosUI;
+        
         @Override
-        public void actionPerformed(ActionEvent e) {
+        public void mouseClicked(MouseEvent e) {
+            if (usuariosUI == null) {
+                usuariosUI = new UsuariosUI();
+                desktop.add(usuariosUI);
+            }
+            usuariosUI.setVisible(true);
+            
+        }
+        
+        @Override
+        public void mousePressed(MouseEvent e) {
+            
+        }
+        
+        @Override
+        public void mouseReleased(MouseEvent e) {
+            
+        }
+        
+        @Override
+        public void mouseEntered(MouseEvent e) {
+            
+        }
+        
+        @Override
+        public void mouseExited(MouseEvent e) {
+            
+        }
+        
+    }
+    
+        public class clickInsumosListener implements MouseListener {
+        
+        private InsumosUI insumosUI;
+        
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            if (insumosUI == null) {
+                insumosUI = new InsumosUI();
+                desktop.add(insumosUI);
+            }
+            insumosUI.setVisible(true);
+            
+        }
+        
+        @Override
+        public void mousePressed(MouseEvent e) {
+            
+        }
+        
+        @Override
+        public void mouseReleased(MouseEvent e) {
+            
+        }
+        
+        @Override
+        public void mouseEntered(MouseEvent e) {
+            
+        }
+        
+        @Override
+        public void mouseExited(MouseEvent e) {
+            
+        }
+        
+    }
+    
+    public class clickPlantasListener implements MouseListener {
+        
+        private PlantasUI plantasUI;
+        
+        @Override
+        public void mouseClicked(MouseEvent e) {
             if (plantasUI == null) {
                 plantasUI = new PlantasUI();
                 desktop.add(plantasUI);
             }
             plantasUI.setVisible(true);
+            
         }
-    }
-
-    public class VerPlantasListener implements ActionListener {
-
-        private VerPlantasUI verPlantasUI;
-
+        
         @Override
-        public void actionPerformed(ActionEvent e) {
-            if (verPlantasUI == null) {
-                verPlantasUI = new VerPlantasUI();
-                desktop.add(verPlantasUI);
-            }
-            verPlantasUI.setVisible(true);
+        public void mousePressed(MouseEvent e) {
+            
         }
+        
+        @Override
+        public void mouseReleased(MouseEvent e) {
+            
+        }
+        
+        @Override
+        public void mouseEntered(MouseEvent e) {
+            
+        }
+        
+        @Override
+        public void mouseExited(MouseEvent e) {
+            
+        }
+        
     }
+    
+    public class clickDistribuidoresListener implements MouseListener {
+        
+        private DistribuidoresUI distribuidoresUI;
+        
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            if (distribuidoresUI == null) {
+                distribuidoresUI = new DistribuidoresUI();
+                desktop.add(distribuidoresUI);
+            }
+            distribuidoresUI.setVisible(true);
+            
+        }
+        
+        @Override
+        public void mousePressed(MouseEvent e) {
+            
+        }
+        
+        @Override
+        public void mouseReleased(MouseEvent e) {
+            
+        }
+        
+        @Override
+        public void mouseEntered(MouseEvent e) {
+            
+        }
+        
+        @Override
+        public void mouseExited(MouseEvent e) {
+            
+        }
+        
+    }
+//    public class PlantasListener implements ActionListener {
+//
+//        private PlantasUI plantasUI;
+//
+//        @Override
+//        public void actionPerformed(ActionEvent e) {
+//            if (plantasUI == null) {
+//                plantasUI = new PlantasUI();
+//                desktop.add(plantasUI);
+//            }
+//            plantasUI.setVisible(true);
+//        }
+//    }
+
+//    public class VerPlantasListener implements ActionListener {
+//
+//        private VerPlantasUI verPlantasUI;
+//
+//        @Override
+//        public void actionPerformed(ActionEvent e) {
+//            if (verPlantasUI == null) {
+//                verPlantasUI = new VerPlantasUI();
+//                desktop.add(verPlantasUI);
+//            }
+//            verPlantasUI.setVisible(true);
+//        }
+//    }
 /////// DISTRIBUIDORES
-
-    public class AgregarDistribuidoresListener implements ActionListener {
-
-        private AgregarDistribuidoresUI agregarDistiDistribuidoresUI;
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            if (agregarDistiDistribuidoresUI == null) {
-                agregarDistiDistribuidoresUI = new AgregarDistribuidoresUI();
-                desktop.add(agregarDistiDistribuidoresUI);
-            }
-            agregarDistiDistribuidoresUI.setVisible(true);
-        }
-    }
-
-    public class VerDistribuidoresListener implements ActionListener {
-
-        private VerDistribuidoresUI verDistribuidoresUI;
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            if (verDistribuidoresUI == null) {
-                verDistribuidoresUI = new VerDistribuidoresUI();
-                desktop.add(verDistribuidoresUI);
-            }
-            verDistribuidoresUI.setVisible(true);
-        }
-    }
-
-    public class EditPrecioListener implements ActionListener {
-
-        private EditarPrecioPlantaUI editarPrecioPlantaUI;
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            if (editarPrecioPlantaUI == null) {
-                editarPrecioPlantaUI = new EditarPrecioPlantaUI();
-                desktop.add(editarPrecioPlantaUI);
-            }
-            editarPrecioPlantaUI.setVisible(true);
-        }
-    }
-
-    public class RegistrarMuertesListener implements ActionListener {
-
-        private MuertePlantaUI muertePlantaUI;
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            if (muertePlantaUI == null) {
-                muertePlantaUI = new MuertePlantaUI();
-                desktop.add(muertePlantaUI);
-            }
-            muertePlantaUI.setVisible(true);
-        }
-    }
-
-    public class ConfirmarPedidoListoListener implements ActionListener {
-
-        private ConfirmarPedidoListoUI confirmarPedidoListoUI;
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            if (confirmarPedidoListoUI == null) {
-                confirmarPedidoListoUI = new ConfirmarPedidoListoUI();
-                desktop.add(confirmarPedidoListoUI);
-            }
-            confirmarPedidoListoUI.setVisible(true);
-        }
-    }
-/////////// SIEMBRA
-
-    public class AgregarSiembraListener implements ActionListener {
-
-        private AgregarSiembraUI agregarSiembraUI;
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            if (agregarSiembraUI == null) {
-                agregarSiembraUI = new AgregarSiembraUI();
-                desktop.add(agregarSiembraUI);
-            }
-            agregarSiembraUI.setVisible(true);
-        }
-    }
-
-    public class VerSiembrasListener implements ActionListener {
-
-        private VerSeguimientoPlantasUI verSeguimientoPlantasUI;
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            if (verSeguimientoPlantasUI == null) {
-                verSeguimientoPlantasUI = new VerSeguimientoPlantasUI();
-                desktop.add(verSeguimientoPlantasUI);
-            }
-            verSeguimientoPlantasUI.setVisible(true);
-        }
-    }
-
-    public class SalirListener implements ActionListener {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            System.exit(0);
-        }
-
-    }
-/////////// INGRESOS
-
-    public class AgregarIngresosListener implements ActionListener {
-
-        private IngresosUI ingresosUI;
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            if (ingresosUI == null) {
-                ingresosUI = new IngresosUI();
-                desktop.add(ingresosUI);
-            }
-            ingresosUI.setVisible(true);
-        }
-    }
-
-    public class VerIngresosListener implements ActionListener {
-
-        private VerIngresos verIngresosUI;
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            if (verIngresosUI == null) {
-                try {
-                    verIngresosUI = new VerIngresos();
-                    desktop.add(verIngresosUI);
-                } catch (Exception ex) {
-                    Logger.getLogger(ViveroUI.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-            verIngresosUI.setVisible(true);
-        }
-    }
-
-    //           INSUMOS
-    public class InventarioInsumosListener implements ActionListener {
-
-        private InventarioInsumosUI inventarioInsumosUI;
-
-        @Override
-        public void actionPerformed(ActionEvent ae) {
-
-            if (inventarioInsumosUI == null) {
-                inventarioInsumosUI = new InventarioInsumosUI();
-                desktop.add(inventarioInsumosUI);
-            }
-            inventarioInsumosUI.setVisible(true);
-
-        }
-
-    }
-
-    public class VerInventarioInsumosListener implements ActionListener {
-
-        private VerInventarioInsumosUI VerInventarioInsumosUI;
-
-        @Override
-        public void actionPerformed(ActionEvent ae) {
-
-            if (VerInventarioInsumosUI == null) {
-                VerInventarioInsumosUI = new VerInventarioInsumosUI();
-                desktop.add(VerInventarioInsumosUI);
-            }
-            VerInventarioInsumosUI.setVisible(true);
-        }
-
-    }
-
-    public class EditarPedidosUI implements ActionListener {
-
-        private EditarPedidoUI editarPedidoUI;
-
+//    public class AgregarDistribuidoresListener implements ActionListener {
+//
+//        private AgregarDistribuidoresUI agregarDistiDistribuidoresUI;
+//
+//        @Override
+//        public void actionPerformed(ActionEvent e) {
+//            if (agregarDistiDistribuidoresUI == null) {
+//                agregarDistiDistribuidoresUI = new AgregarDistribuidoresUI();
+//                desktop.add(agregarDistiDistribuidoresUI);
+//            }
+//            agregarDistiDistribuidoresUI.setVisible(true);
+//        }
+//    }
+//    public class VerDistribuidoresListener implements ActionListener {
+//
+//        private VerDistribuidoresUI verDistribuidoresUI;
+//
+//        @Override
+//        public void actionPerformed(ActionEvent e) {
+//            if (verDistribuidoresUI == null) {
+//                verDistribuidoresUI = new VerDistribuidoresUI();
+//                desktop.add(verDistribuidoresUI);
+//            }
+//            verDistribuidoresUI.setVisible(true);
+//        }
+//    }
+//
+//    public class EditPrecioListener implements ActionListener {
+//
+//        private PlantaEditUI editarPrecioPlantaUI;
+//
+//        @Override
+//        public void actionPerformed(ActionEvent e) {
+//            if (editarPrecioPlantaUI == null) {
+//                editarPrecioPlantaUI = new PlantaEditUI();
+//                desktop.add(editarPrecioPlantaUI);
+//            }
+//            editarPrecioPlantaUI.setVisible(true);
+//        }
+//    }
+//
+//    public class RegistrarMuertesListener implements ActionListener {
+//
+//        private MuertePlantaUI muertePlantaUI;
+//
+//        @Override
+//        public void actionPerformed(ActionEvent e) {
+//            if (muertePlantaUI == null) {
+//                muertePlantaUI = new MuertePlantaUI();
+//                desktop.add(muertePlantaUI);
+//            }
+//            muertePlantaUI.setVisible(true);
+//        }
+//    }
+///////////// SIEMBRA
+//
+//    public class AgregarSiembraListener implements ActionListener {
+//
+//        private AgregarSiembraUI agregarSiembraUI;
+//
+//        @Override
+//        public void actionPerformed(ActionEvent e) {
+//            if (agregarSiembraUI == null) {
+//                agregarSiembraUI = new AgregarSiembraUI();
+//                desktop.add(agregarSiembraUI);
+//            }
+//            agregarSiembraUI.setVisible(true);
+//        }
+//    }
+//
+//    public class VerSiembrasListener implements ActionListener {
+//
+//        private VerSeguimientoPlantasUI verSeguimientoPlantasUI;
+//
+//        @Override
+//        public void actionPerformed(ActionEvent e) {
+//            if (verSeguimientoPlantasUI == null) {
+//                verSeguimientoPlantasUI = new VerSeguimientoPlantasUI();
+//                desktop.add(verSeguimientoPlantasUI);
+//            }
+//            verSeguimientoPlantasUI.setVisible(true);
+//        }
+//    }
+//    public class SalirListener implements ActionListener {
+//
+//        @Override
+//        public void actionPerformed(ActionEvent e) {
+//            System.exit(0);
+//        }
+//
+//    }
+///////////// INGRESOS
+//
+//    public class AgregarIngresosListener implements ActionListener {
+//
+//        private IngresosUI ingresosUI;
+//
+//        @Override
+//        public void actionPerformed(ActionEvent e) {
+//            if (ingresosUI == null) {
+//                ingresosUI = new IngresosUI();
+//                desktop.add(ingresosUI);
+//            }
+//            ingresosUI.setVisible(true);
+//        }
+//    }
+//
+//    public class VerIngresosListener implements ActionListener {
+//
+//        private VerIngresos verIngresosUI;
+//
+//        @Override
+//        public void actionPerformed(ActionEvent e) {
+//            if (verIngresosUI == null) {
+//                try {
+//                    verIngresosUI = new VerIngresos();
+//                    desktop.add(verIngresosUI);
+//                } catch (Exception ex) {
+//                    Logger.getLogger(ViveroUI.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//            }
+//            verIngresosUI.setVisible(true);
+//        }
+//    }
+//
+//    //           INSUMOS
+//    public class InventarioInsumosListener implements ActionListener {
+//
+//        private InventarioInsumosUI inventarioInsumosUI;
+//
+//        @Override
+//        public void actionPerformed(ActionEvent ae) {
+//
+//            if (inventarioInsumosUI == null) {
+//                inventarioInsumosUI = new InventarioInsumosUI();
+//                desktop.add(inventarioInsumosUI);
+//            }
+//            inventarioInsumosUI.setVisible(true);
+//
+//        }
+//
+//    }
+//
+//    public class VerInventarioInsumosListener implements ActionListener {
+//
+//        private VerInventarioInsumosUI VerInventarioInsumosUI;
+//
+//        @Override
+//        public void actionPerformed(ActionEvent ae) {
+//
+//            if (VerInventarioInsumosUI == null) {
+//                VerInventarioInsumosUI = new VerInventarioInsumosUI();
+//                desktop.add(VerInventarioInsumosUI);
+//            }
+//            VerInventarioInsumosUI.setVisible(true);
+//
+//        }
+//
+//    }
+/////// LOGIN
+    public class loginEmpleados implements ActionListener {
+        
+        ControlEmpleados controlEmpleados = new ControlEmpleados();
+        Empleado empleado;
+        
         @Override
         public void actionPerformed(ActionEvent ae) {
-
-            if (editarPedidoUI == null) {
-                editarPedidoUI = new EditarPedidoUI();
-                desktop.add(editarPedidoUI);
-            }
-
-            editarPedidoUI.setVisible(true);
-
-        }
-    }
-
-    public class CerrarSesion implements ActionListener {
-
-        private Login loginUI;
-
-        @Override
-        public void actionPerformed(ActionEvent ae) {
-
-            int opcion = JOptionPane.showConfirmDialog(ViveroUI.this, vivero, "¿Desea Salir del sistema?", JOptionPane.OK_CANCEL_OPTION);
-
-            if (opcion == JOptionPane.CANCEL_OPTION) {
-                return;
-            }
-            if (opcion == JOptionPane.OK_OPTION) {
-
-                dispose();
-
-            }
-
+            
             try {
-
-                if (loginUI == null) {
-
-                    loginUI = new Login(vivero);
+                
+                LoginEmpleadosUI loginUI = new LoginEmpleadosUI();
+                
+                int opcion = JOptionPane.showConfirmDialog(ViveroUI.this, loginUI, "Login", JOptionPane.OK_CANCEL_OPTION);
+                
+                if (opcion == JOptionPane.CANCEL_OPTION) {
+                    return;
                 }
+                
+                if (opcion == JOptionPane.OK_OPTION) {
+                    
+                    String cedula = loginUI.getCedula();
+                    System.out.println("Cedula obtenida");
+                    String contraseña = loginUI.getContraseña();
+                    System.out.println("Contraseña obtenida");
+                    
+                    if (controlEmpleados.AccesoEmpleado(cedula, contraseña) == true) {
+                        
+                        System.out.println("Comparar para dar acceso");
+                        JOptionPane.showMessageDialog(rootPane, " Sesión iniciada ");
+                        
+                        for (Empleado empleado : controlEmpleados.getListaEmpleados()) {
+                            
+                            System.out.println("Comparar rol");
+                            
+                            if (empleado.getRol().GERENTE_PROPIETARIO == (Rol.GERENTE_PROPIETARIO)) {
+                                GPlantas.setVisible(true);
+                                gPJlabel.setVisible(true);
 
-                loginUI.setVisible(true);
+//                                agregarDistrim.setVisible(true);
+//                                agregarIngresomn.setVisible(true);
+//                                agregarPlantasm.setVisible(true);
+//                                agregarSiemmn.setVisible(true);
+//
+//                                verDistrim.setVisible(true);
+//                                verIngresosmn.setVisible(true);
+//                                verInsumos.setVisible(true);
+//                                verPlantasm.setVisible(true);
+//                                verSeguimim.setVisible(true);
+//                                editPreciomn.setVisible(true);
+//                                editarInsumos.setVisible(true);
+                            }
+                            if (empleado.getRol().TRABAJADOR == (Rol.TRABAJADOR)) {
 
+//                                agregarDistrim.setVisible(false);
+////                                agregarPlantasm.setVisible(false);
+//                                agregarSiemmn.setVisible(true);
+////                                editPreciomn.setVisible(false);
+//                                verDistrim.setVisible(true);
+////                                verIngresosmn.setVisible(false);
+//                                verInsumos.setVisible(true);
+//                                verPlantasm.setVisible(true);
+//                                verSeguimim.setVisible(true);
+//                                rmpmn.setVisible(true);
+//                                editarInsumos.setVisible(true);
+//                                agregarEmpleado.setVisible(false);
+                            }
+                            if (empleado.getRol().TRANSPORTISTA == (Rol.TRANSPORTISTA)) {
+
+                                // verDistrim.setVisible(true);
+//                                agregarDistrim.setVisible(false);
+//                                agregarPlantasm.setVisible(false);
+//                                agregarSiemmn.setVisible(false);
+//                                editPreciomn.setVisible(false);
+//                                verIngresosmn.setVisible(false);
+//                                verInsumos.setVisible(false);
+//                                verPlantasm.setVisible(false);
+//                                verSeguimim.setVisible(false);
+//                                rmpmn.setVisible(false);
+//                                editarInsumos.setVisible(false);
+//                                agregarIngresomn.setVisible(false);
+//                                agregarEmpleado.setVisible(false);
+                            }
+                            
+                        }
+                        
+                    }
+                }
+                
             } catch (Exception ex) {
+                JOptionPane.showMessageDialog(rootPane, "Error : NULL " + ex);
                 Logger.getLogger(ViveroUI.class.getName()).log(Level.SEVERE, null, ex);
+                
             }
-
         }
-
+        
     }
-
+    
 }

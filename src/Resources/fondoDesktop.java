@@ -15,7 +15,7 @@ public class fondoDesktop implements Border {
 
     public fondoDesktop() {
         try {
-            URL imagePath = new URL(getClass().getResource("../Resources/imagenVivero.PNG").toString());
+            URL imagePath = new URL(getClass().getResource("../Resources/backgrounf.jpg").toString());
             back = ImageIO.read(imagePath);
         } catch (Exception exc) {
 

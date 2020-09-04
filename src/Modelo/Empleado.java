@@ -22,8 +22,6 @@ import javax.persistence.OneToOne;
     ,
     @NamedQuery(name = "Empleado.buscarEmpleadoConsulta", query = "SELECT e from Empleado e WHERE e.cedula = :cedula")
     ,
-    @NamedQuery(name = "Empleado.buscarRolConsulta", query = "SELECT e from Empleado e WHERE e.rol = :rol")
-    ,
     @NamedQuery(name = "Empleado.registroEmpleadoConsulta", query = "SELECT e from Empleado e WHERE e.cedula = :cedula AND e.contraseña = :contraseña")
 
 })
@@ -52,10 +50,9 @@ public class Empleado implements Serializable {
 
     public Empleado(String cedula, String name, String contraseña, String direccion, String telefono, Rol rol, String ciudad) throws Exception {
 
-        if (cedula == null ||  cedula.length() < 8 || "".equals(cedula.trim()) ) {
+        if (cedula == null) {
             throw new Exception("Debe ingresar el número de la cédula");
         }
-
         if (contraseña == null) {
             throw new Exception("Debe ingresar contraseña");
         }
@@ -164,7 +161,7 @@ public class Empleado implements Serializable {
 
     @Override
     public String toString() {
-        return " cedula =" + cedula + ", name =" + name + ", contrase\u00f1a =" + contraseña + ", direccion=" + direccion + ", telefono=" + telefono + ", rol=" + rol + ", ciudad=" + ciudad + '}';
+        return cedula;
     }
 
 }

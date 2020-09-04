@@ -1,6 +1,5 @@
 package DAO;
 
-import Control.ControlDetalleGasto;
 import Control.ControlInsumos;
 import DAO.exceptions.NonexistentEntityException;
 import Modelo.Detalle_Gasto;

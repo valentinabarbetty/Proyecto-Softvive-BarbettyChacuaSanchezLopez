@@ -158,8 +158,7 @@ public class EmpleadoDAO implements Serializable {
     public Empleado buscarEmpleadoConsulta(String cedula) throws Exception {
         EntityManager em = getEntityManager();
 
-        List<Empleado> empleados = em.createNamedQuery("Empleado.buscarEmpleadoConsulta").setParameter("cedula", cedula).getResultList();
-        
+        List<Empleado> empleados = em.createNamedQuery("Empleado.buscarCedulaConsulta").setParameter("cedula", cedula).getResultList();
         if (empleados.isEmpty()) {
             return null;
         } else {
@@ -167,5 +166,4 @@ public class EmpleadoDAO implements Serializable {
         }
 
     }
-
 }

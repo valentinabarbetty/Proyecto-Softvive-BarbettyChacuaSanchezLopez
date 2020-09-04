@@ -15,7 +15,7 @@ public class ControlInsumos {
 
     public ControlInsumos() {
 
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("BruzonViveroPU");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ViveroPruebaPU");
         this.insumoDAO = new InsumoDAO(emf);
         this.listaInsumos = new ArrayList<>();
     }

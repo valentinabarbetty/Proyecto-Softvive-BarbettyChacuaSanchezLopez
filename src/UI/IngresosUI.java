@@ -277,7 +277,7 @@ public class IngresosUI extends javax.swing.JInternalFrame {
                 pedido = cp.buscarPedido(codigo);
                 nitjT.setText(Long.toString(pedido.getDistribuidor().getNit()));
                 nomCliejT.setText(pedido.getDistribuidor().getNombre());
-            //    entregajT.setText(pedido.getEstadoEntregado());
+                entregajT.setText(pedido.getEstadoEntregado());
                 pagojT.setText(pedido.getEstadoPago());
 
                 ingresoTable.setModel(new IngresosTableModel());
@@ -305,7 +305,7 @@ public class IngresosUI extends javax.swing.JInternalFrame {
                 String codigo = pedidojT.getText();
                 int total = Integer.parseInt(vlrVendidojT.getText());
 
-                Pedido pedido = new Pedido(codigo,distribuidor);
+                Pedido pedido = new Pedido(codigo, "Cancelado", "En camino", distribuidor, 2);
 
                 ingreso = new Ingreso(total, pedido);
                 ingresoTable.updateUI();
