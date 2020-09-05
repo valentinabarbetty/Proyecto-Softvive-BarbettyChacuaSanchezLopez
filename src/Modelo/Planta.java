@@ -45,7 +45,32 @@ public class Planta implements Serializable {
     public Planta() {
     }
 
-    public Planta(String codigo, String nombre, int tiempoGerminacion, int tiempoCrecimiento, TipoReproduccion tipoReproduccion, int valor_unitario) {
+    public Planta(String codigo, String nombre, int tiempoGerminacion, int tiempoCrecimiento, TipoReproduccion tipoReproduccion, int valor_unitario) throws Exception {
+        if (tiempoCrecimiento <= 0) {
+            throw new Exception("El tiempo de crecimiento debe ser mayor a 0");
+
+        }
+        if (tiempoGerminacion <= 0) {
+            throw new Exception("El tiempo de germinación debe ser mayor a 0");
+
+        }
+        if (tipoReproduccion == null) {
+            throw new Exception("Debe escoger un tipo de reproducción");
+
+        }
+        if (valor_unitario <= 0) {
+            throw new Exception("El precio debe ser mayor a 0");
+
+        }
+        if (nombre.equals("")) {
+            throw new Exception("Ingrese un nombre a la planta");
+
+        }
+        if (codigo.equals("")) {
+            throw new Exception("Ingrese un código a la planta");
+
+        }
+
         this.codigo = codigo;
         this.nombre = nombre;
         this.tipoReproduccion = tipoReproduccion;

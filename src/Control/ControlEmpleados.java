@@ -51,13 +51,5 @@ public class ControlEmpleados {
         }
         throw new Exception("Empleado no encontrado");
     }
-    
-    public List<Empleado> getListaPlantas() {
-        return empleadoDAO.findEmpleadoEntities();
-    }
-    
-     public void actualizarEmpleado(Empleado empleado) throws Exception {
-        empleadoDAO.edit(empleado);
-    }
 
 }

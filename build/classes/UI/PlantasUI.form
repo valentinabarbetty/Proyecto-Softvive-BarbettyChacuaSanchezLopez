@@ -62,19 +62,19 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="AddP" min="-2" pref="24" max="-2" attributes="0"/>
+                          <Component id="AñadirPlanta" min="-2" pref="24" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                          <Component id="AddPlant" min="-2" max="-2" attributes="0"/>
+                          <Component id="AñadirPlanta1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="EditPlant" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="EditarPlanta" min="-2" pref="33" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="EditP" min="-2" pref="120" max="-2" attributes="0"/>
+                          <Component id="EditarPlanta1" min="-2" pref="120" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="SeePlants" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="VerPlantas" min="-2" pref="33" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="SeeP" min="-2" pref="108" max="-2" attributes="0"/>
+                          <Component id="VerPlantas1" min="-2" pref="108" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -88,22 +88,22 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                          <Component id="AddP" min="-2" max="-2" attributes="0"/>
+                          <Component id="AñadirPlanta" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                          <Component id="AddPlant" min="-2" pref="44" max="-2" attributes="0"/>
+                          <Component id="AñadirPlanta1" min="-2" pref="44" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="EditPlant" min="-2" pref="36" max="-2" attributes="0"/>
-                      <Component id="EditP" min="-2" pref="44" max="-2" attributes="0"/>
+                      <Component id="EditarPlanta" min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="EditarPlanta1" min="-2" pref="44" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="SeePlants" min="-2" pref="48" max="-2" attributes="0"/>
-                      <Component id="SeeP" min="-2" pref="44" max="-2" attributes="0"/>
+                      <Component id="VerPlantas" min="-2" pref="48" max="-2" attributes="0"/>
+                      <Component id="VerPlantas1" min="-2" pref="44" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="414" max="32767" attributes="0"/>
               </Group>
@@ -111,10 +111,10 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="SeeP">
+        <Component class="javax.swing.JLabel" name="VerPlantas1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Open Sans" size="18" style="0"/>
+              <Font name="SansSerif" size="18" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -122,24 +122,24 @@
             <Property name="text" type="java.lang.String" value="Ver Plantas"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="AddP">
+        <Component class="javax.swing.JLabel" name="A&#xf1;adirPlanta">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Resources/plus (2).png"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="EditPlant">
+        <Component class="javax.swing.JLabel" name="EditarPlanta">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Resources/edit (1).png"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="AddPlant">
+        <Component class="javax.swing.JLabel" name="A&#xf1;adirPlanta1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Open Sans" size="18" style="0"/>
+              <Font name="SansSerif" size="18" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -147,17 +147,17 @@
             <Property name="text" type="java.lang.String" value="Agregar Nueva Planta"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="SeePlants">
+        <Component class="javax.swing.JLabel" name="VerPlantas">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Resources/list (1).png"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="EditP">
+        <Component class="javax.swing.JLabel" name="EditarPlanta1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Open Sans" size="18" style="0"/>
+              <Font name="SansSerif" size="18" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>

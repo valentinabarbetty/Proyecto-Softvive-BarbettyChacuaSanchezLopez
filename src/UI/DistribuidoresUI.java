@@ -19,12 +19,12 @@ public class DistribuidoresUI extends javax.swing.JInternalFrame {
      */
     public DistribuidoresUI() {
         initComponents();
-        this.Add.addMouseListener(new clickAddListener());
-        this.Add1.addMouseListener(new clickAddListener());
-        this.Edit1.addMouseListener(new clickEditListener());
-        this.Edit.addMouseListener(new clickEditListener());
-        this.See.addMouseListener(new clickSeeListener());
-        this.See1.addMouseListener(new clickSeeListener());
+        this.AñadirDistri1.addMouseListener(new clickAddListener());
+        this.AñadirDistri.addMouseListener(new clickAddListener());
+        this.EditarDistri.addMouseListener(new clickEditListener());
+        this.EditarDistri1.addMouseListener(new clickEditListener());
+        this.VerDistri1.addMouseListener(new clickSeeListener());
+        this.VerDistri.addMouseListener(new clickSeeListener());
     }
 
     /**
@@ -37,38 +37,39 @@ public class DistribuidoresUI extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel9 = new javax.swing.JPanel();
-        See = new javax.swing.JLabel();
-        Add1 = new javax.swing.JLabel();
-        Edit1 = new javax.swing.JLabel();
-        Add = new javax.swing.JLabel();
-        See1 = new javax.swing.JLabel();
-        Edit = new javax.swing.JLabel();
+        VerDistri1 = new javax.swing.JLabel();
+        AñadirDistri = new javax.swing.JLabel();
+        EditarDistri = new javax.swing.JLabel();
+        AñadirDistri1 = new javax.swing.JLabel();
+        VerDistri = new javax.swing.JLabel();
+        EditarDistri1 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         desktopd = new javax.swing.JDesktopPane();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
 
         jPanel9.setBackground(new java.awt.Color(133, 198, 90));
 
-        See.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        See.setForeground(new java.awt.Color(255, 255, 255));
-        See.setText("Ver Distribuidores");
+        VerDistri1.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        VerDistri1.setForeground(new java.awt.Color(255, 255, 255));
+        VerDistri1.setText("Ver Distribuidores");
 
-        Add1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/plus (2).png"))); // NOI18N
+        AñadirDistri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/plus (2).png"))); // NOI18N
 
-        Edit1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/edit (1).png"))); // NOI18N
+        EditarDistri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/edit (1).png"))); // NOI18N
 
-        Add.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        Add.setForeground(new java.awt.Color(255, 255, 255));
-        Add.setText("Agregar Nuevo Distribuidor");
+        AñadirDistri1.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        AñadirDistri1.setForeground(new java.awt.Color(255, 255, 255));
+        AñadirDistri1.setText("Agregar Nuevo Distribuidor");
 
-        See1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/list (1).png"))); // NOI18N
+        VerDistri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/list (1).png"))); // NOI18N
 
-        Edit.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        Edit.setForeground(new java.awt.Color(255, 255, 255));
-        Edit.setText("Editar Distribuidores");
+        EditarDistri1.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        EditarDistri1.setForeground(new java.awt.Color(255, 255, 255));
+        EditarDistri1.setText("Editar Distribuidores");
 
         jPanel10.setBackground(new java.awt.Color(108, 169, 62));
 
@@ -106,17 +107,17 @@ public class DistribuidoresUI extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(Add1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(AñadirDistri, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(19, 19, 19)
-                        .addComponent(Add))
+                        .addComponent(AñadirDistri1))
                     .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(Edit1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(EditarDistri, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Edit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(EditarDistri1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(See1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(VerDistri, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(See, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(VerDistri1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
@@ -126,18 +127,18 @@ public class DistribuidoresUI extends javax.swing.JInternalFrame {
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addComponent(Add1))
+                        .addComponent(AñadirDistri))
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addGap(8, 8, 8)
-                        .addComponent(Add, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(AñadirDistri1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Edit1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(EditarDistri, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(EditarDistri1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(See1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(See, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(VerDistri, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(VerDistri1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(414, Short.MAX_VALUE))
         );
 
@@ -177,12 +178,12 @@ public class DistribuidoresUI extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Add;
-    private javax.swing.JLabel Add1;
-    private javax.swing.JLabel Edit;
-    private javax.swing.JLabel Edit1;
-    private javax.swing.JLabel See;
-    private javax.swing.JLabel See1;
+    private javax.swing.JLabel AñadirDistri;
+    private javax.swing.JLabel AñadirDistri1;
+    private javax.swing.JLabel EditarDistri;
+    private javax.swing.JLabel EditarDistri1;
+    private javax.swing.JLabel VerDistri;
+    private javax.swing.JLabel VerDistri1;
     private javax.swing.JDesktopPane desktopd;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
@@ -191,13 +192,13 @@ public class DistribuidoresUI extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
         public class clickAddListener implements MouseListener {
 
-        private DistribuidoresAddUI distribuidoresAddUI;
+        private DistribuidoresAñadirUI distribuidoresAddUI;
 
         @Override
         public void mouseClicked(MouseEvent e) {
 
             if (distribuidoresAddUI == null) {
-                distribuidoresAddUI = new DistribuidoresAddUI();
+                distribuidoresAddUI = new DistribuidoresAñadirUI();
                 desktopd.add(distribuidoresAddUI);
             }
             distribuidoresAddUI.setVisible(true);
@@ -227,13 +228,13 @@ public class DistribuidoresUI extends javax.swing.JInternalFrame {
 
     public class clickSeeListener implements MouseListener {
 
-        private DistribuidoresSeeUI distribuidoresSeeUI;
+        private DistribuidoresVerUI distribuidoresSeeUI;
 
         @Override
         public void mouseClicked(MouseEvent e) {
 
             if (distribuidoresSeeUI == null) {
-                distribuidoresSeeUI = new DistribuidoresSeeUI();
+                distribuidoresSeeUI = new DistribuidoresVerUI();
                 desktopd.add(distribuidoresSeeUI);
             }
             distribuidoresSeeUI.setVisible(true);
@@ -263,13 +264,13 @@ public class DistribuidoresUI extends javax.swing.JInternalFrame {
 
     public class clickEditListener implements MouseListener {
 
-        private DistribuidoresEditUI distribuidoresEditUI;
+        private DistribuidoresEditarUI distribuidoresEditUI;
 
         @Override
         public void mouseClicked(MouseEvent e) {
 
             if (distribuidoresEditUI == null) {
-                distribuidoresEditUI = new DistribuidoresEditUI();
+                distribuidoresEditUI = new DistribuidoresEditarUI();
                 desktopd.add(distribuidoresEditUI);
             }
             distribuidoresEditUI.setVisible(true);

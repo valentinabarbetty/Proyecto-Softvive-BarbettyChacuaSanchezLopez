@@ -20,12 +20,12 @@ public class PlantasUI extends javax.swing.JInternalFrame {
         initComponents();
 
         desktop.setBorder(new fondoDesktop());
-        this.EditP.addMouseListener(new clickEditListener());
-        this.EditPlant.addMouseListener(new clickEditListener());
-        this.AddPlant.addMouseListener(new clickAddListener());
-        this.AddP.addMouseListener(new clickAddListener());
-        this.SeeP.addMouseListener(new clickSeeListener());
-        this.SeePlants.addMouseListener(new clickSeeListener());
+        this.EditarPlanta1.addMouseListener(new clickEditarListener());
+        this.EditarPlanta.addMouseListener(new clickEditarListener());
+        this.AñadirPlanta1.addMouseListener(new clickAñadirListener());
+        this.AñadirPlanta.addMouseListener(new clickAñadirListener());
+        this.VerPlantas1.addMouseListener(new clickVerListener());
+        this.VerPlantas.addMouseListener(new clickVerListener());
     }
 
     @SuppressWarnings("unchecked")
@@ -33,12 +33,12 @@ public class PlantasUI extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        SeeP = new javax.swing.JLabel();
-        AddP = new javax.swing.JLabel();
-        EditPlant = new javax.swing.JLabel();
-        AddPlant = new javax.swing.JLabel();
-        SeePlants = new javax.swing.JLabel();
-        EditP = new javax.swing.JLabel();
+        VerPlantas1 = new javax.swing.JLabel();
+        AñadirPlanta = new javax.swing.JLabel();
+        EditarPlanta = new javax.swing.JLabel();
+        AñadirPlanta1 = new javax.swing.JLabel();
+        VerPlantas = new javax.swing.JLabel();
+        EditarPlanta1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -50,23 +50,23 @@ public class PlantasUI extends javax.swing.JInternalFrame {
 
         jPanel1.setBackground(new java.awt.Color(133, 198, 90));
 
-        SeeP.setFont(new java.awt.Font("Open Sans", 0, 18)); // NOI18N
-        SeeP.setForeground(new java.awt.Color(255, 255, 255));
-        SeeP.setText("Ver Plantas");
+        VerPlantas1.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        VerPlantas1.setForeground(new java.awt.Color(255, 255, 255));
+        VerPlantas1.setText("Ver Plantas");
 
-        AddP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/plus (2).png"))); // NOI18N
+        AñadirPlanta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/plus (2).png"))); // NOI18N
 
-        EditPlant.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/edit (1).png"))); // NOI18N
+        EditarPlanta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/edit (1).png"))); // NOI18N
 
-        AddPlant.setFont(new java.awt.Font("Open Sans", 0, 18)); // NOI18N
-        AddPlant.setForeground(new java.awt.Color(255, 255, 255));
-        AddPlant.setText("Agregar Nueva Planta");
+        AñadirPlanta1.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        AñadirPlanta1.setForeground(new java.awt.Color(255, 255, 255));
+        AñadirPlanta1.setText("Agregar Nueva Planta");
 
-        SeePlants.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/list (1).png"))); // NOI18N
+        VerPlantas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/list (1).png"))); // NOI18N
 
-        EditP.setFont(new java.awt.Font("Open Sans", 0, 18)); // NOI18N
-        EditP.setForeground(new java.awt.Color(255, 255, 255));
-        EditP.setText("Editar Plantas");
+        EditarPlanta1.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        EditarPlanta1.setForeground(new java.awt.Color(255, 255, 255));
+        EditarPlanta1.setText("Editar Plantas");
 
         jPanel2.setBackground(new java.awt.Color(108, 169, 62));
 
@@ -108,17 +108,17 @@ public class PlantasUI extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(AddP, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(AñadirPlanta, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(19, 19, 19)
-                        .addComponent(AddPlant))
+                        .addComponent(AñadirPlanta1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(EditPlant, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(EditarPlanta, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(EditP, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(EditarPlanta1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(SeePlants, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(VerPlantas, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(SeeP, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(VerPlantas1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -128,18 +128,18 @@ public class PlantasUI extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addComponent(AddP))
+                        .addComponent(AñadirPlanta))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(8, 8, 8)
-                        .addComponent(AddPlant, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(AñadirPlanta1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(EditPlant, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(EditP, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(EditarPlanta, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(EditarPlanta1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(SeePlants, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SeeP, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(VerPlantas, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(VerPlantas1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(414, Short.MAX_VALUE))
         );
 
@@ -180,12 +180,12 @@ public class PlantasUI extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel AddP;
-    private javax.swing.JLabel AddPlant;
-    private javax.swing.JLabel EditP;
-    private javax.swing.JLabel EditPlant;
-    private javax.swing.JLabel SeeP;
-    private javax.swing.JLabel SeePlants;
+    private javax.swing.JLabel AñadirPlanta;
+    private javax.swing.JLabel AñadirPlanta1;
+    private javax.swing.JLabel EditarPlanta;
+    private javax.swing.JLabel EditarPlanta1;
+    private javax.swing.JLabel VerPlantas;
+    private javax.swing.JLabel VerPlantas1;
     private javax.swing.JDesktopPane desktop;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -193,15 +193,15 @@ public class PlantasUI extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 
-    public class clickAddListener implements MouseListener {
+    public class clickAñadirListener implements MouseListener {
 
-        private PlantasAddUI plantasAddUI;
+        private PlantasAñadirUI plantasAddUI;
 
         @Override
         public void mouseClicked(MouseEvent e) {
 
             if (plantasAddUI == null) {
-                plantasAddUI = new PlantasAddUI();
+                plantasAddUI = new PlantasAñadirUI();
                 desktop.add(plantasAddUI);
             }
             plantasAddUI.setVisible(true);
@@ -229,15 +229,15 @@ public class PlantasUI extends javax.swing.JInternalFrame {
 
     }
 
-    public class clickSeeListener implements MouseListener {
+    public class clickVerListener implements MouseListener {
 
-        private PlantasSeeUI plantasVerUI;
+        private PlantasVerUI plantasVerUI;
 
         @Override
         public void mouseClicked(MouseEvent e) {
 
             if (plantasVerUI == null) {
-                plantasVerUI = new PlantasSeeUI();
+                plantasVerUI = new PlantasVerUI();
                 desktop.add(plantasVerUI);
             }
             plantasVerUI.setVisible(true);
@@ -264,15 +264,15 @@ public class PlantasUI extends javax.swing.JInternalFrame {
         }
 
     }
-        public class clickEditListener implements MouseListener {
+        public class clickEditarListener implements MouseListener {
 
-        private PlantaEditUI plantasEditUI;
+        private PlantaEditarUI plantasEditUI;
 
         @Override
         public void mouseClicked(MouseEvent e) {
 
             if (plantasEditUI == null) {
-                plantasEditUI = new PlantaEditUI();
+                plantasEditUI = new PlantaEditarUI();
                 desktop.add(plantasEditUI);
             }
             plantasEditUI.setVisible(true);

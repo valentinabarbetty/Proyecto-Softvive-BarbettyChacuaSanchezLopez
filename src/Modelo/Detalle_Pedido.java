@@ -29,11 +29,11 @@ public class Detalle_Pedido implements Serializable {
 
     public Detalle_Pedido() {
     }
-    
-    public Detalle_Pedido(int cantidad, int precio, Planta planta) {
+
+    public Detalle_Pedido(int cantidad, Planta planta) {
         this.cantidad = cantidad;
-        this.precio = precio;
         this.planta = planta;
+        this.precio = this.planta.getValor_unitario() * this.cantidad;
     }
 
     public int getCantidad() {
@@ -47,7 +47,7 @@ public class Detalle_Pedido implements Serializable {
     public int getPrecio() {
         return precio;
     }
-
+  
     public void setPrecio(int precio) {
         this.precio = precio;
     }
@@ -67,6 +67,5 @@ public class Detalle_Pedido implements Serializable {
     public void setPk(long pk) {
         this.pk = pk;
     }
-    
 
 }

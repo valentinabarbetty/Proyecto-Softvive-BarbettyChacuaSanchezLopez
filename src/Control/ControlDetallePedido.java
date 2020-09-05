@@ -38,4 +38,8 @@ public class ControlDetallePedido {
         this.listaDetallePedido.removeAll(listaDetallePedido);
     }
 
+    public void actualizarDPedido(Detalle_Pedido dpedido) throws Exception {
+        dpDAO.edit(dpedido);
+    }
+
 }

@@ -35,7 +35,26 @@ public class Distribuidor implements Serializable {
     public Distribuidor() {
     }
 
-    public Distribuidor(long nit, String nombre, long telefono, String email, String direccion, String ciudad) {
+    public Distribuidor(long nit, String nombre, long telefono, String email, String direccion, String ciudad) throws Exception {
+        if (nit <= 0) {
+            throw new Exception("El NIT debe ser un valor válido");
+        }
+        if (nombre.equals("")) {
+            throw new Exception("Debe ingresar un nombre");
+        }
+        if (telefono <= 0) {
+            throw new Exception("El número de teléfono debe ser un valor válido");
+        }
+        if (email.equals("")) {
+            throw new Exception("El email no es válido");
+        }
+        if (direccion.equals("")) {
+            throw new Exception("La dirección no es válida");
+        }
+        if (ciudad.equals("")) {
+            throw new Exception("La ciudad no es válida");
+
+        }
         this.nit = nit;
         this.nombre = nombre;
         this.telefono = telefono;
