@@ -55,9 +55,9 @@ public class Main {
                 try {
                     Vivero vivero = new Vivero("123678", "Bruzón", "calle 26");
 
-                    Empleado empleado1 = new Empleado("11", "Tony Stark", "1", "cra #1-2", "1622736", Rol.GERENTE_PROPIETARIO, "Palmira");
-                    Empleado empleado2 = new Empleado("22", "Elon Musk", "2", "cra # 3-12", "1672839", Rol.TRANSPORTISTA, "Cali");
-                    Empleado empleado3 = new Empleado("33", "Timothee Chalamet", "3", "cra #4-2", "2987624", Rol.TRABAJADOR, "Medellin");
+                    Empleado empleado1 = new Empleado("12345678", "Tony Stark", "12345678", "cra #1-2", 1622736, Rol.GERENTE_PROPIETARIO, "Palmira");
+                    Empleado empleado2 = new Empleado("22345678", "Elon Musk", "22345678", "cra # 3-12", 1672839, Rol.TRANSPORTISTA, "Cali");
+                    Empleado empleado3 = new Empleado("32345678", "Timothee Chalamet", "32345678", "cra #4-2", 2987624, Rol.TRABAJADOR, "Medellin");
 
                     ControlEmpleados ce = new ControlEmpleados();
 //                    ce.agregarEmpleado(empleado1);

@@ -40,6 +40,8 @@ public class Pedido implements Serializable {
     private String estadoPago;
     @Enumerated(EnumType.STRING)
     private EstadoEntrega estadoEntrega;
+    @Enumerated(EnumType.STRING)
+    private EstadoListo estadoListo;
     @OneToOne
     private Distribuidor distribuidor;
     @Column(nullable = false)
@@ -50,7 +52,7 @@ public class Pedido implements Serializable {
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Detalle_Pedido> listaDetallePedido;
 
-//    public int total_prod = 0;
+    //    public int total_prod = 0;
 //    public int subtotal = 0;
 //    public int total = 0;
 //    public Pedido() {
@@ -62,6 +64,7 @@ public class Pedido implements Serializable {
         this.año = año;
         this.estadoPago = estadoPago;
         this.estadoEntrega = estadoEntrega;
+        this.estadoListo = estadoListo;
         this.distribuidor = distribuidor;
         this.cant_vendida = cant_vendida;
         this.listaDetallePedido = new ArrayList<>();
@@ -75,6 +78,18 @@ public class Pedido implements Serializable {
 //    public void editarDetallePedido(Detalle_Pedido dp) {
 //        total = dp.
 //    }
+    int contador = 0;
+
+    public void devolverDetallePedido(int seleccionar) {
+
+        Detalle_Pedido detalle = this.listaDetallePedido.remove(seleccionar);
+        contador += 1;
+
+        total -= detalle.getPrecio();
+        cant_vendida = listaDetallePedido.size() - 1;
+
+        ///////////////////
+    }
 
     public int getTotal() {
         return total;
@@ -94,6 +109,22 @@ public class Pedido implements Serializable {
 
     public String getEstadoPago() {
         return estadoPago;
+    }
+
+    public EstadoListo getEstadoListo() {
+        return estadoListo;
+    }
+
+    public void setEstadoListo(EstadoListo estadoListo) {
+        this.estadoListo = estadoListo;
+    }
+
+    public int getContador() {
+        return contador;
+    }
+
+    public void setContador(int contador) {
+        this.contador = contador;
     }
 
     public void setEstadoPago(String estadoPago) {
@@ -165,6 +196,10 @@ public class Pedido implements Serializable {
         Detalle_Pedido dp = listaDetallePedido.remove(rowSel);
         total = (int) (total - dp.getPrecio());
 
+    }
+
+    public void eliminarDetallePedido() {
+        this.listaDetallePedido.removeAll(listaDetallePedido);
     }
 
     @Override

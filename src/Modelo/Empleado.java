@@ -51,7 +51,7 @@ public class Empleado implements Serializable {
 
     public Empleado(String cedula, String name, String contraseña, String direccion, long telefono, Rol rol, String ciudad) throws Exception {
 
-        if (cedula == null) {
+        if (cedula == null  ||  cedula.length() < 8 || "".equals(cedula.trim())) {
             throw new Exception("Debe ingresar el número de la cédula");
         }
         if (contraseña == null) {

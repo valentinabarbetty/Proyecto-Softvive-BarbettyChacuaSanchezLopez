@@ -565,15 +565,15 @@ public class EditarPedidoUI extends javax.swing.JInternalFrame {
 
                 Distribuidor distribuidor = new Distribuidor(nit, nombre, tel, correo, direccion, ciudad);
 
-                pedido = new Pedido(codigo, distribuidor);
+                pedido = new Pedido();
 //////////////// actualiza pedidos
-                controlPedidos.actualizarPedidos(pedido);
+                controlPedidos.actualizarPedido(pedido);
 
                 int cantidad = Integer.parseInt(cmpCantidadAComprar.getText());
 
                 Detalle_Pedido dp = new Detalle_Pedido(cantidad, plantaAComprar);
 ////////////// actualiza detalle pedido
-                controlDetallePedido.actualizarPedido(dp);
+                controlDetallePedido.actualizarDPedido(dp);
 
                 JOptionPane.showMessageDialog(rootPane, "El pedido se ha actualizado con éxito");
 
@@ -593,7 +593,7 @@ public class EditarPedidoUI extends javax.swing.JInternalFrame {
         @Override
         public void actionPerformed(ActionEvent ae) {
 
-            String codigo = cmpCodigoPedido.getText();
+            Long codigo = Long.parseLong(cmpCodigoPedido.getText());
 
             try {
 
@@ -701,13 +701,17 @@ public class EditarPedidoUI extends javax.swing.JInternalFrame {
 
             if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
 
-                int cantidad = (int) pedidoTable.getValueAt(pedidoTable.getSelectedRow(), 2);
-
-                plantaAComprar = null;
-
-                Detalle_Pedido detalle = new Detalle_Pedido(cantidad, plantaAComprar);
-
-                controlDetallePedido.actualizarPedido(detalle);
+                try {
+                    int cantidad = (int) pedidoTable.getValueAt(pedidoTable.getSelectedRow(), 2);
+                    
+                    plantaAComprar = null;
+                    
+                    Detalle_Pedido detalle = new Detalle_Pedido(cantidad, plantaAComprar);
+                    
+                    controlDetallePedido.actualizarDPedido(detalle);
+                } catch (Exception ex) {
+                    Logger.getLogger(EditarPedidoUI.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
             }
 

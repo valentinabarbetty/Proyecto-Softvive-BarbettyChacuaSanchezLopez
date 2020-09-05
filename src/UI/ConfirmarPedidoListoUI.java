@@ -52,7 +52,6 @@ public class ConfirmarPedidoListoUI extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         pedidoTable = new javax.swing.JTable();
         btnConfirmar = new javax.swing.JButton();
-        cmpDisponible = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         btnGuardar = new javax.swing.JButton();
@@ -95,10 +94,8 @@ public class ConfirmarPedidoListoUI extends javax.swing.JInternalFrame {
                         .addGap(34, 34, 34)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cmpBuscarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(181, 181, 181)
-                        .addComponent(cmpDisponible, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(cmpBuscarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -120,14 +117,12 @@ public class ConfirmarPedidoListoUI extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel5)
-                        .addComponent(cmpBuscarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(cmpDisponible, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(cmpBuscarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(btnConfirmar)
                 .addGap(59, 59, 59)
@@ -146,7 +141,6 @@ public class ConfirmarPedidoListoUI extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnConfirmar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JTextField cmpBuscarPedido;
-    private javax.swing.JLabel cmpDisponible;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
@@ -231,7 +225,7 @@ public class ConfirmarPedidoListoUI extends javax.swing.JInternalFrame {
                     planta = null;
                     pedido.setEstadoListo(EstadoListo.Pendiente);
                     detalle = new Detalle_Pedido(cantidad, planta);
-                    controlDetallePedido.actualizarPedido(detalle);
+                    controlDetallePedido.actualizarDPedido(detalle);
                     pedidoTable.updateUI();
                 } catch (Exception ex) {
                     Logger.getLogger(ConfirmarPedidoListoUI.class.getName()).log(Level.SEVERE, null, ex);

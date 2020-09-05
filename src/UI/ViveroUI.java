@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 
 public class ViveroUI extends javax.swing.JFrame {
@@ -247,7 +248,47 @@ public class ViveroUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem verPlantasm;
     private javax.swing.JMenuItem verSeguimim;
     // End of variables declaration//GEN-END:variables
-public class agregarEmpleadoListener implements ActionListener {
+      public JDesktopPane desktop() {
+        return this.desktop;
+    }
+
+    public void privilegioTrabajador() {
+
+        jmDistribuidores.setVisible(true);
+        verDistrim.setVisible(true);
+        agregarDistrim.setVisible(false);
+        jmPlantas.setVisible(true);
+        agregarPlantasm.setVisible(false);
+        jmInventario.setVisible(true);
+        jmSiembraSeguimiento.setVisible(true);
+        jmIngresos.setVisible(true);
+        jmRegistrarEmpleados.setVisible(false);
+//        jmpedidos.setVisible(true);
+//        Pedidos.setVisible(false);
+//        jmConfirmarPedido.setVisible(true);
+
+    }
+    /////////////////////////////7
+
+    public void privilegioTransportador() {
+
+        jmDistribuidores.setVisible(true);
+        verDistrim.setVisible(true);
+        agregarDistrim.setVisible(false);
+        jmPlantas.setVisible(false);
+        jmInventario.setVisible(false);
+        jmSiembraSeguimiento.setVisible(false);
+        jmIngresos.setVisible(false);
+        jmRegistrarEmpleados.setVisible(false);
+//        jmpedidos.setVisible(false);
+//        Pedidos.setVisible(false);
+//        jmConfirmarPedido.setVisible(false);
+
+    }
+    
+    
+    
+    public class agregarEmpleadoListener implements ActionListener {
 
         private CrearUsuarioUI crearUsuarioUI;
 
