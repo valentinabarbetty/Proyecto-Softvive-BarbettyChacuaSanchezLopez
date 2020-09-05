@@ -148,11 +148,9 @@ public class Login extends javax.swing.JFrame {
 
         @Override
         public void actionPerformed(ActionEvent ae) {
-
+            String cedula = cmpUsuario.getText();
+            String contraseña = new String(cmpContraseña.getPassword());
             try {
-
-                String cedula = cmpUsuario.getText();
-                String contraseña = new String(cmpContraseña.getPassword());
 
                 empleado = controlEmpleados.buscarEmpleado(cedula);
 

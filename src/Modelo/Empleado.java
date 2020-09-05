@@ -23,6 +23,8 @@ import javax.swing.JOptionPane;
     ,
     @NamedQuery(name = "Empleado.buscarEmpleadoConsulta", query = "SELECT e from Empleado e WHERE e.cedula = :cedula")
     ,
+    @NamedQuery(name = "Empleado.buscarRolConsulta", query = "SELECT e from Empleado e WHERE e.rol = :rol")
+    ,
     @NamedQuery(name = "Empleado.registroEmpleadoConsulta", query = "SELECT e from Empleado e WHERE e.cedula = :cedula AND e.contraseña = :contraseña")
 
 })

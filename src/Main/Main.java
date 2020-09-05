@@ -15,6 +15,7 @@ import Modelo.Pedido;
 import Modelo.Planta;
 import Modelo.TipoReproduccion;
 import Modelo.Vivero;
+import UI.Login;
 import UI.ViveroUI;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -55,16 +56,16 @@ public class Main {
                 try {
                     Vivero vivero = new Vivero("123678", "Bruzón", "calle 26");
 
-                    Empleado empleado1 = new Empleado("12345678", "Tony Stark", "12345678", "cra #1-2", 1622736, Rol.GERENTE_PROPIETARIO, "Palmira");
-                    Empleado empleado2 = new Empleado("22345678", "Elon Musk", "22345678", "cra # 3-12", 1672839, Rol.TRANSPORTISTA, "Cali");
-                    Empleado empleado3 = new Empleado("32345678", "Timothee Chalamet", "32345678", "cra #4-2", 2987624, Rol.TRABAJADOR, "Medellin");
+                    Empleado empleado1 = new Empleado("18588331", "Tony Stark", "11111111", "cra #1-2", 11622736, Rol.GERENTE_PROPIETARIO, "Palmira");
+                    Empleado empleado2 = new Empleado("12345678", "Elon Musk", "22222222", "cra # 3-12", 1672839, Rol.TRANSPORTISTA, "Cali");
+                    Empleado empleado3 = new Empleado("12345679", "Timothee Chalamet", "33333333", "cra #4-2", 2987624, Rol.TRABAJADOR, "Medellin");
 
-                    ControlEmpleados ce = new ControlEmpleados();
+//                    ControlEmpleados ce = new ControlEmpleados();
 //                    ce.agregarEmpleado(empleado1);
 //                    ce.agregarEmpleado(empleado2);
 //                    ce.agregarEmpleado(empleado3);
-
-                    new ViveroUI(vivero).setVisible(true);
+//                    new ViveroUI(vivero).setVisible(true);
+                    new Login(vivero).setVisible(true);
 
                 } catch (Exception ex) {
                     Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
