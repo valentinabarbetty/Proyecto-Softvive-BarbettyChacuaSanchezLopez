@@ -52,4 +52,7 @@ public class ControlEmpleados {
         throw new Exception("Empleado no encontrado");
     }
 
+    public void actualizarEmpleado(Empleado empleado) throws Exception {
+        empleadoDAO.edit(empleado);
+    }
 }

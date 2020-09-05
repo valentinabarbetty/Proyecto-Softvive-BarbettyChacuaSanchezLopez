@@ -115,7 +115,7 @@ public class UsuariosSeeUI extends javax.swing.JInternalFrame {
         public int getRowCount() {
             //return curso.getListaCupos().size();
 
-            return controlEmpleados.getListaPlantas().size();
+            return controlEmpleados.getListaEmpleados().size();
         }
 
         @Override

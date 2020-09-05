@@ -534,7 +534,7 @@ public class EditarPedidoUI extends javax.swing.JInternalFrame {
 
             int seleccionar = pedidoTable.getSelectedRowCount();
             pedido.devolverDetallePedido(seleccionar);
-
+            
             cmpPlantasCompradas.setText(Integer.toString(pedido.getCant_vendida()));
             cmpCostoTotalPlantas.setText(Integer.toString(pedido.getTotal()));
 

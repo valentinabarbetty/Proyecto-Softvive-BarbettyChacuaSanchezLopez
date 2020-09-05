@@ -311,14 +311,14 @@ public class UsuariosEditUI extends javax.swing.JInternalFrame {
             String nombre = empleado.getName();
             String contraseña = empleado.getContraseña();
             String direccion = empleado.getDireccion();
-            String telefono = empleado.getTelefono();
+            long telefono = empleado.getTelefono();
             Rol rol = empleado.getRol();
             String ciudad = empleado.getCiudad();
             cedula.setText(cedu);
             nomU.setText(nombre);
             contraseñaU.setText(contraseña);
             direccionU.setText(direccion);
-            telefonoU.setText(telefono);
+            telefonoU.setText(Long.toString(telefono));
             ciudadU.setText(ciudad);
             boxrol.setSelectedItem(rol);
 
@@ -335,7 +335,7 @@ public class UsuariosEditUI extends javax.swing.JInternalFrame {
                 Rol rol = (Rol) boxrol.getSelectedItem();
                 String contraseña = contraseñaU.getText();
                 String direccion = direccionU.getText();
-                String telefono = telefonoU.getText();
+                long telefono = Long.parseLong(telefonoU.getText());
                 String ciudad = ciudadU.getText();
 
                 empleado = (Empleado) boxEmpleados.getSelectedItem();
