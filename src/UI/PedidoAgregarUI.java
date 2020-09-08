@@ -16,6 +16,8 @@ import Modelo.Pedido;
 import Modelo.Planta;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.time.LocalTime;
 import java.time.Month;
 import java.time.Year;
@@ -58,7 +60,7 @@ public class PedidoAgregarUI extends javax.swing.JInternalFrame {
         this.distrijC.setModel(new DistribuidoresListener());
         this.mesjC.setModel(new MesModel());
         this.distrijC.addActionListener(new BuscarDistribuidorListener());
-        this.diajC.setModel(new Dia30Model());
+        this.diajC.setModel(new Dia31Model());
         this.añojC.setModel(new AñoModel());
         this.distrijC.addActionListener(new BuscarDistribuidorListener());
         this.agregarDP.addActionListener(new AgregarDetallePedidoListener());
@@ -67,6 +69,9 @@ public class PedidoAgregarUI extends javax.swing.JInternalFrame {
         this.cancelarbtn.addActionListener(new CancelarListener());
         this.devolverDPbtn.addActionListener(new DevolverListener());
         this.actdp.addActionListener(new EditarDPListener());
+        this.close.addMouseListener(new clickCerrarListener());
+        this.close1.addMouseListener(new clickCerrarListener());
+        setLocation(0, -32);
         //this.mesjC.addActionListener(new DiaListener());
 
     }
@@ -83,7 +88,6 @@ public class PedidoAgregarUI extends javax.swing.JInternalFrame {
         distrijC = new javax.swing.JComboBox();
         agregarbtn = new javax.swing.JButton();
         cancelarbtn = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -117,8 +121,14 @@ public class PedidoAgregarUI extends javax.swing.JInternalFrame {
         agregarDP = new javax.swing.JButton();
         devolverDPbtn = new javax.swing.JButton();
         actdp = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        close = new javax.swing.JLabel();
+        close1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setBorder(null);
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
 
@@ -134,10 +144,6 @@ public class PedidoAgregarUI extends javax.swing.JInternalFrame {
         cancelarbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/buttonCancel.png"))); // NOI18N
         cancelarbtn.setBorderPainted(false);
         cancelarbtn.setContentAreaFilled(false);
-
-        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel6.setText("Agregar Nuevo Pedido");
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel3.setText("Pedido No°");
@@ -233,7 +239,6 @@ public class PedidoAgregarUI extends javax.swing.JInternalFrame {
         añojC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         cantjT.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        cantjT.setBorder(null);
         cantjT.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         cantjT.setSelectionColor(new java.awt.Color(133, 198, 90));
         cantjT.addActionListener(new java.awt.event.ActionListener() {
@@ -257,6 +262,46 @@ public class PedidoAgregarUI extends javax.swing.JInternalFrame {
         actdp.setBorderPainted(false);
         actdp.setContentAreaFilled(false);
 
+        jPanel2.setBackground(new java.awt.Color(108, 169, 62));
+
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/plus (2).png"))); // NOI18N
+
+        jLabel21.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel21.setText("Añadir Nuevo Pedido");
+
+        close.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/close.png"))); // NOI18N
+
+        close1.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        close1.setForeground(new java.awt.Color(255, 255, 255));
+        close1.setText("Cerrar");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel20)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel21)
+                .addGap(231, 231, 231)
+                .addComponent(close)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(close1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(close, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                    .addComponent(close1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -275,28 +320,22 @@ public class PedidoAgregarUI extends javax.swing.JInternalFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(jLabel6))
+                                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(NomDT, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(NomDT, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(DirT, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(ciudadT, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(NITT, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(25, 25, 25)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(DirT, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ciudadT, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(NITT, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(32, 32, 32))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(189, 189, 189)
                                 .addComponent(cancelarbtn)
@@ -321,7 +360,7 @@ public class PedidoAgregarUI extends javax.swing.JInternalFrame {
                                         .addComponent(jLabel16)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(diajC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 19, Short.MAX_VALUE)))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -339,14 +378,9 @@ public class PedidoAgregarUI extends javax.swing.JInternalFrame {
                                         .addComponent(emailT, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(77, 77, 77))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(pedidoT, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
+                                .addGap(23, 23, 23)
                                 .addComponent(jLabel5)
                                 .addGap(18, 18, 18)
                                 .addComponent(plantajC, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -355,7 +389,11 @@ public class PedidoAgregarUI extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cantjT, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(53, 53, 53)
-                                .addComponent(agregarDP, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(agregarDP, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(18, 18, 18)
+                                .addComponent(pedidoT, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -365,14 +403,14 @@ public class PedidoAgregarUI extends javax.swing.JInternalFrame {
                                 .addComponent(actdp, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 856, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jLabel6)
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(pedidoT, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -395,19 +433,16 @@ public class PedidoAgregarUI extends javax.swing.JInternalFrame {
                     .addComponent(DirT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ciudadT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(añojC, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(mesjC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(diajC, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(añojC, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(mesjC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(diajC, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -416,7 +451,7 @@ public class PedidoAgregarUI extends javax.swing.JInternalFrame {
                         .addComponent(jLabel5)
                         .addComponent(cantjT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(agregarDP))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -454,6 +489,8 @@ public class PedidoAgregarUI extends javax.swing.JInternalFrame {
     private javax.swing.JButton cancelarbtn;
     private javax.swing.JTextField cantjT;
     private javax.swing.JLabel ciudadT;
+    private javax.swing.JLabel close;
+    private javax.swing.JLabel close1;
     private javax.swing.JButton devolverDPbtn;
     private javax.swing.JComboBox<String> diajC;
     private javax.swing.JComboBox distrijC;
@@ -467,13 +504,15 @@ public class PedidoAgregarUI extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<String> mesjC;
     private javax.swing.JLabel pedidoT;
@@ -718,289 +757,6 @@ public class PedidoAgregarUI extends javax.swing.JInternalFrame {
 
     }
 
-    public class Dia30Model implements ComboBoxModel {
-
-        private Object selected = null;
-
-        @Override
-        public void setSelectedItem(Object anItem) {
-            this.selected = anItem;
-        }
-
-        @Override
-        public Object getSelectedItem() {
-            return this.selected;
-        }
-
-        @Override
-        public int getSize() {
-            return 31;
-        }
-
-        @Override
-        public Object getElementAt(int i) {
-            switch (i) {
-                case 1:
-                    return 1;
-                case 2:
-                    return 2;
-                case 3:
-                    return 3;
-                case 4:
-                    return 4;
-                case 5:
-                    return 5;
-                case 6:
-                    return 6;
-                case 7:
-                    return 7;
-                case 8:
-                    return 8;
-                case 9:
-                    return 9;
-                case 10:
-                    return 10;
-                case 11:
-                    return 11;
-                case 12:
-                    return 12;
-                case 13:
-                    return 13;
-                case 14:
-                    return 14;
-                case 15:
-                    return 15;
-                case 16:
-                    return 16;
-                case 17:
-                    return 17;
-                case 18:
-                    return 18;
-                case 19:
-                    return 19;
-                case 20:
-                    return 20;
-                case 21:
-                    return 21;
-                case 22:
-                    return 22;
-                case 23:
-                    return 23;
-                case 24:
-                    return 24;
-                case 25:
-                    return 25;
-                case 26:
-                    return 26;
-                case 27:
-                    return 27;
-                case 28:
-                    return 28;
-                case 29:
-                    return 29;
-                case 30:
-                    return 30;
-
-            }
-            return "";
-        }
-
-        @Override
-        public void addListDataListener(ListDataListener l) {
-        }
-
-        @Override
-        public void removeListDataListener(ListDataListener l) {
-        }
-
-    }
-
-    public class Dia29Model implements ComboBoxModel {
-
-        private Object selected = null;
-
-        @Override
-        public void setSelectedItem(Object anItem) {
-            this.selected = anItem;
-        }
-
-        @Override
-        public Object getSelectedItem() {
-            return this.selected;
-        }
-
-        @Override
-        public int getSize() {
-            return 31;
-        }
-
-        @Override
-        public Object getElementAt(int i) {
-            switch (i) {
-                case 1:
-                    return 1;
-                case 2:
-                    return 2;
-                case 3:
-                    return 3;
-                case 4:
-                    return 4;
-                case 5:
-                    return 5;
-                case 6:
-                    return 6;
-                case 7:
-                    return 7;
-                case 8:
-                    return 8;
-                case 9:
-                    return 9;
-                case 10:
-                    return 10;
-                case 11:
-                    return 11;
-                case 12:
-                    return 12;
-                case 13:
-                    return 13;
-                case 14:
-                    return 14;
-                case 15:
-                    return 15;
-                case 16:
-                    return 16;
-                case 17:
-                    return 17;
-                case 18:
-                    return 18;
-                case 19:
-                    return 19;
-                case 20:
-                    return 20;
-                case 21:
-                    return 21;
-                case 22:
-                    return 22;
-                case 23:
-                    return 23;
-                case 24:
-                    return 24;
-                case 25:
-                    return 25;
-                case 26:
-                    return 26;
-                case 27:
-                    return 27;
-                case 28:
-                    return 28;
-                case 29:
-                    return 29;
-            }
-            return "";
-        }
-
-        @Override
-        public void addListDataListener(ListDataListener l) {
-        }
-
-        @Override
-        public void removeListDataListener(ListDataListener l) {
-        }
-
-    }
-
-    public class Dia28Model implements ComboBoxModel {
-
-        private Object selected = null;
-
-        @Override
-        public void setSelectedItem(Object anItem) {
-            this.selected = anItem;
-        }
-
-        @Override
-        public Object getSelectedItem() {
-            return this.selected;
-        }
-
-        @Override
-        public int getSize() {
-            return 31;
-        }
-
-        @Override
-        public Object getElementAt(int i) {
-            switch (i) {
-                case 1:
-                    return 1;
-                case 2:
-                    return 2;
-                case 3:
-                    return 3;
-                case 4:
-                    return 4;
-                case 5:
-                    return 5;
-                case 6:
-                    return 6;
-                case 7:
-                    return 7;
-                case 8:
-                    return 8;
-                case 9:
-                    return 9;
-                case 10:
-                    return 10;
-                case 11:
-                    return 11;
-                case 12:
-                    return 12;
-                case 13:
-                    return 13;
-                case 14:
-                    return 14;
-                case 15:
-                    return 15;
-                case 16:
-                    return 16;
-                case 17:
-                    return 17;
-                case 18:
-                    return 18;
-                case 19:
-                    return 19;
-                case 20:
-                    return 20;
-                case 21:
-                    return 21;
-                case 22:
-                    return 22;
-                case 23:
-                    return 23;
-                case 24:
-                    return 24;
-                case 25:
-                    return 25;
-                case 26:
-                    return 26;
-                case 27:
-                    return 27;
-                case 28:
-                    return 28;
-            }
-            return "";
-        }
-
-        @Override
-        public void addListDataListener(ListDataListener l) {
-        }
-
-        @Override
-        public void removeListDataListener(ListDataListener l) {
-        }
-
-    }
-
     public class AñoModel implements ComboBoxModel {
 
         private Object selected = null;
@@ -1079,25 +835,6 @@ public class PedidoAgregarUI extends javax.swing.JInternalFrame {
         }
 
     }
-//
-//    public class DiaListener implements ActionListener {
-//
-//        @Override
-//        public void actionPerformed(ActionEvent e) {
-//            if ((mesjC.getSelectedItem().equals(Month.APRIL)) || (mesjC.getSelectedItem().equals(Month.JUNE)) || (mesjC.getSelectedItem().equals(Month.SEPTEMBER))
-//                    || (mesjC.getSelectedItem().equals(Month.NOVEMBER))) {
-//                diajC.setModel(new Dia30Model());
-//            }
-//            if (mesjC.getSelectedItem().equals(Month.FEBRUARY)) {
-//                diajC.setModel(new Dia29Model());
-//            }
-//            if (mesjC.getSelectedItem().equals(Month.JANUARY) || mesjC.getSelectedItem().equals(Month.MARCH) || mesjC.getSelectedItem().equals(Month.MAY) || mesjC.getSelectedItem().equals(Month.JULY)
-//                    || mesjC.getSelectedItem().equals(Month.AUGUST)
-//                    || mesjC.getSelectedItem().equals(Month.OCTOBER) || mesjC.getSelectedItem().equals(Month.DECEMBER)) {
-//                diajC.setModel(new Dia31Model());
-//            }
-//        }
-//    }
 
     public class AgregarDetallePedidoListener implements ActionListener {
 
@@ -1247,8 +984,9 @@ public class PedidoAgregarUI extends javax.swing.JInternalFrame {
                 totT.setText(Integer.toString(totAntes - (cantAntes * d.getPlanta().getValor_unitario()) + (d.getPlanta().getValor_unitario() * Integer.parseInt(cantjT.getText()))));
                 d.setCantidad(Integer.parseInt(cantjT.getText()));
                 d.setPrecio(d.getPlanta().getValor_unitario() * Integer.parseInt(cantjT.getText()));
-                
+                pedido.setTotal(d.getPlanta().getValor_unitario() * Integer.parseInt(cantjT.getText()));
                 controlDetallePedido.actualizarDPedido(d);
+                //controlPedidos.actualizarPedido(pedido);
                 TablePedidos.updateUI();
             } catch (Exception ex) {
                 Logger.getLogger(PedidoAgregarUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -1284,6 +1022,37 @@ public class PedidoAgregarUI extends javax.swing.JInternalFrame {
                 TablePedidos.updateUI();
 
             }
+        }
+
+    }
+
+    public class clickCerrarListener implements MouseListener {
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+
+            setVisible(false);
+
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+
         }
 
     }

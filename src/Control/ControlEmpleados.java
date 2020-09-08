@@ -37,7 +37,7 @@ public class ControlEmpleados {
         return empleadoDAO.findEmpleadoEntities();
     }
 
-    public boolean AccesoEmpleado(String cedula, String contraseña) throws Exception {
+    public boolean AccesoEmpleado(long cedula, String contraseña) throws Exception {
         return empleadoDAO.registroEmpleadoConsulta(cedula, contraseña);
     }
 
@@ -45,7 +45,7 @@ public class ControlEmpleados {
         return empleadoDAO.buscarContraseñaConsulta(contraseña);
     }
 
-    public Empleado buscarEmpleado(String cedula) throws Exception {
+    public Empleado buscarEmpleado(long cedula) throws Exception {
         if (empleadoDAO.buscarEmpleadoConsulta(cedula) != null) {
             return empleadoDAO.buscarEmpleadoConsulta(cedula);
         }
@@ -55,4 +55,5 @@ public class ControlEmpleados {
     public void actualizarEmpleado(Empleado empleado) throws Exception {
         empleadoDAO.edit(empleado);
     }
+
 }

@@ -34,9 +34,9 @@ public class Empleado implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long pk;
-    private String cedula;
+    private long cedula;
     @Column(nullable = false)
-    private String name;
+    private String nombre;
     @Column(nullable = false)
     private String contraseña;
     @Column(nullable = false)
@@ -51,16 +51,16 @@ public class Empleado implements Serializable {
     public Empleado() {
     }
 
-    public Empleado(String cedula, String name, String contraseña, String direccion, long telefono, Rol rol, String ciudad) throws Exception {
+    public Empleado(long cedula, String nombre, String contraseña, String direccion, long telefono, Rol rol, String ciudad) throws Exception {
 
-        if (cedula == null  ||  cedula.length() < 8 || "".equals(cedula.trim())) {
+        if (Long.toString(cedula).equals(null)) {
             throw new Exception("Debe ingresar el número de la cédula");
         }
         if (contraseña == null) {
             throw new Exception("Debe ingresar contraseña");
         }
         this.cedula = cedula;
-        this.name = name;
+        this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
         this.rol = rol;
@@ -68,20 +68,20 @@ public class Empleado implements Serializable {
         this.contraseña = contraseña;
     }
 
-    public String getCedula() {
+    public long getCedula() {
         return cedula;
     }
 
-    public void setCedula(String cedula) {
+    public void setCedula(long cedula) {
         this.cedula = cedula;
     }
 
-    public String getName() {
-        return name;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getDireccion() {
@@ -99,7 +99,6 @@ public class Empleado implements Serializable {
     public void setTelefono(long telefono) {
         this.telefono = telefono;
     }
-
 
     public Rol getRol() {
         return rol;
@@ -164,7 +163,7 @@ public class Empleado implements Serializable {
 
     @Override
     public String toString() {
-        return " cedula =" + cedula + ", name =" + name + ", contrase\u00f1a =" + contraseña + ", direccion=" + direccion + ", telefono=" + telefono + ", rol=" + rol + ", ciudad=" + ciudad + '}';
+        return "ID: " + cedula + " " + "Nombre: " + nombre;
     }
 
 }

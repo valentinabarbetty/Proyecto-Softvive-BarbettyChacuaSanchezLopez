@@ -5,18 +5,18 @@
     <class>Modelo.Detalle_Gasto</class>
     <class>Modelo.Detalle_Pedido</class>
     <class>Modelo.Distribuidor</class>
-    <class>Modelo.Empleado</class>
     <class>Modelo.Ingreso</class>
     <class>Modelo.Insumo</class>
     <class>Modelo.Pedido</class>
     <class>Modelo.Planta</class>
     <class>Modelo.Seguimiento</class>
     <class>Modelo.Siembra</class>
+    <class>Modelo.Empleado</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/VBBD"/>
-      <property name="javax.persistence.jdbc.user" value="VBBD"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/viveroSB"/>
+      <property name="javax.persistence.jdbc.user" value="viveroSB"/>
       <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
-      <property name="javax.persistence.jdbc.password" value="VBBD"/>
+      <property name="javax.persistence.jdbc.password" value="viveroSB"/>
       <property name="javax.persistence.schema-generation.database.action" value="create"/>
     </properties>
   </persistence-unit>

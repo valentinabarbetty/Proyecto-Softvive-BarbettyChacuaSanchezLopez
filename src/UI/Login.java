@@ -5,7 +5,7 @@ import Modelo.Detalle_Pedido;
 import Modelo.Empleado;
 import Modelo.Vivero;
 import Modelo.Rol;
-import UI.ViveroUI;
+import UI.ViveroGerenteUI;
 import UI.PerfilEmpleadosUI;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,6 +14,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import javax.swing.JTextField;
@@ -23,9 +24,12 @@ public class Login extends javax.swing.JFrame {
 
     private Vivero vivero;
 
-    private ViveroUI viveroUI;
+    private ViveroGerenteUI viveroGerenteUI;
+    private ViveroTrabajadorUI viveroTrabajadorUI;
+    private ViveroTransportadorUI viveroTransportadorUI;
     private Empleado empleado;
     private Rol rol;
+    private PlantasUI plantasUI;
 
     private ControlEmpleados controlEmpleados;
 
@@ -35,7 +39,10 @@ public class Login extends javax.swing.JFrame {
         this.vivero = vivero;
         this.empleado = empleado;
         this.rol = rol;
-        this.viveroUI = viveroUI;
+        this.viveroGerenteUI = new ViveroGerenteUI(vivero);
+        this.viveroTrabajadorUI = new ViveroTrabajadorUI(vivero);
+        this.viveroTransportadorUI = new ViveroTransportadorUI(vivero);
+        this.plantasUI = new PlantasUI();
 
         this.setResizable(false);
         this.setLocationRelativeTo(null);
@@ -43,22 +50,31 @@ public class Login extends javax.swing.JFrame {
         this.controlEmpleados = new ControlEmpleados();
 
         btnAcceder.addActionListener(new LoginEmpleadosGeneral());
-
+        cmpContraseña.addActionListener(new LoginEmpleadosGeneral());
+        TextPrompt cedula = new TextPrompt("Cédula", cmpUsuario);
+        TextPrompt contraseña = new TextPrompt("Contraseña", cmpContraseña);
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnAcceder1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        banner = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
         cmpUsuario = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
         cmpContraseña = new javax.swing.JPasswordField();
+        banner = new javax.swing.JLabel();
         btnAcceder = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+
+        btnAcceder1.setBackground(new java.awt.Color(255, 255, 255));
+        btnAcceder1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/acceder.png"))); // NOI18N
+        btnAcceder1.setBorder(null);
+        btnAcceder1.setBorderPainted(false);
+        btnAcceder1.setContentAreaFilled(false);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
@@ -66,51 +82,81 @@ public class Login extends javax.swing.JFrame {
 
         jPanel1.setLayout(null);
 
-        banner.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
-        banner.setText("Acceda al Jardín Vivero Bruzón");
-        jPanel1.add(banner);
-        banner.setBounds(290, 240, 264, 46);
-        jPanel1.add(cmpUsuario);
-        cmpUsuario.setBounds(230, 330, 373, 29);
-        jPanel1.add(cmpContraseña);
-        cmpContraseña.setBounds(230, 410, 373, 32);
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        btnAcceder.setText("Acceder");
-        jPanel1.add(btnAcceder);
-        btnAcceder.setBounds(350, 460, 140, 40);
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/userlogin_1.png"))); // NOI18N
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel1.setText("Nombre de usuario");
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(230, 300, 140, 15);
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/password_1.jpg"))); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel2.setText("Contraseña");
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(230, 380, 130, 15);
+        banner.setFont(new java.awt.Font("Trebuchet MS", 1, 36)); // NOI18N
+        banner.setText("Login");
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/verde.jpg"))); // NOI18N
-        jPanel1.add(jLabel4);
-        jLabel4.setBounds(210, 220, 430, 290);
+        btnAcceder.setBackground(new java.awt.Color(255, 255, 255));
+        btnAcceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/acceder.png"))); // NOI18N
+        btnAcceder.setBorder(null);
+        btnAcceder.setBorderPainted(false);
+        btnAcceder.setContentAreaFilled(false);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(banner, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cmpUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cmpContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(173, 173, 173)
+                        .addComponent(btnAcceder)))
+                .addContainerGap(71, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(banner, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(cmpUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cmpContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addGap(26, 26, 26)
+                .addComponent(btnAcceder)
+                .addContainerGap())
+        );
+
+        jPanel1.add(jPanel2);
+        jPanel2.setBounds(180, 230, 460, 260);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/viveroFondoLogin.jpeg"))); // NOI18N
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(-4, -30, 690, 580);
+        jLabel3.setBounds(0, 0, 690, 550);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 684, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 685, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 552, Short.MAX_VALUE)
         );
 
         pack();
@@ -119,17 +165,18 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel banner;
     private javax.swing.JButton btnAcceder;
+    private javax.swing.JButton btnAcceder1;
     private javax.swing.JPasswordField cmpContraseña;
     private javax.swing.JTextField cmpUsuario;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 
-    public String getCedula() {
-        return cmpUsuario.getText();
+    public long getCedula() {
+        return Long.parseLong(cmpUsuario.getText());
     }
 
     public String getContraseña() {
@@ -140,75 +187,98 @@ public class Login extends javax.swing.JFrame {
         return this.cmpUsuario;
     }
 
-    /////////////////////////////////////////////////////////////////////////////
     public class LoginEmpleadosGeneral implements ActionListener {
+//
+//        private ViveroTrabajadorUI viveroTrabajadorUI;
+//        private ViveroTransportadorUI viveroTransportadorUI;
+//        private ViveroGerenteUI viveroGerenteUI;
 
-        private ViveroUI viveroUI;
         private PerfilEmpleadosUI perfilUI;
 
         @Override
         public void actionPerformed(ActionEvent ae) {
-            String cedula = cmpUsuario.getText();
+            long cedula = Long.parseLong(cmpUsuario.getText());
             String contraseña = new String(cmpContraseña.getPassword());
             try {
 
                 empleado = controlEmpleados.buscarEmpleado(cedula);
 
-                if (controlEmpleados.AccesoEmpleado(cedula, contraseña) == true) {
+                if ((controlEmpleados.AccesoEmpleado(cedula, contraseña) == true) && (empleado.getRol().equals(Rol.TRABAJADOR))) {
 
 //                    JOptionPane.showMessageDialog(rootPane, " Sesión iniciada ");
                     try {
 
-                        if (viveroUI == null) {
+                        if (viveroTrabajadorUI == null) {
 
-                            viveroUI = new ViveroUI(vivero);
+                            viveroTrabajadorUI = new ViveroTrabajadorUI(vivero);
                         }
 
-                        viveroUI.setVisible(true);
+                        viveroTrabajadorUI.setVisible(true);
+                        viveroTrabajadorUI.setVisible(true);
+                        viveroTrabajadorUI.setBienvenido("Bienvenido" + " " + empleado.getNombre());
 
                         dispose();
-
                     } catch (Exception ex) {
 
                         JOptionPane.showMessageDialog(rootPane, "Error : El usuario o contraseña es incorrecto " + ex);
                         Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
                     }
 
-                    try {
-
-                        if (empleado.getRol().equals(rol.TRABAJADOR)) {
-
-                            viveroUI.privilegioTrabajador();
-
-                        }
-                        if (empleado.getRol().equals(rol.TRANSPORTISTA)) {
-
-                            viveroUI.privilegioTransportador();
-
-                        }
-
-                    } catch (Exception ex) {
-                        Logger.getLogger(ViveroUI.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-
+//                    try {
+//
+//                        if (empleado.getRol().equals(rol.TRABAJADOR)) {
+//
+//                            //viveroTransportadorUI.privilegioTrabajador();
+//
+//                        }
+//                        if (empleado.getRol().equals(rol.TRANSPORTISTA)) {
+//
+//                           // viveroTransportadorUI.privilegioTransportador();
+//
+//                        }
+//
+//                    } catch (Exception ex) {
+//                        Logger.getLogger(ViveroGerenteUI.class.getName()).log(Level.SEVERE, null, ex);
+//                    }
                     if (perfilUI == null) {
 
                         try {
                             perfilUI = new PerfilEmpleadosUI(controlEmpleados.buscarEmpleado(cedula));
-                            viveroUI.desktop().add(perfilUI);
+                            viveroTransportadorUI.desktop().add(perfilUI);
 
                             perfilUI.setVisible(true);
 
                         } catch (Exception ex) {
                             JOptionPane.showMessageDialog(rootPane, " - Error : No estás pasando nada de informacion");
-                            Logger.getLogger(ViveroUI.class.getName()).log(Level.SEVERE, null, ex);
+                            Logger.getLogger(ViveroGerenteUI.class.getName()).log(Level.SEVERE, null, ex);
                         }
 
                     }
 
                     //////////////////////////////////////////////////////////////////////////////////////////////////777         
                 }
+                if ((controlEmpleados.AccesoEmpleado(cedula, contraseña) == true) && (empleado.getRol().equals(Rol.TRANSPORTISTA))) {
 
+                    if (viveroTransportadorUI == null) {
+
+                        viveroTransportadorUI = new ViveroTransportadorUI(vivero);
+                    }
+
+                    viveroTransportadorUI.setVisible(true);
+                    viveroTransportadorUI.setBienvenido("Bienvenido" + " " + empleado.getNombre());
+                    dispose();
+                }
+                if ((controlEmpleados.AccesoEmpleado(cedula, contraseña) == true) && (empleado.getRol().equals(Rol.GERENTE_PROPIETARIO))) {
+
+                    if (viveroGerenteUI == null) {
+
+                        viveroGerenteUI = new ViveroGerenteUI(vivero);
+                    }
+
+                    viveroGerenteUI.setVisible(true);
+                    viveroGerenteUI.setBienvenido("Bienvenido" + " " + empleado.getNombre());
+                    dispose();
+                }
             } catch (Exception ex) {
 
                 JOptionPane.showMessageDialog(rootPane, "El usuario o contraseña son incorrectos " + ex);

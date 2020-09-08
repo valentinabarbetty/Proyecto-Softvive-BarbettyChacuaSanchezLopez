@@ -6,14 +6,27 @@
 package UI;
 
 import Control.ControlPlantas;
-import Modelo.Detalle_Gasto;
 import Modelo.Planta;
 import Modelo.TipoReproduccion;
 import Resources.fondoDesktop;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Insets;
+import java.awt.RenderingHints;
+import java.awt.Shape;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.geom.Area;
+import java.awt.geom.Rectangle2D;
+import java.awt.geom.RoundRectangle2D;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.border.AbstractBorder;
 
 /**
  *
@@ -30,14 +43,18 @@ public class PlantasAñadirUI extends javax.swing.JInternalFrame {
         controlPlantas = new ControlPlantas();
 
         addbtn.addActionListener(new agregarPlantaListener());
-        TextPrompt nombre = new TextPrompt("Nombre", nombrejT);
-        TextPrompt codigo = new TextPrompt("Código", codigojT);
-        TextPrompt tGerminacion = new TextPrompt("Tiempo de Germinación", tGermjT);
-        TextPrompt tCrecimiento = new TextPrompt("Tiempo de Crecimiento", tCrecjT);
-        TextPrompt cantidad = new TextPrompt("cantidad", cmpCantidad);
-        TextPrompt precio = new TextPrompt("Precio", preciojT);
+        TextPrompt nombre = new TextPrompt("Ingrese un nombre", nombrejT);
+        TextPrompt codigo = new TextPrompt("Ingrese un código", codigojT);
+        TextPrompt tGerminacion = new TextPrompt("Ingrese el Tiempo de Germinación", tGermjT);
+        TextPrompt tCrecimiento = new TextPrompt("Ingrese el Tiempo de Crecimiento", tCrecjT);
+        TextPrompt precio = new TextPrompt("Ingrese el precio", preciojT);
         controlPlantas = new ControlPlantas();
-        cancelarbtn.addActionListener(new borrarListener());
+        this.close.addMouseListener(new clickCerrarListener());
+        this.close1.addMouseListener(new clickCerrarListener());
+        setLocation(0, -32);
+
+//        agregarbtn.addActionListener(new PlantasUI.agregarPlantaListener());
+        cancelbtn.addActionListener(new borrarListener());
     }
 
     /**
@@ -49,54 +66,33 @@ public class PlantasAñadirUI extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        codigojT = new javax.swing.JTextField();
         nombrejT = new javax.swing.JTextField();
         tGermjT = new javax.swing.JTextField();
-        tReprodjC = new javax.swing.JComboBox(TipoReproduccion.values());
-        ;
-        preciojT = new javax.swing.JTextField();
-        addbtn = new javax.swing.JButton();
-        cancelarbtn = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
-        tCrecjT = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        cmpCantidad = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        tCrecjT = new javax.swing.JTextField();
+        addbtn = new javax.swing.JButton();
+        preciojT = new javax.swing.JTextField();
+        tReprodjC = new javax.swing.JComboBox(TipoReproduccion.values());
+        ;
+        cancelbtn = new javax.swing.JButton();
+        codigojT = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        close = new javax.swing.JLabel();
+        close1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(null);
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/bar.png"))); // NOI18N
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/bar.png"))); // NOI18N
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/bar.png"))); // NOI18N
-
-        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel6.setText("Añadir Nueva Planta");
-
-        codigojT.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        codigojT.setBorder(null);
-        codigojT.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        codigojT.setSelectionColor(new java.awt.Color(133, 198, 90));
-        codigojT.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                codigojTActionPerformed(evt);
-            }
-        });
-
         nombrejT.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        nombrejT.setBorder(null);
         nombrejT.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         nombrejT.setSelectionColor(new java.awt.Color(133, 198, 90));
         nombrejT.addActionListener(new java.awt.event.ActionListener() {
@@ -106,7 +102,6 @@ public class PlantasAñadirUI extends javax.swing.JInternalFrame {
         });
 
         tGermjT.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        tGermjT.setBorder(null);
         tGermjT.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         tGermjT.setSelectionColor(new java.awt.Color(133, 198, 90));
         tGermjT.addActionListener(new java.awt.event.ActionListener() {
@@ -115,17 +110,36 @@ public class PlantasAñadirUI extends javax.swing.JInternalFrame {
             }
         });
 
-        tReprodjC.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        tReprodjC.setForeground(new java.awt.Color(255, 255, 255));
-        tReprodjC.setBorder(null);
+        jLabel12.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel12.setText("Precio:");
 
-        preciojT.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        preciojT.setBorder(null);
-        preciojT.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        preciojT.setSelectionColor(new java.awt.Color(133, 198, 90));
-        preciojT.addActionListener(new java.awt.event.ActionListener() {
+        jLabel11.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel11.setText("Tiempo de crecimiento:");
+
+        jLabel10.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel10.setText("TIpo de reproducción:");
+
+        jLabel9.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel9.setText("Tiempo de germinación:");
+
+        jLabel8.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel8.setText("Nombre:");
+
+        jLabel7.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel7.setText("Código:");
+
+        tCrecjT.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        tCrecjT.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        tCrecjT.setSelectionColor(new java.awt.Color(133, 198, 90));
+        tCrecjT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                preciojTActionPerformed(evt);
+                tCrecjTActionPerformed(evt);
             }
         });
 
@@ -135,125 +149,146 @@ public class PlantasAñadirUI extends javax.swing.JInternalFrame {
         addbtn.setBorderPainted(false);
         addbtn.setContentAreaFilled(false);
 
-        cancelarbtn.setBackground(new java.awt.Color(255, 255, 255));
-        cancelarbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/buttonCancel.png"))); // NOI18N
-        cancelarbtn.setBorder(null);
-        cancelarbtn.setBorderPainted(false);
-        cancelarbtn.setContentAreaFilled(false);
-
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/bar.png"))); // NOI18N
-
-        tCrecjT.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        tCrecjT.setBorder(null);
-        tCrecjT.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        tCrecjT.setSelectionColor(new java.awt.Color(133, 198, 90));
-        tCrecjT.addActionListener(new java.awt.event.ActionListener() {
+        preciojT.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        preciojT.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        preciojT.setSelectionColor(new java.awt.Color(133, 198, 90));
+        preciojT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tCrecjTActionPerformed(evt);
+                preciojTActionPerformed(evt);
             }
         });
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/bar.png"))); // NOI18N
+        tReprodjC.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        tReprodjC.setForeground(new java.awt.Color(102, 102, 102));
+        tReprodjC.setBorder(null);
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/bar.png"))); // NOI18N
+        cancelbtn.setBackground(new java.awt.Color(255, 255, 255));
+        cancelbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/buttonCancel.png"))); // NOI18N
+        cancelbtn.setBorder(null);
+        cancelbtn.setBorderPainted(false);
+        cancelbtn.setContentAreaFilled(false);
 
-        cmpCantidad.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        cmpCantidad.setBorder(null);
-        cmpCantidad.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        cmpCantidad.setSelectionColor(new java.awt.Color(133, 198, 90));
-        cmpCantidad.addActionListener(new java.awt.event.ActionListener() {
+        codigojT.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        codigojT.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        codigojT.setSelectionColor(new java.awt.Color(133, 198, 90));
+        codigojT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmpCantidadActionPerformed(evt);
+                codigojTActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(235, 235, 235)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(codigojT)
-                    .addComponent(nombrejT)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(tCrecjT)
-                    .addComponent(preciojT)
-                    .addComponent(tGermjT)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(tReprodjC, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cmpCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(cancelarbtn)
-                .addGap(86, 86, 86)
-                .addComponent(addbtn)
-                .addGap(219, 219, 219))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(252, 252, 252)
-                .addComponent(jLabel6)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jLabel6)
+        jPanel2.setBackground(new java.awt.Color(108, 169, 62));
+
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/plus (2).png"))); // NOI18N
+
+        jLabel17.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel17.setText("Agregar nueva planta");
+
+        close.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/close.png"))); // NOI18N
+
+        close1.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        close1.setForeground(new java.awt.Color(255, 255, 255));
+        close1.setText("Cerrar");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(256, 256, 256)
+                .addComponent(jLabel16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(codigojT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3, 3, 3)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(nombrejT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(tGermjT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
-                .addComponent(jLabel7)
-                .addGap(14, 14, 14)
-                .addComponent(tCrecjT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3, 3, 3)
-                .addComponent(jLabel9)
-                .addGap(23, 23, 23)
-                .addComponent(tReprodjC, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(preciojT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(cmpCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(addbtn)
-                    .addComponent(cancelarbtn))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addComponent(jLabel17)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
+                .addComponent(close)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(close1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+            .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(close, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                    .addComponent(close1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(174, 174, 174)
+                .addComponent(cancelbtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(addbtn)
+                .addGap(150, 150, 150))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel8)
+                    .addComponent(tCrecjT)
+                    .addComponent(tReprodjC, 0, 314, Short.MAX_VALUE)
+                    .addComponent(codigojT)
+                    .addComponent(nombrejT)
+                    .addComponent(tGermjT)
+                    .addComponent(preciojT))
+                .addGap(172, 172, 172))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(codigojT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nombrejT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tGermjT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tCrecjT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tReprodjC, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(preciojT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cancelbtn, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(addbtn, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void nombrejTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombrejTActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombrejTActionPerformed
+
+    private void codigojTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codigojTActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_codigojTActionPerformed
 
     private void tCrecjTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tCrecjTActionPerformed
         // TODO add your handling code here:
@@ -267,32 +302,22 @@ public class PlantasAñadirUI extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tGermjTActionPerformed
 
-    private void nombrejTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombrejTActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nombrejTActionPerformed
-
-    private void codigojTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codigojTActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_codigojTActionPerformed
-
-    private void cmpCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmpCantidadActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmpCantidadActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addbtn;
-    private javax.swing.JButton cancelarbtn;
-    private javax.swing.JTextField cmpCantidad;
+    private javax.swing.JButton cancelbtn;
+    private javax.swing.JLabel close;
+    private javax.swing.JLabel close1;
     private javax.swing.JTextField codigojT;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField nombrejT;
     private javax.swing.JTextField preciojT;
     private javax.swing.JTextField tCrecjT;
@@ -311,13 +336,10 @@ public class PlantasAñadirUI extends javax.swing.JInternalFrame {
                 int crecimiento = Integer.parseInt(tCrecjT.getText());
                 TipoReproduccion tr = (TipoReproduccion) tReprodjC.getSelectedItem();
                 int precio = Integer.parseInt(preciojT.getText());
-                int cantidad = Integer.parseInt(cmpCantidad.getText());
                 Planta p = new Planta(cod, nom, germinacion, crecimiento, tr, precio);
-                Detalle_Gasto dg = new Detalle_Gasto(cantidad);
                 controlPlantas.agregarPlanta(p);
-                p.agregarDetalleGasto(dg);
                 JOptionPane.showMessageDialog(rootPane, "Planta agregada con éxito");
-                cancelarbtn.doClick();
+                cancelbtn.doClick();
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(rootPane, ex.getMessage());
             }
@@ -334,6 +356,39 @@ public class PlantasAñadirUI extends javax.swing.JInternalFrame {
             tGermjT.setText("");
             tCrecjT.setText("");
             preciojT.setText("");
+        }
+
+    }
+
+    public class clickCerrarListener implements MouseListener {
+
+        private PlantasAñadirUI plantasAddUI;
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+
+            setVisible(false);
+
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+
         }
 
     }

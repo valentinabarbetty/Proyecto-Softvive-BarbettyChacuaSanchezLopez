@@ -12,7 +12,7 @@ import java.awt.event.MouseListener;
  *
  * @author Valentina
  */
-public class PedidosUI extends javax.swing.JInternalFrame {
+public class PedidosUI extends javax.swing.JFrame {
 
     /**
      * Creates new form PedidosUI
@@ -25,6 +25,10 @@ public class PedidosUI extends javax.swing.JInternalFrame {
         this.ConfPedidoEntregado.addMouseListener(new clickEntregadoListener());
         this.VerP.addMouseListener(new clickVerListener());
         this.VerPedidos.addMouseListener(new clickVerListener());
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
+        this.EditarP.addMouseListener(new clickEditarListener());
+        this.EditarPedido.addMouseListener(new clickEditarListener());
     }
 
     /**
@@ -45,15 +49,14 @@ public class PedidosUI extends javax.swing.JInternalFrame {
         ConfirmarPedidoListo = new javax.swing.JLabel();
         EditarP = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         VerPedidos = new javax.swing.JLabel();
         ConfPedidoListo = new javax.swing.JLabel();
         ConfPedidoEntreg = new javax.swing.JLabel();
         ConfPedidoEntregado = new javax.swing.JLabel();
 
-        setClosable(true);
-        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1255, 1000));
 
         desktop.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -61,7 +64,7 @@ public class PedidosUI extends javax.swing.JInternalFrame {
         desktop.setLayout(desktopLayout);
         desktopLayout.setHorizontalGroup(
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1120, Short.MAX_VALUE)
+            .addGap(0, 1108, Short.MAX_VALUE)
         );
         desktopLayout.setVerticalGroup(
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -90,33 +93,31 @@ public class PedidosUI extends javax.swing.JInternalFrame {
 
         jPanel2.setBackground(new java.awt.Color(108, 169, 62));
 
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/cart.png"))); // NOI18N
-
         jLabel17.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("GESTIONAR PEDIDOS");
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/pedidos.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel16)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel17)
-                .addGap(138, 138, 138))
+                .addGap(366, 366, 366))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 11, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
-                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
         );
 
         VerPedidos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/list (1).png"))); // NOI18N
@@ -165,13 +166,12 @@ public class PedidosUI extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
+                        .addGap(13, 13, 13)
                         .addComponent(AgregarP))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(AgregarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(AgregarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(EditarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -182,13 +182,13 @@ public class PedidosUI extends javax.swing.JInternalFrame {
                     .addComponent(VerPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(16, 16, 16)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ConfirmarPedidoListo, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
-                    .addComponent(ConfPedidoListo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(ConfirmarPedidoListo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ConfPedidoListo, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(ConfPedidoEntreg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ConfPedidoEntregado, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(280, Short.MAX_VALUE))
+                .addContainerGap(273, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -203,8 +203,7 @@ public class PedidosUI extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(desktop)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(1, 1, 1))
@@ -225,7 +224,7 @@ public class PedidosUI extends javax.swing.JInternalFrame {
     private javax.swing.JLabel VerP;
     private javax.swing.JLabel VerPedidos;
     private javax.swing.JDesktopPane desktop;
-    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -302,8 +301,8 @@ public class PedidosUI extends javax.swing.JInternalFrame {
         }
 
     }
-    
-       public class clickVerListener implements MouseListener {
+
+    public class clickVerListener implements MouseListener {
 
         private PedidoVerUI pedidoVerUI;
 
@@ -315,6 +314,42 @@ public class PedidosUI extends javax.swing.JInternalFrame {
                 desktop.add(pedidoVerUI);
             }
             pedidoVerUI.setVisible(true);
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+
+        }
+
+    }
+
+    public class clickEditarListener implements MouseListener {
+
+        private PedidoEditarUI pedidoEditarUI;
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+
+            if (pedidoEditarUI == null) {
+                pedidoEditarUI = new PedidoEditarUI();
+                desktop.add(pedidoEditarUI);
+            }
+            pedidoEditarUI.setVisible(true);
         }
 
         @Override

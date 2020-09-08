@@ -26,7 +26,7 @@ public class PerfilEmpleadosUI extends javax.swing.JInternalFrame {
         this.loginUI = loginUI;
         
      
-        jlNombre.setText(empleado.getName());
+        jlNombre.setText(empleado.getNombre());
         jcmxRol.setSelectedItem(empleado.getRol());
         jcmxRol.setEnabled(false);
 
@@ -122,5 +122,9 @@ public class PerfilEmpleadosUI extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jlNombre;
     private javax.swing.JLabel perfil;
     // End of variables declaration//GEN-END:variables
+
+    public Empleado getEmpleado() {
+        return empleado;
+    }
 
 }

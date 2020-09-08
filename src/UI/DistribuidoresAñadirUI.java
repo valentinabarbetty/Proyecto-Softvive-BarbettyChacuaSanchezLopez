@@ -11,7 +11,11 @@ import Modelo.Planta;
 import Modelo.TipoReproduccion;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import javax.swing.ComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.event.ListDataListener;
 
 /**
  *
@@ -27,15 +31,18 @@ public class DistribuidoresAñadirUI extends javax.swing.JInternalFrame {
     public DistribuidoresAñadirUI() {
         initComponents();
         controlDistribuidores = new ControlDistribuidores();
-
+        this.ciudadcbx.setModel(new CiudadModel());
         añadirbtn.addActionListener(new agregarDistribuidorListener());
-        TextPrompt nombre = new TextPrompt("Nombre", nomjT);
-        TextPrompt nit = new TextPrompt("Nit", nitjT);
-        TextPrompt tel = new TextPrompt("Teléfono", teljT);
-        TextPrompt email = new TextPrompt("email", emailjT);
-        TextPrompt ciudad = new TextPrompt("Ciudad", ciudadjT);
-        TextPrompt direccion = new TextPrompt("Dirección", dirjT);
+        TextPrompt nombre = new TextPrompt("Ingrese un nombre", nomjT);
+        TextPrompt nit = new TextPrompt("Ingrese un NIT", nitjT);
+        TextPrompt tel = new TextPrompt("Ingrese un teléfono", teljT);
+        TextPrompt email = new TextPrompt("Ingrese un e-mail", emailjT);
+        //TextPrompt ciudad = new TextPrompt("Ciudad", ciudadjT);
+        TextPrompt direccion = new TextPrompt("Ingrese una dirección", dirjT);
         cancelbtn.addActionListener(new borrarListener());
+        this.close.addMouseListener(new clickCerrarListener());
+        this.close1.addMouseListener(new clickCerrarListener());
+        setLocation(0, -32);
     }
 
     /**
@@ -48,21 +55,26 @@ public class DistribuidoresAñadirUI extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         nitjT = new javax.swing.JTextField();
         nomjT = new javax.swing.JTextField();
         teljT = new javax.swing.JTextField();
-        ciudadjT = new javax.swing.JTextField();
         añadirbtn = new javax.swing.JButton();
         cancelbtn = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
         emailjT = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
         dirjT = new javax.swing.JTextField();
+        ciudadcbx = new javax.swing.JComboBox(TipoReproduccion.values());
+        ;
+        jPanel2 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        close = new javax.swing.JLabel();
+        close1 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
 
         setBorder(null);
         setClosable(true);
@@ -70,18 +82,7 @@ public class DistribuidoresAñadirUI extends javax.swing.JInternalFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/bar.png"))); // NOI18N
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/bar.png"))); // NOI18N
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/bar.png"))); // NOI18N
-
-        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel6.setText("Añadir Nuevo Distribuidor");
-
         nitjT.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        nitjT.setBorder(null);
         nitjT.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         nitjT.setSelectionColor(new java.awt.Color(133, 198, 90));
         nitjT.addActionListener(new java.awt.event.ActionListener() {
@@ -91,7 +92,6 @@ public class DistribuidoresAñadirUI extends javax.swing.JInternalFrame {
         });
 
         nomjT.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        nomjT.setBorder(null);
         nomjT.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         nomjT.setSelectionColor(new java.awt.Color(133, 198, 90));
         nomjT.addActionListener(new java.awt.event.ActionListener() {
@@ -101,22 +101,11 @@ public class DistribuidoresAñadirUI extends javax.swing.JInternalFrame {
         });
 
         teljT.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        teljT.setBorder(null);
         teljT.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         teljT.setSelectionColor(new java.awt.Color(133, 198, 90));
         teljT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 teljTActionPerformed(evt);
-            }
-        });
-
-        ciudadjT.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        ciudadjT.setBorder(null);
-        ciudadjT.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        ciudadjT.setSelectionColor(new java.awt.Color(133, 198, 90));
-        ciudadjT.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ciudadjTActionPerformed(evt);
             }
         });
 
@@ -132,10 +121,7 @@ public class DistribuidoresAñadirUI extends javax.swing.JInternalFrame {
         cancelbtn.setBorderPainted(false);
         cancelbtn.setContentAreaFilled(false);
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/bar.png"))); // NOI18N
-
         emailjT.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        emailjT.setBorder(null);
         emailjT.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         emailjT.setSelectionColor(new java.awt.Color(133, 198, 90));
         emailjT.addActionListener(new java.awt.event.ActionListener() {
@@ -144,10 +130,7 @@ public class DistribuidoresAñadirUI extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/bar.png"))); // NOI18N
-
         dirjT.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        dirjT.setBorder(null);
         dirjT.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         dirjT.setSelectionColor(new java.awt.Color(133, 198, 90));
         dirjT.addActionListener(new java.awt.event.ActionListener() {
@@ -156,85 +139,148 @@ public class DistribuidoresAñadirUI extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/bar.png"))); // NOI18N
+        ciudadcbx.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+
+        jPanel2.setBackground(new java.awt.Color(108, 169, 62));
+
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/plus (2).png"))); // NOI18N
+
+        jLabel17.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel17.setText("Añadir Nuevo Distribuidor");
+
+        close.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/close.png"))); // NOI18N
+
+        close1.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        close1.setForeground(new java.awt.Color(255, 255, 255));
+        close1.setText("Cerrar");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(230, Short.MAX_VALUE)
+                .addComponent(jLabel16)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel17)
+                .addGap(127, 127, 127)
+                .addComponent(close)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(close1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(close, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                    .addComponent(close1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
+        );
+
+        jLabel7.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel7.setText("Teléfono:");
+
+        jLabel8.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel8.setText("Nombre:");
+
+        jLabel9.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel9.setText("NIT:");
+
+        jLabel10.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel10.setText("E-mail:");
+
+        jLabel11.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel11.setText("Dirección:");
+
+        jLabel12.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel12.setText("Ciudad:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(183, Short.MAX_VALUE)
+                .addGap(170, 170, 170)
                 .addComponent(cancelbtn)
-                .addGap(123, 123, 123)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(añadirbtn)
-                .addGap(139, 139, 139))
+                .addGap(177, 177, 177))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(235, 235, 235)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(dirjT, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel6)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(nitjT)
-                        .addComponent(nomjT)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(emailjT)
-                        .addComponent(ciudadjT)
-                        .addComponent(teljT)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel10)
+                    .addComponent(nitjT)
+                    .addComponent(nomjT)
+                    .addComponent(teljT)
+                    .addComponent(emailjT)
+                    .addComponent(dirjT)
+                    .addComponent(ciudadcbx, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(204, 204, 204))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jLabel6)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(nitjT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3, 3, 3)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(nomjT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(teljT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
-                .addGap(14, 14, 14)
-                .addComponent(emailjT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3, 3, 3)
-                .addComponent(jLabel9)
-                .addGap(15, 15, 15)
-                .addComponent(dirjT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3, 3, 3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(teljT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
                 .addComponent(jLabel10)
-                .addGap(18, 18, 18)
-                .addComponent(ciudadjT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3, 3, 3)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(emailjT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(dirjT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ciudadcbx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(añadirbtn)
                     .addComponent(cancelbtn))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -252,10 +298,6 @@ public class DistribuidoresAñadirUI extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_teljTActionPerformed
 
-    private void ciudadjTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ciudadjTActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ciudadjTActionPerformed
-
     private void emailjTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailjTActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_emailjTActionPerformed
@@ -268,22 +310,80 @@ public class DistribuidoresAñadirUI extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton añadirbtn;
     private javax.swing.JButton cancelbtn;
-    private javax.swing.JTextField ciudadjT;
+    private javax.swing.JComboBox<String> ciudadcbx;
+    private javax.swing.JLabel close;
+    private javax.swing.JLabel close1;
     private javax.swing.JTextField dirjT;
     private javax.swing.JTextField emailjT;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField nitjT;
     private javax.swing.JTextField nomjT;
     private javax.swing.JTextField teljT;
     // End of variables declaration//GEN-END:variables
-  public class agregarDistribuidorListener implements ActionListener {
+
+    public class CiudadModel implements ComboBoxModel {
+
+        private Object selected = null;
+
+        @Override
+        public void setSelectedItem(Object anItem) {
+            this.selected = anItem;
+        }
+
+        @Override
+        public Object getSelectedItem() {
+            return this.selected;
+        }
+
+        @Override
+        public int getSize() {
+            return 8;
+        }
+
+        @Override
+        public Object getElementAt(int index) {
+            switch (index) {
+                case 0:
+                    return "Cali";
+                case 1:
+                    return "Palmira";
+                case 2:
+                    return "Jumbo";
+                case 3:
+                    return "Tuluá";
+                case 4:
+                    return "Cartago";
+                case 5:
+                    return "Buenaventura";
+                case 6:
+                    return "Buga";
+                case 7:
+                    return "Ginebra";
+
+            }
+            return "";
+        }
+
+        @Override
+        public void addListDataListener(ListDataListener l) {
+        }
+
+        @Override
+        public void removeListDataListener(ListDataListener l) {
+        }
+
+    }
+
+    public class agregarDistribuidorListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -293,7 +393,7 @@ public class DistribuidoresAñadirUI extends javax.swing.JInternalFrame {
                 long tel = Long.parseLong(teljT.getText());
                 String email = emailjT.getText();
                 String direccion = dirjT.getText();
-                String ciudad = ciudadjT.getText();
+                String ciudad = (String) ciudadcbx.getSelectedItem();
                 Distribuidor d = new Distribuidor(nit, nom, tel, email, direccion, ciudad);
                 controlDistribuidores.agregarDistribuidor(d);
                 JOptionPane.showMessageDialog(rootPane, "Distribuidor agregado con éxito");
@@ -313,10 +413,40 @@ public class DistribuidoresAñadirUI extends javax.swing.JInternalFrame {
             nomjT.setText("");
             teljT.setText("");
             emailjT.setText("");
-            ciudadjT.setText("");
+            ciudadcbx.setSelectedItem(null);
             dirjT.setText("");
         }
 
     }
 
+    public class clickCerrarListener implements MouseListener {
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+
+            setVisible(false);
+
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+
+        }
+
+    }
 }

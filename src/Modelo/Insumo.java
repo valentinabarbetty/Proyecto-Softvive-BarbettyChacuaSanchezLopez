@@ -113,6 +113,4 @@ public class Insumo implements Serializable {
         return "Insumo{" + "pk=" + pk + ", nombre=" + nombre + ", descripcion=" + descripcion + ", detalleGasto=" + detalleGasto + '}';
     }
 
-   
-
 }

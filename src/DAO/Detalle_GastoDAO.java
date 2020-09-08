@@ -150,6 +150,4 @@ public class Detalle_GastoDAO implements Serializable {
 //        }
 //
 //    }
-        
-
 }

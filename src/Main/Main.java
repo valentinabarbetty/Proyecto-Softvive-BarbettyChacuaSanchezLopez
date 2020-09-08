@@ -16,7 +16,7 @@ import Modelo.Planta;
 import Modelo.TipoReproduccion;
 import Modelo.Vivero;
 import UI.Login;
-import UI.ViveroUI;
+import UI.ViveroGerenteUI;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -39,14 +39,15 @@ public class Main {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViveroUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViveroGerenteUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViveroUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViveroGerenteUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViveroUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViveroGerenteUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViveroUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViveroGerenteUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
@@ -56,15 +57,15 @@ public class Main {
                 try {
                     Vivero vivero = new Vivero("123678", "Bruzón", "calle 26");
 
-                    Empleado empleado1 = new Empleado("18588331", "Tony Stark", "11111111", "cra #1-2", 11622736, Rol.GERENTE_PROPIETARIO, "Palmira");
-                    Empleado empleado2 = new Empleado("12345678", "Elon Musk", "22222222", "cra # 3-12", 1672839, Rol.TRANSPORTISTA, "Cali");
-                    Empleado empleado3 = new Empleado("12345679", "Timothee Chalamet", "33333333", "cra #4-2", 2987624, Rol.TRABAJADOR, "Medellin");
+                    Empleado empleado1 = new Empleado(12345, "Jeon Jungkook", "11111", "cra #1-2", 11622736, Rol.GERENTE_PROPIETARIO, "Palmira");
+                    Empleado empleado2 = new Empleado(6789, "Kim Namjoon", "22222", "cra # 3-12", 1672839, Rol.TRANSPORTISTA, "Cali");
+                    Empleado empleado3 = new Empleado(1113696, "Kim Seokjin", "33333", "cra #4-2", 2987624, Rol.TRABAJADOR, "Buga");
 
-//                    ControlEmpleados ce = new ControlEmpleados();
+                    ControlEmpleados ce = new ControlEmpleados();
 //                    ce.agregarEmpleado(empleado1);
 //                    ce.agregarEmpleado(empleado2);
 //                    ce.agregarEmpleado(empleado3);
-//                    new ViveroUI(vivero).setVisible(true);
+//                    new ViveroGerenteUI(vivero).setVisible(true);
                     new Login(vivero).setVisible(true);
 
                 } catch (Exception ex) {

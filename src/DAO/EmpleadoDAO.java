@@ -1,7 +1,11 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package DAO;
 
 import DAO.exceptions.NonexistentEntityException;
-import DAO.exceptions.PreexistingEntityException;
 import Modelo.Empleado;
 import java.io.Serializable;
 import java.util.List;
@@ -12,6 +16,10 @@ import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
+/**
+ *
+ * @author Valentina
+ */
 public class EmpleadoDAO implements Serializable {
 
     public EmpleadoDAO(EntityManagerFactory emf) {
@@ -23,18 +31,13 @@ public class EmpleadoDAO implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Empleado empleado) throws PreexistingEntityException, Exception {
+    public void create(Empleado empleado) {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
             em.persist(empleado);
             em.getTransaction().commit();
-        } catch (Exception ex) {
-            if (findEmpleado(empleado.getCedula()) != null) {
-                throw new PreexistingEntityException("Empleado " + empleado + " already exists.", ex);
-            }
-            throw ex;
         } finally {
             if (em != null) {
                 em.close();
@@ -52,7 +55,7 @@ public class EmpleadoDAO implements Serializable {
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                String id = empleado.getCedula();
+                long id = empleado.getPk();
                 if (findEmpleado(id) == null) {
                     throw new NonexistentEntityException("The empleado with id " + id + " no longer exists.");
                 }
@@ -73,7 +76,7 @@ public class EmpleadoDAO implements Serializable {
             Empleado empleado;
             try {
                 empleado = em.getReference(Empleado.class, id);
-                empleado.getCedula();
+                empleado.getPk();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The empleado with id " + id + " no longer exists.", enfe);
             }
@@ -110,7 +113,7 @@ public class EmpleadoDAO implements Serializable {
         }
     }
 
-    public Empleado findEmpleado(String id) {
+    public Empleado findEmpleado(long id) {
         EntityManager em = getEntityManager();
         try {
             return em.find(Empleado.class, id);
@@ -132,12 +135,12 @@ public class EmpleadoDAO implements Serializable {
         }
     }
 
-    public boolean registroEmpleadoConsulta(String cedula, String contraseña) throws Exception {
+    public boolean registroEmpleadoConsulta(long cedula, String contraseña) throws Exception {
 
         List<Empleado> empleados = findEmpleadoEntities();
 
         for (Empleado empleado : empleados) {
-            if ((empleado.getCedula().contains(cedula)) && (empleado.getContraseña().contains(contraseña))) {
+            if ((empleado.getCedula() == cedula) && (empleado.getContraseña().contains(contraseña))) {
                 return true;
             }
         }
@@ -155,7 +158,7 @@ public class EmpleadoDAO implements Serializable {
         throw new Exception("La contraseña ingresada es incorrecta");
     }
 
-    public Empleado buscarEmpleadoConsulta(String cedula) throws Exception {
+    public Empleado buscarEmpleadoConsulta(long cedula) throws Exception {
         EntityManager em = getEntityManager();
 
         List<Empleado> empleados = em.createNamedQuery("Empleado.buscarEmpleadoConsulta").setParameter("cedula", cedula).getResultList();
@@ -166,5 +169,4 @@ public class EmpleadoDAO implements Serializable {
         }
 
     }
-
 }

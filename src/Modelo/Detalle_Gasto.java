@@ -90,7 +90,6 @@ public class Detalle_Gasto implements Serializable {
 //    public void setInsumo(Insumo insumo) {
 //        this.insumo = insumo;
 //    }
-
 //    public List<Insumo> getListaInsumos() {
 //        return listaInsumos;
 //    }
