@@ -182,7 +182,7 @@ public class ViveroTransportadorUI extends javax.swing.JFrame {
         public void mouseClicked(MouseEvent e) {
             if (distribuidoresUI == null) {
                 distribuidoresUI = new DistribuidoresUI();
-                // desktop.add(distribuidoresUI);
+               // desktop.add(distribuidoresUI);
             }
             distribuidoresUI.setVisible(true);
 
@@ -218,7 +218,7 @@ public class ViveroTransportadorUI extends javax.swing.JFrame {
         public void mouseClicked(MouseEvent e) {
             if (pedidosUI == null) {
                 pedidosUI = new PedidosUI();
-                // desktop.add(pedidosUI);
+              // desktop.add(pedidosUI);
             }
             pedidosUI.setVisible(true);
 

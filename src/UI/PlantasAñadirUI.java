@@ -33,15 +33,15 @@ import javax.swing.border.AbstractBorder;
  * @author Valentina
  */
 public class PlantasAñadirUI extends javax.swing.JInternalFrame {
-
+    
     private ControlPlantas controlPlantas;
-
+    
     public PlantasAñadirUI() {
         initComponents();
 //        this.cancelbtn.setBorder(new );
 
         controlPlantas = new ControlPlantas();
-
+        
         addbtn.addActionListener(new agregarPlantaListener());
         TextPrompt nombre = new TextPrompt("Ingrese un nombre", nombrejT);
         TextPrompt codigo = new TextPrompt("Ingrese un código", codigojT);
@@ -326,7 +326,7 @@ public class PlantasAñadirUI extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     public class agregarPlantaListener implements ActionListener {
-
+        
         @Override
         public void actionPerformed(ActionEvent e) {
             try {
@@ -344,11 +344,11 @@ public class PlantasAñadirUI extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(rootPane, ex.getMessage());
             }
         }
-
+        
     }
-
+    
     public class borrarListener implements ActionListener {
-
+        
         @Override
         public void actionPerformed(ActionEvent e) {
             codigojT.setText("");
@@ -357,38 +357,40 @@ public class PlantasAñadirUI extends javax.swing.JInternalFrame {
             tCrecjT.setText("");
             preciojT.setText("");
         }
-
+        
     }
 
     public class clickCerrarListener implements MouseListener {
-
+        
+        private PlantasAñadirUI plantasAddUI;
+        
         @Override
         public void mouseClicked(MouseEvent e) {
-
+            
             setVisible(false);
-
+            
         }
-
+        
         @Override
         public void mousePressed(MouseEvent e) {
-
+            
         }
-
+        
         @Override
         public void mouseReleased(MouseEvent e) {
-
+            
         }
-
+        
         @Override
         public void mouseEntered(MouseEvent e) {
-
+            
         }
-
+        
         @Override
         public void mouseExited(MouseEvent e) {
-
+            
         }
-
+        
     }
-
+    
 }

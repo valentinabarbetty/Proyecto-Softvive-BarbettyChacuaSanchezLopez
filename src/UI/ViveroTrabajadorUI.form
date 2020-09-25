@@ -74,20 +74,10 @@
                               </Group>
                               <Group type="102" attributes="0">
                                   <Component id="Insumos" min="-2" pref="72" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
                                   <Component id="Inventario" min="-2" pref="72" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                                  <Component id="Herramientas" min="-2" pref="72" max="-2" attributes="0"/>
-                                  <EmptySpace min="23" pref="23" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="Herramientas1" alignment="1" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
@@ -106,40 +96,31 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="cerrarSesion" max="32767" attributes="0"/>
+                          <Component id="cerrarSes" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="bienvenido" alignment="1" min="-2" pref="30" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="Herramientas" min="-2" pref="74" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="Herramientas1" min="-2" pref="24" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="cerrarSesion" max="32767" attributes="0"/>
-                                  <Component id="cerrarSes" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="bienvenido" alignment="1" min="-2" pref="30" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="plantas" min="-2" pref="90" max="-2" attributes="0"/>
-                              <Component id="Pedidos" min="-2" pref="74" max="-2" attributes="0"/>
-                              <Component id="Siembras" min="-2" pref="74" max="-2" attributes="0"/>
-                              <Component id="Insumos" min="-2" pref="74" max="-2" attributes="0"/>
-                              <Component id="Inventario" min="-2" pref="74" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="plantas1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="Pedidos1" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                              <Component id="Siembras1" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                              <Component id="Insumos1" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                              <Component id="Inventario1" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                      <Component id="plantas" min="-2" pref="90" max="-2" attributes="0"/>
+                      <Component id="Pedidos" min="-2" pref="74" max="-2" attributes="0"/>
+                      <Component id="Siembras" min="-2" pref="74" max="-2" attributes="0"/>
+                      <Component id="Insumos" min="-2" pref="74" max="-2" attributes="0"/>
+                      <Component id="Inventario" min="-2" pref="74" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="plantas1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="Pedidos1" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                      <Component id="Siembras1" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                      <Component id="Insumos1" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                      <Component id="Inventario1" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="445" max="32767" attributes="0"/>
               </Group>
@@ -270,24 +251,6 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Resources/userlogin_2.png"/>
             </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="Herramientas">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Resources/herramientas.png"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="Herramientas1">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="SansSerif" size="18" style="0"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="99" green="99" red="99" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Herramientas"/>
           </Properties>
         </Component>
       </SubComponents>
