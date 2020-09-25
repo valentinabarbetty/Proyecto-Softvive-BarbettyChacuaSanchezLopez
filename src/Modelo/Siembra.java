@@ -46,7 +46,7 @@ public class Siembra implements Serializable {
         this.dia = dia;
         this.mes = mes;
         this.año = año;
-        this.cantidad = cantidad;
+        this.cantidad = cantidad - muertes;
         this.planta = planta;
         this.muertes = muertes;
         this.estadoSiembra = estadoSiembra;

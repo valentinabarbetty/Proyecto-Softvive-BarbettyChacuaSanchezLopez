@@ -23,6 +23,7 @@ public class SiembrasVerUI extends javax.swing.JInternalFrame {
         this.siembraTable.setModel(new SiembrasTableModel());
         this.close.addMouseListener(new clickCerrarListener());
         this.close1.addMouseListener(new clickCerrarListener());
+        siembraTable.updateUI();
         setLocation(0, -32);
 //        this.getContentPane().setBackground(Color.white);
     }

@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import javax.swing.JTable;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 
@@ -27,7 +28,7 @@ public class PlantasVerUI extends javax.swing.JInternalFrame {
         plantasTable.updateUI();
         this.close.addMouseListener(new clickCerrarListener());
         this.close1.addMouseListener(new clickCerrarListener());
-        setLocation(0, -32);
+        setLocation(-10, -32);
 //        d.addActionListener(new verListener());
 
     }
@@ -89,7 +90,7 @@ public class PlantasVerUI extends javax.swing.JInternalFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(234, Short.MAX_VALUE)
+                .addContainerGap(260, Short.MAX_VALUE)
                 .addComponent(jLabel16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel17)
@@ -133,7 +134,9 @@ public class PlantasVerUI extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(332, Short.MAX_VALUE))
         );
 
         pack();
@@ -219,6 +222,10 @@ public class PlantasVerUI extends javax.swing.JInternalFrame {
 
     }
 
+    public JTable getPlantasTable() {
+        return plantasTable;
+    }
+
     public class verListener implements ActionListener {
 
         @Override
@@ -228,36 +235,35 @@ public class PlantasVerUI extends javax.swing.JInternalFrame {
         }
 
     }
+
     public class clickCerrarListener implements MouseListener {
-        
-        private PlantasAñadirUI plantasAddUI;
-        
+
         @Override
         public void mouseClicked(MouseEvent e) {
-            
+
             setVisible(false);
-            
+
         }
-        
+
         @Override
         public void mousePressed(MouseEvent e) {
-            
+
         }
-        
+
         @Override
         public void mouseReleased(MouseEvent e) {
-            
+
         }
-        
+
         @Override
         public void mouseEntered(MouseEvent e) {
-            
+
         }
-        
+
         @Override
         public void mouseExited(MouseEvent e) {
-            
+
         }
-        
+
     }
 }

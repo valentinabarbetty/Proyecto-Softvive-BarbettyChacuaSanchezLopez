@@ -1,9 +1,6 @@
 package UI;
 
-import Control.ControlDetallePedido;
-import Control.ControlIngresos;
 import Control.ControlPlantas;
-import Modelo.Ingreso;
 import Modelo.Planta;
 import java.awt.Color;
 import java.awt.Font;
@@ -11,19 +8,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.time.LocalDate;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JTable;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 
 public class IngresosVerUI extends javax.swing.JInternalFrame {
-
-    private ControlDetallePedido dp = new ControlDetallePedido();
-    private ControlIngresos ci = new ControlIngresos();
-    private List<Ingreso> listIngresos;
 
     public IngresosVerUI() {
         initComponents();
@@ -32,14 +21,6 @@ public class IngresosVerUI extends javax.swing.JInternalFrame {
         this.close1.addMouseListener(new clickCerrarListener());
         setLocation(0, -32);
 //        d.addActionListener(new verListener());
-        try {
-            listIngresos = ci.listaIngresosTodos();
-        } catch (Exception ex) {
-            Logger.getLogger(IngresosVerUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        ingresosTable.setModel(new IngresosTableModel());
-        ingresosTable.updateUI();
 
     }
 
@@ -49,7 +30,7 @@ public class IngresosVerUI extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        ingresosTable = new javax.swing.JTable();
+        plantasTable = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -64,8 +45,8 @@ public class IngresosVerUI extends javax.swing.JInternalFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(133, 198, 90));
 
-        ingresosTable.setFont(new java.awt.Font("SansSerif", 0, 10)); // NOI18N
-        ingresosTable.setModel(new javax.swing.table.DefaultTableModel(
+        plantasTable.setFont(new java.awt.Font("SansSerif", 0, 10)); // NOI18N
+        plantasTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -76,10 +57,10 @@ public class IngresosVerUI extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        ingresosTable.setGridColor(new java.awt.Color(255, 255, 255));
-        ingresosTable.setSelectionBackground(new java.awt.Color(133, 198, 90));
-        ingresosTable.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(ingresosTable);
+        plantasTable.setGridColor(new java.awt.Color(255, 255, 255));
+        plantasTable.setSelectionBackground(new java.awt.Color(133, 198, 90));
+        plantasTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(plantasTable);
 
         jPanel2.setBackground(new java.awt.Color(108, 169, 62));
 
@@ -154,12 +135,12 @@ public class IngresosVerUI extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel close;
     private javax.swing.JLabel close1;
-    private javax.swing.JTable ingresosTable;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable plantasTable;
     // End of variables declaration//GEN-END:variables
 
     public class clickCerrarListener implements MouseListener {
@@ -188,66 +169,6 @@ public class IngresosVerUI extends javax.swing.JInternalFrame {
 
         @Override
         public void mouseExited(MouseEvent e) {
-
-        }
-
-    }
-    
-    public class IngresosTableModel implements TableModel {
-
-        @Override
-        public int getRowCount() {
-            return listIngresos.size();
-        }
-
-        @Override
-        public int getColumnCount() {
-            return 2;
-        }
-
-        @Override
-        public Object getValueAt(int rowIndex, int columnIndex) {
-            Ingreso ingresos = listIngresos.get(rowIndex);
-            switch (columnIndex) {
-                case 0: ;
-                    return ingresos.getFecha();
-                case 1:
-                    return ingresos.getPrecio();
-            }
-            return " ";
-        }
-
-        private String[] nombreColumnas = {"Fecha ingreso", "Valor ingreso"};
-
-        @Override
-        public String getColumnName(int columnIndex) {
-            return nombreColumnas[columnIndex];
-        }
-
-        private Class[] tipoColumnas = {LocalDate.class, Integer.class};
-
-        @Override
-        public Class<?> getColumnClass(int columnIndex) {
-            // return String.class;
-            return tipoColumnas[columnIndex];
-        }
-
-        @Override
-        public boolean isCellEditable(int rowIndex, int columnIndex) {
-            return false;
-        }
-
-        @Override
-        public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-        }
-
-        @Override
-        public void addTableModelListener(TableModelListener l) {
-
-        }
-
-        @Override
-        public void removeTableModelListener(TableModelListener l) {
 
         }
 

@@ -35,6 +35,10 @@ public class ControlPlantas {
         return plantaDAO.buscarPlantaConsulta(codigo);
     }
 
+    public Planta buscarPlantaNombre(String nombre) throws Exception {
+        return plantaDAO.buscarPlantaNombreConsulta(nombre);
+    }
+
     public List<Planta> getListaPlantas() {
         return plantaDAO.findPlantaEntities();
     }

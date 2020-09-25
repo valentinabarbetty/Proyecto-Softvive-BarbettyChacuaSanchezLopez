@@ -19,12 +19,10 @@ public class InventarioUI extends javax.swing.JFrame {
      */
     public InventarioUI() {
         initComponents();
-        this.setResizable(true);
+        this.setResizable(false);
         this.setLocationRelativeTo(null);
-        this.editarInventario.addMouseListener(new clickEditarListenerPrueba());
-        this.editarInventario1.addMouseListener(new clickEditarListenerPrueba());
-//        this.editarInventario.addMouseListener(new clickEditarListener());
-//        this.editarInventario1.addMouseListener(new clickEditarListener());
+        this.editarInventario.addMouseListener(new clickEditarListener());
+        this.editarInventario1.addMouseListener(new clickEditarListener());
         this.verInventario1.addMouseListener(new clickVerListener());
         this.verInventario.addMouseListener(new clickVerListener());
 
@@ -164,13 +162,13 @@ public class InventarioUI extends javax.swing.JFrame {
 
     public class clickEditarListener implements MouseListener {
 
-        private InventarioEditar inventarioEditarUI;
+        private InventarioEditarUI inventarioEditarUI;
 
         @Override
         public void mouseClicked(MouseEvent e) {
 
             if (inventarioEditarUI == null) {
-                inventarioEditarUI = new InventarioEditar();
+                inventarioEditarUI = new InventarioEditarUI();
                 desktop.add(inventarioEditarUI);
             }
             inventarioEditarUI.setVisible(true);
@@ -198,52 +196,16 @@ public class InventarioUI extends javax.swing.JFrame {
         }
 
     }
-    public class clickEditarListenerPrueba implements MouseListener {
-
-        private Iprueba IpruebaUI;
-
-        @Override
-        public void mouseClicked(MouseEvent e) {
-
-            if (IpruebaUI == null) {
-                IpruebaUI = new Iprueba();
-                desktop.add(IpruebaUI);
-            }
-            IpruebaUI.setVisible(true);
-            //siembrasVerUI.getUsuariosTable().updateUI();
-        }
-
-        @Override
-        public void mousePressed(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-
-        }
-
-    }
 
     public class clickVerListener implements MouseListener {
 
-        private InventarioVer inventarioVerUI;
+        private InventarioVerUI inventarioVerUI;
 
         @Override
         public void mouseClicked(MouseEvent e) {
 
             if (inventarioVerUI == null) {
-                inventarioVerUI = new InventarioVer();
+                inventarioVerUI = new InventarioVerUI();
                 desktop.add(inventarioVerUI);
             }
             inventarioVerUI.setVisible(true);

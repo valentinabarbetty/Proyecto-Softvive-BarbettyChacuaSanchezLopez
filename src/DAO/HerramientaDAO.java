@@ -11,6 +11,10 @@ import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
+/**
+ *
+ * @author Juanes
+ */
 public class HerramientaDAO implements Serializable {
 
     public HerramientaDAO(EntityManagerFactory emf) {
@@ -125,50 +129,11 @@ public class HerramientaDAO implements Serializable {
             em.close();
         }
     }
-
-    //// BUSCAR EL NOMBRE DE UN INSUMO
-//    public List<Herramienta> BuscarHerramientaConsulta(String nombre) {
-//
-//        EntityManager em = getEntityManager();
-//        detalleGastoDAO.findDetalle_GastoEntities();
-//        return em.createNamedQuery("Herramienta.buscarHerramientasConsulta").setParameter("nombre", nombre).getResultList();
-//
-//    }
-//    public Herramienta BuscarHerramientaConsulta1 (String nombre) {
-//
-//        EntityManager em = getEntityManager();
-//   
-//        return (Herramienta) em.createNamedQuery("Herramienta.buscarHerramientasConsulta1").setParameter("nombre", nombre).getSingleResult();
-//
-//    }
-//    public Herramienta BuscarHerramientaConsulta1(String nombre) throws Exception {
-//        EntityManager em = getEntityManager();
-//
-//        List<Herramienta> herramientas = em.createNamedQuery("Herramienta.buscarHerramientasConsulta1").setParameter("nombre", nombre).getResultList();
-//
-//        if (herramientas.isEmpty()) {
-//            return null;
-//        } else {
-//            return herramientas.get(0);
-//        }
-//
-//    }
-//    public Herramienta BuscarHerramientaCodigo(Long codigo) throws Exception {
-//        EntityManager em = getEntityManager();
-//
-//        List<Herramienta> herramientas = em.createNamedQuery("Herramienta.buscarHerramientasCodigo").setParameter("codigo", codigo).getResultList();
-//
-//        if (herramientas.isEmpty()) {
-//            return null;
-//        } else {
-//            return herramientas.get(0);
-//        }
-//
-//    }
-    public Herramienta BuscarHerramientaConsulta1(String nombre) throws Exception {
+    
+      public Herramienta BuscarHerramientaConsulta(String nombre) throws Exception {
         EntityManager em = getEntityManager();
 
-        List<Herramienta> herramientas = em.createNamedQuery("Herramienta.buscarHerramientaConsulta1").setParameter("nombre", nombre).getResultList();
+        List<Herramienta> herramientas = em.createNamedQuery("Herramienta.BuscarHerramientaConsulta").setParameter("nombre", nombre).getResultList();
 
         if (herramientas.isEmpty()) {
             return null;
@@ -177,5 +142,5 @@ public class HerramientaDAO implements Serializable {
         }
 
     }
-
+    
 }

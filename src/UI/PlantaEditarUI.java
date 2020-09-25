@@ -84,7 +84,7 @@ public class PlantaEditarUI extends javax.swing.JInternalFrame {
         setBorder(null);
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(701, 571));
+        setPreferredSize(new java.awt.Dimension(710, 571));
         setRequestFocusEnabled(false);
 
         precioNjT.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
@@ -168,9 +168,9 @@ public class PlantaEditarUI extends javax.swing.JInternalFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel16)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel17)
-                .addGap(155, 155, 155)
+                .addGap(219, 219, 219)
                 .addComponent(close)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(close1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -234,7 +234,7 @@ public class PlantaEditarUI extends javax.swing.JInternalFrame {
                         .addComponent(canbtn)
                         .addGap(163, 163, 163)
                         .addComponent(acbtn)))
-                .addGap(0, 10, Short.MAX_VALUE))
+                .addGap(0, 48, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -421,8 +421,6 @@ public class PlantaEditarUI extends javax.swing.JInternalFrame {
     }
 
     public class clickCerrarListener implements MouseListener {
-
-        private PlantasAñadirUI plantasAddUI;
 
         @Override
         public void mouseClicked(MouseEvent e) {
