@@ -809,7 +809,6 @@ public class PedidoAgregarUI extends javax.swing.JInternalFrame {
         }
 
     }
-
     public class BuscarDistribuidorListener implements ActionListener {
 
         @Override

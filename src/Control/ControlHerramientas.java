@@ -52,5 +52,10 @@ public class ControlHerramientas {
     public void setHerramientaDAO(HerramientaDAO ingresosDAO) {
         this.herramientaDAO = ingresosDAO;
     }
+    
+    public void ActualizarHerramienta(Herramienta h) throws Exception {
+         this.herramientaDAO.edit(h);
+
+    }
 
 }

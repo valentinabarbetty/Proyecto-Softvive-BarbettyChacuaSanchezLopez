@@ -50,5 +50,10 @@ public class ControlInsumos {
     public void setInsumoDAO(InsumoDAO ingresosDAO) {
         this.insumoDAO = ingresosDAO;
     }
+    
+     public void ActualizarInsumo(Insumo ins) throws Exception {
+         this.insumoDAO.edit(ins);
+
+    }
 
 }

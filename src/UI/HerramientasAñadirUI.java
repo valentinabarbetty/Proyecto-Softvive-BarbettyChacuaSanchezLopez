@@ -1,27 +1,43 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package UI;
 
+import Control.ControlEmpleados;
+import Control.ControlHerramientas;
+import Control.ControlInsumos;
+import Modelo.Empleado;
+import Modelo.Herramienta;
+import Modelo.Insumo;
+import Modelo.Rol;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import javax.swing.ComboBoxModel;
+import javax.swing.JOptionPane;
+import javax.swing.event.ListDataListener;
 
 /**
  *
- * @author Valentina
+ * @author Kathe
  */
 public class HerramientasAñadirUI extends javax.swing.JInternalFrame {
 
+    private ControlHerramientas controlHerramientas;
+
     /**
-     * Creates new form SiembrasAñadirUI
+     * Creates new form CrearEmpleadoUI
      */
     public HerramientasAñadirUI() {
         initComponents();
+        this.controlHerramientas = new ControlHerramientas();
+        this.agregarbtn.addActionListener(new agregarHerramientasListener());
+        this.cancelarbtn.addActionListener(new borrarListener());
+        TextPrompt nombre = new TextPrompt("Ingrese nombre de la herramienta", nomjT);
+        TextPrompt descripcion = new TextPrompt("Descripcion de la herramienta", descripcionjT);
         this.close.addMouseListener(new clickCerrarListener());
         this.close1.addMouseListener(new clickCerrarListener());
         setLocation(0, -32);
+        this.getContentPane().setBackground(Color.white);
     }
 
     /**
@@ -33,15 +49,44 @@ public class HerramientasAñadirUI extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        nomjT = new javax.swing.JTextField();
+        descripcionjT = new javax.swing.JTextField();
+        agregarbtn = new javax.swing.JButton();
+        cancelarbtn = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         close = new javax.swing.JLabel();
         close1 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(null);
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setClosable(true);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setPreferredSize(new java.awt.Dimension(718, 630));
+
+        nomjT.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        nomjT.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        nomjT.setSelectionColor(new java.awt.Color(133, 198, 90));
+
+        descripcionjT.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        descripcionjT.setToolTipText("");
+        descripcionjT.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        descripcionjT.setSelectionColor(new java.awt.Color(133, 198, 90));
+
+        agregarbtn.setForeground(new java.awt.Color(51, 255, 51));
+        agregarbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/buttonAdd.png"))); // NOI18N
+        agregarbtn.setBorder(null);
+        agregarbtn.setBorderPainted(false);
+        agregarbtn.setContentAreaFilled(false);
+
+        cancelarbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/buttonCancel.png"))); // NOI18N
+        cancelarbtn.setBorder(null);
+        cancelarbtn.setBorderPainted(false);
+        cancelarbtn.setContentAreaFilled(false);
+        cancelarbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jPanel2.setBackground(new java.awt.Color(108, 169, 62));
 
@@ -49,7 +94,7 @@ public class HerramientasAñadirUI extends javax.swing.JInternalFrame {
 
         jLabel17.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel17.setText("Agregar nueva Herramienta");
+        jLabel17.setText("Añadir Herramienta Nueva");
 
         close.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/close.png"))); // NOI18N
 
@@ -62,50 +107,129 @@ public class HerramientasAñadirUI extends javax.swing.JInternalFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(250, 250, 250)
+                .addContainerGap(213, Short.MAX_VALUE)
                 .addComponent(jLabel16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel17)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
+                .addGap(141, 141, 141)
                 .addComponent(close)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(close1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(close1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+            .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(close, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
                     .addComponent(close1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
+
+        jLabel9.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel9.setText("Nombre:");
+
+        jLabel12.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel12.setText("Descripción");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(134, 134, 134)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel12)
+                    .addComponent(nomjT, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(cancelarbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(agregarbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(descripcionjT, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 497, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel9)
+                .addGap(8, 8, 8)
+                .addComponent(nomjT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(descripcionjT, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cancelarbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(agregarbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
+
+        getAccessibleContext().setAccessibleDescription("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton agregarbtn;
+    private javax.swing.JButton cancelarbtn;
     private javax.swing.JLabel close;
     private javax.swing.JLabel close1;
+    private javax.swing.JTextField descripcionjT;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField nomjT;
     // End of variables declaration//GEN-END:variables
+
+    public class agregarHerramientasListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (descripcionjT.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "Debe ingresar la descripción de la herramienta");
+            } else if (nomjT.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "Debe ingresar el nombre de la herramienta");
+            } else {
+                try {
+                    String nombre = nomjT.getText();
+                    String descripcion = descripcionjT.getText();
+
+                    Herramienta herramienta = new Herramienta(nombre, descripcion);
+
+                    controlHerramientas.AgregarHerramienta(herramienta);
+
+                    JOptionPane.showMessageDialog(rootPane, "Herramienta agregada con éxito");
+                    cancelarbtn.doClick();
+                } catch (Exception ex) {
+//                JOptionPane.showMessageDialog(rootPane, ex.getMessage());
+                }
+            }
+        }
+
+    }
+
+    public class borrarListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            descripcionjT.setText("");
+            nomjT.setText("");
+        }
+    }
+
     public class clickCerrarListener implements MouseListener {
 
         @Override

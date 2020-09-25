@@ -21,37 +21,36 @@ import javax.swing.JOptionPane;
 import javax.swing.event.ListDataListener;
 
 public class SiembrasEditarUI extends javax.swing.JInternalFrame {
-
+    
     private Siembra siembra;
     private Planta planta;
     private EstadoSiembra estadoSiembra;
-
+    
     private ControlSiembra controlSiembra;
     private ControlPlantas controlPlantas;
-
+    
     public SiembrasEditarUI() {
-
+        
         initComponents();
-
+        
         this.controlSiembra = new ControlSiembra();
         this.controlPlantas = new ControlPlantas();
         this.añojC.setModel(new AñoModel());
         this.mesjC.setModel(new MesModel());
         this.diajC.setModel(new Dia31Model());
         this.btonBuscarSiembra.addActionListener(new buscarSiembraListener());
-
+        
         this.btonGuardar.addActionListener(new actualizarSiembraListener());
         this.btonCancelar.addActionListener(new CancelarListener());
-
+        
         TextPrompt nombre = new TextPrompt("Ingrese el código", cmpCodigoPedido);
         this.plantasjCbx.setModel(new PlantasTableModel());
         this.close.addMouseListener(new clickCerrarListener());
         this.close1.addMouseListener(new clickCerrarListener());
         setLocation(0, -32);
-        this.plantasjCbx.updateUI();
-
+        
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -84,7 +83,6 @@ public class SiembrasEditarUI extends javax.swing.JInternalFrame {
         cmpplanta = new javax.swing.JTextField();
         cmpestadosiembra = new javax.swing.JTextField();
         cmpfecha = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
 
         jLabel18.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel18.setText("Año:");
@@ -251,26 +249,23 @@ public class SiembrasEditarUI extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btonBuscarSiembra))
                             .addComponent(jLabel24)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(cmpestadosiembra, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(jLabel23)
-                                                .addComponent(jLabel7))
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(cmpMuertes, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(cmpCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel5)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(cmpplanta, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(plantasjCbx, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(cmpestadosiembra, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel23)
+                                            .addComponent(jLabel7))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(cmpMuertes, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(cmpCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(cmpplanta, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(plantasjCbx, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -283,16 +278,11 @@ public class SiembrasEditarUI extends javax.swing.JInternalFrame {
                         .addComponent(jLabel10)
                         .addComponent(cmpCodigoPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btonBuscarSiembra))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(plantasjCbx, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5)
-                            .addComponent(cmpplanta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(plantasjCbx, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addComponent(cmpplanta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -356,7 +346,6 @@ public class SiembrasEditarUI extends javax.swing.JInternalFrame {
     private javax.swing.JTextField cmpfecha;
     private javax.swing.JTextField cmpplanta;
     private javax.swing.JComboBox<String> diajC;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
@@ -375,48 +364,48 @@ public class SiembrasEditarUI extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     public class PlantasTableModel implements ComboBoxModel {
-
+        
         List<Planta> plantas = controlPlantas.getListaPlantas();
         private Object selected = null;
-
+        
         @Override
-
+        
         public void setSelectedItem(Object anItem) {
             this.selected = anItem;
         }
-
+        
         @Override
         public Object getSelectedItem() {
             return this.selected;
         }
-
+        
         @Override
         public int getSize() {
             return plantas.size();
         }
-
+        
         @Override
         public Object getElementAt(int index) {
             return plantas.get(index);
         }
-
+        
         @Override
         public void addListDataListener(ListDataListener l) {
-
+            
         }
-
+        
         @Override
         public void removeListDataListener(ListDataListener l) {
-
+            
         }
-
+        
     }
-
+    
     public class actualizarSiembraListener implements ActionListener {
-
+        
         @Override
         public void actionPerformed(ActionEvent ae) {
-
+            
             try {
                 Planta planta = (Planta) plantasjCbx.getSelectedItem();
                 int cantidad = Integer.parseInt(cmpCantidad.getText());
@@ -424,55 +413,43 @@ public class SiembrasEditarUI extends javax.swing.JInternalFrame {
                 Year año = (Year) añojC.getSelectedItem();
                 Month mes = (Month) mesjC.getSelectedItem();
                 int dia = (int) diajC.getSelectedItem();
-
+                
                 siembra.setDia(dia);
                 siembra.setMes(mes);
                 siembra.setAño(año);
                 siembra.setCantidad(cantidad);
                 siembra.setPlanta(planta);
                 siembra.setMuertes(muertes);
-                if(plantasjCbx.getSelectedItem() == null){
-                   siembra.setPlanta(siembra.getPlanta());
-                } else {
-                    siembra.setPlanta((Planta) plantasjCbx.getSelectedItem());
-                }
-//                if(!plantasjCbx.getSelectedItem().equals(siembra.getPlanta())){
-//                 
-//                }
-                
-
                 //siembra.setEstadoSiembra(estadoSiembra);
-                controlSiembra.actualizarSiembra(siembra);
 
+                controlSiembra.actualizarSiembra(siembra);
+                
                 JOptionPane.showMessageDialog(rootPane, "Siembra editada con éxito");
                 //btonCancelar.doClick();
             } catch (Exception ex) {
                 Logger.getLogger(UsuariosEditarUI.class.getName()).log(Level.SEVERE, null, ex);
             }
-
+            
         }
-
+        
     }
-
+    
     public class buscarSiembraListener implements ActionListener {
-
+        
         @Override
         public void actionPerformed(ActionEvent ae) {
-
+            
             Long pk = Long.parseLong(cmpCodigoPedido.getText());
-
+            
             try {
-                //String nombre = planta.getNombre();
-
+                
                 siembra = controlSiembra.buscarSiembra(pk);
                 cmpfecha.setText(siembra.getDia() + "/" + siembra.getMes().toString() + "/" + siembra.getAño().toString());
                 añojC.setSelectedItem(siembra.getAño());
                 mesjC.setSelectedItem(siembra.getMes());
                 diajC.setSelectedItem(siembra.getDia());
                 cmpplanta.setText(siembra.getPlanta().getNombre());
-                //plantasjCbx.setSelectedItem(siembra.getPlanta());
-                plantasjCbx.setSelectedItem(siembra.getPlanta().getNombre());
-                plantasjCbx.updateUI();
+                plantasjCbx.setSelectedItem(siembra.getPlanta());
                 cmpCantidad.setText(Integer.toString(siembra.getCantidad()));
                 cmpMuertes.setText(Integer.toString(siembra.getMuertes()));
                 cmpestadosiembra.setText(siembra.getEstadoSiembra().toString());
@@ -481,84 +458,84 @@ public class SiembrasEditarUI extends javax.swing.JInternalFrame {
             } catch (Exception ex) {
                 Logger.getLogger(SiembrasEditarUI.class.getName()).log(Level.SEVERE, null, ex);
             }
-
+            
         }
-
+        
     }
-
+    
     public class CancelarListener implements ActionListener {
-
+        
         @Override
         public void actionPerformed(ActionEvent ae) {
-
+            
             int opcion = JOptionPane.showConfirmDialog(SiembrasEditarUI.this, rootPane, "¿Desea cancelar?", JOptionPane.OK_CANCEL_OPTION);
-
+            
             if (opcion == JOptionPane.CANCEL_OPTION) {
                 return;
             }
             if (opcion == JOptionPane.OK_OPTION) {
-
+                
                 añojC.setSelectedItem(null);
                 mesjC.setSelectedItem(null);
                 diajC.setSelectedItem(null);
                 plantasjCbx.setSelectedItem(null);
                 cmpMuertes.setText("");
                 cmpCantidad.setText("");
-
+                
             }
         }
     }
-
+    
     public class clickCerrarListener implements MouseListener {
-
+        
         @Override
         public void mouseClicked(MouseEvent e) {
-
+            
             setVisible(false);
-
+            
         }
-
+        
         @Override
         public void mousePressed(MouseEvent e) {
-
+            
         }
-
+        
         @Override
         public void mouseReleased(MouseEvent e) {
-
+            
         }
-
+        
         @Override
         public void mouseEntered(MouseEvent e) {
-
+            
         }
-
+        
         @Override
         public void mouseExited(MouseEvent e) {
-
+            
         }
     }
-
+    
     public class MesModel implements ComboBoxModel {
-
+        
         private Object selected = null;
-
+        
         @Override
         public void setSelectedItem(Object anItem) {
             this.selected = anItem;
         }
-
+        
         @Override
         public Object getSelectedItem() {
             return this.selected;
         }
-
+        
         @Override
         public int getSize() {
             return 17;
         }
         Calendar c;
-
+        
         @Override
         public Object getElementAt(int index) {
             switch (index) {
@@ -586,40 +563,40 @@ public class SiembrasEditarUI extends javax.swing.JInternalFrame {
                     return Month.NOVEMBER;
                 case 11:
                     return Month.DECEMBER;
-
+                
             }
             return "";
         }
-
+        
         @Override
         public void addListDataListener(ListDataListener l) {
         }
-
+        
         @Override
         public void removeListDataListener(ListDataListener l) {
         }
-
+        
     }
-
+    
     public class Dia31Model implements ComboBoxModel {
-
+        
         private Object selected = null;
-
+        
         @Override
         public void setSelectedItem(Object anItem) {
             this.selected = anItem;
         }
-
+        
         @Override
         public Object getSelectedItem() {
             return this.selected;
         }
-
+        
         @Override
         public int getSize() {
             return 31;
         }
-
+        
         @Override
         public Object getElementAt(int i) {
             switch (i) {
@@ -685,40 +662,40 @@ public class SiembrasEditarUI extends javax.swing.JInternalFrame {
                     return 30;
                 case 31:
                     return 31;
-
+                
             }
             return "";
         }
-
+        
         @Override
         public void addListDataListener(ListDataListener l) {
         }
-
+        
         @Override
         public void removeListDataListener(ListDataListener l) {
         }
-
+        
     }
-
+    
     public class AñoModel implements ComboBoxModel {
-
+        
         private Object selected = null;
-
+        
         @Override
         public void setSelectedItem(Object anItem) {
             this.selected = anItem;
         }
-
+        
         @Override
         public Object getSelectedItem() {
             return this.selected;
         }
-
+        
         @Override
         public int getSize() {
             return 17;
         }
-
+        
         @Override
         public Object getElementAt(int i) {
             switch (i) {
@@ -738,18 +715,18 @@ public class SiembrasEditarUI extends javax.swing.JInternalFrame {
                     return Year.of(2026);
                 case 8:
                     return Year.of(2027);
-
+                
             }
             return "";
         }
-
+        
         @Override
         public void addListDataListener(ListDataListener l) {
         }
-
+        
         @Override
         public void removeListDataListener(ListDataListener l) {
         }
-
+        
     }
 }
