@@ -10,7 +10,6 @@
     <class>Modelo.Pedido</class>
     <class>Modelo.Planta</class>
     <class>Modelo.Seguimiento</class>
-    <class>Modelo.Siembra</class>
     <class>Modelo.Empleado</class>
     <class>Modelo.Detalle_GastoHerramienta</class>
     <class>Modelo.Detalle_GastoInsumo</class>

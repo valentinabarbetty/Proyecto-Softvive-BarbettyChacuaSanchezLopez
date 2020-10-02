@@ -2,6 +2,7 @@ package Control;
 
 import DAO.SiembraDAO;
 import Modelo.Siembra;
+//import Modelo.Siembramala;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -40,6 +41,9 @@ public class ControlSiembra {
 
     public void actualizarSiembra(Siembra siembra) throws Exception {
         siembraDAO.edit(siembra);
+    }
+     public Siembra buscarSiembra(long pk) throws Exception {
+        return siembraDAO.buscarSiembraPorCodigo(pk);
     }
 
 }

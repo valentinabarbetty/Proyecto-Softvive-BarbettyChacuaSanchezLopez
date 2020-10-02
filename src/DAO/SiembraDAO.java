@@ -7,12 +7,14 @@ package DAO;
 
 import DAO.exceptions.NonexistentEntityException;
 import Modelo.Siembra;
+//import Modelo.Siembramala;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
+import javax.persistence.NoResultException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
@@ -143,6 +145,21 @@ public class SiembraDAO implements Serializable {
         }
 
         em.remove(siembra);
+
+    }
+    
+     public Siembra buscarSiembraPorCodigo(long pk) throws Exception {
+        EntityManager em = getEntityManager();
+        try {
+            Siembra siembra = (Siembra) em.createNamedQuery("BuscarSiembraEspecifica")
+                    .setParameter("pk", pk)
+                    .getSingleResult();
+            return siembra;
+
+        } catch (NoResultException e) {
+
+            throw new Exception("ERROR " + e);
+        }
 
     }
 
