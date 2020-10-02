@@ -6,6 +6,7 @@
 package UI;
 
 import Control.ControlPlantas;
+import Modelo.Detalle_Gasto;
 import Modelo.Planta;
 import Modelo.TipoReproduccion;
 import Resources.fondoDesktop;
@@ -48,6 +49,7 @@ public class PlantasAñadirUI extends javax.swing.JInternalFrame {
         TextPrompt tGerminacion = new TextPrompt("Ingrese el Tiempo de Germinación", tGermjT);
         TextPrompt tCrecimiento = new TextPrompt("Ingrese el Tiempo de Crecimiento", tCrecjT);
         TextPrompt precio = new TextPrompt("Ingrese el precio", preciojT);
+        TextPrompt cantidad = new TextPrompt("Ingrese la cantidad", cmpCantidad);
         controlPlantas = new ControlPlantas();
         this.close.addMouseListener(new clickCerrarListener());
         this.close1.addMouseListener(new clickCerrarListener());
@@ -86,6 +88,8 @@ public class PlantasAñadirUI extends javax.swing.JInternalFrame {
         jLabel17 = new javax.swing.JLabel();
         close = new javax.swing.JLabel();
         close1 = new javax.swing.JLabel();
+        cmpCantidad = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(null);
@@ -216,6 +220,19 @@ public class PlantasAñadirUI extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        cmpCantidad.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        cmpCantidad.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        cmpCantidad.setSelectionColor(new java.awt.Color(133, 198, 90));
+        cmpCantidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmpCantidadActionPerformed(evt);
+            }
+        });
+
+        jLabel13.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel13.setText("Cantidad:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -228,7 +245,11 @@ public class PlantasAñadirUI extends javax.swing.JInternalFrame {
                 .addComponent(addbtn)
                 .addGap(150, 150, 150))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(67, 67, 67)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel13)
+                    .addComponent(cmpCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel9)
                     .addComponent(jLabel10)
@@ -254,12 +275,19 @@ public class PlantasAñadirUI extends javax.swing.JInternalFrame {
                 .addComponent(codigojT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nombrejT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tGermjT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nombrejT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tGermjT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(jLabel13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmpCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -302,16 +330,22 @@ public class PlantasAñadirUI extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tGermjTActionPerformed
 
+    private void cmpCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmpCantidadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmpCantidadActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addbtn;
     private javax.swing.JButton cancelbtn;
     private javax.swing.JLabel close;
     private javax.swing.JLabel close1;
+    private javax.swing.JTextField cmpCantidad;
     private javax.swing.JTextField codigojT;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel7;
@@ -336,7 +370,10 @@ public class PlantasAñadirUI extends javax.swing.JInternalFrame {
                 int crecimiento = Integer.parseInt(tCrecjT.getText());
                 TipoReproduccion tr = (TipoReproduccion) tReprodjC.getSelectedItem();
                 int precio = Integer.parseInt(preciojT.getText());
+                int cantidad = Integer.parseInt(cmpCantidad.getText());
+                Detalle_Gasto dg = new Detalle_Gasto(cantidad);
                 Planta p = new Planta(cod, nom, germinacion, crecimiento, tr, precio);
+                p.agregarDetalleGasto(dg);
                 controlPlantas.agregarPlanta(p);
                 JOptionPane.showMessageDialog(rootPane, "Planta agregada con éxito");
                 cancelbtn.doClick();

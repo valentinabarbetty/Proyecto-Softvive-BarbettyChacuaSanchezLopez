@@ -13,8 +13,6 @@ import javax.persistence.criteria.Root;
 
 public class InsumoDAO implements Serializable {
 
-    private Detalle_GastoDAO detalleGastoDAO;
-
     public InsumoDAO(EntityManagerFactory emf) {
         this.emf = emf;
     }
@@ -155,5 +153,18 @@ public class InsumoDAO implements Serializable {
         }
 
     }
+//
+//    public Insumo BuscarInsumoCodigo(Long codigo) throws Exception {
+//        EntityManager em = getEntityManager();
+//
+//        List<Insumo> insumos = em.createNamedQuery("Insumo.buscarInsumosCodigo").setParameter("codigo", codigo).getResultList();
+//
+//        if (insumos.isEmpty()) {
+//            return null;
+//        } else {
+//            return insumos.get(0);
+//        }
+//
+//    }
 
 }

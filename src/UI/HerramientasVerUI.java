@@ -1,7 +1,7 @@
 package UI;
 
 import Control.ControlEmpleados;
-import Control.ControlHerramientas;
+import Control.ControlHerramienta;
 import Control.ControlInsumos;
 import Modelo.Empleado;
 import Modelo.Herramienta;
@@ -18,11 +18,11 @@ import javax.swing.table.TableModel;
 
 public class HerramientasVerUI extends javax.swing.JInternalFrame {
 
-    private ControlHerramientas controlHerramientas;
+    private ControlHerramienta controlHerramientas;
 
     public HerramientasVerUI() {
         initComponents();
-        controlHerramientas = new ControlHerramientas();
+        controlHerramientas = new ControlHerramienta();
         herramientasTable.getTableHeader().setFont(new Font("SansSerif", Font.PLAIN, 12));
         herramientasTable.getTableHeader().setOpaque(false);
         herramientasTable.getTableHeader().setBackground(Color.white);
@@ -166,7 +166,7 @@ public class HerramientasVerUI extends javax.swing.JInternalFrame {
         public int getRowCount() {
             //return curso.getListaCupos().size();
 
-            return controlHerramientas.getListaheHerramientas().size();
+            return controlHerramientas.getListaHerramientas().size();
         }
 
         @Override
@@ -193,7 +193,7 @@ public class HerramientasVerUI extends javax.swing.JInternalFrame {
         @Override
         public Object getValueAt(int rowIndex, int columnIndex) {
             //Cupo cupo = curso.getListaCupos().get(rowIndex);
-            Herramienta herramienta = controlHerramientas.getListaheHerramientas().get(rowIndex);
+            Herramienta herramienta = controlHerramientas.getListaHerramientas().get(rowIndex);
             switch (columnIndex) {
                 case 0:
                     return herramienta.getNombre();

@@ -137,8 +137,4 @@ public class PlantaDAO implements Serializable {
         return (Planta) em.createNamedQuery("Planta.buscarPlantaConsulta").setParameter("codigo", codigo).getSingleResult();
     }
 
-    public Planta buscarPlantaNombreConsulta(String nombre) throws Exception {
-        EntityManager em = getEntityManager();
-        return (Planta) em.createNamedQuery("Planta.buscarPlantaNombreConsulta").setParameter("nombre", nombre).getSingleResult();
-    }
 }

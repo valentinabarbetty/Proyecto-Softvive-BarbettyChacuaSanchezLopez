@@ -42,18 +42,14 @@ public class ViveroGerenteUI extends javax.swing.JFrame {
         this.distri1.addMouseListener(new clickDistribuidoresListener());
         this.Pedidos.addMouseListener(new clickPedidosListener());
         this.Pedidos1.addMouseListener(new clickPedidosListener());
-        this.Usuarios.addMouseListener(new clickUsuariosListener());
-        this.Usuarios1.addMouseListener(new clickUsuariosListener());
-        this.Siembras.addMouseListener(new clickSiembrasListener());
-        this.Siembras1.addMouseListener(new clickSiembrasListener());
-        this.Insumos.addMouseListener(new clickInsumosListener());
-        this.Insumos1.addMouseListener(new clickInsumosListener());
-        this.Ingresos.addMouseListener(new clickIngresosListener());
-        this.Ingresos1.addMouseListener(new clickIngresosListener());
         this.Herramientas.addMouseListener(new clickHerramientasListener());
         this.Herramientas1.addMouseListener(new clickHerramientasListener());
         this.Inventario.addMouseListener(new clickInventarioListener());
         this.Inventario1.addMouseListener(new clickInventarioListener());
+        this.Insumos.addMouseListener(new clickInsumosListener());
+        this.Insumos1.addMouseListener(new clickInsumosListener());
+        this.Usuarios.addMouseListener(new clickUsuariosListener());
+        this.Usuarios1.addMouseListener(new clickUsuariosListener());
         this.empleado = new Empleado();
         this.plantasUI = new PlantasUI();
 
@@ -240,13 +236,14 @@ public class ViveroGerenteUI extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(Herramientas1)
                                 .addGap(57, 57, 57)
-                                .addComponent(Inventario1))))
+                                .addComponent(Inventario1)))
+                        .addContainerGap(44, Short.MAX_VALUE))
                     .addGroup(desktopLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(cerrarSesion)
-                        .addGap(6, 6, 6)
-                        .addComponent(cerrarSes)))
-                .addContainerGap(44, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cerrarSes)
+                        .addGap(32, 32, 32))))
         );
         desktopLayout.setVerticalGroup(
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -357,17 +354,17 @@ public class ViveroGerenteUI extends javax.swing.JFrame {
 
     }
 
-    public class clickInventarioListener implements MouseListener {
+    public class clickInsumosListener implements MouseListener {
 
-        private InventarioUI inventarioUI;
+        private InsumosUI insumosUI;
 
         @Override
         public void mouseClicked(MouseEvent e) {
-            if (inventarioUI == null) {
-                inventarioUI = new InventarioUI();
+            if (insumosUI == null) {
+                insumosUI = new InsumosUI();
 //                desktop.add(plantasUI);
             }
-            inventarioUI.setVisible(true);
+            insumosUI.setVisible(true);
             //setVisible(false);
         }
 
@@ -429,53 +426,17 @@ public class ViveroGerenteUI extends javax.swing.JFrame {
 
     }
 
-    public class clickIngresosListener implements MouseListener {
+    public class clickInventarioListener implements MouseListener {
 
-        private IngresosUI ingresosUI;
-
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            if (ingresosUI == null) {
-                ingresosUI = new IngresosUI();
-//                desktop.add(plantasUI);
-            }
-            ingresosUI.setVisible(true);
-            //setVisible(false);
-        }
-
-        @Override
-        public void mousePressed(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-
-        }
-
-    }
-
-    public class clickInsumosListener implements MouseListener {
-
-        private InsumosUI insumosUI;
+        private InventarioUI inventarioUI;
 
         @Override
         public void mouseClicked(MouseEvent e) {
-            if (insumosUI == null) {
-                insumosUI = new InsumosUI();
+            if (inventarioUI == null) {
+                inventarioUI = new InventarioUI();
 //                desktop.add(plantasUI);
             }
-            insumosUI.setVisible(true);
+            inventarioUI.setVisible(true);
             //setVisible(false);
         }
 
@@ -738,42 +699,6 @@ public class ViveroGerenteUI extends javax.swing.JFrame {
             } catch (Exception ex) {
                 Logger.getLogger(ViveroGerenteUI.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
-
-        @Override
-        public void mousePressed(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-
-        }
-
-    }
-
-    public class clickSiembrasListener implements MouseListener {
-
-        private SiembrasUI siembrasUI;
-
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            if (siembrasUI == null) {
-                siembrasUI = new SiembrasUI();
-                // desktop.add(distribuidoresUI);
-            }
-            siembrasUI.setVisible(true);
-
         }
 
         @Override

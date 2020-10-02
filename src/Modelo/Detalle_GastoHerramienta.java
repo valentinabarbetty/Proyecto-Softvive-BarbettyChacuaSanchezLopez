@@ -28,7 +28,7 @@ public class Detalle_GastoHerramienta implements Serializable {
     @Column(nullable = false)
     private int cantidad;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private LocalDate fecha;
 
     @OneToOne

@@ -10,5 +10,5 @@ package Modelo;
  * @author Valentina
  */
 public enum EstadoEntrega {
-    Entregado, No_Entregado
+    Entregado,  No_Entregado
 }

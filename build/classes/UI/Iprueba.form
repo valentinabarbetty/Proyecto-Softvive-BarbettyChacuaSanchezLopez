@@ -85,8 +85,8 @@
                               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="cmpNombreI" min="-2" pref="204" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="cmbxInsumo" min="-2" pref="238" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="btnBuscarI" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="cmpDescripcionI" alignment="0" min="-2" pref="536" max="-2" attributes="0"/>
@@ -120,8 +120,8 @@
                       <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cmpNombreI" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnBuscarI" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cmbxInsumo" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -133,7 +133,7 @@
                           <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cmpCantidadExistenteI" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="13" max="32767" attributes="0"/>
+                      <EmptySpace pref="21" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="114" pref="114" max="-2" attributes="0"/>
@@ -170,8 +170,6 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Nombre:"/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="cmpNombreI">
             </Component>
             <Component class="javax.swing.JButton" name="btnBuscarI">
               <Properties>
@@ -227,6 +225,21 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cancelar"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cmbxInsumo">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="4">
+                    <StringItem index="0" value="Item 1"/>
+                    <StringItem index="1" value="Item 2"/>
+                    <StringItem index="2" value="Item 3"/>
+                    <StringItem index="3" value="Item 4"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
@@ -287,8 +300,8 @@
                               </Group>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Component id="cmpNombreH" min="-2" pref="204" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="cmbxHerramienta" min="-2" pref="272" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="btnBuscarH" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="cmpDescripcionH" min="-2" pref="536" max="-2" attributes="0"/>
@@ -304,8 +317,8 @@
                       <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cmpNombreH" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnBuscarH" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cmbxHerramienta" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -332,7 +345,7 @@
                           </Group>
                       </Group>
                       <Component id="btnDisminuirCantidadH" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="26" max="32767" attributes="0"/>
+                      <EmptySpace pref="30" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnCancelarH" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnActualizarH" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -350,8 +363,6 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Nombre:"/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="cmpNombreH">
             </Component>
             <Component class="javax.swing.JButton" name="btnBuscarH">
               <Properties>
@@ -407,6 +418,21 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="cmpCantidadExistenteH">
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cmbxHerramienta">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="4">
+                    <StringItem index="0" value="Item 1"/>
+                    <StringItem index="1" value="Item 2"/>
+                    <StringItem index="2" value="Item 3"/>
+                    <StringItem index="3" value="Item 4"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>

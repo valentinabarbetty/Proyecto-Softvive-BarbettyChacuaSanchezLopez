@@ -14,6 +14,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.time.LocalDate;
 import javax.swing.ComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListDataListener;
@@ -235,8 +236,9 @@ public class HerramientasAñadirUI extends javax.swing.JInternalFrame {
                     String nombre = nomjT.getText();
                     String descripcion = descripcionjT.getText();
                     int cantidad = Integer.parseInt(cmpCantidad.getText());
-                    
+
                     Detalle_GastoHerramienta dgH = new Detalle_GastoHerramienta(cantidad);
+                    dgH.setFecha(LocalDate.now());
                     Herramienta herramienta = new Herramienta(nombre, descripcion);
 
                     herramienta.agregarDetalleGastoHerramienta(dgH);

@@ -81,7 +81,7 @@ public class LoginEmpleadosUI extends javax.swing.JPanel {
     private javax.swing.JTextField cmpUsuario;
     private javax.swing.JLabel iconCandado;
     // End of variables declaration//GEN-END:variables
-
+    
     public long getCedula() {
         return Long.parseLong(cmpUsuario.getText());
     }

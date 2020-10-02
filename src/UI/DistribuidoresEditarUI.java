@@ -400,7 +400,6 @@ public class DistribuidoresEditarUI extends javax.swing.JInternalFrame {
         }
 
     }
-
     public class CiudadModel implements ComboBoxModel {
 
         private Object selected = null;
@@ -466,7 +465,7 @@ public class DistribuidoresEditarUI extends javax.swing.JInternalFrame {
             long tel = d.getTelefono();
             String email = d.getEmail();
             String dir = d.getDireccion();
-
+            
             ciudadcbx.setSelectedItem(ciudad);
             ciudadcbx.updateUI();
             nitjT.setText(Long.toString(nit));
@@ -475,6 +474,7 @@ public class DistribuidoresEditarUI extends javax.swing.JInternalFrame {
             emailjT.setText(email);
             teljT.setText(Long.toString(tel));
             dirjT.setText(dir);
+            
 
         }
 
@@ -528,8 +528,7 @@ public class DistribuidoresEditarUI extends javax.swing.JInternalFrame {
         }
 
     }
-
-    public class clickCerrarListener implements MouseListener {
+      public class clickCerrarListener implements MouseListener {
 
         @Override
         public void mouseClicked(MouseEvent e) {

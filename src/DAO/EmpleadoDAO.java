@@ -134,8 +134,7 @@ public class EmpleadoDAO implements Serializable {
             em.close();
         }
     }
-
-    public boolean registroEmpleadoConsulta(long cedula, String contraseña) throws Exception {
+       public boolean registroEmpleadoConsulta(long cedula, String contraseña) throws Exception {
 
         List<Empleado> empleados = findEmpleadoEntities();
 

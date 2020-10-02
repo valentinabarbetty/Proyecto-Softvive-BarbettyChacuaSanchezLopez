@@ -41,9 +41,5 @@ public class ControlSiembra {
     public void actualizarSiembra(Siembra siembra) throws Exception {
         siembraDAO.edit(siembra);
     }
-    
-    public Siembra buscarSiembra(long pk) throws Exception {
-        return siembraDAO.buscarSiembraPorCodigo(pk);
-    }
-    
+
 }

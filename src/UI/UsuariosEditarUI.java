@@ -53,7 +53,6 @@ public class UsuariosEditarUI extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -81,8 +80,6 @@ public class UsuariosEditarUI extends javax.swing.JInternalFrame {
         roljT = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         boxrol = new javax.swing.JComboBox(Rol.values()); ;
-
-        jLabel1.setText("jLabel1");
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(null);
@@ -334,7 +331,6 @@ public class UsuariosEditarUI extends javax.swing.JInternalFrame {
     private javax.swing.JLabel close5;
     private javax.swing.JLabel contraseñaU;
     private javax.swing.JTextField direccionU;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -462,7 +458,7 @@ public class UsuariosEditarUI extends javax.swing.JInternalFrame {
             long telefono = empleado.getTelefono();
             Rol rol1 = empleado.getRol();
             String ciu = empleado.getCiudad();
-
+            
             cedula.setText(Long.toString(cedu));
             nomU.setText(nombre);
             contraseñaU.setText(contraseña);

@@ -17,7 +17,6 @@ public class InventarioVer extends javax.swing.JInternalFrame {
     private ControlInsumos controlInsumos;
     private ControlHerramienta controlHerramienta;
     private int cantidadI;
-    
 
     public InventarioVer() {
 
@@ -29,8 +28,8 @@ public class InventarioVer extends javax.swing.JInternalFrame {
         this.tableInventarioInsumos.setModel(new tablaInsumoListener());
         this.tableInventarioHerramientas.setModel(new tablaHerramientaListener());
 
-//        tableInventarioInsumos.updateUI();
-//        tableInventarioHerramientas.updateUI();
+        tableInventarioInsumos.updateUI();
+        tableInventarioHerramientas.updateUI();
     }
 
     @SuppressWarnings("unchecked")
@@ -143,17 +142,17 @@ public class InventarioVer extends javax.swing.JInternalFrame {
 
         @Override
         public int getColumnCount() {
-            return 3;
+            return 4;
         }
 
-        private String[] nombreTable = {"Nombre", "Descripcion", "Cantidad existente"};
+        private String[] nombreTable = {"Nombre", "Descripcion", "Cantidad existente", "Fecha"};
 
         @Override
         public String getColumnName(int i) {
             return nombreTable[i];
         }
 
-        private Class[] classType = {String.class, String.class, Integer.class};
+        private Class[] classType = {String.class, String.class, Integer.class, String.class};
 
         @Override
         public Class<?> getColumnClass(int i) {
@@ -169,13 +168,14 @@ public class InventarioVer extends javax.swing.JInternalFrame {
         public Object getValueAt(int i, int i1) {
 
             Insumo insumo = controlInsumos.getListaInsumos().get(i);
+            updateUI();
 
             switch (i1) {
 
                 case 0:
-                    insumo.getNombre();
+                    return insumo.getNombre();
                 case 1:
-                    insumo.getDescripcion();
+                    return insumo.getDescripcion();
                 case 2:
 
                     for (int t = 0; t < insumo.getListaGastoInsumo().size(); t++) {
@@ -183,6 +183,12 @@ public class InventarioVer extends javax.swing.JInternalFrame {
                         cantidadI = insumo.getListaGastoInsumo().get(t).getCantidad();
                     }
                     return cantidadI;
+                case 3:
+
+                    for (int t = 0; t < insumo.getListaGastoInsumo().size(); t++) {
+
+                        return insumo.getListaGastoInsumo().get(t).getFecha();
+                    }
             }
 
             return "";
@@ -219,14 +225,14 @@ public class InventarioVer extends javax.swing.JInternalFrame {
             return 4;
         }
 
-        private String[] nombreTable = {"Nombre", "Descripcion", "Cantidad existente","Fecha"};
+        private String[] nombreTable = {"Nombre", "Descripcion", "Cantidad existente", "Fecha"};
 
         @Override
         public String getColumnName(int i) {
             return nombreTable[i];
         }
 
-        private Class[] classType = {String.class, String.class, Integer.class,String.class};
+        private Class[] classType = {String.class, String.class, Integer.class, String.class};
 
         @Override
         public Class<?> getColumnClass(int i) {
@@ -242,29 +248,27 @@ public class InventarioVer extends javax.swing.JInternalFrame {
         public Object getValueAt(int i, int i1) {
 
             Herramienta herramienta = controlHerramienta.getListaHerramientas().get(i);
+            updateUI();
 
 //            int posicion = 0;
-
             switch (i1) {
 
                 case 0:
-                    herramienta.getNombre();
+                    return herramienta.getNombre();
                 case 1:
-                    herramienta.getDescripcion();
+                    return herramienta.getDescripcion();
                 case 2:
-//                    if (posicion < herramienta.getListaGastoHerramienta().size()) {
-//
-//                        int cantidadH = herramienta.getListaGastoHerramienta().get(posicion).getCantidad();
-//                        posicion++;
-//
-//                        return cantidadH;
-//
-//                    }
 
                     for (int t = 0; t < herramienta.getListaGastoHerramienta().size(); t++) {
                         int cantidadH = herramienta.getListaGastoHerramienta().get(t).getCantidad();
                         return cantidadH;
                     }
+                case 3:
+
+                    for (int t = 0; t < herramienta.getListaGastoHerramienta().size(); t++) {
+                        return herramienta.getListaGastoHerramienta().get(t).getFecha();
+                    }
+
             }
 
             return "";

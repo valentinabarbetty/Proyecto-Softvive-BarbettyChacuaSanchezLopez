@@ -8,8 +8,6 @@ package Modelo;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,25 +27,13 @@ public class Seguimiento implements Serializable {
     private Siembra siembra;
     @Column(nullable = false)
     private int muertes;
-    @Enumerated(EnumType.STRING)
-    private EstadoSiembra estadoSiembra;
 
     public Seguimiento() {
     }
 
-    public Seguimiento(Siembra siembra, int muertes, EstadoSiembra estadoSiembra) {
-        this.pk = pk;
+    public Seguimiento(Siembra siembra, int muertes) {
         this.siembra = siembra;
         this.muertes = muertes;
-        this.estadoSiembra = estadoSiembra;
-    }
-
-    public EstadoSiembra getEstadoSiembra() {
-        return estadoSiembra;
-    }
-
-    public void setEstadoSiembra(EstadoSiembra estadoSiembra) {
-        this.estadoSiembra = estadoSiembra;
     }
 
     public long getPk() {

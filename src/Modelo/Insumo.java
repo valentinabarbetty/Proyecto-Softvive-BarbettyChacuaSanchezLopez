@@ -132,7 +132,7 @@ public class Insumo implements Serializable {
 
     @Override
     public String toString() {
-        return ", nombre=" + nombre + ", descripcion=" + descripcion;
+        return nombre;
     }
 
 }

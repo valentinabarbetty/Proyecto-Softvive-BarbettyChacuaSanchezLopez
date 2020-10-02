@@ -65,8 +65,8 @@ public class Main {
 //                    ce.agregarEmpleado(empleado1);
 //                    ce.agregarEmpleado(empleado2);
 //                    ce.agregarEmpleado(empleado3);
-//                    new ViveroGerenteUI(vivero).setVisible(true);
-                    new Login(vivero).setVisible(true);
+                    new ViveroGerenteUI(vivero).setVisible(true);
+//                    new Login(vivero).setVisible(true);
 
                 } catch (Exception ex) {
                     Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);

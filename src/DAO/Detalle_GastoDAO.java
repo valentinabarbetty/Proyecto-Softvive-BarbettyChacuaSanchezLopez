@@ -129,25 +129,6 @@ public class Detalle_GastoDAO implements Serializable {
         }
     }
 
-//    public List<Detalle_Gasto> buscarInventarioInsumo(String nombre) {
-//        EntityManager em = getEntityManager();
-//
-//        InsumoDAO.findInsumoEntities();
-//
-//        return em.createNamedQuery("Detalle_Gasto.buscarInventarioInsumo").setParameter("nombre", nombre).getResultList();
-//
-//    }
-//    
-//        public Detalle_Gasto buscarDetalleGasto (String cedula) throws Exception {
-//        EntityManager em = getEntityManager();
-//
-//        List<Detalle_Gasto> detalleGasto = em.createNamedQuery("Detalle_Gasto.buscarInventarioInsumo").setParameter("cedula", cedula).getResultList();
-//        
-//        if (detalleGasto.isEmpty()) {
-//            return null;
-//        } else {
-//            return detalleGasto.get(0);
-//        }
-//
-//    }
+       
+
 }

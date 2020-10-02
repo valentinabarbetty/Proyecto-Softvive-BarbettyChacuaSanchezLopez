@@ -13,13 +13,12 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
-import javax.persistence.NoResultException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 /**
  *
- * @author Valentina
+ * @author xxval
  */
 public class SiembraDAO implements Serializable {
 
@@ -135,21 +134,16 @@ public class SiembraDAO implements Serializable {
             em.close();
         }
     }
-    
-     public Siembra buscarSiembraPorCodigo(long pk) throws Exception {
+
+    public void editarSiembra(int row) throws Exception {
         EntityManager em = getEntityManager();
-        try {
-            Siembra siembra = (Siembra) em.createNamedQuery("BuscarSiembraEspecifica")
-                    .setParameter("pk", pk)
-                    .getSingleResult();
-            return siembra;
-
-        } catch (NoResultException e) {
-
-            throw new Exception("ERROR " + e);
+        Siembra siembra = findSiembraEntities().get(row);
+        if (!em.contains(siembra)) {
+            siembra = em.merge(siembra);
         }
+
+        em.remove(siembra);
 
     }
 
-    
 }

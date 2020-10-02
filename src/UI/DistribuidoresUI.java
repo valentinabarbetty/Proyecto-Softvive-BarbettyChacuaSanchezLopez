@@ -241,7 +241,6 @@ public class DistribuidoresUI extends javax.swing.JFrame {
                 desktopd.add(distribuidoresSeeUI);
             }
             distribuidoresSeeUI.setVisible(true);
-            distribuidoresSeeUI.getDistriTable().updateUI();
         }
 
         @Override

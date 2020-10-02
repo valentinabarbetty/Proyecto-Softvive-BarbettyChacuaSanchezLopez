@@ -38,14 +38,7 @@ public class ViveroTrabajadorUI extends javax.swing.JFrame {
         this.cerrarSesion.addMouseListener(new clickCerrarSesion());
         this.Pedidos.addMouseListener(new clickPedidosListener());
         this.Pedidos1.addMouseListener(new clickPedidosListener());
-        this.Siembras.addMouseListener(new clickSiembrasListener());
-        this.Siembras1.addMouseListener(new clickSiembrasListener());
-        this.Insumos.addMouseListener(new clickInsumosListener());
-        this.Insumos1.addMouseListener(new clickInsumosListener());
-        this.Herramientas.addMouseListener(new clickHerramientasListener());
-        this.Herramientas1.addMouseListener(new clickHerramientasListener());
-        this.Inventario.addMouseListener(new clickInventarioListener());
-        this.Inventario1.addMouseListener(new clickInventarioListener());
+        
         this.empleado = new Empleado();
         this.plantasUI = new PlantasUI();
 
@@ -72,8 +65,6 @@ public class ViveroTrabajadorUI extends javax.swing.JFrame {
         cerrarSesion = new javax.swing.JLabel();
         bienvenido = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        Herramientas = new javax.swing.JLabel();
-        Herramientas1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle(" Vivero Bruzón");
@@ -122,12 +113,6 @@ public class ViveroTrabajadorUI extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/userlogin_2.png"))); // NOI18N
 
-        Herramientas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/herramientas.png"))); // NOI18N
-
-        Herramientas1.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        Herramientas1.setForeground(new java.awt.Color(153, 153, 153));
-        Herramientas1.setText("Herramientas");
-
         desktop.setLayer(plantas, javax.swing.JLayeredPane.DEFAULT_LAYER);
         desktop.setLayer(plantas1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         desktop.setLayer(Insumos1, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -142,8 +127,6 @@ public class ViveroTrabajadorUI extends javax.swing.JFrame {
         desktop.setLayer(cerrarSesion, javax.swing.JLayeredPane.DEFAULT_LAYER);
         desktop.setLayer(bienvenido, javax.swing.JLayeredPane.DEFAULT_LAYER);
         desktop.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        desktop.setLayer(Herramientas, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        desktop.setLayer(Herramientas1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout desktopLayout = new javax.swing.GroupLayout(desktop);
         desktop.setLayout(desktopLayout);
@@ -176,16 +159,8 @@ public class ViveroTrabajadorUI extends javax.swing.JFrame {
                                 .addComponent(Inventario1))
                             .addGroup(desktopLayout.createSequentialGroup()
                                 .addComponent(Insumos, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(86, 86, 86)
-                                .addComponent(Inventario, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(74, 74, 74)
-                        .addGroup(desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(desktopLayout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addComponent(Herramientas, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(23, 23, 23))
-                            .addComponent(Herramientas1, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                                .addGap(90, 90, 90)
+                                .addComponent(Inventario, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(desktopLayout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -199,33 +174,27 @@ public class ViveroTrabajadorUI extends javax.swing.JFrame {
         desktopLayout.setVerticalGroup(
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(desktopLayout.createSequentialGroup()
+                .addGroup(desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(cerrarSesion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cerrarSes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bienvenido, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(39, 39, 39)
                 .addGroup(desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(desktopLayout.createSequentialGroup()
-                        .addComponent(Herramientas, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Herramientas1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(desktopLayout.createSequentialGroup()
-                        .addGroup(desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(cerrarSesion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cerrarSes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(bienvenido, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(39, 39, 39)
-                        .addGroup(desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(plantas, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Pedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Siembras, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Insumos, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Inventario, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(plantas1)
-                            .addComponent(Pedidos1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Siembras1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Insumos1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Inventario1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(plantas, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Pedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Siembras, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Insumos, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Inventario, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(plantas1)
+                    .addComponent(Pedidos1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Siembras1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Insumos1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Inventario1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(445, Short.MAX_VALUE))
         );
 
@@ -241,8 +210,6 @@ public class ViveroTrabajadorUI extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Herramientas;
-    private javax.swing.JLabel Herramientas1;
     private javax.swing.JLabel Insumos;
     private javax.swing.JLabel Insumos1;
     private javax.swing.JLabel Inventario;
@@ -263,150 +230,6 @@ public class ViveroTrabajadorUI extends javax.swing.JFrame {
         return this.desktop;
     }
 
-    public class clickInventarioListener implements MouseListener {
-
-        private InventarioUI inventarioUI;
-
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            if (inventarioUI == null) {
-                inventarioUI = new InventarioUI();
-//                desktop.add(plantasUI);
-            }
-            inventarioUI.setVisible(true);
-            //setVisible(false);
-        }
-
-        @Override
-        public void mousePressed(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-
-        }
-
-    }
-
-    public class clickHerramientasListener implements MouseListener {
-
-        private HerramientasUI herramientasUI;
-
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            if (herramientasUI == null) {
-                herramientasUI = new HerramientasUI();
-//                desktop.add(plantasUI);
-            }
-            herramientasUI.setVisible(true);
-            //setVisible(false);
-        }
-
-        @Override
-        public void mousePressed(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-
-        }
-
-    }
-
-    public class clickInsumosListener implements MouseListener {
-
-        private InsumosUI insumosUI;
-
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            if (insumosUI == null) {
-                insumosUI = new InsumosUI();
-//                desktop.add(plantasUI);
-            }
-            insumosUI.setVisible(true);
-            //setVisible(false);
-        }
-
-        @Override
-        public void mousePressed(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-
-        }
-
-    }
-
-    public class clickSiembrasListener implements MouseListener {
-
-        private SiembrasUI siembrasUI;
-
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            if (siembrasUI == null) {
-                siembrasUI = new SiembrasUI();
-                // desktop.add(distribuidoresUI);
-            }
-            siembrasUI.setVisible(true);
-
-        }
-
-        @Override
-        public void mousePressed(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-
-        }
-
-    }
-
     public class clickPlantasListener implements MouseListener {
 
         private PlantasUI plantasUI;
@@ -415,7 +238,7 @@ public class ViveroTrabajadorUI extends javax.swing.JFrame {
         public void mouseClicked(MouseEvent e) {
             if (plantasUI == null) {
                 plantasUI = new PlantasUI();
-                //  desktop.add(plantasUI);
+              //  desktop.add(plantasUI);
             }
             plantasUI.setVisible(true);
 
@@ -451,7 +274,7 @@ public class ViveroTrabajadorUI extends javax.swing.JFrame {
         public void mouseClicked(MouseEvent e) {
             if (distribuidoresUI == null) {
                 distribuidoresUI = new DistribuidoresUI();
-                // desktop.add(distribuidoresUI);
+               // desktop.add(distribuidoresUI);
             }
             distribuidoresUI.setVisible(true);
 

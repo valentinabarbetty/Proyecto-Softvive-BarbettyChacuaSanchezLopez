@@ -39,7 +39,7 @@ public class Herramienta implements Serializable {
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Detalle_GastoHerramienta> listaGastoHerramienta;
-
+    
     @Column(length = 100, nullable = false)
     private String descripcion;
 
@@ -57,16 +57,15 @@ public class Herramienta implements Serializable {
 
         this.nombre = nombre;
         this.descripcion = descripcion;
-   
-        //this.detalleH = detalleH;
-        this.listaGastoHerramienta = new ArrayList<>();
+ //      this.detalleH = detalleH;
+       this.listaGastoHerramienta = new ArrayList<>();
 
     }
 
     public void agregarDetalleGastoHerramienta(Detalle_GastoHerramienta detalleGastoH) {
         this.listaGastoHerramienta.add(detalleGastoH);
     }
-//
+
 //    public Detalle_GastoHerramienta getDetalleH() {
 //        return detalleH;
 //    }
@@ -113,7 +112,6 @@ public class Herramienta implements Serializable {
     public void setListaGastoHerramienta(List<Detalle_GastoHerramienta> listaGastoHerramienta) {
         this.listaGastoHerramienta = listaGastoHerramienta;
     }
-
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -134,7 +132,7 @@ public class Herramienta implements Serializable {
 
     @Override
     public String toString() {
-        return "nombre=" + nombre + ", descripcion=" + descripcion;
+        return nombre;
     }
 
 }

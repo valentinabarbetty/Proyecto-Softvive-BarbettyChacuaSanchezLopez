@@ -421,6 +421,7 @@ public class DistribuidoresAñadirUI extends javax.swing.JInternalFrame {
 
     public class clickCerrarListener implements MouseListener {
 
+
         @Override
         public void mouseClicked(MouseEvent e) {
 

@@ -47,7 +47,7 @@ public class Detalle_Pedido implements Serializable {
     public int getPrecio() {
         return precio;
     }
-
+  
     public void setPrecio(int precio) {
         this.precio = precio;
     }

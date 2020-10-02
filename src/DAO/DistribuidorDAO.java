@@ -126,7 +126,6 @@ public class DistribuidorDAO implements Serializable {
         }
     }
 ///////////////////////// BUSCAR
-
     public Distribuidor buscarDistribuidorConsulta(String nombre) throws Exception {
         EntityManager em = getEntityManager();
         return (Distribuidor) em.createNamedQuery("Distribuidor.buscarDistribuidorConsulta").setParameter("nombre", nombre).getSingleResult();

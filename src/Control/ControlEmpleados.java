@@ -55,5 +55,5 @@ public class ControlEmpleados {
     public void actualizarEmpleado(Empleado empleado) throws Exception {
         empleadoDAO.edit(empleado);
     }
-
+      
 }

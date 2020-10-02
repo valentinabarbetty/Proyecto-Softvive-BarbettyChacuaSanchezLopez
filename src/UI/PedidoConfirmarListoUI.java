@@ -58,8 +58,6 @@ public class PedidoConfirmarListoUI extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jScrollPane1 = new javax.swing.JScrollPane();
         pedidoTable = new javax.swing.JTable();
         btnConfirmar = new javax.swing.JButton();
@@ -68,19 +66,6 @@ public class PedidoConfirmarListoUI extends javax.swing.JInternalFrame {
         btnGuardar = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         detalleTable = new javax.swing.JTable();
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane2.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -116,11 +101,11 @@ public class PedidoConfirmarListoUI extends javax.swing.JInternalFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Codigo", "Planta", "Cantidad Pedido", "Disponible"
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -184,9 +169,7 @@ public class PedidoConfirmarListoUI extends javax.swing.JInternalFrame {
     private javax.swing.JTable detalleTable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable pedidoTable;
     // End of variables declaration//GEN-END:variables
 
@@ -321,6 +304,11 @@ public class PedidoConfirmarListoUI extends javax.swing.JInternalFrame {
                 case 2:
                     return detalle.getCantidad();
                 case 3:
+
+                    for (int t = 0; t < detalle.getPlanta().getListaDetalleGasto().size(); t++) {
+
+                        Disponible = detalle.getPlanta().getListaDetalleGasto().get(t).getCantidad();
+                    }
                     return Disponible;
 
             }
@@ -406,23 +394,27 @@ public class PedidoConfirmarListoUI extends javax.swing.JInternalFrame {
 
                     int cantidadDisponible = (int) detalleTable.getValueAt(detalleTable.getSelectedRow(), 3);
                     String codPlanta = (String) detalleTable.getValueAt(detalleTable.getSelectedRow(), 0);
-                    
-                   detalleTable.setValueAt(cantidadDisponible, detalleTable.getSelectedRow(), 3);
-                   Pedido pedido = controlPedidos.getListaPedidos().get(dp);
+
+                    detalleTable.setValueAt(cantidadDisponible, detalleTable.getSelectedRow(), 3);
+                    Pedido pedido = controlPedidos.getListaPedidos().get(dp);
 
                     setDisponible(cantidadDisponible);
 
                     Planta planta = controlPlantas.buscarPlanta(codPlanta);
                     Detalle_Gasto gasto = new Detalle_Gasto(cantidadDisponible);
 
-                    Detalle_Pedido detalle = pedido.getListaDetallePedido().get(dp);
-                    pedido.setTotal(cantidadDisponible * detalle.getPlanta().getValor_unitario());
-                    
+                    int total = 0;
+                    for (int t = 0; t < pedido.getListaDetallePedido().size(); t++) {
+
+                        total += cantidadDisponible * pedido.getListaDetallePedido().get(t).getPlanta().getValor_unitario();
+                    }
+                    //      Detalle_Pedido detalle = pedido.getListaDetallePedido().get(dp);
 
                     gasto.setCantidad(cantidadDisponible);
-                    planta.agregarDetalleGasto(gasto);
-                    controlPedidos.actualizarPedido(pedido);
+                    pedido.setTotal(total);
 
+                    planta.agregarDetalleGasto(gasto);
+                    //controlPedidos.actualizarPedido(pedido);
                     detalleTable.updateUI();
 
                 } catch (Exception ex) {

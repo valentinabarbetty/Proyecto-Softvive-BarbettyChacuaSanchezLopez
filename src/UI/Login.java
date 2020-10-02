@@ -214,8 +214,8 @@ public class Login extends javax.swing.JFrame {
                         }
 
                         viveroTrabajadorUI.setVisible(true);
-                        viveroTrabajadorUI.setVisible(true);
-                        viveroTrabajadorUI.setBienvenido("Bienvenido" + " " + empleado.getNombre());
+                         viveroTrabajadorUI.setVisible(true);
+                    viveroTrabajadorUI.setBienvenido("Bienvenido" + " " + empleado.getNombre());
 
                         dispose();
                     } catch (Exception ex) {

@@ -30,7 +30,7 @@ public class ControlInsumos {
         insumoDAO.create(insumo);
     }
 
-    public Insumo buscarInsumo(String nombre) throws Exception {
+    public Insumo buscarInsumoNom(String nombre) throws Exception {
         if (insumoDAO.BuscarInsumoConsulta1(nombre) != null) {
             return insumoDAO.BuscarInsumoConsulta1(nombre);
         }
@@ -38,6 +38,14 @@ public class ControlInsumos {
         throw new Exception(" Insumo no encontrado");
 
     }
+//    public Insumo buscarInsumoCod(Long cod) throws Exception {
+//        if (insumoDAO.BuscarInsumoCodigo(cod) != null) {
+//            return insumoDAO.BuscarInsumoCodigo(cod);
+//        }
+//
+//        throw new Exception(" Insumo no encontrado");
+//
+//    }
 
     public List<Insumo> getListaInsumos() {
         return insumoDAO.findInsumoEntities();
@@ -49,11 +57,6 @@ public class ControlInsumos {
 
     public void setInsumoDAO(InsumoDAO ingresosDAO) {
         this.insumoDAO = ingresosDAO;
-    }
-    
-     public void ActualizarInsumo(Insumo ins) throws Exception {
-         this.insumoDAO.edit(ins);
-
     }
 
 }

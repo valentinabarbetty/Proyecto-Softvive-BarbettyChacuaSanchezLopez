@@ -11,19 +11,26 @@ import Modelo.Detalle_GastoInsumo;
 import Modelo.Empleado;
 import Modelo.Herramienta;
 import Modelo.Insumo;
+import Modelo.Planta;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.event.ListDataListener;
 
 public class Iprueba extends javax.swing.JInternalFrame {
 
     private ControlInsumos controlInsumo;
     private ControlDetalleInsumo controlDetalleInsumo;
+
     private ControlDetalleHerramienta controlDetalleHerramienta;
     private ControlHerramienta controlHerramienta;
+
     private Detalle_GastoHerramienta detalleGH;
     private Detalle_GastoInsumo detalleGI;
 
@@ -36,6 +43,9 @@ public class Iprueba extends javax.swing.JInternalFrame {
         this.controlDetalleHerramienta = new ControlDetalleHerramienta();
         this.detalleGI = new Detalle_GastoInsumo();
         this.detalleGH = new Detalle_GastoHerramienta();
+
+        this.cmbxInsumo.setModel(new InsumosListener());
+        this.cmbxHerramienta.setModel(new HerramientasListener());
 
         btnBuscarI.addActionListener(new buscarInsumos());
         btnBuscarH.addActionListener(new buscarHerramientas());
@@ -66,7 +76,6 @@ public class Iprueba extends javax.swing.JInternalFrame {
         Pestañas = new javax.swing.JTabbedPane();
         panelInsumos = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        cmpNombreI = new javax.swing.JTextField();
         btnBuscarI = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         cmpDescripcionI = new javax.swing.JTextField();
@@ -78,9 +87,9 @@ public class Iprueba extends javax.swing.JInternalFrame {
         btnDisminuirCantidadI = new javax.swing.JButton();
         btnActualizarI = new javax.swing.JButton();
         btnCancelarI = new javax.swing.JButton();
+        cmbxInsumo = new javax.swing.JComboBox<>();
         panelHerramientas = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        cmpNombreH = new javax.swing.JTextField();
         btnBuscarH = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         cmpDescripcionH = new javax.swing.JTextField();
@@ -92,6 +101,7 @@ public class Iprueba extends javax.swing.JInternalFrame {
         btnCancelarH = new javax.swing.JButton();
         btnActualizarH = new javax.swing.JButton();
         cmpCantidadExistenteH = new javax.swing.JTextField();
+        cmbxHerramienta = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -121,6 +131,8 @@ public class Iprueba extends javax.swing.JInternalFrame {
 
         btnCancelarI.setText("Cancelar");
 
+        cmbxInsumo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout panelInsumosLayout = new javax.swing.GroupLayout(panelInsumos);
         panelInsumos.setLayout(panelInsumosLayout);
         panelInsumosLayout.setHorizontalGroup(
@@ -142,8 +154,8 @@ public class Iprueba extends javax.swing.JInternalFrame {
                         .addGap(28, 28, 28)
                         .addGroup(panelInsumosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelInsumosLayout.createSequentialGroup()
-                                .addComponent(cmpNombreI, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addComponent(cmbxInsumo, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnBuscarI))
                             .addComponent(cmpDescripcionI, javax.swing.GroupLayout.PREFERRED_SIZE, 536, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cmpCantidadExistenteI, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -166,8 +178,8 @@ public class Iprueba extends javax.swing.JInternalFrame {
                 .addGap(33, 33, 33)
                 .addGroup(panelInsumosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(cmpNombreI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscarI))
+                    .addComponent(btnBuscarI)
+                    .addComponent(cmbxInsumo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panelInsumosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
@@ -176,7 +188,7 @@ public class Iprueba extends javax.swing.JInternalFrame {
                 .addGroup(panelInsumosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(cmpCantidadExistenteI, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(panelInsumosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelInsumosLayout.createSequentialGroup()
                         .addGap(114, 114, 114)
@@ -222,6 +234,8 @@ public class Iprueba extends javax.swing.JInternalFrame {
 
         btnActualizarH.setText("Actualizar");
 
+        cmbxHerramienta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout panelHerramientasLayout = new javax.swing.GroupLayout(panelHerramientas);
         panelHerramientas.setLayout(panelHerramientasLayout);
         panelHerramientasLayout.setHorizontalGroup(
@@ -256,8 +270,8 @@ public class Iprueba extends javax.swing.JInternalFrame {
                                     .addComponent(btnDisminuirCantidadH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btnAgregarCantidadH)))))
                     .addGroup(panelHerramientasLayout.createSequentialGroup()
-                        .addComponent(cmpNombreH, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addComponent(cmbxHerramienta, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnBuscarH))
                     .addComponent(cmpDescripcionH, javax.swing.GroupLayout.PREFERRED_SIZE, 536, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmpCantidadExistenteH, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -269,8 +283,8 @@ public class Iprueba extends javax.swing.JInternalFrame {
                 .addGap(31, 31, 31)
                 .addGroup(panelHerramientasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(cmpNombreH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscarH))
+                    .addComponent(btnBuscarH)
+                    .addComponent(cmbxHerramienta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panelHerramientasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
@@ -290,7 +304,7 @@ public class Iprueba extends javax.swing.JInternalFrame {
                             .addComponent(jLabel7))
                         .addGap(9, 9, 9)))
                 .addComponent(btnDisminuirCantidadH)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(panelHerramientasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelarH)
                     .addComponent(btnActualizarH))
@@ -337,14 +351,14 @@ public class Iprueba extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnCancelarI;
     private javax.swing.JButton btnDisminuirCantidadH;
     private javax.swing.JButton btnDisminuirCantidadI;
+    private javax.swing.JComboBox<String> cmbxHerramienta;
+    private javax.swing.JComboBox<String> cmbxInsumo;
     private javax.swing.JTextField cmpCantidadExistenteH;
     private javax.swing.JTextField cmpCantidadExistenteI;
     private javax.swing.JTextField cmpCantidadIngresadaH;
     private javax.swing.JTextField cmpCantidadIngresadaI;
     private javax.swing.JTextField cmpDescripcionH;
     private javax.swing.JTextField cmpDescripcionI;
-    private javax.swing.JTextField cmpNombreH;
-    private javax.swing.JTextField cmpNombreI;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -358,15 +372,91 @@ public class Iprueba extends javax.swing.JInternalFrame {
     private javax.swing.JPanel panelInsumos;
     // End of variables declaration//GEN-END:variables
 
+    public class InsumosListener implements ComboBoxModel {
+
+        List<Insumo> insumos = controlInsumo.getListaInsumos();
+        private Object selected = null;
+
+        @Override
+
+        public void setSelectedItem(Object anItem) {
+            this.selected = anItem;
+        }
+
+        @Override
+        public Object getSelectedItem() {
+            return this.selected;
+        }
+
+        @Override
+        public int getSize() {
+            return insumos.size();
+        }
+
+        @Override
+        public Object getElementAt(int index) {
+            return insumos.get(index);
+        }
+
+        @Override
+        public void addListDataListener(ListDataListener l) {
+
+        }
+
+        @Override
+        public void removeListDataListener(ListDataListener l) {
+
+        }
+
+    }
+
+    public class HerramientasListener implements ComboBoxModel {
+
+        List<Herramienta> herramientas = controlHerramienta.getListaHerramientas();
+        private Object selected = null;
+
+        @Override
+
+        public void setSelectedItem(Object anItem) {
+            this.selected = anItem;
+        }
+
+        @Override
+        public Object getSelectedItem() {
+            return this.selected;
+        }
+
+        @Override
+        public int getSize() {
+            return herramientas.size();
+        }
+
+        @Override
+        public Object getElementAt(int index) {
+            return herramientas.get(index);
+        }
+
+        @Override
+        public void addListDataListener(ListDataListener l) {
+
+        }
+
+        @Override
+        public void removeListDataListener(ListDataListener l) {
+
+        }
+
+    }
+
     public class buscarInsumos implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent ae) {
 
             try {
-
-                String nombre = cmpNombreI.getText();
-                Insumo insumo = controlInsumo.buscarInsumoNom(nombre);
+                Insumo insumo = (Insumo) cmbxInsumo.getSelectedItem();
+//                String nombre = cmpNombreI.getText();
+//                Insumo insumo = controlInsumo.buscarInsumoNom(nombre);
 
                 cmpDescripcionI.setText(insumo.getDescripcion());
 
@@ -392,9 +482,10 @@ public class Iprueba extends javax.swing.JInternalFrame {
         public void actionPerformed(ActionEvent ae) {
 
             try {
-                String nombre = cmpNombreH.getText();
+//                String nombre = cmpNombreH.getText();
+//                Herramienta herramienta = controlHerramienta.buscarHerramientaNom(nombre);
 
-                Herramienta herramienta = controlHerramienta.buscarHerramientaNom(nombre);
+                Herramienta herramienta = (Herramienta) cmbxHerramienta.getSelectedItem();
 
                 cmpDescripcionH.setText(herramienta.getDescripcion());
 
@@ -420,20 +511,12 @@ public class Iprueba extends javax.swing.JInternalFrame {
         public void actionPerformed(ActionEvent ae) {
 
             try {
-                // String nombre = cmpNombreH.getText();
-                //  Herramienta herramienta = controlHerramienta.buscarHerramientaNom(nombre);
 
-                //Detalle_GastoHerramienta detalleH = new Detalle_GastoHerramienta() ;
                 int cantExiste = Integer.parseInt(cmpCantidadExistenteH.getText());
                 int cantIngre = Integer.parseInt(cmpCantidadIngresadaH.getText());
 
                 int suma = cantExiste + cantIngre;
                 cmpCantidadExistenteH.setText(Integer.toString(suma));
-
-                detalleGH.setCantidad(suma);
-                detalleGH.getFecha();
-
-                controlDetalleHerramienta.ActualizarDetalleGastoHerramienta(detalleGH);
 
                 JOptionPane.showMessageDialog(rootPane, "Cantidad agregada");
             } catch (Exception ex) {
@@ -450,18 +533,11 @@ public class Iprueba extends javax.swing.JInternalFrame {
         public void actionPerformed(ActionEvent ae) {
 
             try {
-                String nombre = cmpNombreI.getText();
-                //               Insumo insumo = (Insumo) controlInsumo.buscarInsumoNom(nombre);
-
-//                Detalle_GastoInsumo detalleI = (Detalle_GastoInsumo) insumo.getListaGastoInsumo();
                 int cantExiste = Integer.parseInt(cmpCantidadExistenteI.getText());
                 int cantIngre = Integer.parseInt(cmpCantidadIngresadaI.getText());
 
                 int suma = cantExiste + cantIngre;
                 cmpCantidadExistenteI.setText(Integer.toString(suma));
-
-                detalleGI.setCantidad(suma);
-                controlDetalleInsumo.ActualizarDetalleGasto(detalleGI);
 
                 JOptionPane.showMessageDialog(rootPane, "Cantidad agregada");
             } catch (Exception ex) {
@@ -479,19 +555,11 @@ public class Iprueba extends javax.swing.JInternalFrame {
 
             try {
 
-                String nombre = cmpNombreH.getText();
-
-                Herramienta herramienta = controlHerramienta.buscarHerramientaNom(nombre);
-
                 int cantExiste = Integer.parseInt(cmpCantidadExistenteH.getText());
                 int cantIngre = Integer.parseInt(cmpCantidadIngresadaH.getText());
 
                 int resta = cantExiste - cantIngre;
                 cmpCantidadExistenteH.setText(Integer.toString(resta));
-
-                //  Detalle_GastoHerramienta detalleH = (Detalle_GastoHerramienta) herramienta.getListaGastoHerramienta();
-                detalleGH.setCantidad(resta);
-                controlDetalleHerramienta.ActualizarDetalleGastoHerramienta(detalleGH);
 
                 JOptionPane.showMessageDialog(rootPane, "Cantidad modificada");
             } catch (Exception ex) {
@@ -508,19 +576,11 @@ public class Iprueba extends javax.swing.JInternalFrame {
         public void actionPerformed(ActionEvent ae) {
 
             try {
-
-                String nombre = cmpNombreI.getText();
-                Insumo insumo = controlInsumo.buscarInsumoNom(nombre);
-
-                //               Detalle_GastoInsumo detalleI = (Detalle_GastoInsumo) insumo.getListaGastoInsumo();
                 int cantExiste = Integer.parseInt(cmpCantidadExistenteI.getText());
                 int cantIngre = Integer.parseInt(cmpCantidadIngresadaI.getText());
 
                 int resta = cantExiste - cantIngre;
                 cmpCantidadExistenteI.setText(Integer.toString(resta));
-
-                detalleGI.setCantidad(resta);
-                controlDetalleInsumo.ActualizarDetalleGasto(detalleGI);
 
                 JOptionPane.showMessageDialog(rootPane, "Cantidad modificada");
             } catch (Exception ex) {
@@ -537,6 +597,23 @@ public class Iprueba extends javax.swing.JInternalFrame {
         public void actionPerformed(ActionEvent ae) {
 
             try {
+
+                int suma = Integer.parseInt(cmpCantidadExistenteI.getText());
+//                             
+//                detalleGI.setCantidad(suma);
+//                detalleGI.setFecha(LocalDate.now());
+
+//                   for (int t = 0; t < insumo.size(); t++) {
+//                        int cantidadH = herramienta.getListaGastoHerramienta().get(t).getCantidad();
+//                        return cantidadH;
+  
+                Insumo insumo = (Insumo) controlInsumo.getListaInsumos();
+                Detalle_GastoInsumo dgI = (Detalle_GastoInsumo) insumo.getListaGastoInsumo();
+
+                dgI.setCantidad(suma);
+                dgI.setFecha(LocalDate.now());
+                controlDetalleInsumo.ActualizarDetalleGasto(detalleGI);
+                updateUI();
 
                 JOptionPane.showMessageDialog(rootPane, "Cantidad actualizada");
                 btnCancelarI.doClick();
@@ -556,6 +633,18 @@ public class Iprueba extends javax.swing.JInternalFrame {
 
             try {
 
+//                String nombre = cmpNombreH.getText();
+//                Herramienta herramienta = controlHerramienta.buscarHerramientaNom(nombre);
+                int suma = Integer.parseInt(cmpCantidadExistenteH.getText());
+
+                //Detalle_GastoHerramienta detalle = (Detalle_GastoHerramienta) herramienta.getListaGastoHerramienta();
+                Detalle_GastoHerramienta detalle = new Detalle_GastoHerramienta(suma);
+
+                //   detalle.setCantidad(suma);
+                //   detalle.setFecha(LocalDate.now());
+                controlDetalleHerramienta.ActualizarDetalleGastoHerramienta(detalle);
+                updateUI();
+
                 JOptionPane.showMessageDialog(rootPane, "Cantidad actualizada");
                 btnCancelarH.doClick();
 
@@ -572,7 +661,7 @@ public class Iprueba extends javax.swing.JInternalFrame {
         @Override
         public void actionPerformed(ActionEvent ae) {
 
-            cmpNombreI.setText("");
+            cmbxHerramienta.setSelectedItem(null);
             cmpDescripcionI.setText("");
             cmpCantidadIngresadaI.setText("");
             cmpCantidadExistenteI.setText("");
@@ -586,7 +675,7 @@ public class Iprueba extends javax.swing.JInternalFrame {
         @Override
         public void actionPerformed(ActionEvent ae) {
 
-            cmpNombreH.setText("");
+            cmbxInsumo.setSelectedItem(null);
             cmpDescripcionH.setText("");
             cmpCantidadIngresadaH.setText("");
             cmpCantidadExistenteH.setText("");

@@ -15,7 +15,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import javax.swing.JTable;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 
@@ -63,6 +62,7 @@ public class DistribuidoresVerUI extends javax.swing.JInternalFrame {
         close1 = new javax.swing.JLabel();
 
         setBorder(null);
+        setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -233,10 +233,6 @@ public class DistribuidoresVerUI extends javax.swing.JInternalFrame {
 
     }
 
-    public JTable getDistriTable() {
-        return distriTable;
-    }
-
     public class verListener implements ActionListener {
 
         @Override
@@ -248,6 +244,8 @@ public class DistribuidoresVerUI extends javax.swing.JInternalFrame {
     }
 
     public class clickCerrarListener implements MouseListener {
+
+        private PlantasAñadirUI plantasAddUI;
 
         @Override
         public void mouseClicked(MouseEvent e) {

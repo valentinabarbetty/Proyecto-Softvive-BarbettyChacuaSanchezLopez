@@ -21,12 +21,12 @@ public class HerramientasUI extends javax.swing.JFrame {
         initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
-        this.editarHerramienta.addMouseListener(new clickEditListener());
-        this.editarHerramienta1.addMouseListener(new clickEditListener());
+//        this.editarHerramienta.addMouseListener(new clickEditListener());
+//        this.editarHerramienta1.addMouseListener(new clickEditListener());
         this.agregarHerramienta.addMouseListener(new clickAddListener());
         this.agregarHerramienta1.addMouseListener(new clickAddListener());
-        this.verHerramienta1.addMouseListener(new clickSeeListener());
-        this.verHerramienta.addMouseListener(new clickSeeListener());
+//        this.verHerramienta1.addMouseListener(new clickSeeListener());
+//        this.verHerramienta.addMouseListener(new clickSeeListener());
 
     }
 
@@ -222,77 +222,77 @@ public class HerramientasUI extends javax.swing.JFrame {
 
     }
 
-    public class clickSeeListener implements MouseListener {
+//    public class clickSeeListener implements MouseListener {
+//
+//        private HerramientasVerUI herramientasVerUI;
+//
+//        @Override
+//        public void mouseClicked(MouseEvent e) {
+//
+//            if (herramientasVerUI == null) {
+//                herramientasVerUI = new HerramientasVerUI();
+//                desktop.add(herramientasVerUI);
+//            }
+//            herramientasVerUI.setVisible(true);
+//            //siembrasVerUI.getUsuariosTable().updateUI();
+//        }
+//
+//        @Override
+//        public void mousePressed(MouseEvent e) {
+//
+//        }
+//
+//        @Override
+//        public void mouseReleased(MouseEvent e) {
+//
+//        }
+//
+//        @Override
+//        public void mouseEntered(MouseEvent e) {
+//
+//        }
+//
+//        @Override
+//        public void mouseExited(MouseEvent e) {
+//
+//        }
+//
+//    }
 
-        private HerramientasVerUI herramientasVerUI;
-
-        @Override
-        public void mouseClicked(MouseEvent e) {
-
-            if (herramientasVerUI == null) {
-                herramientasVerUI = new HerramientasVerUI();
-                desktop.add(herramientasVerUI);
-            }
-            herramientasVerUI.setVisible(true);
-            //siembrasVerUI.getUsuariosTable().updateUI();
-        }
-
-        @Override
-        public void mousePressed(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-
-        }
-
-    }
-
-    public class clickEditListener implements MouseListener {
-
-        private HerramientasEditarUI herramientasEditarUI;
-
-        @Override
-        public void mouseClicked(MouseEvent e) {
-
-            if (herramientasEditarUI == null) {
-                herramientasEditarUI = new HerramientasEditarUI();
-                desktop.add(herramientasEditarUI);
-            }
-            herramientasEditarUI.setVisible(true);
-        }
-
-        @Override
-        public void mousePressed(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-
-        }
-
-    }
+//    public class clickEditListener implements MouseListener {
+//
+//        private HerramientasEditarUI herramientasEditarUI;
+//
+//        @Override
+//        public void mouseClicked(MouseEvent e) {
+//
+//            if (herramientasEditarUI == null) {
+//                herramientasEditarUI = new HerramientasEditarUI();
+//                desktop.add(herramientasEditarUI);
+//            }
+//            herramientasEditarUI.setVisible(true);
+//        }
+//
+//        @Override
+//        public void mousePressed(MouseEvent e) {
+//
+//        }
+//
+//        @Override
+//        public void mouseReleased(MouseEvent e) {
+//
+//        }
+//
+//        @Override
+//        public void mouseEntered(MouseEvent e) {
+//
+//        }
+//
+//        @Override
+//        public void mouseExited(MouseEvent e) {
+//
+//        }
+//
+//    }
 
 }
