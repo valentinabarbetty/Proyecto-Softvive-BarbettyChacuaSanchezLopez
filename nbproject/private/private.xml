@@ -2,6 +2,23 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group/>
+=======
+        <group>
+            <file>file:/C:/Users/xxval/Downloads/Proyecto-Softvive-BarbettyChacuaSanchezLopez-master%20(1)/Proyecto-Softvive-BarbettyChacuaSanchezLopez-master/src/UI/UsuariosUI.java</file>
+            <file>file:/C:/Users/xxval/Downloads/Proyecto-Softvive-BarbettyChacuaSanchezLopez-master%20(1)/Proyecto-Softvive-BarbettyChacuaSanchezLopez-master/src/UI/SiembrasAñadirUI.java</file>
+            <file>file:/C:/Users/xxval/Downloads/Proyecto-Softvive-BarbettyChacuaSanchezLopez-master%20(1)/Proyecto-Softvive-BarbettyChacuaSanchezLopez-master/src/UI/UsuariosEditarUI.java</file>
+            <file>file:/C:/Users/xxval/Downloads/Proyecto-Softvive-BarbettyChacuaSanchezLopez-master%20(1)/Proyecto-Softvive-BarbettyChacuaSanchezLopez-master/src/UI/DistribuidoresUI.java</file>
+            <file>file:/C:/Users/xxval/Downloads/Proyecto-Softvive-BarbettyChacuaSanchezLopez-master%20(1)/Proyecto-Softvive-BarbettyChacuaSanchezLopez-master/src/UI/DistribuidoresEditarUI.java</file>
+            <file>file:/C:/Users/xxval/Downloads/Proyecto-Softvive-BarbettyChacuaSanchezLopez-master%20(1)/Proyecto-Softvive-BarbettyChacuaSanchezLopez-master/src/UI/HerramientasVerUI.java</file>
+            <file>file:/C:/Users/xxval/Downloads/Proyecto-Softvive-BarbettyChacuaSanchezLopez-master%20(1)/Proyecto-Softvive-BarbettyChacuaSanchezLopez-master/src/UI/ViveroGerenteUI.java</file>
+            <file>file:/C:/Users/xxval/Downloads/Proyecto-Softvive-BarbettyChacuaSanchezLopez-master%20(1)/Proyecto-Softvive-BarbettyChacuaSanchezLopez-master/src/UI/SiembrasEditarUI.java</file>
+            <file>file:/C:/Users/xxval/Downloads/Proyecto-Softvive-BarbettyChacuaSanchezLopez-master%20(1)/Proyecto-Softvive-BarbettyChacuaSanchezLopez-master/src/UI/HerramientasEditarUI.java</file>
+            <file>file:/C:/Users/xxval/Downloads/Proyecto-Softvive-BarbettyChacuaSanchezLopez-master%20(1)/Proyecto-Softvive-BarbettyChacuaSanchezLopez-master/src/UI/UsuariosAñadirUI.java</file>
+            <file>file:/C:/Users/xxval/Downloads/Proyecto-Softvive-BarbettyChacuaSanchezLopez-master%20(1)/Proyecto-Softvive-BarbettyChacuaSanchezLopez-master/src/UI/DistribuidoresVerUI.java</file>
+            <file>file:/C:/Users/xxval/Downloads/Proyecto-Softvive-BarbettyChacuaSanchezLopez-master%20(1)/Proyecto-Softvive-BarbettyChacuaSanchezLopez-master/src/UI/HerramientasAñadirUI.java</file>
+        </group>
+>>>>>>> 2b8f9786ff3857f180cc099e453f4175781214e6
     </open-files>
 </project-private>

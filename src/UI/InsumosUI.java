@@ -259,7 +259,7 @@ public class InsumosUI extends javax.swing.JFrame {
             }
             insumosVerUI.setVisible(true);
             insumosVerUI.updateUI();
-            //insumosVerUI.getPlantasTable().updateUI();;
+            insumosVerUI.getInsumosTable().updateUI();;
         }
 
         @Override

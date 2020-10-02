@@ -9,6 +9,7 @@ import java.time.Month;
 import java.time.Year;
 import java.util.Calendar;
 import javax.swing.ComboBoxModel;
+import javax.swing.JTable;
 import javax.swing.event.ListDataListener;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
@@ -214,6 +215,10 @@ public class SiembrasVerUI extends javax.swing.JInternalFrame {
             //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         }
 
+    }
+
+    public JTable getSiembraTable() {
+        return siembraTable;
     }
 
     public class clickCerrarListener implements MouseListener {

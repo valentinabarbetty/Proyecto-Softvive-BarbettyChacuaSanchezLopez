@@ -34,11 +34,9 @@ public class UsuariosUI extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         agregarUsuario = new javax.swing.JLabel();
         agregarUsuario1 = new javax.swing.JLabel();
-        desacUsuario = new javax.swing.JLabel();
-        desacUsuario1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(1000, 615));
+        setPreferredSize(new java.awt.Dimension(1000, 800));
 
         desktop.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -100,12 +98,6 @@ public class UsuariosUI extends javax.swing.JFrame {
 
         agregarUsuario1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/plus (2).png"))); // NOI18N
 
-        desacUsuario.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        desacUsuario.setForeground(new java.awt.Color(255, 255, 255));
-        desacUsuario.setText("Desactivar usuario");
-
-        desacUsuario1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/off.png"))); // NOI18N
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -126,15 +118,9 @@ public class UsuariosUI extends javax.swing.JFrame {
                                 .addComponent(VerUsuario1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(63, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(agregarUsuario1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(agregarUsuario))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(desacUsuario1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(desacUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(agregarUsuario1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(agregarUsuario)
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -156,11 +142,7 @@ public class UsuariosUI extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(VerUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(VerUsuario1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(desacUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(desacUsuario1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(383, Short.MAX_VALUE))
+                .addContainerGap(556, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -187,8 +169,6 @@ public class UsuariosUI extends javax.swing.JFrame {
     private javax.swing.JLabel VerUsuario1;
     private javax.swing.JLabel agregarUsuario;
     private javax.swing.JLabel agregarUsuario1;
-    private javax.swing.JLabel desacUsuario;
-    private javax.swing.JLabel desacUsuario1;
     private javax.swing.JDesktopPane desktop;
     private javax.swing.JLabel editarUsuario;
     private javax.swing.JLabel editarUsuario1;
@@ -246,6 +226,7 @@ public class UsuariosUI extends javax.swing.JFrame {
                 desktop.add(usuariosSeeUI);
             }
             usuariosSeeUI.setVisible(true);
+            usuariosSeeUI.getUsuariosTable().updateUI();
         }
 
         @Override

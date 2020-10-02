@@ -198,6 +198,7 @@ public class InventarioUI extends javax.swing.JFrame {
         }
 
     }
+
     public class clickEditarListenerPrueba implements MouseListener {
 
         private Iprueba IpruebaUI;
@@ -247,6 +248,8 @@ public class InventarioUI extends javax.swing.JFrame {
                 desktop.add(inventarioVerUI);
             }
             inventarioVerUI.setVisible(true);
+            inventarioVerUI.getTableInventarioHerramientas().updateUI();
+            inventarioVerUI.getTableInventarioInsumos().updateUI();
         }
 
         @Override

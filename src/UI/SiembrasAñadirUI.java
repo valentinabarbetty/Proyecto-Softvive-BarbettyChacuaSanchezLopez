@@ -34,6 +34,7 @@ public class SiembrasAñadirUI extends javax.swing.JInternalFrame {
 
     private ControlPlantas controlPlantas;
     private ControlSiembra controlSiembra;
+    private Siembra siembra;
 
     /**
      * Creates new form SiembrasAñadirUI
@@ -45,7 +46,7 @@ public class SiembrasAñadirUI extends javax.swing.JInternalFrame {
         this.plantajC.setModel(new PlantasListener());
         this.agregarSiembra.addActionListener(new AgregarSiembraListener());
         this.mesjC.setModel(new MesModel());
-        this.diajC.setModel(new Dia31Model());
+        //this.diajC.setModel(new Dia31Model());
         this.añojC.setModel(new AñoModel());
         this.añojC.addActionListener(new codSiembra());
         this.close.addMouseListener(new clickCerrarListener());
@@ -53,6 +54,7 @@ public class SiembrasAñadirUI extends javax.swing.JInternalFrame {
         plantajC.updateUI();
         this.plantajC.addActionListener(new UpdatePlantascbxListener());
         this.cancelarbtn.addActionListener(new borrarListener());
+        this.mesjC.addActionListener(new DiaListener());
         setLocation(0, -32);
     }
 
@@ -344,8 +346,16 @@ public class SiembrasAñadirUI extends javax.swing.JInternalFrame {
 
         @Override
         public void actionPerformed(ActionEvent ae) {
-            long size = controlSiembra.getListaSiembras().size() + 1;
-            codSiembra.setText(Long.toString(size));
+            if (controlSiembra.getListaSiembras().isEmpty()) {
+                codSiembra.setText(Long.toString(1));
+
+            } else {
+                long size = controlSiembra.getListaSiembras().size() - 1;
+                Siembra s = controlSiembra.getListaSiembras().get((int) size);
+
+                codSiembra.setText(Long.toString(s.getPk() + 1));
+            }
+
         }
 
     }
@@ -353,8 +363,107 @@ public class SiembrasAñadirUI extends javax.swing.JInternalFrame {
     public JComboBox getPlantajC() {
         return plantajC;
     }
-    
+
     public class Dia31Model implements ComboBoxModel {
+
+        private Object selected = null;
+
+        @Override
+        public void setSelectedItem(Object anItem) {
+            this.selected = anItem;
+        }
+
+        @Override
+        public Object getSelectedItem() {
+            return this.selected;
+        }
+
+        @Override
+        public int getSize() {
+            return 32;
+        }
+
+        @Override
+        public Object getElementAt(int i) {
+            switch (i) {
+                case 1:
+                    return 1;
+                case 2:
+                    return 2;
+                case 3:
+                    return 3;
+                case 4:
+                    return 4;
+                case 5:
+                    return 5;
+                case 6:
+                    return 6;
+                case 7:
+                    return 7;
+                case 8:
+                    return 8;
+                case 9:
+                    return 9;
+                case 10:
+                    return 10;
+                case 11:
+                    return 11;
+                case 12:
+                    return 12;
+                case 13:
+                    return 13;
+                case 14:
+                    return 14;
+                case 15:
+                    return 15;
+                case 16:
+                    return 16;
+                case 17:
+                    return 17;
+                case 18:
+                    return 18;
+                case 19:
+                    return 19;
+                case 20:
+                    return 20;
+                case 21:
+                    return 21;
+                case 22:
+                    return 22;
+                case 23:
+                    return 23;
+                case 24:
+                    return 24;
+                case 25:
+                    return 25;
+                case 26:
+                    return 26;
+                case 27:
+                    return 27;
+                case 28:
+                    return 28;
+                case 29:
+                    return 29;
+                case 30:
+                    return 30;
+                case 31:
+                    return 31;
+
+            }
+            return "";
+        }
+
+        @Override
+        public void addListDataListener(ListDataListener l) {
+        }
+
+        @Override
+        public void removeListDataListener(ListDataListener l) {
+        }
+
+    }
+
+    public class Dia30Model implements ComboBoxModel {
 
         private Object selected = null;
 
@@ -436,8 +545,6 @@ public class SiembrasAñadirUI extends javax.swing.JInternalFrame {
                     return 29;
                 case 30:
                     return 30;
-                case 31:
-                    return 31;
 
             }
             return "";
@@ -449,6 +556,120 @@ public class SiembrasAñadirUI extends javax.swing.JInternalFrame {
 
         @Override
         public void removeListDataListener(ListDataListener l) {
+        }
+
+    }
+
+    public class Dia28Model implements ComboBoxModel {
+
+        private Object selected = null;
+
+        @Override
+        public void setSelectedItem(Object anItem) {
+            this.selected = anItem;
+        }
+
+        @Override
+        public Object getSelectedItem() {
+            return this.selected;
+        }
+
+        @Override
+        public int getSize() {
+            return 31;
+        }
+
+        @Override
+        public Object getElementAt(int i) {
+            switch (i) {
+                case 1:
+                    return 1;
+                case 2:
+                    return 2;
+                case 3:
+                    return 3;
+                case 4:
+                    return 4;
+                case 5:
+                    return 5;
+                case 6:
+                    return 6;
+                case 7:
+                    return 7;
+                case 8:
+                    return 8;
+                case 9:
+                    return 9;
+                case 10:
+                    return 10;
+                case 11:
+                    return 11;
+                case 12:
+                    return 12;
+                case 13:
+                    return 13;
+                case 14:
+                    return 14;
+                case 15:
+                    return 15;
+                case 16:
+                    return 16;
+                case 17:
+                    return 17;
+                case 18:
+                    return 18;
+                case 19:
+                    return 19;
+                case 20:
+                    return 20;
+                case 21:
+                    return 21;
+                case 22:
+                    return 22;
+                case 23:
+                    return 23;
+                case 24:
+                    return 24;
+                case 25:
+                    return 25;
+                case 26:
+                    return 26;
+                case 27:
+                    return 27;
+                case 28:
+                    return 28;
+
+            }
+            return "";
+        }
+
+        @Override
+        public void addListDataListener(ListDataListener l) {
+        }
+
+        @Override
+        public void removeListDataListener(ListDataListener l) {
+        }
+
+    }
+
+    public class DiaListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if ((mesjC.getSelectedItem().equals(Month.JANUARY)) || (mesjC.getSelectedItem().equals(Month.JANUARY)) || (mesjC.getSelectedItem().equals(Month.MARCH))
+                    || (mesjC.getSelectedItem().equals(Month.MAY)) || (mesjC.getSelectedItem().equals(Month.JULY)) || (mesjC.getSelectedItem().equals(Month.AUGUST))
+                    || (mesjC.getSelectedItem().equals(Month.OCTOBER)) || (mesjC.getSelectedItem().equals(Month.DECEMBER))) {
+                diajC.setModel(new Dia31Model());
+            }
+            if ((mesjC.getSelectedItem().equals(Month.FEBRUARY))) {
+                diajC.setModel(new Dia28Model());
+            }
+            if ((mesjC.getSelectedItem().equals(Month.APRIL)) || (mesjC.getSelectedItem().equals(Month.JUNE)) || (mesjC.getSelectedItem().equals(Month.SEPTEMBER))
+                    || (mesjC.getSelectedItem().equals(Month.NOVEMBER))) {
+                diajC.setModel(new Dia30Model());
+            }
+
         }
 
     }
@@ -586,8 +807,9 @@ public class SiembrasAñadirUI extends javax.swing.JInternalFrame {
                 int cantidad = Integer.parseInt(cantjT.getText());
                 Planta p = (Planta) plantajC.getSelectedItem();
                 EstadoSiembra es = EstadoSiembra.GERMINACION;
-                Siembra s = new Siembra(dia, mes, año, cantidad, p, 0, es);
-                controlSiembra.agregarSiembra(s);
+                siembra = new Siembra(dia, mes, año, cantidad, p, 0, es);
+                siembra.setPk(Long.parseLong(codSiembra.getText()));
+                controlSiembra.agregarSiembra(siembra);
                 JOptionPane.showMessageDialog(rootPane, "Siembra agregada con éxito");
                 cancelarbtn.doClick();
             } catch (Exception ex) {
@@ -596,7 +818,8 @@ public class SiembrasAñadirUI extends javax.swing.JInternalFrame {
         }
 
     }
- public class UpdatePlantascbxListener implements ActionListener {
+
+    public class UpdatePlantascbxListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -608,6 +831,7 @@ public class SiembrasAñadirUI extends javax.swing.JInternalFrame {
         }
 
     }
+
     public class borrarListener implements ActionListener {
 
         @Override

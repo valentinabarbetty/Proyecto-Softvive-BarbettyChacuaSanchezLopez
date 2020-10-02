@@ -258,6 +258,7 @@ public class PlantasUI extends javax.swing.JFrame {
                 desktop.add(plantasVerUI);
             }
             plantasVerUI.setVisible(true);
+            plantasVerUI.getPlantasTable().updateUI();
         }
 
         @Override

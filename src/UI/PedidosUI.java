@@ -315,6 +315,7 @@ public class PedidosUI extends javax.swing.JFrame {
                 desktop.add(pedidoVerUI);
             }
             pedidoVerUI.setVisible(true);
+            pedidoVerUI.getPediTable().updateUI();
         }
 
         @Override

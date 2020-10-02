@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import javax.swing.JTable;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 
@@ -166,9 +167,9 @@ public class UsuariosVerUI extends javax.swing.JInternalFrame {
 
         @Override
         public int getColumnCount() {
-            return 7;
+            return 8;
         }
-        private String[] nombreColumnas = {"Cédula", "Nombre", "Contraseña", "Dirección", "Télefono", "Rol", "Ciudad"};
+        private String[] nombreColumnas = {"Cédula", "Nombre", "Contraseña", "Dirección", "Télefono", "Rol", "Ciudad", "Estado"};
 
         @Override
         public String getColumnName(int columnIndex) {
@@ -204,6 +205,8 @@ public class UsuariosVerUI extends javax.swing.JInternalFrame {
                     return empleado.getRol();
                 case 6:
                     return empleado.getCiudad();
+                case 7:
+                    return empleado.getEstadoEmpleado();
             }
             return "";
         }
@@ -223,6 +226,10 @@ public class UsuariosVerUI extends javax.swing.JInternalFrame {
             //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         }
 
+    }
+
+    public JTable getUsuariosTable() {
+        return usuariosTable;
     }
 
     public class verListener implements ActionListener {

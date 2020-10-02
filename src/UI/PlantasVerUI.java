@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import javax.swing.JTable;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 
@@ -217,6 +218,10 @@ public class PlantasVerUI extends javax.swing.JInternalFrame {
             //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         }
 
+    }
+
+    public JTable getPlantasTable() {
+        return plantasTable;
     }
 
     public class verListener implements ActionListener {

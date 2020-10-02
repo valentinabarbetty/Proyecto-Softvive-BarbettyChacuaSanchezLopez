@@ -218,7 +218,7 @@ public class InsumosVerUI extends javax.swing.JInternalFrame {
 
     }
 
-    public JTable getUsuariosTable() {
+    public JTable getInsumosTable() {
         return insumosTable;
     }
 

@@ -209,7 +209,7 @@ public class IngresosUI extends javax.swing.JFrame {
                 desktop.add(ingresosVerUI);
             }
             ingresosVerUI.setVisible(true);
-            //siembrasVerUI.getUsuariosTable().updateUI();
+            ingresosVerUI.getIngresosTable().updateUI();
         }
 
         @Override

@@ -220,7 +220,7 @@ public class HerramientasVerUI extends javax.swing.JInternalFrame {
 
     }
 
-    public JTable getUsuariosTable() {
+    public JTable getHerramientasTable() {
         return herramientasTable;
     }
 

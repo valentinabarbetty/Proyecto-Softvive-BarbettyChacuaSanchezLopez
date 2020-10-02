@@ -47,11 +47,13 @@ public class Empleado implements Serializable {
     private Rol rol;
     @Column(nullable = false)
     private String ciudad;
+    @Enumerated(EnumType.STRING)
+    private EstadoEmpleado estadoEmpleado;
 
     public Empleado() {
     }
 
-    public Empleado(long cedula, String nombre, String contraseña, String direccion, long telefono, Rol rol, String ciudad) throws Exception {
+    public Empleado(long cedula, String nombre, String contraseña, String direccion, long telefono, Rol rol, String ciudad, EstadoEmpleado estadoEmpleado) throws Exception {
 
         if (Long.toString(cedula).equals(null)) {
             throw new Exception("Debe ingresar el número de la cédula");
@@ -66,6 +68,15 @@ public class Empleado implements Serializable {
         this.rol = rol;
         this.ciudad = ciudad;
         this.contraseña = contraseña;
+        this.estadoEmpleado = estadoEmpleado;
+    }
+
+    public EstadoEmpleado getEstadoEmpleado() {
+        return estadoEmpleado;
+    }
+
+    public void setEstadoEmpleado(EstadoEmpleado estadoEmpleado) {
+        this.estadoEmpleado = estadoEmpleado;
     }
 
     public long getCedula() {

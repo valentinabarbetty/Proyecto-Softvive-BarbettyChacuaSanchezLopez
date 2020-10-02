@@ -7,6 +7,7 @@ package UI;
 
 import Control.ControlEmpleados;
 import Modelo.Empleado;
+import Modelo.EstadoEmpleado;
 import Modelo.Rol;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -80,6 +81,10 @@ public class UsuariosEditarUI extends javax.swing.JInternalFrame {
         roljT = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         boxrol = new javax.swing.JComboBox(Rol.values()); ;
+        jLabel25 = new javax.swing.JLabel();
+        estadojT = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        estadocbx = new javax.swing.JComboBox(EstadoEmpleado.values()); ;
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(null);
@@ -207,6 +212,18 @@ public class UsuariosEditarUI extends javax.swing.JInternalFrame {
 
         boxrol.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
 
+        jLabel25.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel25.setText("Estado:");
+
+        estadojT.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+
+        jLabel26.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel26.setText("Seleccione el estado:");
+
+        estadocbx.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -220,6 +237,7 @@ public class UsuariosEditarUI extends javax.swing.JInternalFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(224, 224, 224)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel25)
                             .addComponent(jLabel15)
                             .addComponent(jLabel22)
                             .addComponent(jLabel14)
@@ -234,25 +252,28 @@ public class UsuariosEditarUI extends javax.swing.JInternalFrame {
                             .addComponent(jLabel10)
                             .addComponent(telefonoU)
                             .addComponent(ciudad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(roljT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(roljT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(estadojT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel23)
                             .addComponent(ciudadcbx, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel24))
+                            .addComponent(jLabel24)
+                            .addComponent(jLabel26)
+                            .addComponent(estadocbx, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(33, 33, 33))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(boxrol, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(168, 168, 168)
                 .addComponent(canbtn)
-                .addGap(169, 169, 169)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(acbtn)
-                .addGap(159, 159, 159))
+                .addGap(155, 155, 155))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -283,28 +304,39 @@ public class UsuariosEditarUI extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(telefonoU, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel22)
-                    .addComponent(jLabel23))
-                .addGap(8, 8, 8)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ciudadcbx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ciudad, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel15)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel22)
+                            .addComponent(jLabel23))
+                        .addGap(8, 8, 8)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ciudadcbx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ciudad, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel15)
+                                .addGap(2, 2, 2)
+                                .addComponent(roljT, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel24)
+                                .addGap(2, 2, 2)
+                                .addComponent(boxrol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel25)
                         .addGap(2, 2, 2)
-                        .addComponent(roljT, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(estadojT, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel24)
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel26)
                         .addGap(2, 2, 2)
-                        .addComponent(boxrol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(estadocbx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(canbtn)
                     .addComponent(acbtn))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -325,12 +357,10 @@ public class UsuariosEditarUI extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> ciudadcbx;
     private javax.swing.JLabel close;
     private javax.swing.JLabel close1;
-    private javax.swing.JLabel close2;
-    private javax.swing.JLabel close3;
-    private javax.swing.JLabel close4;
-    private javax.swing.JLabel close5;
     private javax.swing.JLabel contraseñaU;
     private javax.swing.JTextField direccionU;
+    private javax.swing.JComboBox<String> estadocbx;
+    private javax.swing.JLabel estadojT;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -339,17 +369,13 @@ public class UsuariosEditarUI extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JTextField nomU;
     private javax.swing.JLabel roljT;
     private javax.swing.JTextField telefonoU;
@@ -458,16 +484,19 @@ public class UsuariosEditarUI extends javax.swing.JInternalFrame {
             long telefono = empleado.getTelefono();
             Rol rol1 = empleado.getRol();
             String ciu = empleado.getCiudad();
-            
+            EstadoEmpleado ee = empleado.getEstadoEmpleado();
+
             cedula.setText(Long.toString(cedu));
             nomU.setText(nombre);
             contraseñaU.setText(contraseña);
             direccionU.setText(direccion);
             telefonoU.setText(Long.toString(telefono));
+            estadojT.setText(ee.toString());
             ciudad.setText(ciu);
             roljT.setText(rol1.toString());
             boxrol.setSelectedItem(rol1);
             ciudadcbx.setSelectedItem(ciu);
+            estadocbx.setSelectedItem(ee);
 
         }
 
@@ -484,6 +513,8 @@ public class UsuariosEditarUI extends javax.swing.JInternalFrame {
                 String direccion = direccionU.getText();
                 long telefono = Long.parseLong(telefonoU.getText());
                 String ciudad = (String) ciudadcbx.getSelectedItem();
+                EstadoEmpleado ee = (EstadoEmpleado) estadocbx.getSelectedItem();
+
 //                if (!ciudadcbx.getSelectedItem().equals(null)) {
 //                    empleado.setCiudad(ciudad);
 //                }
@@ -498,7 +529,9 @@ public class UsuariosEditarUI extends javax.swing.JInternalFrame {
                 empleado.setDireccion(direccion);
                 empleado.setTelefono(telefono);
                 empleado.setRol(rol);
+                empleado.setEstadoEmpleado(ee);
                 controlEmpleados.actualizarEmpleado(empleado);
+                
 
                 JOptionPane.showMessageDialog(rootPane, "Empleado editado con éxito");
                 canbtn.doClick();
@@ -520,6 +553,7 @@ public class UsuariosEditarUI extends javax.swing.JInternalFrame {
             contraseñaU.setText("");
             ciudad.setText("");
             roljT.setText("");
+            estadojT.setText("");
 
         }
 
