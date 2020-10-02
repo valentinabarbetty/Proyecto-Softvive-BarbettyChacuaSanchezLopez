@@ -8,6 +8,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.time.Month;
 import java.time.Year;
+import javax.swing.JTable;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 
@@ -26,7 +27,7 @@ public class PedidoVerUI extends javax.swing.JInternalFrame {
         this.close.addMouseListener(new clickCerrarListener());
         this.close1.addMouseListener(new clickCerrarListener());
         setLocation(0, -32);
-        
+
         pediTable.updateUI();
         dpTable.updateUI();
 //        this.getContentPane().setBackground(Color.white);
@@ -255,6 +256,10 @@ public class PedidoVerUI extends javax.swing.JInternalFrame {
             //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         }
 
+    }
+
+    public JTable getPediTable() {
+        return pediTable;
     }
 
     public class clickPedido implements MouseListener {

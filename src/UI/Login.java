@@ -3,6 +3,7 @@ package UI;
 import Control.ControlEmpleados;
 import Modelo.Detalle_Pedido;
 import Modelo.Empleado;
+import Modelo.EstadoEmpleado;
 import Modelo.Vivero;
 import Modelo.Rol;
 import UI.ViveroGerenteUI;
@@ -28,6 +29,7 @@ public class Login extends javax.swing.JFrame {
     private ViveroTrabajadorUI viveroTrabajadorUI;
     private ViveroTransportadorUI viveroTransportadorUI;
     private Empleado empleado;
+    private Empleado gerente;
     private Rol rol;
     private PlantasUI plantasUI;
 
@@ -43,6 +45,12 @@ public class Login extends javax.swing.JFrame {
         this.viveroTrabajadorUI = new ViveroTrabajadorUI(vivero);
         this.viveroTransportadorUI = new ViveroTransportadorUI(vivero);
         this.plantasUI = new PlantasUI();
+//        try {
+//            gerente = new Empleado(12345, "Jeon Jungkook", "11111", "Calle 76", 2584999, Rol.GERENTE_PROPIETARIO, "Palmira");
+//            controlEmpleados.agregarEmpleado(gerente);
+//        } catch (Exception ex) {
+//            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+//        }
 
         this.setResizable(false);
         this.setLocationRelativeTo(null);
@@ -203,7 +211,7 @@ public class Login extends javax.swing.JFrame {
 
                 empleado = controlEmpleados.buscarEmpleado(cedula);
 
-                if ((controlEmpleados.AccesoEmpleado(cedula, contraseña) == true) && (empleado.getRol().equals(Rol.TRABAJADOR))) {
+                if ((controlEmpleados.AccesoEmpleado(cedula, contraseña) == true) && (empleado.getRol().equals(Rol.TRABAJADOR)) && (empleado.getEstadoEmpleado().equals(EstadoEmpleado.ACTIVO))) {
 
 //                    JOptionPane.showMessageDialog(rootPane, " Sesión iniciada ");
                     try {
@@ -214,8 +222,8 @@ public class Login extends javax.swing.JFrame {
                         }
 
                         viveroTrabajadorUI.setVisible(true);
-                         viveroTrabajadorUI.setVisible(true);
-                    viveroTrabajadorUI.setBienvenido("Bienvenido" + " " + empleado.getNombre());
+                        viveroTrabajadorUI.setVisible(true);
+                        viveroTrabajadorUI.setBienvenido("Bienvenido" + " " + empleado.getNombre());
 
                         dispose();
                     } catch (Exception ex) {
@@ -257,7 +265,7 @@ public class Login extends javax.swing.JFrame {
 
                     //////////////////////////////////////////////////////////////////////////////////////////////////777         
                 }
-                if ((controlEmpleados.AccesoEmpleado(cedula, contraseña) == true) && (empleado.getRol().equals(Rol.TRANSPORTISTA))) {
+                if ((controlEmpleados.AccesoEmpleado(cedula, contraseña) == true) && (empleado.getRol().equals(Rol.TRANSPORTISTA)) && (empleado.getEstadoEmpleado().equals(EstadoEmpleado.ACTIVO))) {
 
                     if (viveroTransportadorUI == null) {
 
@@ -289,6 +297,13 @@ public class Login extends javax.swing.JFrame {
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             }
 
+            try {
+                if (empleado.getEstadoEmpleado().equals(EstadoEmpleado.INACTIVO) && (controlEmpleados.AccesoEmpleado(cedula, contraseña) == true)) {
+                    JOptionPane.showMessageDialog(Login.this, "El empleado se encuentra inactivo");
+                }
+            } catch (Exception ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
 
     }

@@ -8,6 +8,7 @@ import Modelo.Detalle_Gasto;
 import Modelo.Detalle_Pedido;
 import Modelo.Distribuidor;
 import Modelo.Empleado;
+import Modelo.EstadoEmpleado;
 import Modelo.Ingreso;
 import Modelo.Rol;
 import Modelo.Insumo;
@@ -57,16 +58,15 @@ public class Main {
                 try {
                     Vivero vivero = new Vivero("123678", "Bruzón", "calle 26");
 
-                    Empleado empleado1 = new Empleado(12345, "Jeon Jungkook", "11111", "cra #1-2", 11622736, Rol.GERENTE_PROPIETARIO, "Palmira");
-                    Empleado empleado2 = new Empleado(6789, "Kim Namjoon", "22222", "cra # 3-12", 1672839, Rol.TRANSPORTISTA, "Cali");
-                    Empleado empleado3 = new Empleado(1113696, "Kim Seokjin", "33333", "cra #4-2", 2987624, Rol.TRABAJADOR, "Buga");
-
+                    Empleado empleado1 = new Empleado(12345, "Jeon Jungkook", "11111", "cra #1-2", 11622736, Rol.GERENTE_PROPIETARIO, "Palmira", EstadoEmpleado.ACTIVO);
+                
+         
                     ControlEmpleados ce = new ControlEmpleados();
-//                    ce.agregarEmpleado(empleado1);
-//                    ce.agregarEmpleado(empleado2);
-//                    ce.agregarEmpleado(empleado3);
-                    new ViveroGerenteUI(vivero).setVisible(true);
-//                    new Login(vivero).setVisible(true);
+                    if(ce.getListaEmpleados().isEmpty()){
+                        ce.agregarEmpleado(empleado1);
+                    } 
+
+                    new Login(vivero).setVisible(true);
 
                 } catch (Exception ex) {
                     Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);

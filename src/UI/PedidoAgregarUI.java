@@ -12,7 +12,6 @@ import Control.ControlPlantas;
 import Modelo.Detalle_Pedido;
 import Modelo.Distribuidor;
 import Modelo.EstadoEntrega;
-import Modelo.EstadoListo;
 import Modelo.Pedido;
 import Modelo.Planta;
 import java.awt.event.ActionEvent;
@@ -61,7 +60,7 @@ public class PedidoAgregarUI extends javax.swing.JInternalFrame {
         this.distrijC.setModel(new DistribuidoresListener());
         this.mesjC.setModel(new MesModel());
         this.distrijC.addActionListener(new BuscarDistribuidorListener());
-        this.diajC.setModel(new Dia31Model());
+        //this.diajC.setModel(new Dia31Model());
         this.añojC.setModel(new AñoModel());
         this.distrijC.addActionListener(new BuscarDistribuidorListener());
         this.agregarDP.addActionListener(new AgregarDetallePedidoListener());
@@ -72,6 +71,7 @@ public class PedidoAgregarUI extends javax.swing.JInternalFrame {
         this.actdp.addActionListener(new EditarDPListener());
         this.close.addMouseListener(new clickCerrarListener());
         this.close1.addMouseListener(new clickCerrarListener());
+        this.mesjC.addActionListener(new DiaListener());
         setLocation(0, -32);
         //this.mesjC.addActionListener(new DiaListener());
 
@@ -379,14 +379,9 @@ public class PedidoAgregarUI extends javax.swing.JInternalFrame {
                                         .addComponent(emailT, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(77, 77, 77))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(pedidoT, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
+                                .addGap(23, 23, 23)
                                 .addComponent(jLabel5)
                                 .addGap(18, 18, 18)
                                 .addComponent(plantajC, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -395,7 +390,11 @@ public class PedidoAgregarUI extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cantjT, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(53, 53, 53)
-                                .addComponent(agregarDP, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(agregarDP, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(18, 18, 18)
+                                .addComponent(pedidoT, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -412,7 +411,7 @@ public class PedidoAgregarUI extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(pedidoT, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -453,7 +452,7 @@ public class PedidoAgregarUI extends javax.swing.JInternalFrame {
                         .addComponent(jLabel5)
                         .addComponent(cantjT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(agregarDP))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -676,7 +675,7 @@ public class PedidoAgregarUI extends javax.swing.JInternalFrame {
 
         @Override
         public int getSize() {
-            return 31;
+            return 32;
         }
 
         @Override
@@ -759,6 +758,196 @@ public class PedidoAgregarUI extends javax.swing.JInternalFrame {
 
     }
 
+    public class Dia30Model implements ComboBoxModel {
+
+        private Object selected = null;
+
+        @Override
+        public void setSelectedItem(Object anItem) {
+            this.selected = anItem;
+        }
+
+        @Override
+        public Object getSelectedItem() {
+            return this.selected;
+        }
+
+        @Override
+        public int getSize() {
+            return 31;
+        }
+
+        @Override
+        public Object getElementAt(int i) {
+            switch (i) {
+                case 1:
+                    return 1;
+                case 2:
+                    return 2;
+                case 3:
+                    return 3;
+                case 4:
+                    return 4;
+                case 5:
+                    return 5;
+                case 6:
+                    return 6;
+                case 7:
+                    return 7;
+                case 8:
+                    return 8;
+                case 9:
+                    return 9;
+                case 10:
+                    return 10;
+                case 11:
+                    return 11;
+                case 12:
+                    return 12;
+                case 13:
+                    return 13;
+                case 14:
+                    return 14;
+                case 15:
+                    return 15;
+                case 16:
+                    return 16;
+                case 17:
+                    return 17;
+                case 18:
+                    return 18;
+                case 19:
+                    return 19;
+                case 20:
+                    return 20;
+                case 21:
+                    return 21;
+                case 22:
+                    return 22;
+                case 23:
+                    return 23;
+                case 24:
+                    return 24;
+                case 25:
+                    return 25;
+                case 26:
+                    return 26;
+                case 27:
+                    return 27;
+                case 28:
+                    return 28;
+                case 29:
+                    return 29;
+                case 30:
+                    return 30;
+
+            }
+            return "";
+        }
+
+        @Override
+        public void addListDataListener(ListDataListener l) {
+        }
+
+        @Override
+        public void removeListDataListener(ListDataListener l) {
+        }
+
+    }
+
+    public class Dia28Model implements ComboBoxModel {
+
+        private Object selected = null;
+
+        @Override
+        public void setSelectedItem(Object anItem) {
+            this.selected = anItem;
+        }
+
+        @Override
+        public Object getSelectedItem() {
+            return this.selected;
+        }
+
+        @Override
+        public int getSize() {
+            return 31;
+        }
+
+        @Override
+        public Object getElementAt(int i) {
+            switch (i) {
+                case 1:
+                    return 1;
+                case 2:
+                    return 2;
+                case 3:
+                    return 3;
+                case 4:
+                    return 4;
+                case 5:
+                    return 5;
+                case 6:
+                    return 6;
+                case 7:
+                    return 7;
+                case 8:
+                    return 8;
+                case 9:
+                    return 9;
+                case 10:
+                    return 10;
+                case 11:
+                    return 11;
+                case 12:
+                    return 12;
+                case 13:
+                    return 13;
+                case 14:
+                    return 14;
+                case 15:
+                    return 15;
+                case 16:
+                    return 16;
+                case 17:
+                    return 17;
+                case 18:
+                    return 18;
+                case 19:
+                    return 19;
+                case 20:
+                    return 20;
+                case 21:
+                    return 21;
+                case 22:
+                    return 22;
+                case 23:
+                    return 23;
+                case 24:
+                    return 24;
+                case 25:
+                    return 25;
+                case 26:
+                    return 26;
+                case 27:
+                    return 27;
+                case 28:
+                    return 28;
+
+            }
+            return "";
+        }
+
+        @Override
+        public void addListDataListener(ListDataListener l) {
+        }
+
+        @Override
+        public void removeListDataListener(ListDataListener l) {
+        }
+
+    }
+
     public class AñoModel implements ComboBoxModel {
 
         private Object selected = null;
@@ -808,6 +997,27 @@ public class PedidoAgregarUI extends javax.swing.JInternalFrame {
 
         @Override
         public void removeListDataListener(ListDataListener l) {
+        }
+
+    }
+
+    public class DiaListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if ((mesjC.getSelectedItem().equals(Month.JANUARY)) || (mesjC.getSelectedItem().equals(Month.JANUARY)) || (mesjC.getSelectedItem().equals(Month.MARCH))
+                    || (mesjC.getSelectedItem().equals(Month.MAY)) || (mesjC.getSelectedItem().equals(Month.JULY)) || (mesjC.getSelectedItem().equals(Month.AUGUST))
+                    || (mesjC.getSelectedItem().equals(Month.OCTOBER)) || (mesjC.getSelectedItem().equals(Month.DECEMBER))) {
+                diajC.setModel(new Dia31Model());
+            }
+            if ((mesjC.getSelectedItem().equals(Month.FEBRUARY))) {
+                diajC.setModel(new Dia28Model());
+            }
+            if ((mesjC.getSelectedItem().equals(Month.APRIL)) || (mesjC.getSelectedItem().equals(Month.JUNE)) || (mesjC.getSelectedItem().equals(Month.SEPTEMBER))
+                    || (mesjC.getSelectedItem().equals(Month.NOVEMBER))) {
+                diajC.setModel(new Dia30Model());
+            }
+
         }
 
     }
@@ -961,7 +1171,6 @@ public class PedidoAgregarUI extends javax.swing.JInternalFrame {
                 pedido.setDia(dia);
                 pedido.setTotal(total);
                 pedido.setEstadoEntrega(EstadoEntrega.No_Entregado);
-                pedido.setEstadoListo(EstadoListo.Pendiente);
                 pedido.setEstadoPago("no pago");
                 pedido.setDistribuidor(d);
                 pedido.setCant_vendida(m);
@@ -982,14 +1191,15 @@ public class PedidoAgregarUI extends javax.swing.JInternalFrame {
             try {
                 int dp = TablePedidos.getSelectedRow();
                 Detalle_Pedido d = pedido.getListaDetallePedido().get(dp);
-                int cantAntes = d.getCantidad();
                 int totAntes = Integer.parseInt(totT.getText());
-                totT.setText(Integer.toString(totAntes - (cantAntes * d.getPlanta().getValor_unitario()) + (d.getPlanta().getValor_unitario() * Integer.parseInt(cantjT.getText()))));
+                int totalM = totAntes - d.getPrecio();
+                pedido.setTotal(totalM);
                 d.setCantidad(Integer.parseInt(cantjT.getText()));
                 d.setPrecio(d.getPlanta().getValor_unitario() * Integer.parseInt(cantjT.getText()));
-                pedido.setTotal(d.getPlanta().getValor_unitario() * Integer.parseInt(cantjT.getText()));
+                pedido.setTotal(totalM + d.getPrecio());
                 controlDetallePedido.actualizarDPedido(d);
-                //controlPedidos.actualizarPedido(pedido);
+                totT.setText(Integer.toString(totalM + d.getPrecio()));
+                totT.updateUI();
                 TablePedidos.updateUI();
             } catch (Exception ex) {
                 Logger.getLogger(PedidoAgregarUI.class.getName()).log(Level.SEVERE, null, ex);

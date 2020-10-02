@@ -192,6 +192,10 @@ public class IngresosVerUI extends javax.swing.JInternalFrame {
         }
 
     }
+
+    public JTable getIngresosTable() {
+        return ingresosTable;
+    }
     
     public class IngresosTableModel implements TableModel {
 

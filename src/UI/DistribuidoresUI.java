@@ -176,6 +176,8 @@ public class DistribuidoresUI extends javax.swing.JFrame {
             .addComponent(jPanel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        getAccessibleContext().setAccessibleName("Distribuidores");
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -241,6 +243,7 @@ public class DistribuidoresUI extends javax.swing.JFrame {
                 desktopd.add(distribuidoresSeeUI);
             }
             distribuidoresSeeUI.setVisible(true);
+            distribuidoresSeeUI.getDistriTable().updateUI();
         }
 
         @Override

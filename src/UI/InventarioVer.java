@@ -9,6 +9,7 @@ import Modelo.Insumo;
 import Modelo.Planta;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JTable;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 
@@ -276,19 +277,27 @@ public class InventarioVer extends javax.swing.JInternalFrame {
 
         @Override
         public void setValueAt(Object o, int i, int i1) {
-//
+
         }
 
         @Override
         public void addTableModelListener(TableModelListener tl) {
-//
+
         }
 
         @Override
         public void removeTableModelListener(TableModelListener tl) {
-//
+
         }
 
+    }
+
+    public JTable getTableInventarioHerramientas() {
+        return tableInventarioHerramientas;
+    }
+
+    public JTable getTableInventarioInsumos() {
+        return tableInventarioInsumos;
     }
 
 }

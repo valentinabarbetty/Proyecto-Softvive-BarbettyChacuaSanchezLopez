@@ -255,7 +255,7 @@ public class SiembrasUI extends javax.swing.JFrame {
                 desktop.add(siembrasVerUI);
             }
             siembrasVerUI.setVisible(true);
-            //siembrasVerUI.getUsuariosTable().updateUI();
+            siembrasVerUI.getSiembraTable().updateUI();
         }
 
         @Override

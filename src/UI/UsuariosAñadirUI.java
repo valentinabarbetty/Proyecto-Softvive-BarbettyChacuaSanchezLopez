@@ -7,6 +7,7 @@ package UI;
 
 import Control.ControlEmpleados;
 import Modelo.Empleado;
+import Modelo.EstadoEmpleado;
 import Modelo.Rol;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -374,7 +375,7 @@ public class UsuariosAñadirUI extends javax.swing.JInternalFrame {
                     String direccion = direccionjT.getText();
                     Rol selectRol = (Rol) rol.getSelectedItem();
 
-                    Empleado d = new Empleado(cedula, nom, contraseña, direccion, tel, selectRol, ciudad);
+                    Empleado d = new Empleado(cedula, nom, contraseña, direccion, tel, selectRol, ciudad, EstadoEmpleado.ACTIVO);
                     controlEmpleados.agregarEmpleado(d);
 
                     JOptionPane.showMessageDialog(rootPane, "Empleado agregado con éxito");
