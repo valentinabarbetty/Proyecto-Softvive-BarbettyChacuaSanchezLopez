@@ -26,6 +26,9 @@ public class PedidoVerUI extends javax.swing.JInternalFrame {
         this.close.addMouseListener(new clickCerrarListener());
         this.close1.addMouseListener(new clickCerrarListener());
         setLocation(0, -32);
+        
+        pediTable.updateUI();
+        dpTable.updateUI();
 //        this.getContentPane().setBackground(Color.white);
     }
 

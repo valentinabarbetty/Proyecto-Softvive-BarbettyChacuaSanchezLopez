@@ -14,11 +14,12 @@
     <class>Modelo.Detalle_GastoHerramienta</class>
     <class>Modelo.Detalle_GastoInsumo</class>
     <class>Modelo.Herramienta</class>
+    <class>Modelo.Siembra</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/AppVivero"/>
-      <property name="javax.persistence.jdbc.user" value="AppVivero"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/sample"/>
+      <property name="javax.persistence.jdbc.user" value="app"/>
       <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
-      <property name="javax.persistence.jdbc.password" value="AppVivero"/>
+      <property name="javax.persistence.jdbc.password" value="app"/>
       <property name="javax.persistence.schema-generation.database.action" value="create"/>
     </properties>
   </persistence-unit>
