@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package UI;
 
 import Control.ControlPedidos;
@@ -23,15 +18,8 @@ import javax.swing.JOptionPane;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 
-/**
- *
- * @author Valentina
- */
 public class SiembrasEstadoUI extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form PedidoConfirmarEntregaUI
-     */
     private ControlSiembra controlSiembra;
     private Siembra siembra;
 
@@ -257,8 +245,8 @@ public class SiembrasEstadoUI extends javax.swing.JInternalFrame {
         public void actionPerformed(ActionEvent e) {
             try {
                 long codSiembra = (long) TableSiembras.getValueAt(TableSiembras.getSelectedRow(), 0);
-                int cod = (int)(codSiembra);
-                Siembra siembra = controlSiembra.getListaSiembras().get((cod -1));
+                int cod = (int) (codSiembra);
+                Siembra siembra = controlSiembra.getListaSiembras().get((cod - 1));
                 siembra.setEstadoSiembra(EstadoSiembra.CRECIMIENTO);
                 controlSiembra.actualizarSiembra(siembra);
                 JOptionPane.showMessageDialog(rootPane, "Se cambió el estado de la siembra con éxito");

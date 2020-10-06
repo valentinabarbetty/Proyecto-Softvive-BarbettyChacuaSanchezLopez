@@ -5,6 +5,8 @@ import Modelo.Empleado;
 import Modelo.Rol;
 import Modelo.Vivero;
 import Resources.fondoDesktop;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -16,6 +18,10 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.ImageObserver;
+import java.awt.image.ImageProducer;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 public class ViveroGerenteUI extends javax.swing.JFrame {
 
@@ -25,6 +31,7 @@ public class ViveroGerenteUI extends javax.swing.JFrame {
 
     public ViveroGerenteUI(Vivero vivero) {
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("../Resources/planticon.png")).getImage());
 
         this.vivero = vivero;
 
@@ -715,7 +722,8 @@ public class ViveroGerenteUI extends javax.swing.JFrame {
 
         @Override
         public void mouseClicked(MouseEvent e) {
-            int opcion = JOptionPane.showConfirmDialog(ViveroGerenteUI.this, vivero, "¿Desea Salir del sistema?", JOptionPane.OK_CANCEL_OPTION);
+            String message = "¿Desea salir del sistema?";
+            int opcion = JOptionPane.showConfirmDialog(ViveroGerenteUI.this, message, "Cerrar sesión", JOptionPane.OK_CANCEL_OPTION);
 
             if (opcion == JOptionPane.CANCEL_OPTION) {
                 return;

@@ -53,12 +53,12 @@ public class HerramientasVerUI extends javax.swing.JInternalFrame {
         setBorder(null);
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(705, 630));
+        setPreferredSize(new java.awt.Dimension(725, 630));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(133, 198, 90));
 
-        herramientasTable.setFont(new java.awt.Font("SansSerif", 0, 10)); // NOI18N
+        herramientasTable.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         herramientasTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -81,7 +81,7 @@ public class HerramientasVerUI extends javax.swing.JInternalFrame {
 
         jLabel17.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel17.setText("Herramientas Registrados");
+        jLabel17.setText("Herramientas Registradas");
 
         close.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/close.png"))); // NOI18N
 
@@ -98,7 +98,7 @@ public class HerramientasVerUI extends javax.swing.JInternalFrame {
                 .addComponent(jLabel16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel17)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 165, Short.MAX_VALUE)
                 .addComponent(close)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(close1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))

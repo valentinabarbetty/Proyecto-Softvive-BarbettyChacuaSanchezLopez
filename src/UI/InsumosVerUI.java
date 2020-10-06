@@ -27,7 +27,7 @@ public class InsumosVerUI extends javax.swing.JInternalFrame {
         insumosTable.getTableHeader().setForeground(Color.black);
         this.close.addMouseListener(new clickCerrarListener());
         this.close1.addMouseListener(new clickCerrarListener());
-        setLocation(0, -32);
+        setLocation(-8, -32);
         insumosTable.setModel(new InsumosTableModel());
         insumosTable.updateUI();
 //        d.addActionListener(new verListener());
@@ -51,7 +51,7 @@ public class InsumosVerUI extends javax.swing.JInternalFrame {
         setBorder(null);
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(705, 630));
+        setPreferredSize(new java.awt.Dimension(720, 640));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(133, 198, 90));
@@ -96,7 +96,7 @@ public class InsumosVerUI extends javax.swing.JInternalFrame {
                 .addComponent(jLabel16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel17)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 165, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 174, Short.MAX_VALUE)
                 .addComponent(close)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(close1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))

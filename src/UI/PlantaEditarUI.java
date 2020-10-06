@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package UI;
 
 import Control.ControlPlantas;
@@ -19,18 +14,11 @@ import javax.swing.ComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListDataListener;
 
-/**
- *
- * @author xxval
- */
 public class PlantaEditarUI extends javax.swing.JInternalFrame {
 
     private ControlPlantas controlPlantas;
     private Planta p;
 
-    /**
-     * Creates new form EditarPrecioPlantaUI
-     */
     public PlantaEditarUI() {
         initComponents();
         this.controlPlantas = new ControlPlantas();
@@ -84,7 +72,7 @@ public class PlantaEditarUI extends javax.swing.JInternalFrame {
         setBorder(null);
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(701, 571));
+        setPreferredSize(new java.awt.Dimension(710, 571));
         setRequestFocusEnabled(false);
 
         precioNjT.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
@@ -170,7 +158,7 @@ public class PlantaEditarUI extends javax.swing.JInternalFrame {
                 .addComponent(jLabel16)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel17)
-                .addGap(155, 155, 155)
+                .addGap(197, 197, 197)
                 .addComponent(close)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(close1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -234,7 +222,7 @@ public class PlantaEditarUI extends javax.swing.JInternalFrame {
                         .addComponent(canbtn)
                         .addGap(163, 163, 163)
                         .addComponent(acbtn)))
-                .addGap(0, 10, Short.MAX_VALUE))
+                .addGap(0, 19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -383,26 +371,45 @@ public class PlantaEditarUI extends javax.swing.JInternalFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            try {
-                String nom = nomPjT.getText();
-                TipoReproduccion tr = (TipoReproduccion) tRepjC.getSelectedItem();
-                int tGer = Integer.parseInt(tGerjT.getText());
-                int tCrec = Integer.parseInt(tCrecjT.getText());
-                int precio = Integer.parseInt(precioNjT.getText());
-                p = (Planta) plantasjC.getSelectedItem();
-                p.setValor_unitario(precio);
-                p.setNombre(nom);
-                p.setTipoReproduccion(tr);
-                p.setTiempoGerminacion(tGer);
-                p.setTiempoCrecimiento(tCrec);
-                controlPlantas.actualizarPlanta(p);
-                JOptionPane.showMessageDialog(rootPane, "Planta editada con éxito");
-                canbtn.doClick();
-            } catch (Exception ex) {
-                Logger.getLogger(PlantaEditarUI.class.getName()).log(Level.SEVERE, null, ex);
+            if (cod.getText().equals("")) {
+                JOptionPane.showMessageDialog(rootPane, "Debe ingresar un Código");
             }
-        }
+            if (nomPjT.getText().equals("")) {
+                JOptionPane.showMessageDialog(rootPane, "Debe ingresar un nombre");
+                String n = p.getNombre();
+                p.setNombre(n);
 
+            }
+            if (tGerjT.getText().equals("")) {
+                JOptionPane.showMessageDialog(rootPane, "Debe ingresar un tiempo de Germinación");
+            }
+            if (tCrecjT.getText().equals("")) {
+                JOptionPane.showMessageDialog(rootPane, "Debe ingresar un tiempo de Crecimiento");
+            }
+            if (precioNjT.getText().equals("")) {
+                JOptionPane.showMessageDialog(rootPane, "Debe seleccionar un precio");
+            } else {
+                try {
+                    String nom = nomPjT.getText();
+                    TipoReproduccion tr = (TipoReproduccion) tRepjC.getSelectedItem();
+                    int tGer = Integer.parseInt(tGerjT.getText());
+                    int tCrec = Integer.parseInt(tCrecjT.getText());
+                    int precio = Integer.parseInt(precioNjT.getText());
+                    p = (Planta) plantasjC.getSelectedItem();
+                    p.setValor_unitario(precio);
+                    p.setNombre(nom);
+                    p.setTipoReproduccion(tr);
+                    p.setTiempoGerminacion(tGer);
+                    p.setTiempoCrecimiento(tCrec);
+                    controlPlantas.actualizarPlanta(p);
+                    JOptionPane.showMessageDialog(rootPane, "Planta editada con éxito");
+                    canbtn.doClick();
+                } catch (Exception ex) {
+                    Logger.getLogger(PlantaEditarUI.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
     }
 
     public class borrarListener implements ActionListener {

@@ -1,24 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package UI;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import javax.swing.ImageIcon;
 
-/**
- *
- * @author Valentina
- */
 public class InventarioUI extends javax.swing.JFrame {
 
-    /**
-     * Creates new form SiembrasUI
-     */
     public InventarioUI() {
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("../Resources/planticon.png")).getImage());
         this.setResizable(true);
         this.setLocationRelativeTo(null);
         this.editarInventario.addMouseListener(new clickEditarListenerPrueba());
@@ -164,13 +154,13 @@ public class InventarioUI extends javax.swing.JFrame {
 
     public class clickEditarListener implements MouseListener {
 
-        private InventarioEditar inventarioEditarUI;
+        private InventarioEditarUI inventarioEditarUI;
 
         @Override
         public void mouseClicked(MouseEvent e) {
 
             if (inventarioEditarUI == null) {
-                inventarioEditarUI = new InventarioEditar();
+                inventarioEditarUI = new InventarioEditarUI();
                 desktop.add(inventarioEditarUI);
             }
             inventarioEditarUI.setVisible(true);
@@ -201,13 +191,13 @@ public class InventarioUI extends javax.swing.JFrame {
 
     public class clickEditarListenerPrueba implements MouseListener {
 
-        private Iprueba IpruebaUI;
+        private InventarioEditarUI IpruebaUI;
 
         @Override
         public void mouseClicked(MouseEvent e) {
 
             if (IpruebaUI == null) {
-                IpruebaUI = new Iprueba();
+                IpruebaUI = new InventarioEditarUI();
                 desktop.add(IpruebaUI);
             }
             IpruebaUI.setVisible(true);

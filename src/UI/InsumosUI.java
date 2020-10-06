@@ -16,6 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.paint.Color;
 import javax.swing.ComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListDataListener;
@@ -27,6 +28,7 @@ public class InsumosUI extends javax.swing.JFrame {
 
     public InsumosUI() {
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("../Resources/planticon.png")).getImage());
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.plantasAñadirUI = new PlantasAñadirUI();

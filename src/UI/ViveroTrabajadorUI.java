@@ -11,6 +11,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -28,6 +29,7 @@ public class ViveroTrabajadorUI extends javax.swing.JFrame {
 
         this.setResizable(false);
         desktop.setBorder(new fondoDesktop());
+        setIconImage(new ImageIcon(getClass().getResource("../Resources/planticon.png")).getImage());
         // this.setExtendedState(ViveroUI.MAXIMIZED_BOTH);
 
         this.setLocationRelativeTo(null);
@@ -38,7 +40,7 @@ public class ViveroTrabajadorUI extends javax.swing.JFrame {
         this.cerrarSesion.addMouseListener(new clickCerrarSesion());
         this.Pedidos.addMouseListener(new clickPedidosListener());
         this.Pedidos1.addMouseListener(new clickPedidosListener());
-        
+
         this.empleado = new Empleado();
         this.plantasUI = new PlantasUI();
 
@@ -238,7 +240,7 @@ public class ViveroTrabajadorUI extends javax.swing.JFrame {
         public void mouseClicked(MouseEvent e) {
             if (plantasUI == null) {
                 plantasUI = new PlantasUI();
-              //  desktop.add(plantasUI);
+                //  desktop.add(plantasUI);
             }
             plantasUI.setVisible(true);
 
@@ -274,7 +276,7 @@ public class ViveroTrabajadorUI extends javax.swing.JFrame {
         public void mouseClicked(MouseEvent e) {
             if (distribuidoresUI == null) {
                 distribuidoresUI = new DistribuidoresUI();
-               // desktop.add(distribuidoresUI);
+                // desktop.add(distribuidoresUI);
             }
             distribuidoresUI.setVisible(true);
 
@@ -469,7 +471,8 @@ public class ViveroTrabajadorUI extends javax.swing.JFrame {
 
         @Override
         public void mouseClicked(MouseEvent e) {
-            int opcion = JOptionPane.showConfirmDialog(ViveroTrabajadorUI.this, vivero, "¿Desea Salir del sistema?", JOptionPane.OK_CANCEL_OPTION);
+            String message = "¿Desea salir del sistema?";
+            int opcion = JOptionPane.showConfirmDialog(ViveroTrabajadorUI.this, message, "Cerrar sesión", JOptionPane.OK_CANCEL_OPTION);
 
             if (opcion == JOptionPane.CANCEL_OPTION) {
                 return;

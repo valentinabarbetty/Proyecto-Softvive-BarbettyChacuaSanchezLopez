@@ -49,12 +49,12 @@ public class UsuariosVerUI extends javax.swing.JInternalFrame {
         setBorder(null);
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(705, 630));
+        setPreferredSize(new java.awt.Dimension(905, 855));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(133, 198, 90));
 
-        usuariosTable.setFont(new java.awt.Font("SansSerif", 0, 10)); // NOI18N
+        usuariosTable.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         usuariosTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -66,7 +66,7 @@ public class UsuariosVerUI extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        usuariosTable.setGridColor(new java.awt.Color(255, 255, 255));
+        usuariosTable.setGridColor(new java.awt.Color(204, 204, 204));
         usuariosTable.setSelectionBackground(new java.awt.Color(133, 198, 90));
         usuariosTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(usuariosTable);
@@ -90,11 +90,11 @@ public class UsuariosVerUI extends javax.swing.JInternalFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(238, 238, 238)
+                .addGap(371, 371, 371)
                 .addComponent(jLabel16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel17)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 467, Short.MAX_VALUE)
                 .addComponent(close)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(close1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))

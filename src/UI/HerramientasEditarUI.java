@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package UI;
 
 import Control.ControlHerramienta;
@@ -12,31 +7,27 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.event.ListDataListener;
 
-/**
- *
- * @author Valentina
- */
 public class HerramientasEditarUI extends javax.swing.JInternalFrame {
-    
+
     private ControlHerramienta controlHerramientas;
     private Herramienta herramienta;
 
-    /**
-     * Creates new form SiembrasAñadirUI
-     */
     public HerramientasEditarUI() {
         initComponents();
         this.close.addMouseListener(new clickCerrarListener());
         this.close1.addMouseListener(new clickCerrarListener());
         setLocation(0, -32);
-        
+
         this.controlHerramientas = new ControlHerramienta();
-        
-        btnBuscar.addActionListener(new buscarHerramienta());
+        this.herramientajC.setModel(new HerramientasListener());
+        this.herramientajC.addActionListener(new buscarHerramientaListener());
         btnCancelar.addActionListener(new Cancelar());
         btnActualizar.addActionListener(new actualizarHerramienta());
     }
@@ -55,13 +46,14 @@ public class HerramientasEditarUI extends javax.swing.JInternalFrame {
         jLabel17 = new javax.swing.JLabel();
         close = new javax.swing.JLabel();
         close1 = new javax.swing.JLabel();
-        cmpNombre = new javax.swing.JTextField();
-        cmpDescripcion = new javax.swing.JTextField();
-        btnBuscar = new javax.swing.JButton();
+        Descripcionjt = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        btnCancelar = new javax.swing.JButton();
+        herramientajC = new javax.swing.JComboBox<>();
         btnActualizar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        nombrejT = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(null);
@@ -106,15 +98,22 @@ public class HerramientasEditarUI extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        btnBuscar.setText("...");
-
         jLabel1.setText("Nombre:");
 
         jLabel2.setText("Descripcion:");
 
-        btnCancelar.setText("Cancelar");
+        btnActualizar.setBackground(new java.awt.Color(255, 255, 255));
+        btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/actualizar.png"))); // NOI18N
+        btnActualizar.setBorder(null);
+        btnActualizar.setBorderPainted(false);
+        btnActualizar.setContentAreaFilled(false);
 
-        btnActualizar.setText("Actualizar");
+        btnCancelar.setBackground(new java.awt.Color(255, 255, 255));
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/buttonCancel.png"))); // NOI18N
+        btnCancelar.setBorderPainted(false);
+        btnCancelar.setContentAreaFilled(false);
+
+        jLabel3.setText("Seleccione una herramienta:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -124,42 +123,43 @@ public class HerramientasEditarUI extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(36, 36, 36)
-                        .addComponent(cmpNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)
-                        .addComponent(btnBuscar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(cmpDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(167, 167, 167))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(237, 237, 237)
-                .addComponent(btnCancelar)
-                .addGap(94, 94, 94)
-                .addComponent(btnActualizar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(herramientajC, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(Descripcionjt, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
+                                .addComponent(nombrejT, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)))
+                        .addGap(252, 252, 252))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnCancelar)
+                        .addGap(143, 143, 143)
+                        .addComponent(btnActualizar)
+                        .addGap(177, 177, 177))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmpNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscar)
-                    .addComponent(jLabel1))
-                .addGap(26, 26, 26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(herramientajC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nombrejT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(Descripcionjt, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(cmpDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancelar)
-                    .addComponent(btnActualizar))
-                .addGap(65, 65, 65))
+                    .addComponent(btnActualizar)
+                    .addComponent(btnCancelar))
+                .addContainerGap())
         );
 
         pack();
@@ -167,18 +167,19 @@ public class HerramientasEditarUI extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Descripcionjt;
     private javax.swing.JButton btnActualizar;
-    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JLabel close;
     private javax.swing.JLabel close1;
-    private javax.swing.JTextField cmpDescripcion;
-    private javax.swing.JTextField cmpNombre;
+    private javax.swing.JComboBox<String> herramientajC;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField nombrejT;
     // End of variables declaration//GEN-END:variables
     public class clickCerrarListener implements MouseListener {
 
@@ -210,27 +211,54 @@ public class HerramientasEditarUI extends javax.swing.JInternalFrame {
         }
 
     }
-    
-     public class buscarHerramienta implements ActionListener {
+
+    public class HerramientasListener implements ComboBoxModel {
+
+        List<Herramienta> herramientas = controlHerramientas.getListaHerramientas();
+        private Object selected = null;
 
         @Override
-        public void actionPerformed(ActionEvent ae) {
 
-            try {
-                String nombre = cmpNombre.getText();
-                if (cmpNombre.getText().isEmpty()) {
-                    JOptionPane.showMessageDialog(rootPane, "Debe ingresar el nombre");
-                } else {
+        public void setSelectedItem(Object anItem) {
+            this.selected = anItem;
+        }
 
-                    herramienta = controlHerramientas.buscarHerramientaNom(nombre);
+        @Override
+        public Object getSelectedItem() {
+            return this.selected;
+        }
 
-                    cmpDescripcion.setText(herramienta.getDescripcion());
-                }
+        @Override
+        public int getSize() {
+            return herramientas.size();
+        }
 
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(rootPane, "Error :" + ex);
-                Logger.getLogger(HerramientasEditarUI.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        @Override
+        public Object getElementAt(int index) {
+            return herramientas.get(index);
+        }
+
+        @Override
+        public void addListDataListener(ListDataListener l) {
+
+        }
+
+        @Override
+        public void removeListDataListener(ListDataListener l) {
+
+        }
+
+    }
+
+    public class buscarHerramientaListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+            herramienta = (Herramienta) herramientajC.getSelectedItem();
+            String descripcion = herramienta.getDescripcion();
+            Descripcionjt.setText(descripcion);
+            nombrejT.setText(herramienta.getNombre());
 
         }
 
@@ -240,23 +268,27 @@ public class HerramientasEditarUI extends javax.swing.JInternalFrame {
 
         @Override
         public void actionPerformed(ActionEvent ae) {
-            if (cmpNombre.getText().isEmpty()) {
+            if (herramientajC.getSelectedItem().equals(null)) {
                 JOptionPane.showMessageDialog(rootPane, "Debe ingresar el nombre");
+            } else if (Descripcionjt.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "Debe ingresar la descripción de la herramienta");
+            } else if (nombrejT.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "Debe ingresar el nombre de la herramienta");
             } else {
 
                 try {
-                    String nombre = cmpNombre.getText();
-                    String descr = cmpDescripcion.getText();
-                    
+                    String nombre = nombrejT.getText();
+                    String descr = Descripcionjt.getText();
+
                     herramienta.setNombre(nombre);
                     herramienta.setDescripcion(descr);
 
                     controlHerramientas.ActualizarHerramienta(herramienta);
-                    
-                    JOptionPane.showMessageDialog(rootPane, "Herramienta actualizada");
 
-                    cmpNombre.setText("");
-                    cmpDescripcion.setText("");
+                    JOptionPane.showMessageDialog(rootPane, "Herramienta actualizada exitosamente");
+
+                    nombrejT.setText("");
+                    Descripcionjt.setText("");
 
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(rootPane, "Debe ingresar los datos");
@@ -279,8 +311,8 @@ public class HerramientasEditarUI extends javax.swing.JInternalFrame {
             }
             if (opcion == JOptionPane.OK_OPTION) {
 
-                cmpNombre.setText("");
-                cmpDescripcion.setText("");
+                nombrejT.setText("");
+                Descripcionjt.setText("");
 
             }
 

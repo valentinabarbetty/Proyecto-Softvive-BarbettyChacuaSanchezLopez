@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package UI;
 
 import Control.ControlPlantas;
@@ -29,10 +24,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.border.AbstractBorder;
 
-/**
- *
- * @author Valentina
- */
 public class PlantasAñadirUI extends javax.swing.JInternalFrame {
 
     private ControlPlantas controlPlantas;
@@ -49,7 +40,7 @@ public class PlantasAñadirUI extends javax.swing.JInternalFrame {
         TextPrompt tGerminacion = new TextPrompt("Ingrese el Tiempo de Germinación", tGermjT);
         TextPrompt tCrecimiento = new TextPrompt("Ingrese el Tiempo de Crecimiento", tCrecjT);
         TextPrompt precio = new TextPrompt("Ingrese el precio", preciojT);
-        //    TextPrompt cantidad = new TextPrompt("Ingrese la cantidad", cmpCantidad);
+    //    TextPrompt cantidad = new TextPrompt("Ingrese la cantidad", cmpCantidad);
         controlPlantas = new ControlPlantas();
         this.close.addMouseListener(new clickCerrarListener());
         this.close1.addMouseListener(new clickCerrarListener());
@@ -202,7 +193,7 @@ public class PlantasAñadirUI extends javax.swing.JInternalFrame {
                 .addComponent(jLabel16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel17)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 146, Short.MAX_VALUE)
                 .addComponent(close)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(close1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -231,19 +222,20 @@ public class PlantasAñadirUI extends javax.swing.JInternalFrame {
                 .addGap(150, 150, 150))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(67, 223, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel9)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8)
-                    .addComponent(tCrecjT)
-                    .addComponent(tReprodjC, 0, 314, Short.MAX_VALUE)
-                    .addComponent(codigojT)
-                    .addComponent(nombrejT)
-                    .addComponent(tGermjT)
-                    .addComponent(preciojT))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel9)
+                        .addComponent(jLabel12)
+                        .addComponent(jLabel11)
+                        .addComponent(jLabel7)
+                        .addComponent(jLabel8)
+                        .addComponent(tCrecjT)
+                        .addComponent(tReprodjC, 0, 314, Short.MAX_VALUE)
+                        .addComponent(codigojT)
+                        .addComponent(nombrejT)
+                        .addComponent(tGermjT)
+                        .addComponent(preciojT)))
                 .addGap(172, 172, 172))
         );
         layout.setVerticalGroup(
@@ -266,9 +258,9 @@ public class PlantasAñadirUI extends javax.swing.JInternalFrame {
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tCrecjT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(tReprodjC, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel12)
@@ -331,23 +323,45 @@ public class PlantasAñadirUI extends javax.swing.JInternalFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            try {
-                String cod = codigojT.getText();
-                String nom = nombrejT.getText();
-                int germinacion = Integer.parseInt(tGermjT.getText());
-                int crecimiento = Integer.parseInt(tCrecjT.getText());
-                TipoReproduccion tr = (TipoReproduccion) tReprodjC.getSelectedItem();
-                int precio = Integer.parseInt(preciojT.getText());
-
-                Planta p = new Planta(cod, nom, germinacion, crecimiento, tr, precio);
-                controlPlantas.agregarPlanta(p);
-                JOptionPane.showMessageDialog(rootPane, "Planta agregada con éxito");
-                cancelbtn.doClick();
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(rootPane, ex.getMessage());
+            if (codigojT.getText().equals("")) {
+                JOptionPane.showMessageDialog(rootPane, "Debe ingresar un Código");
             }
-        }
+            if (nombrejT.getText().equals("")) {
+                JOptionPane.showMessageDialog(rootPane, "Debe ingresar un nombre");
+            }
+            if (tGermjT.getText().equals("")) {
+                JOptionPane.showMessageDialog(rootPane, "Debe ingresar un tiempo de Germinación");
+            }
+            if (tCrecjT.getText().equals("")) {
+                JOptionPane.showMessageDialog(rootPane, "Debe ingresar un tiempo de Crecimiento");
+            }
+            if (preciojT.getText().equals("")) {
+                JOptionPane.showMessageDialog(rootPane, "Debe seleccionar un precio");
+            }
+//            if (cmpCantidad.getText().equals("")) {
+//                JOptionPane.showMessageDialog(rootPane, "Debe ingresar una cantidad");
+//            } 
+            else {
+                try {
+                    String cod = codigojT.getText();
+                    String nom = nombrejT.getText();
+                    int germinacion = Integer.parseInt(tGermjT.getText());
+                    int crecimiento = Integer.parseInt(tCrecjT.getText());
+                    TipoReproduccion tr = (TipoReproduccion) tReprodjC.getSelectedItem();
+                    int precio = Integer.parseInt(preciojT.getText());
+//                    int cantidad = Integer.parseInt(cmpCantidad.getText());
+//                    Detalle_Gasto dg = new Detalle_Gasto(cantidad);
+                    Planta p = new Planta(cod, nom, germinacion, crecimiento, tr, precio);
+//                    p.agregarDetalleGasto(dg);
+                    controlPlantas.agregarPlanta(p);
+                    JOptionPane.showMessageDialog(rootPane, "Planta agregada con éxito");
+                    cancelbtn.doClick();
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(rootPane, ex.getMessage());
+                }
+            }
 
+        }
     }
 
     public class borrarListener implements ActionListener {
@@ -359,6 +373,7 @@ public class PlantasAñadirUI extends javax.swing.JInternalFrame {
             tGermjT.setText("");
             tCrecjT.setText("");
             preciojT.setText("");
+         //   cmpCantidad.setText("");
         }
 
     }

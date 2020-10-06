@@ -11,6 +11,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -28,6 +29,7 @@ public class ViveroTransportadorUI extends javax.swing.JFrame {
 
         this.setResizable(false);
         desktop.setBorder(new fondoDesktop());
+        setIconImage(new ImageIcon(getClass().getResource("../Resources/planticon.png")).getImage());
         // this.setExtendedState(ViveroGerenteUI.MAXIMIZED_BOTH);
 
         this.setLocationRelativeTo(null);
@@ -182,7 +184,7 @@ public class ViveroTransportadorUI extends javax.swing.JFrame {
         public void mouseClicked(MouseEvent e) {
             if (distribuidoresUI == null) {
                 distribuidoresUI = new DistribuidoresUI();
-               // desktop.add(distribuidoresUI);
+                // desktop.add(distribuidoresUI);
             }
             distribuidoresUI.setVisible(true);
 
@@ -218,7 +220,7 @@ public class ViveroTransportadorUI extends javax.swing.JFrame {
         public void mouseClicked(MouseEvent e) {
             if (pedidosUI == null) {
                 pedidosUI = new PedidosUI();
-              // desktop.add(pedidosUI);
+                // desktop.add(pedidosUI);
             }
             pedidosUI.setVisible(true);
 
@@ -367,7 +369,8 @@ public class ViveroTransportadorUI extends javax.swing.JFrame {
 
         @Override
         public void mouseClicked(MouseEvent e) {
-            int opcion = JOptionPane.showConfirmDialog(ViveroTransportadorUI.this, vivero, "¿Desea Salir del sistema?", JOptionPane.OK_CANCEL_OPTION);
+            String message = "¿Desea salir del sistema?";
+            int opcion = JOptionPane.showConfirmDialog(ViveroTransportadorUI.this, message, "Cerrar sesión", JOptionPane.OK_CANCEL_OPTION);
 
             if (opcion == JOptionPane.CANCEL_OPTION) {
                 return;

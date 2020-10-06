@@ -39,19 +39,21 @@
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="67" pref="223" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                  <Component id="tCrecjT" alignment="0" max="32767" attributes="0"/>
-                  <Component id="tReprodjC" alignment="0" pref="314" max="32767" attributes="0"/>
-                  <Component id="codigojT" alignment="0" max="32767" attributes="0"/>
-                  <Component id="nombrejT" alignment="0" max="32767" attributes="0"/>
-                  <Component id="tGermjT" alignment="0" max="32767" attributes="0"/>
-                  <Component id="preciojT" alignment="0" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                      <Component id="tCrecjT" alignment="0" max="32767" attributes="0"/>
+                      <Component id="tReprodjC" alignment="0" pref="314" max="32767" attributes="0"/>
+                      <Component id="codigojT" alignment="0" max="32767" attributes="0"/>
+                      <Component id="nombrejT" alignment="0" max="32767" attributes="0"/>
+                      <Component id="tGermjT" alignment="0" max="32767" attributes="0"/>
+                      <Component id="preciojT" alignment="0" max="32767" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace min="-2" pref="172" max="-2" attributes="0"/>
           </Group>
@@ -77,9 +79,9 @@
               <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="tCrecjT" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="13" max="32767" attributes="0"/>
+              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
               <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Component id="tReprodjC" min="-2" pref="23" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
@@ -307,7 +309,7 @@
                   <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="143" max="32767" attributes="0"/>
+                  <EmptySpace pref="146" max="32767" attributes="0"/>
                   <Component id="close" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="close1" min="-2" pref="56" max="-2" attributes="0"/>

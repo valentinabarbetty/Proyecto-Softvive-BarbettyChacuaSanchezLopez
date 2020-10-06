@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package UI;
 
 import Control.ControlDetallePedido;
@@ -12,6 +7,7 @@ import Control.ControlPlantas;
 import Modelo.Detalle_Pedido;
 import Modelo.Distribuidor;
 import Modelo.EstadoEntrega;
+import Modelo.EstadoListo;
 import Modelo.Pedido;
 import Modelo.Planta;
 import java.awt.event.ActionEvent;
@@ -32,10 +28,6 @@ import javax.swing.event.ListDataListener;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 
-/**
- *
- * @author Valentina
- */
 public class PedidoAgregarUI extends javax.swing.JInternalFrame {
 
     private ControlPedidos controlPedidos;
@@ -45,9 +37,6 @@ public class PedidoAgregarUI extends javax.swing.JInternalFrame {
     private Pedido pedido;
     private Distribuidor d;
 
-    /**
-     * Creates new form AgregarPedidoUI
-     */
     public PedidoAgregarUI() {
         initComponents();
         controlPlantas = new ControlPlantas();
@@ -194,8 +183,6 @@ public class PedidoAgregarUI extends javax.swing.JInternalFrame {
         jLabel18.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel18.setText("Año:");
 
-        mesjC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel5.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel5.setText("Seleccione la planta:");
 
@@ -234,10 +221,6 @@ public class PedidoAgregarUI extends javax.swing.JInternalFrame {
 
         totT.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         totT.setForeground(new java.awt.Color(153, 153, 153));
-
-        diajC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        añojC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         cantjT.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         cantjT.setDisabledTextColor(new java.awt.Color(0, 0, 0));
@@ -338,15 +321,15 @@ public class PedidoAgregarUI extends javax.swing.JInternalFrame {
                                     .addComponent(NITT, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(32, 32, 32))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(189, 189, 189)
-                                .addComponent(cancelarbtn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jLabel4)
+                                .addGap(18, 18, 18)
+                                .addComponent(distrijC, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 171, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(distrijC, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(189, 189, 189)
+                                        .addComponent(cancelarbtn))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -360,8 +343,8 @@ public class PedidoAgregarUI extends javax.swing.JInternalFrame {
                                         .addGap(26, 26, 26)
                                         .addComponent(jLabel16)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(diajC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                        .addComponent(diajC, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1156,32 +1139,52 @@ public class PedidoAgregarUI extends javax.swing.JInternalFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            try {
-                Year año = (Year) añojC.getSelectedItem();
-                Month mes = (Month) mesjC.getSelectedItem();
-                int dia = (int) diajC.getSelectedItem();
-                int total = Integer.parseInt(totT.getText());
-                int m = 0;
-                for (int i = 0; i <= TablePedidos.getRowCount() - 1; i++) {
-                    m = m + (int) TablePedidos.getValueAt(i, 3);
-                }
-
-                pedido.setAño(año);
-                pedido.setMes(mes);
-                pedido.setDia(dia);
-                pedido.setTotal(total);
-                pedido.setEstadoEntrega(EstadoEntrega.No_Entregado);
-                pedido.setEstadoPago("no pago");
-                pedido.setDistribuidor(d);
-                pedido.setCant_vendida(m);
-                controlPedidos.agregarPedido(pedido);
-                JOptionPane.showMessageDialog(rootPane, "Pedido agregado con éxito");
-                cancelarbtn.doClick();
-            } catch (Exception ex) {
-                Logger.getLogger(PedidoAgregarUI.class.getName()).log(Level.SEVERE, null, ex);
+            if (TablePedidos.getRowCount() == 0) {
+                JOptionPane.showMessageDialog(rootPane, "Debe ingresar al menos un detalle de pedido");
             }
-        }
+            if (NomDT.getText().equals("")) {
+                JOptionPane.showMessageDialog(rootPane, "Debe seleccionar un distribuidor");
+//            }
+//            if (teljT.getText().equals("")) {
+//                JOptionPane.showMessageDialog(rootPane, "Debe ingresar un teléfono");
+//            }
+//            if (emailjT.getText().equals("")) {
+//                JOptionPane.showMessageDialog(rootPane, "Debe ingresar un E-mail");
+//            }
+//            if (dirjT.getText().equals("")) {
+//                JOptionPane.showMessageDialog(rootPane, "Debe ingresar una dirección");
+//            }
+//            if (ciudadcbx.getSelectedItem().equals(null)) {
+//                JOptionPane.showMessageDialog(rootPane, "Debe seleccionar una ciudad");
+            } else {
+                try {
+                    Year año = (Year) añojC.getSelectedItem();
+                    Month mes = (Month) mesjC.getSelectedItem();
+                    int dia = (int) diajC.getSelectedItem();
+                    int total = Integer.parseInt(totT.getText());
+                    int m = 0;
+                    for (int i = 0; i <= TablePedidos.getRowCount() - 1; i++) {
+                        m = m + (int) TablePedidos.getValueAt(i, 3);
+                    }
 
+                    pedido.setAño(año);
+                    pedido.setMes(mes);
+                    pedido.setDia(dia);
+                    pedido.setTotal(total);
+                    pedido.setEstadoEntrega(EstadoEntrega.No_Entregado);
+                    pedido.setEstadoListo(EstadoListo.Pendiente);
+                    pedido.setEstadoPago("no pago");
+                    pedido.setDistribuidor(d);
+                    pedido.setCant_vendida(m);
+                    controlPedidos.agregarPedido(pedido);
+                    JOptionPane.showMessageDialog(rootPane, "Pedido agregado con éxito");
+                    cancelarbtn.doClick();
+                } catch (Exception ex) {
+                    Logger.getLogger(PedidoAgregarUI.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
     }
 
     public class EditarDPListener implements ActionListener {
@@ -1224,7 +1227,7 @@ public class PedidoAgregarUI extends javax.swing.JInternalFrame {
             cantjT.setText("");
             añojC.setSelectedItem(null);
             diajC.setSelectedItem(null);
-            mesjC.setSelectedItem(null);
+            // mesjC.setSelectedItem(null);
             plantajC.setSelectedItem(null);
 
             int num = TablePedidos.getRowCount() - 1;

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package UI;
 
 import Control.ControlDistribuidores;
@@ -17,17 +12,10 @@ import javax.swing.ComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListDataListener;
 
-/**
- *
- * @author Valentina
- */
 public class DistribuidoresAñadirUI extends javax.swing.JInternalFrame {
 
     private ControlDistribuidores controlDistribuidores;
 
-    /**
-     * Creates new form DistribuidoresAddUI
-     */
     public DistribuidoresAñadirUI() {
         initComponents();
         controlDistribuidores = new ControlDistribuidores();
@@ -387,22 +375,41 @@ public class DistribuidoresAñadirUI extends javax.swing.JInternalFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            try {
-                long nit = Long.parseLong(nitjT.getText());
-                String nom = nomjT.getText();
-                long tel = Long.parseLong(teljT.getText());
-                String email = emailjT.getText();
-                String direccion = dirjT.getText();
-                String ciudad = (String) ciudadcbx.getSelectedItem();
-                Distribuidor d = new Distribuidor(nit, nom, tel, email, direccion, ciudad);
-                controlDistribuidores.agregarDistribuidor(d);
-                JOptionPane.showMessageDialog(rootPane, "Distribuidor agregado con éxito");
-                cancelbtn.doClick();
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(rootPane, ex.getMessage());
+            if (nitjT.getText().equals("")) {
+                JOptionPane.showMessageDialog(rootPane, "Debe ingresar un NIT");
             }
-        }
+            if (nomjT.getText().equals("")) {
+                JOptionPane.showMessageDialog(rootPane, "Debe ingresar un nombre");
+            }
+            if (teljT.getText().equals("")) {
+                JOptionPane.showMessageDialog(rootPane, "Debe ingresar un teléfono");
+            }
+            if (emailjT.getText().equals("")) {
+                JOptionPane.showMessageDialog(rootPane, "Debe ingresar un E-mail");
+            }
+            if (dirjT.getText().equals("")) {
+                JOptionPane.showMessageDialog(rootPane, "Debe ingresar una dirección");
+            }
+            if (ciudadcbx.getSelectedItem().equals(null)) {
+                JOptionPane.showMessageDialog(rootPane, "Debe seleccionar una ciudad");
+            } else {
+                try {
+                    long nit = Long.parseLong(nitjT.getText());
+                    String nom = nomjT.getText();
+                    long tel = Long.parseLong(teljT.getText());
+                    String email = emailjT.getText();
+                    String direccion = dirjT.getText();
+                    String ciudad = (String) ciudadcbx.getSelectedItem();
+                    Distribuidor d = new Distribuidor(nit, nom, tel, email, direccion, ciudad);
+                    controlDistribuidores.agregarDistribuidor(d);
+                    JOptionPane.showMessageDialog(rootPane, "Distribuidor agregado con éxito");
+                    cancelbtn.doClick();
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(rootPane, ex.getMessage());
+                }
+            }
 
+        }
     }
 
     public class borrarListener implements ActionListener {
@@ -420,7 +427,6 @@ public class DistribuidoresAñadirUI extends javax.swing.JInternalFrame {
     }
 
     public class clickCerrarListener implements MouseListener {
-
 
         @Override
         public void mouseClicked(MouseEvent e) {

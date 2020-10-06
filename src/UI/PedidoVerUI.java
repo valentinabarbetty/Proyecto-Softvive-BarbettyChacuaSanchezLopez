@@ -101,7 +101,7 @@ public class PedidoVerUI extends javax.swing.JInternalFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(411, Short.MAX_VALUE)
+                .addContainerGap(433, Short.MAX_VALUE)
                 .addComponent(jLabel16)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel17)
@@ -168,7 +168,7 @@ public class PedidoVerUI extends javax.swing.JInternalFrame {
                 .addComponent(jLabel18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(344, Short.MAX_VALUE))
         );
 
         pack();

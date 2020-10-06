@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package UI;
 
 import Control.ControlDistribuidores;
@@ -18,18 +13,11 @@ import javax.swing.ComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListDataListener;
 
-/**
- *
- * @author Valentina
- */
 public class DistribuidoresEditarUI extends javax.swing.JInternalFrame {
 
     private ControlDistribuidores controlDistribuidores;
     private Distribuidor d;
 
-    /**
-     * Creates new form DistribuidoresEdit
-     */
     public DistribuidoresEditarUI() {
         initComponents();
         this.controlDistribuidores = new ControlDistribuidores();
@@ -403,6 +391,7 @@ public class DistribuidoresEditarUI extends javax.swing.JInternalFrame {
         }
 
     }
+
     public class CiudadModel implements ComboBoxModel {
 
         private Object selected = null;
@@ -468,7 +457,7 @@ public class DistribuidoresEditarUI extends javax.swing.JInternalFrame {
             long tel = d.getTelefono();
             String email = d.getEmail();
             String dir = d.getDireccion();
-            
+
             ciudadcbx.setSelectedItem(ciudad);
             ciudadcbx.updateUI();
             nitjT.setText(Long.toString(nit));
@@ -477,7 +466,6 @@ public class DistribuidoresEditarUI extends javax.swing.JInternalFrame {
             emailjT.setText(email);
             teljT.setText(Long.toString(tel));
             dirjT.setText(dir);
-            
 
         }
 
@@ -487,6 +475,24 @@ public class DistribuidoresEditarUI extends javax.swing.JInternalFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            if (nitjT.getText().equals("")) {
+                JOptionPane.showMessageDialog(rootPane, "Debe ingresar un NIT");
+            }
+            if (nomjT.getText().equals("")) {
+                JOptionPane.showMessageDialog(rootPane, "Debe ingresar un nombre");
+            }
+            if (teljT.getText().equals("")) {
+                JOptionPane.showMessageDialog(rootPane, "Debe ingresar un teléfono");
+            }
+            if (emailjT.getText().equals("")) {
+                JOptionPane.showMessageDialog(rootPane, "Debe ingresar un E-mail");
+            }
+            if (dirjT.getText().equals("")) {
+                JOptionPane.showMessageDialog(rootPane, "Debe ingresar una dirección");
+            }
+            if (ciudadcbx.getSelectedItem().equals(null)) {
+                JOptionPane.showMessageDialog(rootPane, "Debe seleccionar una ciudad");
+            }
             try {
                 //String cod = codPjT.getText();
                 Long nit = Long.parseLong(nitjT.getText());
@@ -531,7 +537,8 @@ public class DistribuidoresEditarUI extends javax.swing.JInternalFrame {
         }
 
     }
-      public class clickCerrarListener implements MouseListener {
+
+    public class clickCerrarListener implements MouseListener {
 
         @Override
         public void mouseClicked(MouseEvent e) {

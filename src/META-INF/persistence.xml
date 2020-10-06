@@ -16,10 +16,10 @@
     <class>Modelo.Siembra</class>
     <class>Modelo.Empleado</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/soft"/>
-      <property name="javax.persistence.jdbc.user" value="soft"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/fin"/>
+      <property name="javax.persistence.jdbc.user" value="fin"/>
       <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
-      <property name="javax.persistence.jdbc.password" value="soft"/>
+      <property name="javax.persistence.jdbc.password" value="fin"/>
       <property name="javax.persistence.schema-generation.database.action" value="create"/>
     </properties>
   </persistence-unit>

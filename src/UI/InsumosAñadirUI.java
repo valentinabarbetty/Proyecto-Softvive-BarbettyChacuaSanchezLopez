@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package UI;
 
 import Control.ControlEmpleados;
@@ -21,17 +16,10 @@ import javax.swing.ComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListDataListener;
 
-/**
- *
- * @author Kathe
- */
 public class InsumosAñadirUI extends javax.swing.JInternalFrame {
 
     private ControlInsumos controlInsumos;
 
-    /**
-     * Creates new form CrearEmpleadoUI
-     */
     public InsumosAñadirUI() {
         initComponents();
         this.controlInsumos = new ControlInsumos();
@@ -39,7 +27,7 @@ public class InsumosAñadirUI extends javax.swing.JInternalFrame {
         this.cancelarbtn.addActionListener(new borrarListener());
         TextPrompt nombre = new TextPrompt("Ingrese nombre del insumo", nomjT);
         TextPrompt descripcion = new TextPrompt("Descripcion del insumo", descripcionjT);
-        TextPrompt cantidad = new TextPrompt("cantidad del insumo", cmpCantidad);
+        TextPrompt cantidad = new TextPrompt("cantidad de la herramienta", cmpCantidad);
         this.close.addMouseListener(new clickCerrarListener());
         this.close1.addMouseListener(new clickCerrarListener());
         setLocation(0, -32);
@@ -66,14 +54,14 @@ public class InsumosAñadirUI extends javax.swing.JInternalFrame {
         close1 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         cmpCantidad = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(null);
         setClosable(true);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setPreferredSize(new java.awt.Dimension(718, 630));
+        setPreferredSize(new java.awt.Dimension(718, 610));
 
         nomjT.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         nomjT.setDisabledTextColor(new java.awt.Color(255, 255, 255));
@@ -115,11 +103,11 @@ public class InsumosAñadirUI extends javax.swing.JInternalFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(107, Short.MAX_VALUE)
+                .addContainerGap(244, Short.MAX_VALUE)
                 .addComponent(jLabel16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel17)
-                .addGap(141, 141, 141)
+                .addGap(152, 152, 152)
                 .addComponent(close)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(close1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -144,13 +132,13 @@ public class InsumosAñadirUI extends javax.swing.JInternalFrame {
         jLabel12.setForeground(new java.awt.Color(51, 51, 51));
         jLabel12.setText("Descripción");
 
-        jLabel10.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel10.setText("Cantidad:");
-
         cmpCantidad.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         cmpCantidad.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         cmpCantidad.setSelectionColor(new java.awt.Color(133, 198, 90));
+
+        jLabel10.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel10.setText("Cantidad:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -158,21 +146,21 @@ public class InsumosAñadirUI extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(135, 135, 135)
-                .addComponent(cancelarbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
-                .addComponent(agregarbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(157, 157, 157))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(177, 177, 177)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel10)
                     .addComponent(jLabel12)
                     .addComponent(jLabel9)
-                    .addComponent(nomjT, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10)
-                    .addComponent(cmpCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(descripcionjT, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nomjT, javax.swing.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE)
+                    .addComponent(descripcionjT, javax.swing.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE)
+                    .addComponent(cmpCantidad))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(114, 114, 114)
+                .addComponent(cancelarbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(agregarbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(169, 169, 169))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,19 +170,19 @@ public class InsumosAñadirUI extends javax.swing.JInternalFrame {
                 .addComponent(jLabel9)
                 .addGap(11, 11, 11)
                 .addComponent(nomjT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel10)
                 .addGap(8, 8, 8)
                 .addComponent(cmpCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(17, 17, 17)
                 .addComponent(jLabel12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(descripcionjT, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cancelarbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(agregarbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addContainerGap(157, Short.MAX_VALUE))
         );
 
         getAccessibleContext().setAccessibleDescription("");
@@ -228,13 +216,13 @@ public class InsumosAñadirUI extends javax.swing.JInternalFrame {
             } else if (nomjT.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(rootPane, "Debe ingresar el nombre del insumo");
             } else if (cmpCantidad.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(rootPane, "Debe ingresar la cantidad del insumo");
+                JOptionPane.showMessageDialog(rootPane, "Debe ingresar cantidad de insumos");
             } else {
                 try {
                     String nombre = nomjT.getText();
                     String descripcion = descripcionjT.getText();
                     int cantidad = Integer.parseInt(cmpCantidad.getText());
-                    
+
                     Detalle_GastoInsumo dgI = new Detalle_GastoInsumo(cantidad);
                     Insumo insumo = new Insumo(nombre, descripcion);
                     dgI.setFecha(LocalDate.now());
@@ -258,6 +246,7 @@ public class InsumosAñadirUI extends javax.swing.JInternalFrame {
             descripcionjT.setText("");
             nomjT.setText("");
             cmpCantidad.setText("");
+
         }
     }
 

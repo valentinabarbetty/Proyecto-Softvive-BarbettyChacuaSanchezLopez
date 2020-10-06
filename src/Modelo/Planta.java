@@ -62,10 +62,10 @@ public class Planta implements Serializable {
             throw new Exception("El precio debe ser mayor a 0");
 
         }
-        if (nombre.equals("")) {
-            throw new Exception("Ingrese un nombre a la planta");
-
-        }
+//        if (nombre.equals("")) {
+//            throw new Exception("Ingrese un nombre a la planta");
+//
+//        }
         if (codigo.equals("")) {
             throw new Exception("Ingrese un código a la planta");
 

@@ -39,18 +39,29 @@ public class PedidoConfirmarListoUI extends javax.swing.JInternalFrame {
 
         initComponents();
 
+        pedidoTable.updateUI();
+        detalleTable.updateUI();
+
         this.pedidoTable.setModel(new PedidoTableModel());
         this.pedidoTable.addMouseListener(new clickPedido());
+
+        this.pedido = new Pedido();
 
         this.detalleTable.setModel(new dPTableModel());
         this.controlPedidos = new ControlPedidos();
         this.controlDetallePedido = new ControlDetallePedido();
         this.controlDetalleGasto = new ControlDetalleGasto();
         this.controlPlantas = new ControlPlantas();
+        this.close.addMouseListener(new clickCerrarListener());
+        this.close1.addMouseListener(new clickCerrarListener());
 
-        btnConfirmar.addActionListener(new ConfirmarPedido());
+        this.cancelarbtn.addActionListener(new ConfirmarPedido());
+        
+        this.btnAgregar.addActionListener(new cantidadDisponibles());
+        this.btnActualizar.addActionListener(new cantidadDisponibles());
+        this.cmpCantidad.addActionListener(new cantidadDisponibles());
 
-        this.detalleTable.addKeyListener(new cantidadListener1());
+        setLocation(0, -32);
 
     }
 
@@ -58,41 +69,86 @@ public class PedidoConfirmarListoUI extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        cmpDisponible = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        close = new javax.swing.JLabel();
+        close1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         pedidoTable = new javax.swing.JTable();
-        btnConfirmar = new javax.swing.JButton();
-        cmpDisponible = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        btnGuardar = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
         detalleTable = new javax.swing.JTable();
+        cancelarbtn = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        cmpCantidad = new javax.swing.JTextField();
+        btnAgregar = new javax.swing.JButton();
+        jLabel20 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+        setBorder(null);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jPanel2.setBackground(new java.awt.Color(108, 169, 62));
+
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/check.png"))); // NOI18N
+
+        jLabel17.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel17.setText("Confirmar Pedido Listo");
+
+        close.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/close.png"))); // NOI18N
+
+        close1.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        close1.setForeground(new java.awt.Color(255, 255, 255));
+        close1.setText("Cerrar");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel16)
+                .addGap(30, 30, 30)
+                .addComponent(jLabel17)
+                .addGap(218, 218, 218)
+                .addComponent(close)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(close1)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(close, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                    .addComponent(close1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
+        );
+
+        pedidoTable.setFont(new java.awt.Font("SansSerif", 0, 10)); // NOI18N
         pedidoTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null}
             },
             new String [] {
-                "Estado", "Codigo", "nombre", "Distribuidor"
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        pedidoTable.setGridColor(new java.awt.Color(255, 255, 255));
+        pedidoTable.setSelectionBackground(new java.awt.Color(133, 198, 90));
+        pedidoTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(pedidoTable);
 
-        btnConfirmar.setText("Confirmar");
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel1.setText("Confirmar Pedido");
-
-        btnGuardar.setText("Guardar");
-
+        detalleTable.setFont(new java.awt.Font("SansSerif", 0, 10)); // NOI18N
         detalleTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -105,54 +161,111 @@ public class PedidoConfirmarListoUI extends javax.swing.JInternalFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
-        jScrollPane3.setViewportView(detalleTable);
+        detalleTable.setGridColor(new java.awt.Color(255, 255, 255));
+        detalleTable.setSelectionBackground(new java.awt.Color(133, 198, 90));
+        detalleTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane2.setViewportView(detalleTable);
+
+        cancelarbtn.setBackground(new java.awt.Color(255, 255, 255));
+        cancelarbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/confbtn.png"))); // NOI18N
+        cancelarbtn.setBorderPainted(false);
+        cancelarbtn.setContentAreaFilled(false);
+
+        btnActualizar.setBackground(new java.awt.Color(255, 255, 255));
+        btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/actbtn.png"))); // NOI18N
+        btnActualizar.setBorder(null);
+        btnActualizar.setBorderPainted(false);
+        btnActualizar.setContentAreaFilled(false);
+
+        jLabel18.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel18.setText("Detalles del pedido:");
+
+        jLabel19.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel19.setText("Resumen del Pedido:");
+
+        btnAgregar.setForeground(new java.awt.Color(51, 255, 51));
+        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/buscar.png"))); // NOI18N
+        btnAgregar.setBorder(null);
+        btnAgregar.setBorderPainted(false);
+        btnAgregar.setContentAreaFilled(false);
+
+        jLabel20.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel20.setText("Ingresar cantidad:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel19)
+                        .addGap(657, 657, 657)
+                        .addComponent(cmpDisponible, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 108, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(138, 138, 138)
+                .addComponent(cancelarbtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnActualizar)
+                .addGap(184, 184, 184))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2)
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(332, 332, 332)
-                        .addComponent(jLabel1))
+                        .addContainerGap()
+                        .addComponent(jLabel18))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnConfirmar)
-                                .addGap(444, 444, 444)
-                                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(97, 97, 97)
-                                .addComponent(cmpDisponible, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 760, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 760, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(253, 253, 253)
+                        .addComponent(jLabel20)
+                        .addGap(18, 18, 18)
+                        .addComponent(cmpCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAgregar)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cmpDisponible, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(cmpDisponible, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel19))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(9, 9, 9)
+                .addComponent(jLabel18)
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cmpCantidad)
+                        .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(38, 38, 38)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnConfirmar))
-                .addGap(27, 27, 27))
+                    .addComponent(cancelarbtn)
+                    .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         pack();
@@ -163,19 +276,24 @@ public class PedidoConfirmarListoUI extends javax.swing.JInternalFrame {
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnConfirmar;
-    private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton cancelarbtn;
+    private javax.swing.JLabel close;
+    private javax.swing.JLabel close1;
+    private javax.swing.JTextField cmpCantidad;
     private javax.swing.JLabel cmpDisponible;
     private javax.swing.JTable detalleTable;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable pedidoTable;
     // End of variables declaration//GEN-END:variables
-
-    public void setDisponible(int disponible) {
-        this.Disponible = disponible;
-    }
 
     public class PedidoTableModel implements TableModel {
 
@@ -209,7 +327,7 @@ public class PedidoConfirmarListoUI extends javax.swing.JInternalFrame {
 
         @Override
         public Object getValueAt(int i, int i1) {
-            Pedido pedido = controlPedidos.getListaPedidos().get(i);
+            pedido = controlPedidos.getListaPedidos().get(i);
 
             switch (i1) {
                 case 0:
@@ -222,6 +340,7 @@ public class PedidoConfirmarListoUI extends javax.swing.JInternalFrame {
                     return pedido.getDistribuidor().getNombre();
                 case 4:
                     return pedido.getTotal();
+
             }
             return " ";
         }
@@ -264,18 +383,18 @@ public class PedidoConfirmarListoUI extends javax.swing.JInternalFrame {
 
         @Override
         public int getColumnCount() {
-            return 4;
+            return 5;
 
         }
 
-        private String[] nombreColumnas = {"Codigo Planta", "Nombre", "Cantidad pedido", "Cantidad disponible"};
+        private String[] nombreColumnas = {"Codigo Planta", "Nombre", "Cantidad pedido", "Vlr Unitario", "Costo"};
 
         @Override
         public String getColumnName(int i) {
             return nombreColumnas[i];
         }
 
-        private Class[] tipoColumnas = {String.class, String.class, Integer.class, Integer.class};
+        private Class[] tipoColumnas = {String.class, String.class, Integer.class, Integer.class, Integer.class};
 
         @Override
         public Class<?> getColumnClass(int i) {
@@ -284,7 +403,7 @@ public class PedidoConfirmarListoUI extends javax.swing.JInternalFrame {
 
         @Override
         public boolean isCellEditable(int i, int i1) {
-            return i1 == 3;
+            return i1 == 5;
 
         }
 
@@ -292,7 +411,7 @@ public class PedidoConfirmarListoUI extends javax.swing.JInternalFrame {
         public Object getValueAt(int i, int i1) {
 
             int dp = pedidoTable.getSelectedRow();
-            Pedido pedido = controlPedidos.getListaPedidos().get(dp);
+            pedido = controlPedidos.getListaPedidos().get(dp);
             Detalle_Pedido detalle = pedido.getListaDetallePedido().get(i);
 
             switch (i1) {
@@ -304,13 +423,9 @@ public class PedidoConfirmarListoUI extends javax.swing.JInternalFrame {
                 case 2:
                     return detalle.getCantidad();
                 case 3:
-
-                    for (int t = 0; t < detalle.getPlanta().getListaDetalleGasto().size(); t++) {
-
-                        Disponible = detalle.getPlanta().getListaDetalleGasto().get(t).getCantidad();
-                    }
-                    return Disponible;
-
+                    return detalle.getPlanta().getValor_unitario();
+                case 4:
+                    return detalle.getPrecio();
             }
             return " ";
 
@@ -362,66 +477,82 @@ public class PedidoConfirmarListoUI extends javax.swing.JInternalFrame {
 
         }
     }
-///////////////// KEY
 
-    public class cantidadListener1 implements KeyListener {
+//////////////////////
+//    public class cantidadDisponible implements ActionListener {
+//
+//        @Override
+//        public void actionPerformed(ActionEvent ae) {
+//
+//            try {
+//
+////                if (cmpCantidad.getText().equals("")) {
+////                    JOptionPane.showMessageDialog(rootPane, "Debe debe ingresar cantidad");
+////                } else {
+//                String codPlanta = (String) detalleTable.getValueAt(detalleTable.getSelectedRow(), 0);
+//
+//                Planta planta = controlPlantas.buscarPlanta(codPlanta);
+//
+//                for (int t = 0; t < planta.getListaDetalleGasto().size(); t++) {
+//
+//                    Detalle_Gasto gasto = planta.getListaDetalleGasto().get(t);
+//                    gasto.setCantidad(Integer.parseInt(cmpCantidad.getText()));
+//
+//                    // controlDetalleGasto.ActualizarDetalleGasto(gasto);
+//                    controlDetalleGasto.agregarDetalleGasto(gasto);
+//
+//                    pedidoTable.updateUI();
+//                    detalleTable.updateUI();
+//                }
+////                }
+//
+//            } catch (Exception ex) {
+//                Logger.getLogger(PedidoEditarUI.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//
+//        }
+//
+//    }
+    public class cantidadDisponibles implements ActionListener {
 
         @Override
-        public void keyTyped(KeyEvent ke) {
+        public void actionPerformed(ActionEvent ae) {
 
-        }
+            try {
 
-        @Override
-        public void keyPressed(KeyEvent ke) {
+                Long codPed = (Long) pedidoTable.getValueAt(pedidoTable.getSelectedRow(), 2);
+                pedido = controlPedidos.buscarPedido(codPed);
 
-        }
+                int cantidad = Integer.parseInt(cmpCantidad.getText());
 
-        @Override
-        public void keyReleased(KeyEvent ke) {
-            if (ke.getKeyCode() == KeyEvent.VK_ENTER) {
+                for (int t = 0; t < pedido.getListaDetallePedido().size(); t++) {
 
-                try {
-//                    detalleTable.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-//                    detalleTable.setCellSelectionEnabled(true);
-//                    detalleTable.addRowSelectionInterval(codplant, dp);
-//                    detalleTable.addColumnSelectionInterval(codplant, dp);
-//                    detalleTable.setColumnSelectionInterval(codplant, dp);
-//                    detalleTable.setRowSelectionInterval(codplant, dp);
+                    Detalle_Pedido d = pedido.getListaDetallePedido().get(t);
 
-                    int dp = detalleTable.getSelectedRow();
-//                    int codplant = detalleTable.getSelectedRow();
-//                   Disponible = (int) detalleTable.getValueAt(detalleTable.getSelectedRow(), 3);
+                    int totalAnterior = (int) pedidoTable.getValueAt(pedidoTable.getSelectedRow(), 4);
+                    int total = totalAnterior - d.getPrecio();
 
-                    int cantidadDisponible = (int) detalleTable.getValueAt(detalleTable.getSelectedRow(), 3);
-                    String codPlanta = (String) detalleTable.getValueAt(detalleTable.getSelectedRow(), 0);
-
-                    detalleTable.setValueAt(cantidadDisponible, detalleTable.getSelectedRow(), 3);
-                    Pedido pedido = controlPedidos.getListaPedidos().get(dp);
-
-                    setDisponible(cantidadDisponible);
-
-                    Planta planta = controlPlantas.buscarPlanta(codPlanta);
-                    Detalle_Gasto gasto = new Detalle_Gasto(cantidadDisponible);
-
-                    int total = 0;
-                    for (int t = 0; t < pedido.getListaDetallePedido().size(); t++) {
-
-                        total += cantidadDisponible * pedido.getListaDetallePedido().get(t).getPlanta().getValor_unitario();
-                    }
-                    //      Detalle_Pedido detalle = pedido.getListaDetallePedido().get(dp);
-
-                    gasto.setCantidad(cantidadDisponible);
                     pedido.setTotal(total);
 
-                    planta.agregarDetalleGasto(gasto);
-                    //controlPedidos.actualizarPedido(pedido);
+                    d.setCantidad(cantidad);
+                    
+                    d.setPrecio(d.getPlanta().getValor_unitario() * cantidad);
+                    pedido.setTotal(total + d.getPrecio());
+
+                    pedidoTable.setValueAt(Integer.toString(total + d.getPrecio()), pedidoTable.getSelectedRow(), 4);
+                    
+                    controlDetallePedido.actualizarDPedido(d);
+                    controlPedidos.actualizarPedido(pedido);
+
+                    pedidoTable.updateUI();
                     detalleTable.updateUI();
 
-                } catch (Exception ex) {
-                    Logger.getLogger(PedidoEditarUI.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
+            } catch (Exception ex) {
+                Logger.getLogger(PedidoEditarUI.class.getName()).log(Level.SEVERE, null, ex);
             }
+
         }
 
     }
@@ -438,12 +569,11 @@ public class PedidoConfirmarListoUI extends javax.swing.JInternalFrame {
 
                 if (Disponible == 0) {
                     pedido.setEstadoListo(EstadoListo.Pendiente);
-                    JOptionPane.showMessageDialog(rootPane, "¡No puede confirmar pedido!, no hay cantidad disponibles de plantas para completar el pedido");
-                    throw new Exception("no hay cantidad diponibles para efectuar el pedido");
+                    JOptionPane.showMessageDialog(rootPane, "¡No puede confirmar pedido!, no hay cantidad disponibles de plantas para completar el pedido.");
+                    throw new Exception("no hay cantidad diponibles para efectuar el pedido.");
                 }
 
                 pedido.setEstadoListo(EstadoListo.Listo);
-                pedido.setEstadoPago("pago");
 
                 controlPedidos.actualizarPedido(pedido);
                 pedidoTable.updateUI();
@@ -456,6 +586,36 @@ public class PedidoConfirmarListoUI extends javax.swing.JInternalFrame {
         }
 
     }
-    //////////////////////////////////////////////////////////////////77
 
+    //////////////////////////////////////////////////////////////////77
+    public class clickCerrarListener implements MouseListener {
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+
+            setVisible(false);
+
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+
+        }
+
+    }
 }

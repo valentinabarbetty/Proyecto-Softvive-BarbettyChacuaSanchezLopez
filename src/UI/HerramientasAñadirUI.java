@@ -19,18 +19,11 @@ import javax.swing.ComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListDataListener;
 
-/**
- *
- * @author Kathe
- */
 public class HerramientasAñadirUI extends javax.swing.JInternalFrame {
 
     private ControlHerramienta controlHerramientas;
     private ControlDetalleHerramienta controlDHerramienta;
 
-    /**
-     * Creates new form CrearEmpleadoUI
-     */
     public HerramientasAñadirUI() {
         initComponents();
         this.controlHerramientas = new ControlHerramienta();
@@ -39,6 +32,7 @@ public class HerramientasAñadirUI extends javax.swing.JInternalFrame {
         this.cancelarbtn.addActionListener(new borrarListener());
         TextPrompt nombre = new TextPrompt("Ingrese nombre de la herramienta", nomjT);
         TextPrompt descripcion = new TextPrompt("Descripcion de la herramienta", descripcionjT);
+        TextPrompt cantidad = new TextPrompt("cantidad de la herramienta", cmpCantidad);
         this.close.addMouseListener(new clickCerrarListener());
         this.close1.addMouseListener(new clickCerrarListener());
         setLocation(0, -32);
@@ -65,12 +59,14 @@ public class HerramientasAñadirUI extends javax.swing.JInternalFrame {
         close1 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        cmpCantidad = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(null);
         setClosable(true);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setPreferredSize(new java.awt.Dimension(718, 630));
+        setPreferredSize(new java.awt.Dimension(725, 630));
 
         nomjT.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         nomjT.setDisabledTextColor(new java.awt.Color(255, 255, 255));
@@ -112,15 +108,15 @@ public class HerramientasAñadirUI extends javax.swing.JInternalFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(211, Short.MAX_VALUE)
+                .addContainerGap(223, Short.MAX_VALUE)
                 .addComponent(jLabel16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel17)
-                .addGap(141, 141, 141)
+                .addGap(152, 152, 152)
                 .addComponent(close)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(close1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17))
+                .addGap(6, 6, 6))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,26 +137,35 @@ public class HerramientasAñadirUI extends javax.swing.JInternalFrame {
         jLabel12.setForeground(new java.awt.Color(51, 51, 51));
         jLabel12.setText("Descripción");
 
+        cmpCantidad.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        cmpCantidad.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        cmpCantidad.setSelectionColor(new java.awt.Color(133, 198, 90));
+
+        jLabel10.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel10.setText("Cantidad:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(134, 134, 134)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel12)
-                            .addComponent(nomjT, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(descripcionjT, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(122, 122, 122)
-                        .addComponent(cancelarbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(97, 97, 97)
-                        .addComponent(agregarbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(233, Short.MAX_VALUE))
+                .addGap(122, 122, 122)
+                .addComponent(cancelarbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 177, Short.MAX_VALUE)
+                .addComponent(agregarbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(160, 160, 160))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(170, 170, 170)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel10)
+                    .addComponent(nomjT, javax.swing.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel12)
+                    .addComponent(descripcionjT, javax.swing.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE)
+                    .addComponent(cmpCantidad))
+                .addContainerGap(212, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,17 +173,21 @@ public class HerramientasAñadirUI extends javax.swing.JInternalFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel9)
-                .addGap(8, 8, 8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(nomjT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel10)
+                .addGap(8, 8, 8)
+                .addComponent(cmpCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel12)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(descripcionjT, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
+                .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cancelarbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(agregarbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(144, Short.MAX_VALUE))
+                .addContainerGap(120, Short.MAX_VALUE))
         );
 
         getAccessibleContext().setAccessibleDescription("");
@@ -192,7 +201,9 @@ public class HerramientasAñadirUI extends javax.swing.JInternalFrame {
     private javax.swing.JButton cancelarbtn;
     private javax.swing.JLabel close;
     private javax.swing.JLabel close1;
+    private javax.swing.JTextField cmpCantidad;
     private javax.swing.JTextField descripcionjT;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -209,11 +220,13 @@ public class HerramientasAñadirUI extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(rootPane, "Debe ingresar la descripción de la herramienta");
             } else if (nomjT.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(rootPane, "Debe ingresar el nombre de la herramienta");
+            } else if (cmpCantidad.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "Debe ingresar cantidad de herramientas");
             } else {
                 try {
                     String nombre = nomjT.getText();
                     String descripcion = descripcionjT.getText();
-                    int cantidad = 0;
+                    int cantidad = Integer.parseInt(cmpCantidad.getText());
 
                     Detalle_GastoHerramienta dgH = new Detalle_GastoHerramienta(cantidad);
                     dgH.setFecha(LocalDate.now());
@@ -238,6 +251,7 @@ public class HerramientasAñadirUI extends javax.swing.JInternalFrame {
         public void actionPerformed(ActionEvent e) {
             descripcionjT.setText("");
             nomjT.setText("");
+            cmpCantidad.setText("");
         }
     }
 

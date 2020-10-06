@@ -1,27 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package UI;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import javax.swing.ImageIcon;
 
-/**
- *
- * @author Valentina
- */
 public class HerramientasUI extends javax.swing.JFrame {
 
-    /**
-     * Creates new form SiembrasUI
-     */
     public HerramientasUI() {
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("../Resources/planticon.png")).getImage());
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.editarHerramienta1.addMouseListener(new clickEditListener());
+        this.editarHerramienta.addMouseListener(new clickEditListener());
         this.agregarHerramienta.addMouseListener(new clickAddListener());
         this.agregarHerramienta1.addMouseListener(new clickAddListener());
         this.verHerramienta1.addMouseListener(new clickSeeListener());

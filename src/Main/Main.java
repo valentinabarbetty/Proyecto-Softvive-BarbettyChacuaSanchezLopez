@@ -59,15 +59,14 @@ public class Main {
                     Vivero vivero = new Vivero("123678", "Bruzón", "calle 26");
 
                     Empleado empleado1 = new Empleado(12345, "Jeon Jungkook", "11111", "cra #1-2", 11622736, Rol.GERENTE_PROPIETARIO, "Palmira", EstadoEmpleado.ACTIVO);
-                
-         
+
                     ControlEmpleados ce = new ControlEmpleados();
-                    if(ce.getListaEmpleados().isEmpty()){
+                    if (ce.getListaEmpleados().isEmpty()) {
                         ce.agregarEmpleado(empleado1);
-                    } 
+                    }
 
                     new Login(vivero).setVisible(true);
-
+                    // new ViveroGerenteUI(vivero).setVisible(true);
                 } catch (Exception ex) {
                     Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
                 }
