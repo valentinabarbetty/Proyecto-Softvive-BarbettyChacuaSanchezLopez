@@ -28,7 +28,7 @@ public class PlantasUI extends javax.swing.JFrame {
 
     public PlantasUI() {
         initComponents();
-        setIconImage(new ImageIcon(getClass().getResource("../Resources/planticon.png")).getImage());
+        //setIconImage(new ImageIcon(getClass().getResource("../Resources/planticon.png")).getImage());
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.plantasAñadirUI = new PlantasAñadirUI();

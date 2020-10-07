@@ -38,7 +38,7 @@ public class Login extends javax.swing.JFrame {
 
     public Login(Vivero vivero) {
         initComponents();
-        setIconImage(new ImageIcon(getClass().getResource("../Resources/planticon.png")).getImage());
+        //setIconImage(new ImageIcon(getClass().getResource("../Resources/planticon.png")).getImage());
         this.vivero = vivero;
         this.empleado = empleado;
         this.rol = rol;

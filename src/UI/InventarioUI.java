@@ -8,7 +8,7 @@ public class InventarioUI extends javax.swing.JFrame {
 
     public InventarioUI() {
         initComponents();
-        setIconImage(new ImageIcon(getClass().getResource("../Resources/planticon.png")).getImage());
+        //setIconImage(new ImageIcon(getClass().getResource("../Resources/planticon.png")).getImage());
         this.setResizable(true);
         this.setLocationRelativeTo(null);
         this.editarInventario.addMouseListener(new clickEditarListenerPrueba());

@@ -9,7 +9,7 @@ public class SiembrasUI extends javax.swing.JFrame {
     public SiembrasUI() {
         initComponents();
         this.setResizable(false);
-        setIconImage(new ImageIcon(getClass().getResource("../Resources/planticon.png")).getImage());
+       // setIconImage(new ImageIcon(getClass().getResource("../Resources/planticon.png")).getImage());
         this.setLocationRelativeTo(null);
         this.editarSiembra.addMouseListener(new clickEditListener());
         this.editarSiembra1.addMouseListener(new clickEditListener());

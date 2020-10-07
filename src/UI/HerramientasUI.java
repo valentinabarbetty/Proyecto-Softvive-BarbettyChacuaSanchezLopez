@@ -8,7 +8,7 @@ public class HerramientasUI extends javax.swing.JFrame {
 
     public HerramientasUI() {
         initComponents();
-        setIconImage(new ImageIcon(getClass().getResource("../Resources/planticon.png")).getImage());
+        //setIconImage(new ImageIcon(getClass().getResource("../Resources/planticon.png")).getImage());
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.editarHerramienta1.addMouseListener(new clickEditListener());

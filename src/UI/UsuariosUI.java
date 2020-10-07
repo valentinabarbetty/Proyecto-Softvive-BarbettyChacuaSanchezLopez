@@ -9,7 +9,7 @@ public class UsuariosUI extends javax.swing.JFrame {
 
     public UsuariosUI() {
         initComponents();
-        setIconImage(new ImageIcon(getClass().getResource("../Resources/planticon.png")).getImage());
+        //setIconImage(new ImageIcon(getClass().getResource("../Resources/planticon.png")).getImage());
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         desktop.setBorder(new fondoDesktop());

@@ -8,7 +8,7 @@ public class DistribuidoresUI extends javax.swing.JFrame {
 
     public DistribuidoresUI() {
         initComponents();
-        setIconImage(new ImageIcon(getClass().getResource("../Resources/planticon.png")).getImage());
+       // setIconImage(new ImageIcon(getClass().getResource("../Resources/planticon.png")).getImage());
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.AñadirDistri1.addMouseListener(new clickAddListener());

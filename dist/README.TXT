@@ -11,7 +11,7 @@ JAR files manifest file (MANIFEST.MF).
 To run the project from the command line, go to the dist folder and
 type the following:
 
-java -jar "750091M-BarbettyChacuaSanchez-_ProyectoVivero.jar" 
+java -jar "750092M-BarbettyChacuaLopezSanchez-_ProyectoVivero.jar" 
 
 To distribute this project, zip up the dist folder (including the lib folder)
 and distribute the ZIP file.

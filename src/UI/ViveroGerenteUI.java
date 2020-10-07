@@ -31,7 +31,7 @@ public class ViveroGerenteUI extends javax.swing.JFrame {
 
     public ViveroGerenteUI(Vivero vivero) {
         initComponents();
-        setIconImage(new ImageIcon(getClass().getResource("../Resources/planticon.png")).getImage());
+       // setIconImage(new ImageIcon(getClass().getResource("../Resources/planticon.png")).getImage());
 
         this.vivero = vivero;
 

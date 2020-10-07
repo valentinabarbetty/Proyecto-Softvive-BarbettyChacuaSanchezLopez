@@ -8,7 +8,7 @@ public class PedidosUI extends javax.swing.JFrame {
 
     public PedidosUI() {
         initComponents();
-        setIconImage(new ImageIcon(getClass().getResource("../Resources/planticon.png")).getImage());
+        //setIconImage(new ImageIcon(getClass().getResource("../Resources/planticon.png")).getImage());
         this.AgregarP.addMouseListener(new clickAñadirListener());
         this.AgregarPedido.addMouseListener(new clickAñadirListener());
         this.ConfPedidoEntreg.addMouseListener(new clickEntregadoListener());

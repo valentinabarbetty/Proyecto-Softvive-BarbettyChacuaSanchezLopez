@@ -29,7 +29,7 @@ public class ViveroTransportadorUI extends javax.swing.JFrame {
 
         this.setResizable(false);
         desktop.setBorder(new fondoDesktop());
-        setIconImage(new ImageIcon(getClass().getResource("../Resources/planticon.png")).getImage());
+        //setIconImage(new ImageIcon(getClass().getResource("../Resources/planticon.png")).getImage());
         // this.setExtendedState(ViveroGerenteUI.MAXIMIZED_BOTH);
 
         this.setLocationRelativeTo(null);

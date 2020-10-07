@@ -8,7 +8,7 @@ public class IngresosUI extends javax.swing.JFrame {
 
     public IngresosUI() {
         initComponents();
-        setIconImage(new ImageIcon(getClass().getResource("../Resources/planticon.png")).getImage());
+        //setIconImage(new ImageIcon(getClass().getResource("../Resources/planticon.png")).getImage());
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.agregarIngreso.addMouseListener(new clickAddListener());
